@@ -59,7 +59,7 @@ copilot
 您也可以使用啟用了「Copilot Requests」權限的細粒度 PAT 進行驗證。
 
 1. 訪問 https://github.com/settings/personal-access-tokens/new
-2. 在「Permissions」下，點擊「add permissions」並選擇「Copilot Requests」
+2. 在「Permissions」（權限）下，點擊「add permissions」（新增權限）並選擇「Copilot Requests」
 3. 產生您的權杖
 4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依優先順序）將權杖新增到您的環境中
 
