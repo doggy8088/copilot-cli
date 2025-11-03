@@ -141,14 +141,14 @@
 
 ## 0.0.340 - 2025-10-13
 
-- 移除the "Windows support is experimental" warning -- we've made some big strides in improving Windows support the last two weeks! Please continue to report any issues/feedback
-- 改進debugging by including the Copilot API request ID for model calls errors and stack traces for client errors
-- 修復an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
-- 新增a prompt to approve new paths in `-p` mode. Also added `--allow-all-paths` argument that approves access to all paths.
-- 變更parsing of environment variables in MCP server configuration to treat the value of the `env` section as literal values (fixes https://github.com/github/copilot-cli/issues/26).
-  Customers who have configured MCP Servers for use with the CLI will need to make a slight modification to their `~/.copilot/mcp-config.json`.  For any servers they have added with an `env` section, they will need to go add a `$` to the start of the "value" pair of the key value pair of each entry in the env-block, so to have the values treated as references to environment variables.
+- 移除「Windows 支援為實驗性質」的警告 -- 在過去兩週，我們在改進 Windows 支援方面取得了一些重大進展！請繼續回報任何問題/回饋
+- 改進透過包含模型呼叫錯誤的 Copilot API 請求 ID 和用戶端錯誤的堆疊追蹤來改進除錯
+- 修復連續的孤立工具呼叫會導致 "Each `tool_use` block must have a corresponding `tool_result` block in the next message"訊息的問題（修復 https://github.com/github/copilot-cli/issues/102)
+- 新增在 `-p` 模式中新增核准新路徑的提示。也新增了 `--allow-all-paths` 參數來核准存取所有路徑。
+- 變更MCP 伺服器設定中環境變數的解析，將 `env` 區段的值視為字面值（修復 https://github.com/github/copilot-cli/issues/26).
+  已為 CLI 設定 MCP 伺服器的客戶需要對其 `~/.copilot/mcp-config.json`進行小幅修改。對於任何已新增帶有 `env` 區段的伺服器，他們需要在每個 env 區塊條目的鍵值對的「值」部分開頭新增 `$`，以便將值視為環境變數的參考。
 
-  For example: Before:
+  例如：修改前：
     ```json
     {
         "env": {
@@ -170,109 +170,109 @@
 
 ## 0.0.339 - 2025-10-10
 
-- 改進argument input to MCP servers in `/mcp add` -- previously, users had to use comma-separated syntax to specify arguments. Now, the "Command" field allows users to input the full command to start the server as if they were running it in a shell
-- 修復a bug when using the Kitty protocol that led to text containing `u` to not paste correctly. Kitty protocol support is still behind the `COPILOT_KITTY` environment variable. (Fixes https://github.com/github/copilot-cli/issues/259)
-- 修復a bug when using the Kitty protocol that led to the process hanging in VSCode terminal on Windows. Kitty protocol support is still behind the `COPILOT_KITTY` environment variable. (Fixes https://github.com/github/copilot-cli/issues/257)
-- 改進the error handling in the `/model` picker when no models are available (fixes https://github.com/github/copilot-cli/issues/229)
+- 改進 `/mcp add` 中 MCP 伺服器的參數輸入——以前，使用者必須使用逗號分隔語法來指定參數。現在，「Command」欄位允許使用者輸入完整命令來啟動伺服器，就像在 Shell 中執行一樣
+- 修復使用 Kitty 協定時導致包含 `u` 的文字無法正確貼上的錯誤。Kitty 協定支援仍在 `COPILOT_KITTY` 環境變數後面。（修復 https://github.com/github/copilot-cli/issues/259）
+- 修復使用 Kitty 協定時導致程序在 Windows 的 VSCode 終端機中掛起的錯誤。Kitty 協定支援仍在 `COPILOT_KITTY` 環境變數後面。（修復 https://github.com/github/copilot-cli/issues/257）
+- 改進當沒有可用模型時 `/model` 選擇器的錯誤處理（修復 https://github.com/github/copilot-cli/issues/229）
 
 ## 0.0.338 - 2025-10-09
 
-- 移動Kitty protocol support behind the `COPILOT_KITTY` environment variable due to observed regressions (https://github.com/github/copilot-cli/issues/257, https://github.com/github/copilot-cli/issues/259)
-- 修復a wrapping issue in multi-line prompts with empty lines
+- 將 Kitty 協定支援移至 `COPILOT_KITTY` 環境變數後面，因為觀察到迴歸問題（https://github.com/github/copilot-cli/issues/257、https://github.com/github/copilot-cli/issues/259）
+- 修復多行提示中有空行時的換行問題
 
 ## 0.0.337 - 2025-10-08
 
-- 新增validation for MCP server names (fixes https://github.com/github/copilot-cli/issues/110)
-- 新增support for Ctrl+B and Ctrl+F for moving cursor back and forward (fixes https://github.com/github/copilot-cli/issues/214)
-- 新增support for multi-line input for terminals that support the [Kitty protocol](https://sw.kovidgoyal.net/kitty/keyboard-protocol/) (partially fixes https://github.com/github/copilot-cli/issues/14 -- broader terminal support coming soon!)
-- 更新the OAuth login UI to begin polling as soon as the device code is generated (this will _more solidly_ fix SSH edge-cases as described in https://github.com/github/copilot-cli/issues/89)
+- 新增 MCP 伺服器名稱的驗證（修復 https://github.com/github/copilot-cli/issues/110）
+- 新增 Ctrl+B 和 Ctrl+F 的支援，用於向後和向前移動游標（修復 https://github.com/github/copilot-cli/issues/214）
+- 新增支援 [Kitty 協定](https://sw.kovidgoyal.net/kitty/keyboard-protocol/) 的終端機的多行輸入（部分修復 https://github.com/github/copilot-cli/issues/14——更廣泛的終端機支援即將推出！）
+- 更新 OAuth 登入 UI，使其在產生裝置代碼後立即開始輪詢（這將更穩固地修復 https://github.com/github/copilot-cli/issues/89 中描述的 SSH 邊緣案例）
 
 ## 0.0.336 - 2025-10-07
 
-- 啟用proxy support via HTTPS_PROXY/HTTP_PROXY environment variables regardless of Node version (Fixes https://github.com/github/copilot-cli/issues/41)
-- 大幅減少token consumption, round trips per problem, and time to result. We'll share more specific data in our weekly changelog on Friday!
-- 改進file write performances (especially on Windows) by not relying on the shell to fetch the current working directory
-- 修復a bug where `/clear` did not properly reset the context truncation tracking state
-- 隱藏the "Welcome to GitHub Copilot CLI" welcome message on session resumption and `/clear` for a cleaner look
-- 改進the alignment of tables where the scrollbar is present
-- 改進the output of `--help` by making it more concise
-- 新增a prompt for users who launch with `--screen-reader` to persistently save this preference
-- 可能改進flickering in some cases; we're still working on this!
+- 啟用透過 HTTPS_PROXY/HTTP_PROXY 環境變數的代理支援，無論 Node 版本為何（修復 https://github.com/github/copilot-cli/issues/41）
+- 大幅減少權杖消耗、每個問題的往返次數和得到結果的時間。我們將在週五的每週變更日誌中分享更具體的資料！
+- 改進檔案寫入效能（特別是在 Windows 上），不再依賴 Shell 來獲取當前工作目錄
+- 修復 `/clear` 未正確重設情境截斷追蹤狀態的錯誤
+- 隱藏會話恢復和 `/clear` 時的「Welcome to GitHub Copilot CLI」歡迎訊息，以獲得更簡潔的外觀
+- 改進存在捲軸時表格的對齊
+- 透過使其更簡潔來改進 `--help` 的輸出
+- 為使用 `--screen-reader` 啟動的使用者新增提示，以持久儲存此偏好設定
+- 可能改進某些情況下的閃爍問題；我們仍在處理此問題！
 
 ## 0.0.335 - 2025-10-06
 
-- 改進visibility into file edits by showing file diffs in the timeline by default, without the need to Ctrl+R
-- 改進slash command input by showing argument hints in the input box
-- 改進the display of the interface in windows less than 80 columns wide
-- 減少the number of colors and improved the spacing of Markdown rendering
-- 新增a warning when attempting to use proxy support in an environment where it won't work (Node <24, required environment variables not set) (A more permanent fix for https://github.com/github/copilot-cli/issues/41 is coming ~tomorrow)
-- 更新the context truncation message's color from an error color to a warning color
-- 修復a bug where `copilot` logs might not have been properly created on Windows
-- 修復a bug where Powershell users with custom profiles might have had issues running commands (Fixes https://github.com/github/copilot-cli/issues/196)
-- 修復a bug where prompts were truncated after pasting and other edge cases (Fixes https://github.com/github/copilot-cli/issues/208, https://github.com/github/copilot-cli/issues/218)
-- 修復a bug where users would see a login prompt on startup despite being logged in (fixes https://github.com/github/copilot-cli/issues/202)
-- 修復a bug where some SSH users in certain environments were unable to get the OAuth login link and had their processes hang trying to open a browser (fixes https://github.com/github/copilot-cli/issues/89)
+- 改進透過預設在時間軸中顯示檔案差異來提升檔案編輯的可見性，無需 Ctrl+R
+- 改進斜線命令輸入，在輸入框中顯示參數提示
+- 改進寬度小於 80 欄的視窗中的介面顯示
+- 減少顏色數量並改進 Markdown 渲染的間距
+- 在嘗試在無法運作的環境中使用代理支援時新增警告（Node <24，未設定所需的環境變數）（https://github.com/github/copilot-cli/issues/41 的更永久修復即將在明天推出）
+- 將情境截斷訊息的顏色從錯誤顏色更新為警告顏色
+- 修復 `copilot` 日誌可能未在 Windows 上正確建立的錯誤
+- 修復使用自訂設定檔的 Powershell 使用者可能在執行命令時遇到問題的錯誤（修復 https://github.com/github/copilot-cli/issues/196）
+- 修復貼上後提示被截斷以及其他邊緣案例的錯誤（修復 https://github.com/github/copilot-cli/issues/208、https://github.com/github/copilot-cli/issues/218）
+- 修復儘管已登入，使用者在啟動時仍會看到登入提示的錯誤（修復 https://github.com/github/copilot-cli/issues/202）
+- 修復某些環境中的某些 SSH 使用者無法取得 OAuth 登入連結，且其程序在嘗試開啟瀏覽器時掛起的錯誤（修復 https://github.com/github/copilot-cli/issues/89）
 
 ## 0.0.334 - 2025-10-03
 
-- 改進the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
-- 新增a warning when conversation context approaches ≤20% remaining of the model's limit that truncation will soon occur. At this point, we recommend you begin a new session (improves https://github.com/github/copilot-cli/issues/29)
-- 移除the on-exit usage stats from the persisted session history
-- 新增the current version to startup logs to aid in bug reporting
-- 移除cycling through TAB autocomplete items if an argument is present. This prevents running `/cwd /path/to/whatever`, hitting `TAB`, then seeing `/clear` autocomplete
+- 改進貼上大量內容的體驗：貼上超過 10 行時，會顯示為緊湊的權杖，如 `[Paste #1 - 15 lines]` 而不是讓終端機被大量文字淹沒。
+- 新增當對話情境接近模型限制的 ≤20% 時新增警告，表示即將發生截斷。此時，我們建議您開始新的會話 (improves https://github.com/github/copilot-cli/issues/29)
+- 移除從持久化的會話歷史記錄中移除退出時的使用統計資料
+- 新增在啟動日誌中新增當前版本，以協助錯誤回報
+- 移除如果存在參數，則移除透過 TAB 在自動完成項目中循環的功能。這可防止執行 `/cwd /path/to/whatever`，按下 `TAB`，然後看到 `/clear` 自動完成
 
 ## 0.0.333 - 2025-10-02
 
-- 新增image support! `@`-mention files to add them as input to the model.
-- 改進proxy support for users on Node.JS v24+. See [this comment](https://github.com/github/copilot-cli/issues/41#issuecomment-3362444262) for more details (Fixes https://github.com/github/copilot-cli/issues/41)
-- 新增support for directly executing shell commands and bypassing the model by prepending input with `!` (fixes https://github.com/github/copilot-cli/issues/186, https://github.com/github/copilot-cli/issues/12)
-- 新增`/usage` slash command to provide stats about Premium request usage, session time, code changes, and per-model token use. This information is also printed at the conclusion of a session (Fixes https://github.com/github/copilot-cli/issues/27, https://github.com/github/copilot-cli/issues/121)
-- 改進`--screen-reader` mode by replacing icons in the timeline with informative labels
-- 新增a `--continue` flag to resume the most recently closed session
-- 更新the `/clear` command to properly clear old timeline entries/session information (Fixes https://github.com/github/copilot-cli/issues/170)
+- 新增影像支援！ `@`-提及檔案以將它們新增為模型的輸入。
+- 改進Node.JS v24+ 使用者的代理支援。詳情請參閱 [this comment](https://github.com/github/copilot-cli/issues/41#issuecomment-3362444262) 以獲取更多詳細資訊 (Fixes https://github.com/github/copilot-cli/issues/41)
+- 新增直接執行 Shell 命令並透過在輸入前加上 `!` (fixes https://github.com/github/copilot-cli/issues/186, https://github.com/github/copilot-cli/issues/12)
+- 新增`/usage` 斜線命令，提供有關進階請求使用、會話時間、程式碼變更和每個模型權杖使用的統計資料。此資訊也會在會話結束時列印 (Fixes https://github.com/github/copilot-cli/issues/27, https://github.com/github/copilot-cli/issues/121)
+- 改進`--screen-reader` 模式，用資訊性標籤替換時間軸中的圖示
+- 新增a `--continue` 旗標來恢復最近關閉的會話
+- 更新 `/clear` 命令以正確清除舊的時間軸條目/會話資訊 (Fixes https://github.com/github/copilot-cli/issues/170)
 
 ## 0.0.332 - 2025-10-01
 
-- 切換to using per-subscription Copilot API endpoints in accordance with [GitHub's docs](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-access/manage-network-access) (fixes https://github.com/github/copilot-cli/issues/76)
-- 修復a bug where `/user [list | show | swtich]` did not include users signed in from all authentication modes (fixes https://github.com/github/copilot-cli/issues/58)
-- 修復a bug where switching to another user with `/user switch` did not take effect in the GitHub MCP server
-- 改進the screenreader experience by disabling the scrollbar in the `@` file picker, the `--resume` session picker, and the `/` command picker
-- 改進the polish of the scrollbar container (increased the width, reduced the opacity of the gutter)
-- Minor visual improvements to the input area (moved the current model indicator to the right so it's not cramped with the CWD, improved the positioning of the file picker's "indexing" indicator, improved hint formatting in completion menus)
-- 改進Markdown legibility by excluding `#` prefixes in headings
-- 改進how we extract paths from shell commands for permission handling (might fix https://github.com/github/copilot-cli/issues/159, https://github.com/github/copilot-cli/issues/67)
+- 切換使用符合 [GitHub's docs](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-access/manage-network-access) (fixes https://github.com/github/copilot-cli/issues/76)
+- 修復 `/user [list | show | swtich]` 未包含從所有驗證模式登入的使用者 (fixes https://github.com/github/copilot-cli/issues/58)
+- 修復 使用 `/user switch` 切換到另一個使用者時未在 GitHub MCP 伺服器中生效
+- 改進透過在 `@` 檔案選擇器、 `--resume` 會話選擇器和 `/` 命令選擇器中停用捲軸來改進螢幕閱讀器體驗
+- 改進捲軸容器的精緻度（增加寬度，降低槽的不透明度）
+- 輸入區域的小視覺改進（將當前模型指示器移至右側，使其不與 CWD 擁擠，改進檔案選擇器的 "indexing" 指示器的位置，改進完成選單中的提示格式）
+- 改進透過排除標題中的 `#` 前綴來改進 Markdown 易讀性
+- 改進我們如何從 Shell 命令中提取路徑以進行權限處理（可能修復 https://github.com/github/copilot-cli/issues/159, https://github.com/github/copilot-cli/issues/67)
 
 ## 0.0.331 - 2025-10-01
 
-- 改進the information density of file read/edit timeline events
-- 修復an inaccuracy in the `--banner` help text; it previously implied that it would persistently change the configuration to always show the startup banner
-- 改進the `/model`s list to ensure that a user only sees models they have access to use -- previously, if a user tries to use a model they do not have access to (because of their Copilot plan, their geographic region, etc), they received a `model_not_supported` error. This should prevent that by not even showing such models as options in the list (Fixes https://github.com/github/copilot-cli/issues/112, https://github.com/github/copilot-cli/issues/85, https://github.com/github/copilot-cli/issues/40)
-- 修復a bug where pressing down arrow in a multi-line prompt would wrap around to the first line (This is on the way to implementing https://github.com/github/copilot-cli/issues/14)
-- 新增a scrollbar to the `@` file mentioning picker and increased the size of the active buffer to 10 items
-- 改進the experience of writing prompts while the agent is running -- up/down arrows will now correctly navigate between options in the `@` and `/` menus
+- 改進檔案讀取/編輯時間軸事件的資訊密度
+- 修復 `--banner` 說明文字中的不準確之處；它以前暗示會持續變更設定以始終顯示啟動橫幅
+- 改進`/model`清單，以確保使用者只看到他們有權使用的模型——以前，如果使用者嘗試使用他們無權存取的模型（由於其 Copilot 方案、地理區域等），他們會收到 `model_not_supported` 錯誤。這應該透過甚至不在清單中將此類模型顯示為選項來防止這種情況 (Fixes https://github.com/github/copilot-cli/issues/112, https://github.com/github/copilot-cli/issues/85, https://github.com/github/copilot-cli/issues/40)
+- 修復在多行提示中按向下箭頭會繞回到第一行的錯誤（這是實作 https://github.com/github/copilot-cli/issues/14 的過程中）
+- 將捲軸新增到 `@` 檔案提及選擇器，並將活動緩衝區的大小增加到 10 個項目
+- 改進當代理執行時撰寫提示的體驗——上/下箭頭現在將在 `@` 和 `/` 選單中正確導航選項
 
 ## 0.0.330 - 2025-09-29
 
-- 變更the default model back to Sonnet 4 since Sonnet 4.5 hasn't rolled out to all users yet. Sonnet 4.5 is still available from the `/model` slash command
+- 將預設模型改回 Sonnet 4，因為 Sonnet 4.5 尚未向所有使用者推出。Sonnet 4.5 仍可從 `/model` 斜線命令取得
 
 ## 0.0.329 - 2025-09-29
 
-- 新增support for [Claude Sonnet 4.5](https://github.blog/changelog/2025-09-29-anthropic-claude-sonnet-4-5-is-in-public-preview-for-github-copilot/) and made it the default model
-- 新增`/model` slash command to easily change the model (fixes https://github.com/github/copilot-cli/issues/10)
-    - `/model` will open a picker to change the model
-    - `/model <model>` will set the model to the parameter provided
-- 新增display of currently selected model above the input text box (Addresses feedback in https://github.com/github/copilot-cli/issues/120, https://github.com/github/copilot-cli/issues/108, )
-- 改進error messages when users provide incorrect command-line arguments. (Addresses feedback of the discoverability of non-interactive mode from  https://github.com/github/copilot-cli/issues/96)
-- 變更the behavior of `Ctrl+r` to expand only recent timeline items. After running `Ctrl+r`, you can use `Ctrl+e` to expand all
-- 改進word motion logic to better detect newlines: using word motion keys will now correctly move to the first word on a line
-- 改進the handling of multi-line inputs in the input box: the input text box is scrollable, limited to 10 lines. Long prompts won't take up the whole screen anymore! (This is on the way to implementing https://github.com/github/copilot-cli/issues/14)
-- 移除the left and right boarders from the input box. This makes it easier to copy text out of it!
-- 新增glob matching to shell rules. When using `--allow-tool` and `--deny-tool`, you can now specify things like `shell(npm run test:*)` to match any shell commands beginning with `npm run test`
-- 改進the `copilot --resume` interface with relative time display, session message count, (Fixes https://github.com/github/copilot-cli/issues/97)
+- 新增對 [Claude Sonnet 4.5](https://github.blog/changelog/2025-09-29-anthropic-claude-sonnet-4-5-is-in-public-preview-for-github-copilot/) 的支援並使其成為預設模型
+- 新增 `/model` 斜線命令以輕鬆變更模型（修復 https://github.com/github/copilot-cli/issues/10）
+    - `/model` 將開啟選擇器以變更模型
+    - `/model <model>` 將模型設定為提供的參數
+- 在輸入文字方塊上方顯示當前選擇的模型（解決 https://github.com/github/copilot-cli/issues/120、https://github.com/github/copilot-cli/issues/108 中的回饋）
+- 改進當使用者提供不正確的命令列參數時的錯誤訊息。（解決 https://github.com/github/copilot-cli/issues/96 對非互動模式可發現性的回饋）
+- 變更 `Ctrl+r` 的行為，使其僅展開最近的時間軸項目。執行 `Ctrl+r` 後，您可以使用 `Ctrl+e` 展開全部
+- 改進單字移動邏輯以更好地偵測換行：使用單字移動鍵現在將正確移動到行中的第一個單字
+- 改進輸入框中多行輸入的處理：輸入文字方塊可捲動，限制為 10 行。長提示不會再佔據整個螢幕！（這是實作 https://github.com/github/copilot-cli/issues/14 的過程中）
+- 移除輸入框的左右邊框。這使得從中複製文字變得更容易！
+- 新增 glob 比對到 Shell 規則。使用 `--allow-tool` 和 `--deny-tool` 時，您現在可以指定像 `shell(npm run test:*)` 這樣的內容，以比對以 `npm run test` 開頭的任何 Shell 命令
+- 改進 `copilot --resume` 介面，具有相對時間顯示、會話訊息計數（修復 https://github.com/github/copilot-cli/issues/97）
 
 ## 0.0.328 - 2025-09-26
 
-- 改進error message received when Copilot CLI is blocked by organization policy (fixes https://github.com/github/copilot-cli/issues/18 )
-- 改進the error message received when using a PAT that is missing the "Copilot Requests" permission (fixes https://github.com/github/copilot-cli/issues/46 )
-- 改進the output of `/user list` to make it clearer which is the current user
-- 改進PowerShell parsing of `ForEach-Object` and detection of command name expressions (e.g.,`& $someCommand`)
+- 改進當 Copilot CLI 被組織政策封鎖時收到的錯誤訊息（修復 https://github.com/github/copilot-cli/issues/18 ）
+- 改進當使用缺少「Copilot Requests」權限的 PAT 時收到的錯誤訊息（修復 https://github.com/github/copilot-cli/issues/46 ）
+- 改進 `/user list` 的輸出，使當前使用者更清楚
+- 改進對 `ForEach-Object` 的 PowerShell 解析以及命令名稱表達式的偵測（例如 `& $someCommand`）
