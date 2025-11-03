@@ -1,83 +1,83 @@
-# GitHub Copilot CLI (Public Preview)
+# GitHub Copilot CLI (公開預覽版)
 
-The power of GitHub Copilot, now in your terminal.
+GitHub Copilot 的強大功能，現在就在您的終端機中。
 
-GitHub Copilot CLI brings AI-powered coding assistance directly to your command line, enabling you to build, debug, and understand code through natural language conversations. Powered by the same agentic harness as GitHub's Copilot coding agent, it provides intelligent assistance while staying deeply integrated with your GitHub workflow.
+GitHub Copilot CLI 將 AI 驅動的程式碼輔助功能直接帶到您的命令列，讓您能夠透過自然語言對話來建置、除錯和理解程式碼。採用與 GitHub Copilot 程式碼代理相同的代理框架，它提供智慧輔助，同時與您的 GitHub 工作流程深度整合。
 
-See [our official documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli) for more information.
+詳情請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-![Image of the splash screen for the Copilot CLI](https://github.com/user-attachments/assets/51ac25d2-c074-467a-9c88-38a8d76690e3)
+![Copilot CLI 啟動畫面圖片](https://github.com/user-attachments/assets/51ac25d2-c074-467a-9c88-38a8d76690e3)
 
-## 🚀 Introduction and Overview
+## 🚀 介紹與概述
 
-We're bringing the power of GitHub Copilot coding agent directly to your terminal. With GitHub Copilot CLI, you can work locally and synchronously with an AI agent that understands your code and GitHub context.
+我們將 GitHub Copilot 程式碼代理的強大功能直接帶到您的終端機。透過 GitHub Copilot CLI，您可以在本地與了解您的程式碼和 GitHub 情境的 AI 代理同步工作。
 
-- **Terminal-native development:** Work with Copilot coding agent directly in your command line — no context switching required.
-- **GitHub integration out of the box:** Access your repositories, issues, and pull requests using natural language, all authenticated with your existing GitHub account.
-- **Agentic capabilities:** Build, edit, debug, and refactor code with an AI collaborator that can plan and execute complex tasks.
-- **MCP-powered extensibility:** Take advantage of the fact that the coding agent ships with GitHub's MCP server by default and supports custom MCP servers to extend capabilities.
-- **Full control:** Preview every action before execution — nothing happens without your explicit approval.
+- **終端機原生開發：** 直接在命令列中與 Copilot 程式碼代理一起工作——無需切換環境。
+- **內建 GitHub 整合：** 使用自然語言存取您的儲存庫、議題和拉取請求，所有操作都使用您現有的 GitHub 帳號進行驗證。
+- **代理能力：** 與能夠規劃和執行複雜任務的 AI 協作者一起建置、編輯、除錯和重構程式碼。
+- **MCP 驅動的擴充性：** 利用程式碼代理預設搭載 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充功能。
+- **完全掌控：** 在執行前預覽每個動作——未經您明確批准，不會執行任何操作。
 
-We're still early in our journey, but with your feedback, we're rapidly iterating to make the GitHub Copilot CLI the best possible companion in your terminal.
+我們仍處於旅程的早期階段，但在您的回饋下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為您終端機中最好的夥伴。
 
-## 📦 Getting Started
+## 📦 開始使用
 
-### Supported Platforms
+### 支援的平台
 
 - **Linux**
 - **macOS**
 - **Windows**
 
-### Prerequisites
+### 必要條件
 
-- **Node.js** v22 or higher
-- **npm** v10 or higher
-- (On Windows) **PowerShell** v6 or higher
-- An **active Copilot subscription**. See [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs).
+- **Node.js** v22 或更高版本
+- **npm** v10 或更高版本
+- （在 Windows 上）**PowerShell** v6 或更高版本
+- **有效的 Copilot 訂閱**。請參閱 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-If you have access to GitHub Copilot via your organization of enterprise, you cannot use GitHub Copilot CLI if your organization owner or enterprise administrator has disabled it in the organization or enterprise settings. See [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization) for more information.
+如果您透過組織或企業存取 GitHub Copilot，且組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則您將無法使用。詳情請參閱[管理組織中 GitHub Copilot 的政策和功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
-### Installation
+### 安裝
 
-Install globally with npm:
+使用 npm 全域安裝：
 ```bash
 npm install -g @github/copilot
 ```
 
-### Launching the CLI
+### 啟動 CLI
 
 ```bash
 copilot
 ```
 
-On first launch, you'll be greeted with our adorable animated banner! If you'd like to see this banner again, launch `copilot` with the `--banner` flag. 
+首次啟動時，您會看到我們可愛的動畫橫幅！如果您想再次看到此橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
-If you're not currently logged in to GitHub, you'll be prompted to use the `/login` slash command. Enter this command and follow the on-screen instructions to authenticate.
+如果您目前未登入 GitHub，系統會提示您使用 `/login` 斜線命令。輸入此命令並按照螢幕上的指示進行驗證。
 
-#### Authenticate with a Personal Access Token (PAT)
+#### 使用個人存取權杖 (PAT) 進行驗證
 
-You can also authenticate using a fine-grained PAT with the "Copilot Requests" permission enabled.
+您也可以使用啟用了「Copilot Requests」權限的細粒度 PAT 進行驗證。
 
-1. Visit https://github.com/settings/personal-access-tokens/new
-2. Under "Permissions," click "add permissions" and select "Copilot Requests"
-3. Generate your token
-4. Add the token to your environment via the environment variable `GH_TOKEN` or `GITHUB_TOKEN` (in order of precedence)
+1. 訪問 https://github.com/settings/personal-access-tokens/new
+2. 在「Permissions」（權限）下，點擊「add permissions」（新增權限）並選擇「Copilot Requests」
+3. 產生您的權杖
+4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依優先順序）將權杖新增到您的環境中
 
-### Using the CLI
+### 使用 CLI
 
-Launch `copilot` in a folder that contains code you want to work with. 
+在包含您要處理的程式碼的資料夾中啟動 `copilot`。
 
-By default, `copilot` utilizes Claude Sonnet 4.5. Run the `/model` slash command to choose from other available models, including Claude Sonnet 4 and GPT-5
+預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` 斜線命令可從其他可用模型中選擇，包括 Claude Sonnet 4 和 GPT-5
 
-Each time you submit a prompt to GitHub Copilot CLI, your monthly quota of premium requests is reduced by one. For information about premium requests, see [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests).
+每次向 GitHub Copilot CLI 提交提示時，您的每月進階請求配額會減少一次。有關進階請求的資訊，請參閱[關於進階請求](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-For more information about how to use the GitHub Copilot CLI, see [our official documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli).
+有關如何使用 GitHub Copilot CLI 的更多資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 
-## 📢 Feedback and Participation
+## 📢 回饋與參與
 
-We're excited to have you join us early in the Copilot CLI journey.
+我們很高興您能在 Copilot CLI 旅程的早期加入我們。
 
-This is an early-stage preview, and we're building quickly. Expect frequent updates--please keep your client up to date for the latest features and fixes!
+這是早期階段的預覽版，我們正在快速建置中。預期會有頻繁的更新——請保持您的用戶端為最新版本，以獲得最新功能和修復！
 
-Your insights are invaluable! Open issue in this repo, join Discussions, and run `/feedback` from the CLI to submit a confidential feedback survey!
+您的見解非常寶貴！請在此儲存庫中開啟議題、加入討論，並從 CLI 執行 `/feedback` 提交機密回饋調查！
