@@ -1,3 +1,28 @@
+## 0.0.356 - 2025-11-13
+
+- GPT-5.1、GPT-5.1-Codex 和 GPT-5.1-Codex-Mini 現已在 GitHub Copilot CLI 中可用。詳情請參閱 [GitHub 更新日誌](https://github.blog/changelog/2025-11-13-openais-gpt-5-1-gpt-5-1-codex-and-gpt-5-1-codex-mini-are-now-in-public-preview-for-github-copilot/)
+
+## 0.0.355 - 2025-11-12
+
+- 啟用 CLI 代理讀取自身的 `/help` 和 README 以回答有關其功能的問題
+- 改進對 VSCode 格式自訂代理（`.agent.md` 後綴）的解析
+- 清理工具名稱以修復類似 https://github.com/github/copilot-cli/issues/456 的問題
+- 內建 `ripgrep` 並新增 `grep` 和 `glob` 工具，以更高效地搜尋程式碼庫
+- 修復畸形工具呼叫在到達 UI 之前的處理（部分解決 https://github.com/github/copilot-cli/issues/393）
+- 防止 Markdown 訊息中的雙重換行
+- 修復檔案選擇器在多行輸入中使用時導致非預期上下箭頭行為的錯誤（修復 https://github.com/github/copilot-cli/issues/350）
+- 修復自訂代理中遠端 MCP 伺服器配置未正確獲取的錯誤
+- 為 `/session` 命令的輸出增加更多細節並改進樣式
+- 從 Shell 工具的環境中移除內部 `NODE_ENV` 變數（修復 https://github.com/github/copilot-cli/issues/151）
+- 修復使用互動式 Shell 工具時的記憶體洩漏
+- 改進檔案檢視輸出中的行號格式（修復 https://github.com/github/copilot-cli/issues/471）
+- 降低預設 Shell 工具逾時時間，並更新提示語言以不暗示逾時即為失敗
+- 確保在渲染前查詢終端背景色（修復 https://github.com/github/copilot-cli/issues/36）
+- 確保代理不會對自己的 PID 執行 `pkill`
+- 修復 `copilot` 在收到中止信號後不會退出的錯誤（修復 https://github.com/github/copilot-cli/issues/529）
+- 確保 Windows 上的 `!` 命令在可用時使用 PowerShell（修復 https://github.com/github/copilot-cli/issues/504）
+- 修復 Windows Terminal 中不接受鍵盤輸入的錯誤
+
 ## 0.0.354 - 2025-11-03
 
 - 當 `-p` 模式因大型語言模型後端錯誤（認證失敗、配額耗盡、網路問題）而失敗時，程式會以非零狀態碼退出
