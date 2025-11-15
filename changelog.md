@@ -1,3 +1,11 @@
+## 0.0.358 - 2025-11-14
+
+修復發布以解決 GPT-5.1、GPT-5.1-Codex 和 GPT-5.1-Codex-Mini 模型的可用性問題。
+
+## 0.0.357 - 2025-11-13
+
+修復發布以解決圖片調整大小的問題。
+
 ## 0.0.356 - 2025-11-13
 
 - GPT-5.1、GPT-5.1-Codex 和 GPT-5.1-Codex-Mini 現已在 GitHub Copilot CLI 中可用。詳情請參閱 [GitHub 更新日誌](https://github.blog/changelog/2025-11-13-openais-gpt-5-1-gpt-5-1-codex-and-gpt-5-1-codex-mini-are-now-in-public-preview-for-github-copilot/)
@@ -135,11 +143,7 @@
 
 ## 0.0.343 - 2025-10-16
 
-- ```
-  新增模型：
-  執行 slash model 命令裝備
-  Haiku 4.5。
-  ```
+- 新增模型：執行 `/model` 斜線命令可選擇 Haiku 4.5。
 - 新增旗標以增強 MCP 伺服器設定，可在每個會話中暫時新增或覆寫伺服器設定：`--additional-mcp-config` (修復 https://github.com/github/copilot-cli/issues/288)
   - 您可以用兩種方式傳遞 MCP 伺服器設定：
     - 內嵌 JSON：`copilot --additional-mcp-config '{"mcpServers": {"my-tool": {...}}}'`
@@ -179,7 +183,7 @@
 
 - 移除「Windows 支援為實驗性質」的警告 -- 在過去兩週，我們在改進 Windows 支援方面取得了一些重大進展！請繼續回報任何問題 / 回饋
 - 改進透過包含模型呼叫錯誤的 Copilot API 請求 ID 和用戶端錯誤的堆疊追蹤來改進除錯
-- 修復連續的孤立工具呼叫會導致 "Each `tool_use` block must have a corresponding `tool_result` block in the next message" 訊息的問題（修復 https://github.com/github/copilot-cli/issues/102)
+- 修復連續的孤立工具呼叫會導致 "Each `tool_use` block must have a corresponding `tool_result` block in the next message" 訊息的問題（修復 https://github.com/github/copilot-cli/issues/102)
 - 新增在 `-p` 模式中新增核准新路徑的提示。也新增了 `--allow-all-paths` 參數來核准存取所有路徑。
 - 變更 MCP 伺服器設定中環境變數的解析，將 `env` 區段的值視為字面值（修復 https://github.com/github/copilot-cli/issues/26).
   已為 CLI 設定 MCP 伺服器的客戶需要對其 `~/.copilot/mcp-config.json` 進行小幅修改。對於任何已新增帶有 `env` 區段的伺服器，他們需要在每個 env 區塊條目的鍵值對的「值」部分開頭新增 `$`，以便將值視為環境變數的參考。
@@ -251,7 +255,7 @@
 
 ## 0.0.334 - 2025-10-03
 
-- 改進貼上大量內容的體驗：貼上超過 10 行時，會顯示為緊湊的權杖，如 `[Paste #1 - 15 lines]` 而不是讓終端機被大量文字淹沒。
+- 改進貼上大量內容的體驗：貼上超過 10 行時，會顯示為緊湊的權杖，如 `[Paste #1 - 15 lines]` 而不是讓終端機被大量文字淹沒。
 - 新增當對話情境接近模型限制的 ≤20% 時新增警告，表示即將發生截斷。此時，我們建議您開始新的會話 (improves https://github.com/github/copilot-cli/issues/29)
 - 移除從持久化的會話歷史記錄中移除退出時的使用統計資料
 - 新增在啟動日誌中新增當前版本，以協助錯誤回報
