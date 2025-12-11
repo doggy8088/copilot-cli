@@ -1,6 +1,6 @@
 ## 0.0.368 - 2025-12-10
 
-- PRU 使用率現在正確顯示
+- PRU (Premium Request Unit) 使用率現在正確顯示
 - 修正勾選框和叉號圖示的渲染
 - 新增 grep 工具 Codex 模型
 - Numpad 鍵可在 Kitty 鍵盤協議中使用於提示
