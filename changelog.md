@@ -1,3 +1,16 @@
+## 0.0.392 - 2026-01-22
+
+- 新增 `/plugin` 指令以管理 plugin marketplace
+- 新增 `/rename` 指令，作為 `/session rename` 的別名
+- 新增 `/plugin update` 指令以更新已安裝的 plugins
+- Edit 工具在 timeline 展開時現在會顯示 diff
+
+## 0.0.390 - 2026-01-22
+
+- 壓縮後保留 extended thinking
+- 搭配 MCP server 的 custom agent 可避免不必要的重新啟動
+- 啟用 plan mode 期間可進行 steering
+
 ## 0.0.389 - 2026-01-22
 
 - 改善 `/session` 指令的視覺層級與色彩
