@@ -1,3 +1,12 @@
+## 0.0.393 - 2026-01-23
+
+- 以時間軸訊息顯示對話壓縮狀態，取代標頭指示器
+- Memory 載入在不處於 Git 儲存庫時不再顯示警告
+- 新增支援 GHE Cloud (*.ghe.com) 遠端自訂代理
+- 套件解除安裝現在能正確運作
+- 在 tool.execution_start 事件中公開 MCP server 與 tool 名稱以加強錯誤處理
+- 新增 Esc-Esc 可將檔案變更回任何先前快照
+
 ## 0.0.392 - 2026-01-22
 
 - 新增 `/plugin` 指令以管理 plugin marketplace
