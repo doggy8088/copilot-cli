@@ -1,3 +1,19 @@
+## 0.0.401 - 2026-02-03
+
+- 支援 `.agents/skills` 目錄以自動載入技能
+- 當切換模型家族時，改進聊天紀錄處理方式
+- MCP 工具回傳 structuredContent 現在可於 CLI 正確顯示
+- 支援 Claude 樣式的 .mcp.json 格式且無需 mcpServers 包裹
+- 在 VS Code 整合終端機中以 shift+enter 鍵綁定插入換行
+- 大型多行貼上可正確運作
+- ACP terminal-auth 傳遞正確參數以登入
+- 按住箭頭與特殊按鍵可穩定運作
+- 斜線指令 ghost text 正確附加
+- 新增 `copilot login` 子指令並支援 ACP terminal-auth
+- 新增 agentStop 與 subagentStop 鉤子以控制 agent 完成
+- CLI 可優雅處理未知按鍵操作
+- /diff 以雙欄版面顯示正確行號
+
 ## 0.0.400 - 2026-01-30
 
 - 新增 MCP server 指令支援
