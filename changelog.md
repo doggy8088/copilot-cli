@@ -1,3 +1,37 @@
+## 0.0.405 - 2026-02-05
+
+- Plugin 和 marketplace 名稱支援大寫字母
+- `/experimental` 顯示說明畫面，列出實驗性功能
+- 修復 SQL 工具斷線問題
+- Plugin 可捆綁 LSP server 設定
+
+## 0.0.404 - 2026-02-05
+
+- 新增 `claude-opus-4.6` 模型支援
+- `/allow-all` 和 `/yolo` 立即執行
+- MCP server 並行關閉以提升效能
+- 取消 `--resume` session picker 以開始新 session
+- MCP server 設定在 `tools` 參數未指定時預設包含所有工具
+- 新增 `/tasks` 指令以檢視和管理背景工作
+- 為所有用戶啟用**背景代理**(background agents)
+- 簡化並明確 `/delegate` 指令訊息
+- `GITHUB_TOKEN` 環境變數現已可於 agent shell session 存取
+
+## 0.0.403 - 2026-02-04
+
+- Windows 工作管理員顯示正確應用程式名稱
+- 新增安全檢查，避免使用應用程式套件外部模組
+- ACP 模型資訊包含使用倍數和啟用狀態
+- 修復檢查用戶組織成員資格邏輯
+- 更新 plugin 前會先停止 MCP server
+- 分離的 shell 程序於原生 macOS 安裝可正常運作
+- Escape 鍵可中止權限對話框，不論選擇狀態
+- Plugin skills 支援 prompt 模式
+- CLI 更新設定檔時保留自訂欄位
+- 支援模型預設啟用推理摘要
+- 自訂 agent frontmatter 支援逗號分隔工具
+- frontmatter 欄位未知的 skills 由原本略過改為顯示警告並載入
+
 ## 0.0.402 - 2026-02-03
 
 - ACP 伺服器支援「代理」與「計畫」會話模式
