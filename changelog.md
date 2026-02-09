@@ -1,3 +1,16 @@
+## 0.0.406 - 2026-02-07
+
+- 新增支援 Claude Opus 4.6 Fast（預覽版）
+- Markdown 格式在非互動模式輸出時顯示
+- 當使用者沒有 Copilot 訂閱時顯示警告
+- 來自外掛的指令現在會轉換為 skills
+- 新增 `/changelog` 指令以檢視發行說明
+- plugin marketplace add 支援以 URL 作為來源
+- `--no-experimental` 旗標可停用實驗性功能
+- CLI 介面渲染時不會多出空白行
+- `/mcp show` 會顯示 MCP 工具的啟用/停用狀態
+- MCP 工具回應現在包含結構化內容（圖片、資源），可於 VS Code 提供更豐富的 UI 顯示
+
 ## 0.0.405 - 2026-02-05
 
 - Plugin 和 marketplace 名稱支援大寫字母
