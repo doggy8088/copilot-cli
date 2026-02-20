@@ -1,3 +1,44 @@
+## 0.0.412 - 2026-02-19
+
+- 改善快速說明可近用性：螢幕閱讀器友善的分頁標籤、重新排序的版面與分組的 `help commands` 輸出
+- 在 `/agents` 選擇器中隱藏 `user-invocable: false` 的自訂代理
+- 設定檔語法錯誤改為顯示警告，不再靜默崩潰
+- Windows 原生預建檔採用 Authenticode 簽署，避免防毒軟體隔離原生模組
+- 允許 `/reset-allowed-tools` 在代理執行期間運行
+- 工具 schema 無效的 MCP 伺服器不再失去所有工具
+- alt-screen 模式在長時間會話中不再持續增加記憶體用量
+- 新增 `/mcp reload` 指令以重新載入 MCP 設定
+- 技能支援 `disable-model-invocation` frontmatter 欄位
+- /fleet 協調器驗證子代理工作
+- 棄用 gpt-5 模型
+- Windows 斜線旗標（例如 `xcopy /E /I`）不再視為檔案路徑
+- 啟動時若技能載入失敗，時間軸會顯示警告並提示執行 /skills 查看詳情
+- 當橫幅停用時，啟動不再閃現橫幅字元
+- 可用 ctrl+y 在終端編輯器中編輯 plan
+- Windows 現已支援終端編輯器
+- 可在 lsp.json 設定 LSP 伺服器請求逾時
+- 新增 `/update` 指令以檢視變更日誌與更新說明
+- 新增 exit_plan_mode 工具，提供計畫核准對話框以檢視並接受計畫
+- 支援 ~/.copilot/instructions/*.instructions.md 檔案，作為跨所有儲存庫的使用者層級指令
+- alt-screen 文字選取支援雙擊選字與三擊選行
+- 可用 ctrl+x ctrl+e 在偏好的終端編輯器中編輯 prompt
+- 避免 Windows 終端機出現多餘的錯誤訊息
+- 在 AskUser 提示中輸入 `?` 不再觸發快速說明覆蓋層
+- 改善 SQL 工具的時間軸條目
+- 在長時間會話中降低 alt-screen 模式記憶體用量
+- /fleet 模式以更多子代理並行分派，加速執行
+- 啟用 alt-screen 模式時，指令選擇器會以全螢幕 alt-screen 檢視開啟
+- 啟用 alt-screen 模式時，技能選擇器會以全螢幕 alt-screen 檢視開啟
+- 指令檔案不再需要 YAML frontmatter——純 Markdown 檔案可自動推導名稱與描述
+- 存在多個會話時，session 選擇器可即時開啟且不再出現載入閃爍
+- 滑鼠事件座標片段不再出現在輸入欄位
+- 新增跨會話記憶：可詢問過去工作、檔案與 PR（實驗性）
+- 新增 `--bash-env` 旗標，在 shell 會話中 source BASH_ENV
+- 恢復 `ctrl+x /` 作為執行指令且保留輸入的替代快捷鍵
+- `/clear` 會保留代理模式（autopilot、plan 或 interactive）
+- MCP 錯誤訊息會包含伺服器名稱
+- 拖曳時，時間軸文字選取不再溢出到提示區域
+
 ## 0.0.411 - 2026-02-17
 
 - 當政策拒絕存取時，改進錯誤訊息與指引
