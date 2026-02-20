@@ -82,8 +82,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 如需以 root 執行並安裝至 `/usr/local/bin`，請使用 `| sudo bash`。
 
-可設定 `PREFIX` 以安裝至 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`
-非 root 使用者預設為 `$HOME/.local`。
+可設定 `PREFIX` 以安裝至 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，非 root 使用者預設為 `$HOME/.local`。
 
 可設定 `VERSION` 以安裝特定版本，預設為最新版。
 
@@ -188,4 +187,4 @@ LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 這是早期預覽版本，我們正快速開發中。更新將相當頻繁--請保持你的用戶端為最新，以取得最新功能與修正！
 
-你的意見非常重要！歡迎在本專案回報 issue、加入討論區，或在 CLI 執行 `/feedback` 來提交匿名回饋問卷！
+你的意見非常重要！歡迎在本專案回報 issue、加入討論區，或在 CLI 執行 `/feedback` 來提交保密回饋問卷！
