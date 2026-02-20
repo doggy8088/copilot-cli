@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 jobs:
-  update_changelog:
+  auto_update_translation:
     runs-on: ubuntu-latest  # Use a Linux runner for compatibility
     env:
       UPSTREAM_REPO: ${{ inputs.upstream_repo || 'github/copilot-cli' }}
