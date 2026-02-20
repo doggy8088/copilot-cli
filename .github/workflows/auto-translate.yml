@@ -93,7 +93,7 @@ jobs:
           AZURE_OPENAI_API_KEY_CODEX: ${{ secrets.AZURE_OPENAI_API_KEY_CODEX }}
         run: |
           cd repos/translate-work
-          codex exec --full-auto '你正在受限工作目錄，只能讀寫 README.md 與 changelog.md，並且只能參考 upstream.README.md 與 upstream.changelog.md。請完成：
+          codex exec --skip-git-repo-check --full-auto '你正在受限工作目錄，只能讀寫 README.md 與 changelog.md，並且只能參考 upstream.README.md 與 upstream.changelog.md。請完成：
           1) README.md：僅在 upstream.README.md 與本地 README.md 有差異時，將 upstream.README.md 全文翻譯為繁體中文（zh-tw）後覆蓋 README.md。
           2) changelog.md：只翻譯 upstream.changelog.md 中本地尚未存在的新版本區塊，翻譯後 prepend 到 changelog.md 前段。
           3) 保持 Markdown 結構、程式碼區塊、URL 與指令內容不變。
