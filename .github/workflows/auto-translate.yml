@@ -4,13 +4,48 @@ on:
   schedule:
     - cron: '0 22 * * *'  # 每日 6:00 AM (GMT+8)
   workflow_dispatch:      # 允許手動觸發
+    inputs:
+      upstream_repo:
+        description: 'Upstream repository (owner/repo)'
+        required: false
+        default: 'github/copilot-cli'
+      upstream_branch:
+        description: 'Upstream branch to sync from'
+        required: false
+        default: 'main'
+
+permissions:
+  contents: write
 
 jobs:
   update_changelog:
     runs-on: ubuntu-latest  # Use a Linux runner for compatibility
+    env:
+      UPSTREAM_REPO: ${{ inputs.upstream_repo || 'github/copilot-cli' }}
+      UPSTREAM_BRANCH: ${{ inputs.upstream_branch || 'main' }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Clone current and upstream repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p repos
+
+          git clone --depth 1 --branch "${GITHUB_REF_NAME}" \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            repos/current
+
+          git clone --depth 1 --branch "${UPSTREAM_BRANCH}" \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${UPSTREAM_REPO}.git" \
+            repos/upstream
+
+      - name: Prepare minimal translation workspace
+        run: |
+          mkdir -p repos/translate-work
+
+          cp repos/current/README.md repos/translate-work/README.md
+          cp repos/current/changelog.md repos/translate-work/changelog.md
+          cp repos/upstream/README.md repos/translate-work/upstream.README.md
+          cp repos/upstream/changelog.md repos/translate-work/upstream.changelog.md
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -57,12 +92,27 @@ jobs:
         env:
           AZURE_OPENAI_API_KEY_CODEX: ${{ secrets.AZURE_OPENAI_API_KEY_CODEX }}
         run: |
-          codex exec --full-auto '同步並翻譯 README.md 與 changelog.md 的內容'
+          cd repos/translate-work
+          codex exec --full-auto '你正在受限工作目錄，只能讀寫 README.md 與 changelog.md，並且只能參考 upstream.README.md 與 upstream.changelog.md。請完成：
+          1) README.md：僅在 upstream.README.md 與本地 README.md 有差異時，將 upstream.README.md 全文翻譯為繁體中文（zh-tw）後覆蓋 README.md。
+          2) changelog.md：只翻譯 upstream.changelog.md 中本地尚未存在的新版本區塊，翻譯後 prepend 到 changelog.md 前段。
+          3) 保持 Markdown 結構、程式碼區塊、URL 與指令內容不變。
+          4) 不要搜尋或操作其他檔案。'
+
+      - name: Copy translated files back to current repo
+        run: |
+          cp repos/translate-work/README.md repos/current/README.md
+          cp repos/translate-work/changelog.md repos/current/changelog.md
 
       - name: Commit and push changes if any
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cd repos/current
+
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add CHANGELOG.md
-          git commit -m "Update CHANGELOG via Codex" || echo "No changes to commit"
-          git push
+
+          git add changelog.md README.md
+          git commit -m "Update translations via Codex CLI" || echo "No changes to commit"
+          git push origin "${GITHUB_REF_NAME}"
