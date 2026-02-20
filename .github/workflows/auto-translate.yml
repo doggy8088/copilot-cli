@@ -1,0 +1,68 @@
+name: Update CHANGELOG with Codex
+
+on:
+  schedule:
+    - cron: '0 22 * * *'  # 每日 6:00 AM (GMT+8)
+  workflow_dispatch:      # 允許手動觸發
+
+jobs:
+  update_changelog:
+    runs-on: ubuntu-latest  # Use a Linux runner for compatibility
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
+
+      - name: Create Codex config for Azure
+        run: |
+          mkdir -p ~/.codex
+          cat <<EOT > ~/.codex/config.toml
+          approval_policy = "on-request"
+          sandbox_mode   = "workspace-write"
+
+          profile = "aoai"
+
+          [features]
+          multi_agent = true
+          steer = true
+
+          #####################
+          ### Azure Foundry ###
+          #####################
+
+          [model_providers.azure]
+          name         = "Azure OpenAI"
+          base_url     = "https://duotify-ai-foundry.cognitiveservices.azure.com/openai"
+          env_key      = "AZURE_OPENAI_API_KEY_CODEX"
+          wire_api     = "responses"
+          query_params = { api-version = "2025-04-01-preview" }
+
+          [profiles.aoai]
+          model_provider          = "azure"
+          model                   = "gpt-5.2-codex"
+          preferred_auth_method   = "apikey"
+          wire_api                = "responses"
+          model_reasoning_effort  = "high"
+          model_reasoning_summary = "detailed"
+          EOT
+
+      - name: Run Codex to update CHANGELOG
+        env:
+          AZURE_OPENAI_API_KEY_CODEX: ${{ secrets.AZURE_OPENAI_API_KEY_CODEX }}
+        run: |
+          codex exec --full-auto '同步並翻譯 README.md 與 changelog.md 的內容'
+
+      - name: Commit and push changes if any
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add CHANGELOG.md
+          git commit -m "Update CHANGELOG via Codex" || echo "No changes to commit"
+          git push
