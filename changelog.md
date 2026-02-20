@@ -1,3 +1,67 @@
+## 0.0.412 - 2026-02-19
+
+- 改進快速說明的無障礙性：對螢幕閱讀器友善的分頁標籤、重新排列版面，並將 `help commands` 輸出分組
+- 在 `/agents` 選擇器中隱藏 `user-invocable: false` 的自訂代理
+- 設定檔語法錯誤現在會顯示警告，而非無聲當機
+- Windows 原生預建檔改用 Authenticode 簽署，避免防毒軟體隔離原生模組
+- 允許在代理執行期間執行 `/reset-allowed-tools`
+- MCP 伺服器若工具結構無效，不再導致所有工具遺失
+- alt-screen 模式長時間會話不再持續增加記憶體用量
+- 新增 `/mcp reload` 指令以重新載入 MCP 設定
+- Skills 支援 `disable-model-invocation` 前置資料欄位
+- /fleet 協調器會驗證子代理的工作成果
+- 棄用 gpt-5 模型
+- Windows 的斜線旗標（例如 `xcopy /E /I`）不再被視為檔案路徑
+- 啟動時 skills 載入失敗會在時間軸顯示警告，並提示執行 /skills 以取得詳情
+- 停用 banner 時，啟動不再閃現橫幅字元
+- 可用 ctrl+y 在終端機編輯器中編輯 plan
+- 終端機編輯器現在支援 Windows
+- 可在 lsp.json 中設定 LSP 伺服器請求逾時
+- 新增 `/update` 指令以查看變更日誌與更新指引
+- 新增 exit_plan_mode 工具，提供 plan 核准對話框以檢視並接受計畫
+- 支援 ~/.copilot/instructions/*.instructions.md 作為跨所有儲存庫的使用者層級指令檔
+- alt-screen 文字選取新增雙擊選字與三擊選行
+- 可用 ctrl+x ctrl+e 在偏好的終端機編輯器中編輯提示
+- 防止 Windows 終端機出現非預期的錯誤訊息
+- 在 AskUser 提示中輸入 `?` 不再觸發快速說明覆蓋層
+- 改進 SQL 工具的時間軸條目
+- 降低 alt-screen 模式在長時間會話中的記憶體用量
+- /fleet 模式會並行派遣更多子代理以加快執行
+- 啟用 alt-screen 模式時，Instructions 選擇器會以全螢幕 alt-screen 視圖開啟
+- 啟用 alt-screen 模式時，Skills 選擇器會以全螢幕 alt-screen 視圖開啟
+- Command 檔不再需要 YAML 前置資料——純 Markdown 檔即可，名稱與描述會自動推導
+- 多個 session 存在時，session 選擇器會立即開啟，不再出現載入閃爍
+- 滑鼠事件座標片段不再出現在輸入欄位
+- 新增跨會話記憶：可詢問過去的工作、檔案與 PR（實驗性）
+- 新增 `--bash-env` 旗標，在 shell 會話中載入 BASH_ENV
+- 恢復 `ctrl+x /` 作為保留輸入並執行指令的替代快捷鍵
+- `/clear` 會保留代理模式（autopilot、plan 或 interactive）
+- MCP 錯誤訊息包含伺服器名稱
+- 拖曳選取時，時間軸文字選取不再溢出到提示區域
+
+## 0.0.411 - 2026-02-17
+
+- 當政策拒絕存取時，改進錯誤訊息與指引
+- 自訂代理改用 `disable-model-invocation` 取代 `infer`（向後相容）
+- 新增支援 Claude Sonnet 4.6 模型
+- 記憶儲存於時間軸中顯示主題、事實與引用
+- Tab 自動完成會遵循已反白的斜線指令選項
+- 支援來自 Windows On-Device Registry 的 MCP 伺服器
+- alt-screen 模式下頁尾區域也可進行文字選取
+- 支援 `--alt-screen on` 與 `--alt-screen off` 語法
+- 新增 `include_coauthor` 設定選項，可停用 git commit 的 Co-authored-by trailer
+- SDK API 支援 plan 模式、autopilot、fleet 與工作區檔案
+- autopilot 模式與 /fleet 指令現在對所有使用者開放
+- 在 alt-screen 模式拖曳選取到邊緣時視窗會自動捲動
+- 互動式 shell 指令在所有版本的 Windows 上都能順利完成
+- 降低 alt-screen 模式在長時間會話中的記憶體用量
+- 在 alt-screen 模式使用 --resume 時，session 選擇器不再閃爍
+- 代理完成時終端鈴聲只會響一次，而非每次工具完成都響
+- 自訂指令檔案的大小寫不再影響辨識
+- PowerShell 指令含語法錯誤時不再造成掛起
+- 改進 --alt-screen 模式下文字選取的回應速度
+- 暫停時顯示游標，恢復時隱藏游標
+
 ## 0.0.410 - 2026-02-14
 
 - 修正由於快速日誌記錄導致的高記憶體用量
