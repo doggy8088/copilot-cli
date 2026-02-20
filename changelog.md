@@ -1,3 +1,68 @@
+## 0.0.412 - 2026-02-19
+
+- 改善快速說明的無障礙體驗：螢幕閱讀器友善的分頁標籤、重新排序的版面配置，並將 `help commands` 輸出分組
+- 自訂代理若設定 `user-invocable: false` 將從 `/agents` 選擇器隱藏
+- 設定檔語法錯誤現在會顯示警告，而非靜默當機
+- 為 Windows 原生預編譯檔案簽署 Authenticode，防止防毒軟體隔離原生模組
+- 允許在代理執行期間執行 `/reset-allowed-tools`
+- MCP 伺服器工具結構描述無效時不再失去所有工具
+- Alt-screen 模式長時間會話不再持續增加記憶體用量
+- 新增 `/mcp reload` 指令以重新載入 MCP 設定
+- 技能支援 `disable-model-invocation` 前置資料欄位
+- /fleet 協調器驗證分代理工作
+- 淘汰 gpt-5 模型
+- Windows 斜線旗標（如 `xcopy /E /I`）不再被視為檔案路徑
+- 當技能在啟動時載入失敗，時間軸會顯示警告，並提示執行 /skills 查看詳情
+- 啟動時橫幅停用時消除橫幅字元閃爍
+- 使用 ctrl+y 在終端機編輯器中編輯計畫
+- Windows 現已支援終端機編輯器
+- 在 lsp.json 中設定 LSP 伺服器請求逾時
+- 新增 `/update` 指令以檢視變更日誌與更新說明
+- 新增 exit_plan_mode 工具及計畫審核對話框，用於檢閱與接受計畫
+- 支援 ~/.copilot/instructions/\*.instructions.md 檔案作為所有儲存庫的使用者層級指令
+- 在 alt-screen 文字選取中新增雙擊選取單字與三擊選取整行
+- 使用 ctrl+x ctrl+e 在偏好的終端機編輯器中編輯提示
+- 防止 Windows 終端機出現虛假錯誤訊息
+- 在 AskUser 提示中輸入 `?` 不再觸發快速說明覆蓋層
+- 改善 SQL 工具時間軸條目
+- 長時間會話中減少 alt-screen 模式的記憶體用量
+- /fleet 模式平行派遣更多分代理以加快執行速度
+- 啟用 alt-screen 模式時，指令選擇器以全螢幕 alt-screen 檢視開啟
+- 啟用 alt-screen 模式時，技能選擇器以全螢幕 alt-screen 檢視開啟
+- 指令檔案不再需要 YAML 前置資料 — 純 Markdown 檔案可自動衍生名稱與描述
+- 存在多個會話時，會話選擇器立即開啟，不會有載入閃爍
+- 滑鼠事件座標片段不再出現在輸入欄位中
+- 新增跨會話記憶：詢問過去跨會話的工作、檔案與 PR（實驗性）
+- 新增 `--bash-env` 旗標以在 Shell 會話中來源 BASH_ENV
+- 恢復 `ctrl+x /` 作為執行指令並保留輸入內容的替代快捷鍵
+- /clear 保留代理模式（自動駕駛、計畫或互動）
+- MCP 錯誤訊息包含伺服器名稱
+- 時間軸中的文字選取拖曳時不再溢出到提示區域
+
+## 0.0.411 - 2026-02-17
+
+- 改善政策拒絕存取時的錯誤訊息與指引
+- 自訂代理使用 `disable-model-invocation` 取代 `infer`（向後相容）
+- 新增支援 Claude Sonnet 4.6 模型
+- 記憶體儲存在時間軸顯示主題、事實與引用
+- Tab 自動完成尊重已選取的斜線指令
+- 支援來自 Windows On-Device Registry 的 MCP 伺服器
+- Alt-screen 模式下頁尾區域現已支援文字選取
+- 支援 `--alt-screen on` 與 `--alt-screen off` 語法
+- 新增 `include_coauthor` 設定選項以停用 git commit 中的 Co-authored-by 結尾
+- SDK API 支援計畫模式、自動駕駛、fleet 與工作區檔案
+- 自動駕駛模式與 /fleet 指令現已開放所有使用者使用
+- Alt-screen 視埠在拖曳選取至邊緣時自動捲動
+- 互動式 Shell 指令在所有 Windows 版本上皆可完成
+- 長時間會話中減少 alt-screen 模式的記憶體用量
+- 在 alt-screen 模式下使用 --resume 時會話選擇器不再閃爍
+- 代理完成時終端機鈴聲響一次，而非每次工具完成時響鈴
+- 無論大小寫如何，自訂指令檔案皆會被識別
+- PowerShell 有語法錯誤的指令不再卡住
+- 改善 --alt-screen 模式下的文字選取回應性
+- 暫停時顯示游標，恢復時隱藏游標
+
+
 ## 0.0.410 - 2026-02-14
 
 - 修正由於快速日誌記錄導致的高記憶體用量
