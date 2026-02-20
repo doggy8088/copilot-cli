@@ -1,3 +1,66 @@
+## 0.0.412 - 2026-02-19
+
+- 改進快速說明的無障礙性：螢幕閱讀器友善的分頁標籤、重新排列的版面配置，以及分組的 `help commands` 輸出
+- 從 `/agents` 選擇器中隱藏設有 `user-invocable: false` 的自訂代理
+- 設定檔語法錯誤現在顯示警告而非無聲當機
+- 使用 Authenticode 簽署 Windows 原生預建模組，防止防毒軟體隔離原生模組
+- 允許在代理執行期間執行 `/reset-allowed-tools`
+- 具有無效工具綱要的 MCP 伺服器不再遺失所有工具
+- Alt-screen 模式在長時間會話期間不再消耗遞增的記憶體
+- 新增 `/mcp reload` 指令以重新載入 MCP 設定
+- 技能支援 `disable-model-invocation` 前置資料欄位
+- /fleet 協調器驗證子代理工作
+- 棄用 gpt-5 模型
+- Windows 斜線旗標（例如 `xcopy /E /I`）不再被視為檔案路徑
+- 當技能在啟動時載入失敗，在時間軸顯示警告，並提示執行 /skills 以取得詳細資訊
+- 啟動時橫幅已停用時，消除橫幅字元閃爍
+- 使用 ctrl+y 在終端編輯器中編輯計畫
+- 終端編輯器現在支援 Windows
+- 在 lsp.json 中設定 LSP 伺服器請求逾時
+- 新增 `/update` 指令以檢視變更日誌與更新說明
+- 新增 exit_plan_mode 工具與計畫批准對話框，用於檢視與接受計畫
+- 支援 ~/.copilot/instructions/\*.instructions.md 檔案，用於跨所有儲存庫的使用者層級指令
+- 在 alt-screen 文字選取中新增雙擊選字和三擊選行
+- 使用 ctrl+x ctrl+e 在你偏好的終端編輯器中編輯提示
+- 防止在 Windows 終端機中出現錯誤訊息
+- 在 AskUser 提示中輸入 `?` 不再觸發快速說明覆蓋層
+- 改進 SQL 工具時間軸條目
+- 減少長時間會話期間 alt-screen 模式下的記憶體用量
+- /fleet 模式平行派遣更多子代理以加快執行速度
+- 當啟用 alt-screen 模式時，指令選擇器以全螢幕 alt-screen 檢視開啟
+- 當啟用 alt-screen 模式時，技能選擇器以全螢幕 alt-screen 檢視開啟
+- 指令檔案不再需要 YAML 前置資料——純 Markdown 檔案可用，名稱與描述會自動衍生
+- 當存在多個會話時，會話選擇器立即開啟，不會有載入閃爍
+- 滑鼠事件座標片段不再出現在輸入欄位中
+- 新增跨會話記憶體：可詢問跨會話的過去工作、檔案與 PR（實驗性）
+- 新增 `--bash-env` 旗標以在 shell 會話中載入 BASH_ENV
+- 恢復 `ctrl+x /` 作為執行指令同時保留輸入的替代快捷鍵
+- /clear 保留代理模式（自動駕駛、計畫或互動）
+- MCP 錯誤訊息包含伺服器名稱
+- 拖曳時，時間軸中的文字選取不再溢出到提示區域
+
+## 0.0.411 - 2026-02-17
+
+- 改進當存取因政策拒絕時的錯誤訊息與指引
+- 自訂代理使用 `disable-model-invocation` 而非 `infer`（向後相容）
+- 新增支援 Claude Sonnet 4.6 模型
+- 記憶體儲存在時間軸顯示主題、事實與引用
+- Tab 自動完成尊重已選取的斜線指令
+- 支援來自 Windows On-Device Registry 的 MCP 伺服器
+- alt-screen 模式的頁尾區域現在可進行文字選取
+- 支援 `--alt-screen on` 與 `--alt-screen off` 語法
+- 新增 `include_coauthor` 設定選項，以停用 git commit 中的 Co-authored-by 尾註
+- 計畫模式、自動駕駛、fleet 與工作區檔案的 SDK API
+- 自動駕駛模式與 /fleet 指令現在對所有使用者開放
+- 當拖曳選取至邊緣時，Alt-screen 檢視區會自動捲動
+- 互動式 shell 指令在所有 Windows 版本上都能完成
+- 減少長時間會話期間 alt-screen 模式下的記憶體用量
+- 在 alt-screen 模式中使用 --resume 時，會話選擇器不再閃爍
+- 代理完成時終端鈴聲響一次，而非每次工具完成時都響
+- 自訂指令檔案不論大小寫都能辨識
+- 具有語法錯誤的 PowerShell 指令不再掛起
+- 改進 --alt-screen 模式下的文字選取回應性
+- 暫停時顯示游標，恢復時隱藏游標
 ## 0.0.410 - 2026-02-14
 
 - 修正由於快速日誌記錄導致的高記憶體用量
