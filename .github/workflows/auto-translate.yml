@@ -106,40 +106,68 @@ jobs:
         run: |
           cat <<'EOF' > extract.js
           const fs = require('fs');
-          function extractFirstVersion(content) {
+
+          function extractVersionBlocks(content) {
             const lines = content.split('\n');
-            const versionHeaderIndex = lines.findIndex(line => line.startsWith('## '));
-            if (versionHeaderIndex === -1) return null;
-            const nextVersionHeaderIndex = lines.findIndex((line, index) => index > versionHeaderIndex && line.startsWith('## '));
-            const versionBlock = nextVersionHeaderIndex === -1
-              ? lines.slice(versionHeaderIndex)
-              : lines.slice(versionHeaderIndex, nextVersionHeaderIndex);
-            return {
-              header: lines[versionHeaderIndex],
-              content: versionBlock.join('\n').trim()
-            };
+
+            const headerIndexes = [];
+            for (let i = 0; i < lines.length; i += 1) {
+              if (lines[i].startsWith('## ')) {
+                headerIndexes.push(i);
+              }
+            }
+
+            return headerIndexes.map((startIndex, index) => {
+              const endIndex = index + 1 < headerIndexes.length ? headerIndexes[index + 1] : lines.length;
+              const versionBlock = lines.slice(startIndex, endIndex);
+              return {
+                header: lines[startIndex],
+                content: versionBlock.join('\n').trim()
+              };
+            });
           }
+
+          function extractNewVersionBlocks(oldContent, newContent) {
+            const oldHeaders = new Set(extractVersionBlocks(oldContent).map((block) => block.header));
+            const newBlocks = extractVersionBlocks(newContent);
+            const prependedBlocks = [];
+
+            for (const block of newBlocks) {
+              if (oldHeaders.has(block.header)) break;
+              prependedBlocks.push(block);
+            }
+
+            if (prependedBlocks.length > 0) {
+              return prependedBlocks.reverse();
+            }
+
+            return newBlocks.filter((block) => !oldHeaders.has(block.header)).reverse();
+          }
+
           const oldFile = 'repos/current/changelog.md';
           const newFile = 'repos/translate-work/changelog.md';
           const oldContent = fs.existsSync(oldFile) ? fs.readFileSync(oldFile, 'utf8') : '';
           const newContent = fs.readFileSync(newFile, 'utf8');
-          const oldVersion = extractFirstVersion(oldContent);
-          const newVersion = extractFirstVersion(newContent);
-          if (newVersion && (!oldVersion || newVersion.header !== oldVersion.header)) {
-            console.log(newVersion.content);
-          }
+          const newVersionBlocks = extractNewVersionBlocks(oldContent, newContent);
+          process.stdout.write(JSON.stringify(newVersionBlocks));
           EOF
 
-          NEW_CHANGES=$(node extract.js)
+          NEW_VERSION_BLOCKS=$(node extract.js)
+          NEW_VERSION_COUNT=$(echo "$NEW_VERSION_BLOCKS" | jq 'length')
 
-          if [ ! -z "$NEW_CHANGES" ]; then
-            echo "New version detected, sending to Discord..."
-            # Use jq to safely escape the string for JSON
-            JSON_PAYLOAD=$(jq -n --arg content "$NEW_CHANGES" '{content: $content}')
-            curl -H "Content-Type: application/json" \
-                 -X POST \
-                 -d "$JSON_PAYLOAD" \
-                 $DISCORD_WEBHOOK_URL
+          if [ "$NEW_VERSION_COUNT" -gt 0 ]; then
+            echo "Detected $NEW_VERSION_COUNT new version block(s), sending to Discord in chronological order..."
+            for i in $(seq 0 $((NEW_VERSION_COUNT - 1))); do
+              VERSION_HEADER=$(echo "$NEW_VERSION_BLOCKS" | jq -r ".[$i].header")
+              VERSION_CONTENT=$(echo "$NEW_VERSION_BLOCKS" | jq -r ".[$i].content")
+
+              echo "Sending $VERSION_HEADER ($((i + 1))/$NEW_VERSION_COUNT)..."
+              JSON_PAYLOAD=$(jq -n --arg content "$VERSION_CONTENT" '{content: $content}')
+              curl -H "Content-Type: application/json" \
+                   -X POST \
+                   -d "$JSON_PAYLOAD" \
+                   "$DISCORD_WEBHOOK_URL"
+            done
           else
             echo "No new version detected."
           fi
