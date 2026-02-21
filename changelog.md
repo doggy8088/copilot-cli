@@ -1,3 +1,25 @@
+## 0.0.414 - 2026-02-21
+
+- Explore agent 現在在可用時可使用 GitHub MCP 工具
+- 在 autopilot 下接受計畫時會顯示權限提升對話框，以避免工具被自動拒絕的錯誤
+
+## 0.0.413 - 2026-02-20
+
+- 修正 Copilot API URL 未被套用的問題
+- 在 gpt 模型中顯示 reasoning 的標題內容
+- 將 LSP 請求逾時從 30s 提高到 90s，以降低逾時失敗
+- 修正在工具呼叫完成時 alt-screen 時間軸條目不更新的問題（特別是子代理呼叫）
+- 現在可在 alt-screen 檢視中使用 ctrl+insert 複製選取文字
+- 修正 read_bash、write_bash 和 stop_bash 進行中圖示顯示實心點而非空心圓
+- 在使用 `--experimental` 旗標執行時預設啟用 alt-screen 模式
+- 改善大型儲存庫的程式碼搜尋速度
+- alt-screen 模式下，會話資訊會在主檢視頁尾呈現
+- allowed-tools 使用 YAML 陣列語法的技能檔案現在可正確載入
+- marketplace.json 的 plugin 項目支援遠端來源（GitHub 儲存庫與 git URL）
+- 啟動時會自動將使用者從 claude-sonnet-4.5 遷移到目前的預設模型
+- Ctrl+A、Ctrl+E 與 Ctrl+U 會移動到邏輯行邊界（換行），而非視覺換行邊界
+- 新增可設定的狀態列支援，可透過自訂 shell 腳本顯示動態會話資訊
+
 ## 0.0.412 - 2026-02-19
 
 - 改善快速說明可近用性：螢幕閱讀器友善的分頁標籤、重新排序的版面與分組的 `help commands` 輸出
