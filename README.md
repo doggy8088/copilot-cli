@@ -1,8 +1,8 @@
-# GitHub Copilot CLI (公開預覽)
+# GitHub Copilot CLI（公開預覽）
 
 GitHub Copilot 的威力，現在就在你的終端機。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理架構驅動，在深度整合你的 GitHub 工作流程的同時提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式架構，在深度整合你的 GitHub 工作流程的同時提供智慧協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
