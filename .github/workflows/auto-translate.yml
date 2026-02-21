@@ -2,7 +2,8 @@ name: Update CHANGELOG with Codex
 
 on:
   schedule:
-    - cron: '0 22 * * *'  # 每日 6:00 AM (GMT+8)
+    - cron: '0 22 * * *'  # 每日 6:00 AM (GMT+8)  = 22:00 (UTC)
+    - cron: '0 10 * * *'  # 每日 6:00 PM (GMT+8)  = 10:00 (UTC)
   workflow_dispatch:      # 允許手動觸發
     inputs:
       upstream_repo:
