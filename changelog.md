@@ -1,3 +1,17 @@
+## 0.0.415 - 2026-02-23
+
+- 以 UTF-8 BOM 儲存的技能檔（Windows 編輯器常見）現在可正確載入，不再因 frontmatter 解析錯誤而失敗
+- 自訂代理支援 `model` 欄位用於指定模型；未知欄位現在只會警告，不再阻擋代理載入
+- 計畫核准選單會顯示由模型整理的動作，並先高亮建議選項，其中包含可平行化工作的 autopilot+fleet
+- 環境載入指示器在 MCP 啟動錯誤或恢復會話時不再無限卡住
+- 新增 show_file 工具，用於向使用者呈現程式碼與差異
+- 新增環境載入指示器，顯示技能、MCP、外掛等正在載入
+- MCP 工具結果若為超長單行，會正確截斷
+- `/plugin marketplace add` 與 `/plugin install` 支援包含空白的本機路徑
+- `/mcp show` 會將伺服器分組為 User、Workspace、Plugins 與 Built-in 區段，並讓所有伺服器都可瀏覽
+- 代理被詢問時，現在知道驅動自己的模型是哪一個
+- Ctrl+A/E 會在換行後的視覺行之間循環；Home/End 在單一視覺行內移動；Ctrl+Home/End 跳至文字邊界
+
 ## 0.0.414 - 2026-02-21
 
 - Explore agent 現在在可用時可使用 GitHub MCP 工具
