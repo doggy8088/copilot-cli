@@ -6,7 +6,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列
 
 如需更多資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-![Copilot CLI 啟動畫面](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
+![Copilot CLI 啟動畫面圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
 
 ## 🚀 簡介與概覽
@@ -82,7 +82,8 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 以 root 執行並安裝到 `/usr/local/bin`。
 
-將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。預設為 root 執行時是 `/usr/local`，非 root 使用者時是 `$HOME/.local`。
+將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。預設為 `/usr/local`
+在 root 身分執行時，或非 root 使用者時為 `$HOME/.local`。
 
 將 `VERSION` 設為安裝特定版本。預設為最新版本。
 
@@ -185,6 +186,6 @@ LSP 伺服器透過專用的 LSP 設定檔進行配置。你可以在使用者�
 
 很高興你能在 Copilot CLI 的早期旅程中加入我們。
 
-這是一個早期預覽版本，我們正在快速打造。預期會有頻繁更新——請保持你的用戶端為最新狀態，以取得最新功能與修正！
+這是一個早期預覽版本，我們正在快速打造。預期會有頻繁更新--請保持你的用戶端為最新狀態，以取得最新功能與修正！
 
 你的洞見非常珍貴！歡迎在此儲存庫開啟 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 提交機密回饋問卷！
