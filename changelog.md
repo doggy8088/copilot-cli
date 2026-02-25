@@ -1,3 +1,11 @@
+## 0.0.418 - 2026-02-25
+
+🎉 Copilot CLI 現已[正式推出](https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available) 🎉
+
+- 代理已受保護，避免意外終止自身
+- 移除 --disable-parallel-tools-execution 旗標與 parallel_tool_execution 設定選項
+- 在 plugin.json 中以檔案路徑指定的外掛代理可正確載入
+
 ## 0.0.417 - 2026-02-25
 
 - 新增 /research 指令，提供深度研究並可匯出報告
