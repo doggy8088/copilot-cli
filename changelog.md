@@ -1,3 +1,18 @@
+## 0.0.419 - 2026-02-27
+
+- 新增 /chronicle 指令，提供 standup、tips 與 improve 子指令，並由會話歷史驅動（實驗性）
+- 左右捲動不再觸發非預期的滑鼠按鍵按下
+- 在 alt-screen 檢視中新增 Ctrl+F/Ctrl+B 作為 Page Down/Up 捲動快捷鍵
+- 新增 --mouse/--no-mouse 旗標與 mouse 設定，可在 alt screen 停用滑鼠模式
+- Home 與 End 鍵可跳到 alt-screen 捲動緩衝區的頂部與底部
+- 新增 Ctrl+G 鍵盤快捷鍵，用於在外部編輯器編輯提示並關閉 UI 元素
+- /mcp enable 可用於先前在設定前自動停用的內建伺服器
+- 代理完成工作後 CLI 旋轉指示器會停止，且最終回應可見
+- AUTO 主題現在使用終端機實際的 ANSI 色盤，在任何終端主題下色彩更精準
+- MCP 伺服器在 command、args 或 cwd 欄位引用的 env 變數會自動加入伺服器環境
+- 當尚未啟動任何會話時，/diagnose 會顯示有用的訊息
+- MCP 伺服器名稱現在支援點號、斜線與 @ 字元，使 @modelcontextprotocol/server 與 io.github/server 這類 npm 風格名稱可用
+
 ## 0.0.418 - 2026-02-25
 
 🎉 Copilot CLI 現已[正式推出](https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available) 🎉
