@@ -1,3 +1,11 @@
+## 0.0.420 - 2026-02-27
+
+- 自動更新現在也會更新二進位可執行檔，不僅是 JS 套件
+- Plugin 與 marketplace 的 git 儲存庫在強制推送與以 tag 安裝後可正確更新
+- 502 Bad Gateway 錯誤會自動重試，不再以原始 HTML 輸出導致會話當機
+- 複製提示在 macOS 的 Ghostty 中顯示 cmd+c，並在所有終端機顯示右鍵作為替代方式
+- 輸入 # 可引用 GitHub issues、pull requests 與 discussions
+
 ## 0.0.419 - 2026-02-27
 
 - 新增 /chronicle 指令，提供 standup、tips 與 improve 子指令，並由會話歷史驅動（實驗性）
