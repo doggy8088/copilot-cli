@@ -133,7 +133,7 @@ copilot
 
 - **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可在模式間切換），會鼓勵代理持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交提示，你的每月 premium request 配額會減少 1。關於 premium requests，請參見[關於 premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交提示，你的每月 premium requests 配額會減少 1。關於 premium requests，請參見[關於 premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
 更多 GitHub Copilot CLI 使用方式，請參見[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
