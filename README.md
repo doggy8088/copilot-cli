@@ -11,7 +11,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列
 
 ## 🚀 介紹與概覽
 
-我們正把 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。有了 GitHub Copilot CLI，你可以在本機與 AI 代理同步協作，並且它理解你的程式碼與 GitHub 內容。
+我們正把 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。有了 GitHub Copilot CLI，你可以在本機與理解你程式碼與 GitHub 情境的 AI 代理同步協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作——不需要切換上下文。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，全程使用你現有的 GitHub 帳號完成驗證。
@@ -52,7 +52,8 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 以 root 執行並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 以安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，非 root 使用者則預設為 `$HOME/.local`。
+設定 `PREFIX` 以安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`
+非 root 使用者則預設為 `$HOME/.local`。
 
 設定 `VERSION` 以安裝指定版本。預設為最新版本。
 
@@ -139,7 +140,7 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧功能。這項功能提供像是跳轉到定義、滑鼠懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP) 以增強程式碼智慧功能。這項功能提供像是跳轉到定義、滑鼠懸停資訊與診斷等智慧程式碼能力。
 
 ### 安裝語言伺服器
 

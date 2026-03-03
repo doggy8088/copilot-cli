@@ -1,3 +1,29 @@
+## 0.0.421 - 2026-03-03
+
+- Autopilot 權限對話框改為在第一次提交提示時出現，而非在模式切換時
+- AUTO 主題現在會讀取你的終端機 ANSI 色盤並直接使用，讓色彩符合你的終端機主題
+- 使用 MCP Elicitations（實驗性）為 ask_user 工具新增結構化表單輸入
+- Plugin 指令會從專案層級的 .claude/settings.json 讀取 extraKnownMarketplaces，以支援 Claude 相容性
+- Git hooks 可透過 COPILOT_CLI=1 環境變數偵測 Copilot CLI 子程序，以略過互動式提示
+- 在會話恢復或終端狀態切換期間，時間軸不再出現多餘的「write EIO」錯誤條目
+- 以 Python 為基礎的 MCP 伺服器不再因 stdout 緩衝而逾時
+- 當 --model 旗標指定不可用模型時會顯示錯誤
+- MCP 伺服器可用性在登入、切換帳號或登出後會正確更新
+- 在狀態列的分支名稱旁顯示可點擊的 PR 參考
+- 新增 --plugin-dir 旗標，可從本機目錄載入外掛
+- 滑鼠選取的文字會自動複製到 Linux 的主要選取緩衝區（中鍵貼上）
+- 修正 VS Code 的 shift+enter 與 ctrl+enter 多行輸入快捷鍵
+- 自動更新改用一致的 ~/.copilot/pkg 路徑，而非 XDG_STATE_HOME
+- ACP 用戶端可透過會話設定選項調整推理強度
+- 點擊終端機中的連結即可在預設瀏覽器開啟
+- 透過 .github/copilot/config.json 支援儲存庫層級設定，可共用 marketplace 與啟動訊息等專案設定
+- 在 alt-screen 模式下執行時，串流輸出不再被截斷
+- Windows 上右鍵貼上不再產生亂碼
+- Windows 上的 Shell 指令輸出不再在時間軸顯示為 "No changes detected"
+- 使用 # 參考選擇器時，GitHub API 錯誤不再以原始 HTTP 訊息顯示在終端機
+- Markdown 表格以正確的欄寬、文字換行與可配合終端寬度的 Unicode 邊框呈現
+- MCP elicitation 表單會顯示更高的多行文字輸入欄位、在單欄位表單時隱藏分頁列，並修正欄位導覽時的錯誤閃爍
+
 ## 0.0.420 - 2026-02-27
 
 - 自動更新現在也會更新二進位可執行檔，不僅是 JS 套件
