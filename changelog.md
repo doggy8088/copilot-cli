@@ -1,3 +1,22 @@
+## 1.0.2 - 2026-03-06
+
+為了紀念 GitHub Copilot CLI 在上週正式推出，我們將主版本號提升到 1.0！
+
+- 輸入單獨的 'exit' 命令即可關閉 CLI
+- `ask_user` 表單現在可用 Enter 鍵提交，且 enum 欄位允許自訂回覆
+- 在 hook 設定中支援 `command` 欄位作為 bash/powershell 的跨平台別名
+- Hook 設定現在接受 `timeout` 作為 `timeoutSec` 的別名
+- 修正搭配控制鍵的 meta 鍵處理（包含從 /terminal-setup 使用 shift+enter）
+
+## 0.0.423 - 2026-03-06
+
+- 對可能包含危險展開或替換用途的 shell 指令會提示使用者確認，新增防範惡意利用的防護
+- 對 EMU 與 GHE Cloud 使用者封鎖 /share gist，並提供明確的錯誤訊息
+- Elicitation 的 enum 與 boolean 欄位現在需要按 Enter 確認選取，已確認值以 ✓ 標示，瀏覽游標以 ❯ 標示
+- MCP 伺服器現在可要求使用者造訪 URL 進行帶外互動，例如 OAuth 流程或輸入 API 金鑰
+- 透過更好的脈絡共享，提升 explore agent 精準度與大型儲存庫支援
+- 在 Windows 上含 CRLF 行結尾時，Diff 模式可正確顯示
+
 ## 0.0.422 - 2026-03-05
 
 - 在驗證與授權錯誤訊息中顯示 request ID，以利除錯
