@@ -1,3 +1,49 @@
+## 0.0.422 - 2026-03-05
+
+- 在驗證與授權錯誤訊息中顯示 request ID，以利除錯
+- 除儲存庫層級的 .github/hooks 外，也會載入 ~/.copilot/hooks 的個人 hooks
+- 時間軸現在會以方框顯示問題，且當 ask_user 被自動回覆時會顯示 'Making best guess on autopilot'
+- 新增 GPT-5.4 模型支援
+- 外掛快取可在 clone 損毀或不完整時自動復原，無需手動介入
+- 當未安裝 git 且使用遠端外掛或 marketplace 時，會顯示清楚且可操作的錯誤訊息
+- 在 alt-screen 中，複製到剪貼簿後文字選取仍會保留
+- 在回應串流期間或彈出視窗開啟時捲動，檢視不再跳回較早的訊息
+- 新增 copy_on_select 設定選項，可在 alt-screen 模式自動將選取文字複製到剪貼簿
+- 在 CJK 輸入時，IME 候選視窗會出現在正確的游標位置
+- 在 alt-screen 模式中，/diff 支援滑鼠滾輪捲動
+- 在長時間會話中降低 alt-screen 模式的記憶體用量
+- 當設定 git color.diff=always 時，Diff 模式可正確運作
+- 在 Windows 上開啟連結時可正確處理帶有 & 查詢參數的 URL
+- @-mention 檔案補全會始終反映目前工作目錄的狀態
+- 在 tmux 與其他非 kitty 終端機中，使用 ESC 取消可正確運作
+- 點擊提示輸入框即可重新定位文字游標
+- 新增 /copy 指令，可將最後一則回應複製到剪貼簿
+- alt-screen 模式下連結會以下劃線樣式渲染以提高可見性
+- 在多遠端儲存庫中，/delegate 會提示選擇目標遠端並釐清確認文字
+- 在同時具有 Azure DevOps 與 GitHub 遠端的儲存庫中，GitHub MCP 伺服器會保持啟用
+- Markdown 表格中的內嵌程式碼冒號可正確渲染
+- 在說明對話框按 Ctrl+C 現在可乾淨地關閉
+- 外掛提供的 LSP 伺服器現在會被載入、啟動，並顯示於 /lsp show
+- 在必填的 enum 欄位按 Enter 會選取反白的選項
+- 隱藏干擾性的 todo 紀錄查詢，並在時間軸顯示相依性細節
+- 在包含大量檔案的目錄中工作時，CLI 不再卡住數分鐘
+- 新增 --output-format json 旗標，在 prompt 模式輸出 JSONL 以利程式化整合
+- 新增 exitPlanMode.request 協定方法，支援 SDK 的計畫核准
+- 背景 shell 指令與代理完成時會自動通知
+- GitHub MCP 伺服器連線狀態會被正確追蹤並在狀態指示器中計數
+- 按 Ctrl+R 以反向增量搜尋（如 Bash）搜尋指令歷史
+- 較長的 diff 行在 diff 檢視中不再溢出，並會正確換行
+- 新增啟動提示 hooks，可在會話開始時自動送出提示或斜線指令
+- 游標在行尾時按 Ctrl+K 會合併行，符合標準 Emacs/終端機行為
+- 跨輸入分塊拆分的逸出序列不再漏入文字輸入
+- 將 `launch_messages` 設定改名為 `companyAnnouncements`
+- 當終端機交由外部編輯器時會顯示等待訊息
+- 設定檔支援 enabledPlugins，可在啟動時自動安裝外掛
+- 改善反向歷史搜尋的鍵盤綁定：Ctrl+J 接受、Ctrl+G 取消
+- 將儲存庫設定從 `.github/copilot/config.json` 更名為 `settings.json`
+- 支援從 ssh:// URL 安裝外掛
+- 每次會話結束後，會話使用度量（requests、tokens、code changes）會持久化到 events.jsonl
+
 ## 0.0.421 - 2026-03-03
 
 - Autopilot 權限對話框改為在第一次提交提示時出現，而非在模式切換時
