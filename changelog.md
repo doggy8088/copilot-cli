@@ -1,3 +1,33 @@
+## 1.0.3 - 2026-03-09
+
+- 對員工使用者預設啟用 alt-screen 緩衝區
+- 擴充功能現以實驗性功能提供——可要求 Copilot 使用 @github/copilot-sdk 為自己撰寫自訂工具與 hooks
+- 在說明中記錄 GH_HOST、HTTP_PROXY、HTTPS_PROXY、NO_COLOR 與 NO_PROXY 環境變數
+- 從 .devcontainer/devcontainer.json 讀取 MCP 伺服器設定
+- 新增 --binary-version 旗標，可在不啟動 CLI 的情況下查詢二進位版本
+- 新增 /restart 指令，可在保留會話的情況下熱重啟 CLI
+- 背景任務通知會在時間軸顯示，並可展開細節
+- 除了 'exit' 之外，輸入 'quit' 也可離開 CLI
+- 新增 extraKnownMarketplaces 儲存庫設定，用於取代 marketplaces
+- /terminal-setup 指令新增 Windows Terminal 支援
+- /reset-allowed-tools 現可完全撤銷 /allow-all，並重新觸發 autopilot 權限對話框
+- 改善 SQL 工具對批次查詢的處理
+- 當系統鑰匙圈無回應時，Ubuntu 上的登入流程不再卡住
+- CLI 意外當機時，終端機會正確重置
+- 在螢幕閱讀器模式下，表格會停用邊框以避免朗讀裝飾字元
+- outputSchema 不符合規範的 MCP 伺服器現在可使用
+- /plugin update 現可用於 GitHub 安裝的外掛
+- /add-dir 加入的目錄會在 /clear 與 /resume 等會話變更後持續保留
+- 避免將 env 指令視為可在未經核准下允許的安全指令
+- 在狹窄終端機換行時，placeholder 文字色彩會正確顯示
+- /plugin update 現可搭配專案設定中定義的 marketplaces 使用
+- 在伺服器錯誤復原期間，重試狀態訊息現在會顯示以呈現進度
+- 在 diff 模式抓取變更時顯示載入旋轉指示器
+- 當 .github/instructions/ 含有指令時，抑制 /init 建議
+- 為了一致性，將 merge_strategy 設定更名為 mergeStrategy
+- 抑制技能與指令 frontmatter 中未知欄位的警告
+- 允許安全的 sed 指令在無需確認下執行
+
 ## 1.0.2 - 2026-03-06
 
 為了紀念 GitHub Copilot CLI 在上週正式推出，我們將主版本號提升到 1.0！
