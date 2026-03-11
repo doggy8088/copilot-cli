@@ -1,3 +1,33 @@
+## 1.0.4 - 2026-03-11
+
+- 新增 `session.shell.exec` 與 `session.shell.kill` RPC 方法，用於執行 Shell 指令並串流 stdout/stderr 輸出
+- 在 ACP 模式下，來自 --plugin-dir 外掛的自訂代理現在可正確載入
+- 新增具備動態色彩模式與互動式主題選擇器的自適應色彩引擎。在色彩有限的終端機與 Windows 上會優雅降級
+- 當回呼連接埠變更或使用 Microsoft Entra ID 時，MCP OAuth 重新驗證可穩定運作
+- 以 /pr view [local|web] 取代 /pr open，可在本機檢視 PR 狀態或在瀏覽器開啟
+- 啟用 OpenTelemetry 儀器化，以觀測代理會話、LLM 呼叫與工具執行
+- 擴充功能現在可用 CommonJS 模組撰寫 (extension.cjs)
+- 在 Environment loaded 啟動訊息中顯示已載入的擴充功能數量
+- 支援 disableAllHooks 旗標，可從設定檔停用所有 hooks
+- 在會話紀錄中支援 Azure DevOps 儲存庫識別
+- 在共享 gist 的會話匯出標頭中，會將每個欄位獨立成行呈現
+- 自動更新在 SAML 強制錯誤時會改為不帶驗證權杖重試
+- Autopilot 模式在 API 錯誤後會停止繼續，而非無限迴圈
+- 狀態列的情境視窗百分比改以最後一次呼叫的輸入與輸出權杖計算，不再因累積總量而膨脹
+- 在使用 alt-screen 時，暫停後會正確停用 Kitty 鍵盤通訊協定
+- 只有在僅有推理文字可用時才顯示 reasoning 標題
+- CLI 當機時終端機會正確重置，避免 Shell 損壞
+- /update 指令會自動重新啟動以套用更新，無需手動退出
+- OAuth 驗證現在可在 Microsoft Entra ID 與其他 OIDC 伺服器上穩定運作，並正確處理 resource 指示器與 refresh token 支援
+- 在 /instructions 選擇器中顯示個別指令檔名，對注入的檔案加上 [external] 標籤
+- 路徑權限對話框除了將路徑加入允許清單外，還提供一次性核准選項
+- 新增 --reasoning-effort CLI 旗標以設定推理強度
+- Hooks 現可透過 'ask' 權限決策在工具執行前請求使用者確認
+- 新增 configure-copilot 子代理，可透過 task 工具管理 MCP 伺服器、自訂代理與技能
+- 互動式 Shell 初始化在慢速機器上不再逾時
+- Windows 上的 Shell 指令更快，因為略過 PowerShell 設定檔載入
+- 改進 CLI 說明文件，改用標準 --option=value 格式與逗號分隔清單語法
+
 ## 1.0.3 - 2026-03-09
 
 - 對員工使用者預設啟用 alt-screen 緩衝區
