@@ -13,7 +13,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 我們正把 GitHub Copilot coding agent 的威力帶進你的終端機。使用 GitHub Copilot CLI，你可以在本機與一位理解你的程式碼與 GitHub 脈絡的 AI 代理同步工作。
 
-- **終端機原生開發：** 直接在命令列與 Copilot coding agent 協作，不需切換情境。
+- **終端機原生開發：** 直接在命令列與 Copilot coding agent 協作 — 不需切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 Pull Request，並沿用既有 GitHub 帳號驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **MCP 驅動的可擴充性：** coding agent 預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充能力。
@@ -52,7 +52,8 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 以 root 執行並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，非 root 使用者則預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`
+非 root 使用者則預設為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
