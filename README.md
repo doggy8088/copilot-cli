@@ -52,7 +52,8 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 以 root 身分執行並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 以安裝到 `$PREFIX/bin/` 目錄。當以 root 身分執行時預設為 `/usr/local`，非 root 使用者則為 `$HOME/.local`。
+設定 `PREFIX` 以安裝到 `$PREFIX/bin/` 目錄。當以 root 身分執行時預設為 `/usr/local`，
+非 root 使用者則為 `$HOME/.local`。
 
 設定 `VERSION` 以安裝指定版本。預設為最新版本。
 
