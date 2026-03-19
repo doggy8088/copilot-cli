@@ -60,7 +60,7 @@ jobs:
         run: |
           mkdir -p ~/.codex
           cat <<EOT > ~/.codex/config.toml
-          approval_policy = "on-request"
+          approval_policy = "never"
           sandbox_mode   = "danger-full-access"
 
           profile = "aoai"
