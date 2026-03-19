@@ -61,7 +61,7 @@ jobs:
           mkdir -p ~/.codex
           cat <<EOT > ~/.codex/config.toml
           approval_policy = "on-request"
-          sandbox_mode   = "workspace-write"
+          sandbox_mode   = "danger-full-access"
 
           profile = "aoai"
 
