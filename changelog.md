@@ -1,3 +1,81 @@
+## 1.0.9 - 2026-03-19
+
+- 在 SSH 中斷或關閉終端機時，時間軸中不再出現多餘的 I/O 錯誤訊息（ENOTCONN、EIO）
+- 新增 include_gitignored 設定選項，可在 @ 檔案搜尋中包含被 gitignore 的檔案
+- 在 WSL 複製文字時可正確保留 CJK 與其他非 ASCII 字元
+- 從縮短網址（例如 aka.ms 連結）安裝 marketplace 與外掛現在可正常運作
+
+## 1.0.8 - 2026-03-18
+
+- 代理模式的標籤與邊框在非 truecolor 終端機（tmux、SSH、screen）上顯示正確的色彩
+- 為了更乾淨的終端機體驗，現在預設啟用替代螢幕緩衝區
+- 當擴充功能子程序加入作用中會話時，exit plan mode 工具仍可使用
+- 儲存庫層級 hooks 只會在資料夾信任確認後載入，而不是在信任對話框顯示前
+- 閒置子代理不再擠滿 /tasks 檢視——在 2 分鐘未活動後會隱藏
+- 新增 extension mode 設定以控制可擴充性
+- 使用實驗性的 MCP_ALLOWLIST 功能旗標時，可依設定的 registry 驗證 MCP 伺服器
+- 允許 `--resume` 除了 session ID 之外也接受 task ID
+- 支援在 `settings.json`、`settings.local.json` 與 `config.json` 中定義 hooks
+- 在 macOS Terminal.app 與其他不支援 SGR mouse encoding 的終端機中，捲動現在可正確運作
+- 從外部編輯器返回後，tmux 中的滑鼠捲動可正確運作
+- 提示模式下按 Ctrl+C 現在會立即退出，不再等待請求完成
+- 旋轉指示器動畫不再延遲可見輸出出現在時間軸中
+- 對話框標題在所有對話框內顯示一致
+
+## 1.0.7 - 2026-03-17
+
+- 改善各 CLI 主題的色彩對比度，以提升可讀性與可近用性
+- 使用者訊息會以淡色背景顯示，以與助理訊息做視覺區隔
+- 新增 gpt-5.4-mini 模型支援
+- 分頁列的選取分頁使用精簡的 [label] 樣式並有更乾淨的間距
+- 在 system message 設定中新增 "customize" 模式，以進行區段層級的 system prompt 覆寫
+- 按兩次 Esc：有文字時清空輸入；提示為空時觸發復原，且在第一次按 Esc 後會顯示提示
+- 1.0.6 之前建立的會話在恢復時不再出現 'Session file is corrupted' 而失敗
+- 標頭中的分支指示器可區分未暫存變更（*）、已暫存變更（+）與未追蹤檔案（%）
+- 新增實驗性的 SDK 會話 API，可列出與管理技能、MCP 伺服器與外掛，並可選擇從工作目錄自動探索設定
+- 新增 subagentStart hook，在子代理生成時觸發，並支援把額外情境注入子代理提示
+- Pro 與試用使用者現在能在模型選擇器中看到所有有權使用的模型
+- CLI 重新啟動時不再把 `-i/--interactive` 提示重新送到新會話
+- 修正自動更新在 Windows 上可能留下不完整套件的邊緣案例
+
+## 1.0.6 - 2026-03-16
+
+- Autopilot 的續行不再因前一輪錯誤而永久被阻擋
+- 在 autopilot 中，現在必須提供 task_complete 摘要，且會以 Markdown 呈現
+- 螢幕閱讀器不再在每次提交提示時朗讀輸入框 placeholder 文字
+- Shell 指令解析後會釋放 tree-sitter WASM 物件以防止記憶體洩漏
+- `/help` 對話框在 alt-screen 模式下預設捲動到頂部
+- 自動更新現在可在 Windows 上正確處理競態條件並復原
+- 當另一個執行個體仍在執行時進行更新，CLI 在 Windows 上不再載入失敗
+- 透過移除每次子程序啟動時重複的環境變數複製來降低記憶體用量
+- 剩餘請求小工具不再對 Copilot Free 使用者顯示不準確的配額資料
+- 修正子代理運作時因 HTTP/2 連線池競態導致的會話當機
+- 自動更新後，CLI 會載入自己的最新版本
+- kill 指令驗證不再錯誤阻擋部分合法命令，例如 Python 腳本中的 `p.kill()`
+- 指令檔 frontmatter 的 applyTo 欄位同時接受字串與陣列值
+- 改善串流與工具輸出時的記憶體使用
+- Claude 模型可透過 tool search 動態發現並使用工具
+- 在恢復先前會話時，hooks 會正確觸發
+- alt-screen 模式下的提示輸入會完整渲染所有行而不截斷
+- 在 VS Code 整合式終端機中，點擊連結與右鍵貼上不再觸發兩次
+- Hook 設定檔現在可在 VS Code、Claude Code 與 CLI 之間免修改通用，因為除了 camelCase 事件名稱外也接受 PascalCase
+- 原生模組預建檔（例如 Windows ARM64 的 conpty.node）在首次啟動時可可靠載入
+- /tasks 檢視中的子代理耗時在閒置時會凍結，重新活動時繼續
+- 使用 SDK（ACP 模式）時，`--enable-all-github-mcp-tools`、`--add-github-mcp-toolset` 與 `--add-github-mcp-tool` 旗標現在會生效
+- 使用 `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` 時，自訂指令檔路徑可正確載入
+- 當某個指令導致 shell 結束時，指令輸出不再遺失
+- 透過 `--plugin-dir` 載入時，使用 `.claude-plugin/plugin.json` 的外掛可被正確發現
+- 修正在 VS Code 中使用舊版 /terminal-setup 設定時 shift+enter 的處理
+- 代理建立精靈會顯示正確的使用者代理目錄路徑
+- 支援 Open Plugin 規格的檔案位置，用於載入外掛與 marketplace 的 manifest
+- 顯示更友善的錯誤訊息，並提供鍵盤快捷鍵在瀏覽器開啟事件連結
+- 擴充功能工具現在與權限系統整合，可在每個工具上使用 `skipPermission` 略過權限提示
+- Hook 設定檔現在支援 Claude Code 的巢狀 matcher/hooks 結構與可選的 type 欄位
+- 由 task 工具啟動的子代理會依名稱指派可讀 ID（例如 `math-helper-0`），不再是通用的 `agent-0`
+- `create_pull_request` 工具的輸出現在包含 PR URL，讓代理可分享直接連結
+- `read_agent` 輸出包含在多回合代理中觸發每一輪的入站訊息
+- 提升與 Open Plugins 規格的相容性：支援 `.lsp.json`、PascalCase hook 事件名稱、`exclusive` 路徑模式與 `:` 命名空間分隔符
+
 ## 1.0.5 - 2026-03-13
 
 - 執行 /clear 或 /new 後，終端機標題會重設為預設值
