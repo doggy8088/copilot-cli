@@ -1,3 +1,29 @@
+## 1.0.10 - 2026-03-20
+
+- 在完整檢視大型檔案時降低記憶體使用量
+- /login 裝置流程在 Codespaces 與遠端終端機環境中可正確運作
+- 在使用遠端會話的 --server 模式時可正確偵測工作目錄
+- 在使用 application keypad mode 的終端機中，方向鍵可正確運作
+- 使用提示模式（-p 旗標）時，儲存庫 hooks（.github/hooks/）現在會正確觸發
+- 在 Windows 上，/copy 會把格式化 HTML 寫入剪貼簿，方便貼到 Word、Outlook 與 Teams
+- SDK 用戶端在啟動或加入會話時可註冊自訂斜線指令
+- SDK 用戶端可透過 session.ui.elicitation 向使用者顯示 elicitation 對話框
+- 新增多個並行會話的實驗性支援
+- 新增 `--effort` 作為 `--reasoning-effort` 的縮寫別名
+- 新增 /undo 指令，可復原上一輪並還原檔案變更
+- 在 alt-screen 模式下，當內容包含硬換行時，Markdown 項目清單可正確渲染
+- Elicitation 表單會顯示 Shift+Tab 提示，用於反向在欄位間導覽
+- 遠端會話 URL 會顯示為精簡可點擊的 'Open in browser' 連結，而不是重複的原始 URL
+- 透過 /quit、Ctrl+C 或 restart 退出時，會話歷史不再遺失
+- 巢狀 hook 結構中定義的 hook matcher 過濾器，現在會正確套用到內層 hook 項目
+- 使用 .claude-plugin/ 或 .plugin/ manifest 目錄的外掛，現在可正確載入其 MCP 與 LSP 伺服器
+- /terminal-setup 不再對 WSL 使用者顯示誤導性的錯誤
+- 模型選擇器會依使用者方案與政策，將模型重新整理為 Available、Blocked/Disabled 與 Upgrade 分頁
+- 來自 .mcp.json、.vscode/mcp.json 與 devcontainer.json 的工作區 MCP 伺服器，現在只會在資料夾信任確認後載入
+- 設定項目已改為 camelCase：`includeCoAuthoredBy`、`effortLevel`、`autoUpdatesChannel`、`statusLine`（舊名稱仍可使用）
+- 複製助理回應時，若所選行都含有前置 2 個空白的 UI 縮排，會自動移除該縮排
+- 透過 --plugin-dir 載入的外掛，現在會在 /plugin 清單中以獨立的「External Plugins」區段顯示
+
 ## 1.0.9 - 2026-03-19
 
 - 在 SSH 中斷或關閉終端機時，時間軸中不再出現多餘的 I/O 錯誤訊息（ENOTCONN、EIO）
