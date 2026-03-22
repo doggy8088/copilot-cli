@@ -31,7 +31,7 @@ GitHub Copilot CLI 會把 AI 驅動的程式設計協助直接帶到你的命令
 
 ### 先決條件
 
-- （Windows）**PowerShell** v6 或更高版本
+- （在 Windows 上）**PowerShell** v6 或更高版本
 - **有效的 Copilot 訂閱**。請參考 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
 如果你是透過組織或企業存取 GitHub Copilot，而組織擁有者或企業管理員在組織或企業設定中停用了它，則無法使用 GitHub Copilot CLI。更多資訊請參閱[在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
@@ -111,7 +111,7 @@ copilot
 你也可以使用已啟用「Copilot Requests」權限的細粒度 PAT 進行驗證。
 
 1. 前往 https://github.com/settings/personal-access-tokens/new
-2. 在「Permissions」下，點選「add permissions」並選擇「Copilot Requests」
+2. 在 "Permissions" 下，點選 "add permissions" 並選擇 "Copilot Requests"
 3. 產生你的 token
 4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依優先順序）將 token 加入環境
 
