@@ -1,3 +1,22 @@
+## 1.0.11 - 2026-03-23
+
+- 確保模型在選擇器中正確顯示，並在可能時顯示模型名稱
+- 當 MCP 伺服器因政策（例如 allowlist 強制）被封鎖時顯示警告
+- 第三方 MCP 伺服器的組織政策現在對所有使用者強制生效
+- 新增 ~/.agents/skills/ 作為個人技能探索目錄，與 VS Code 的 GHCP4A 擴充功能預設一致
+- 來自多個擴充功能的 hooks 現在會合併，而非互相覆寫或覆寫 hooks.json 中的 hooks
+- sessionStart hook 的 additionalContext 現在會注入到對話中
+- /clear 現在會完全放棄目前的會話，而 /new 會開始新的對話（保留舊會話在背景）
+- 連線到遠端主機時，會遵循 GitHub MCP 伺服器的使用者設定
+- 程序暫停與恢復（Ctrl+Z / fg）後，終端機畫面可正確重繪
+- MCP OAuth 驗證可在支援 Dynamic Client Registration、但將授權中繼資料放在非標準 URL 的 MCP 伺服器（例如 Atlassian Rovo MCP Server）上正常運作
+- /cd 會為每個會話維持獨立工作目錄，切換會話時會還原
+- 自訂指令、MCP 伺服器、技能與代理現在會從工作目錄一路往上到 git 根目錄的每個目錄層級進行探索，完整支援 monorepo
+- 啟動時的 'Environment loaded' 訊息現在會顯示已載入的 hooks 數量
+- 背景代理進度（目前意圖與已完成的工具呼叫）現在會顯示在 read_agent 與 task timeout 的回應中
+- statusLine.command 路徑現在支援 ~ 與環境變數（例如 $HOME、${VAR:-default}）
+- /new 與 /clear 指令可接受選擇性的提示，讓新會話以第一則訊息開始
+
 ## 1.0.10 - 2026-03-20
 
 - 在完整檢視大型檔案時降低記憶體使用量
