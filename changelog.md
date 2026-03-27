@@ -1,3 +1,33 @@
+## 1.0.12 - 2026-03-26
+
+- 在工作目錄是 git 根目錄時，.mcp.json 中定義的 MCP 伺服器可正確啟動
+- 在 Windows 上，當 PATH 中的非系統 clip.exe 覆蓋系統版本時，剪貼簿複製可正確運作
+- `/diff` 檢視在有行內高亮時可正確渲染所有行
+- 外掛 hooks 現在會收到 `CLAUDE_PROJECT_DIR` 與 `CLAUDE_PLUGIN_DATA` 環境變數，並在 hook 設定中支援 `{{project_dir}}` 與 `{{plugin_data_dir}}` 範本變數
+- 工作區 MCP 伺服器現在會正確載入並對代理可見
+- `/clear` 會在新會話中保留 MCP 伺服器
+- 模型顯示標頭現在會在模型名稱旁顯示目前的推理強度（例如 "(high)"）
+- `/session rename` 在未提供名稱參數時會從對話歷史自動產生會話名稱
+- 移除 `--alt-screen` 旗標與 `alt_screen` 設定；替代螢幕現在一律啟用
+- OSC 8 超連結現在可在 VS Code 終端機中點擊
+- PowerShell 的 /flag 參數（例如 /all、/enum-devices）不再被誤判為檔案路徑
+- 受信任資料夾存取提示不再在 Windows OneDrive 路徑與不區分大小寫的檔案系統上錯誤出現
+- 狀態列 payload 現在除了 `session_id` 之外也包含 `session_name` 欄位
+- `@` 檔案選擇器不再顯示 `.git` 目錄內容
+- 調整終端機大小時捲動位置會保持不變
+- 使用 `/clear` 開始新會話後，`/yolo` 的路徑權限仍會保留
+- 在終端機文字選取時，Emoji 字元可正確被選取與高亮
+- 具有進行中工作的會話不再被過期會話清理器移除
+- 恢復會話會還原先前選擇的自訂代理
+- 執行產生大量輸出的 Shell 指令時，CLI 不再因記憶體不足而當機
+- 在取消 autopilot 時連按多次 Escape 不再導致會話卡住
+- 將 `.claude/settings.json` 與 `.claude/settings.local.json` 讀取為額外的儲存庫設定來源
+- 模型選擇器現在以全螢幕檢視開啟，並可用 ← / → 方向鍵就地調整推理強度
+- OTEL hook 執行現在記錄為 span events 而非子 span，減少追蹤雜訊
+- 使用者提示在按下 Enter 後會立即出現在對話中
+- `/allow-all`（`/yolo`）現在支援 `on`、`off` 與 `show` 子命令，用於啟用、停用或檢查 allow-all 模式
+- 在計畫模式下按 Ctrl+Y，當尚無計畫時會開啟最新的研究報告
+
 ## 1.0.11 - 2026-03-23
 
 - 確保模型在選擇器中正確顯示，並在可能時顯示模型名稱
