@@ -2,11 +2,11 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機。
 
-GitHub Copilot CLI 把 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式架構，在深度整合你的 GitHub 工作流程的同時提供智慧協助。
+GitHub Copilot CLI 把 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式架構，在深度整合你的 GitHub 工作流程的同時提供智慧協助。
 
 更多資訊請參閱[我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-![Copilot CLI 啟動畫面](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
+![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
 
 ## 🚀 介紹與概覽
@@ -16,7 +16,7 @@ GitHub Copilot CLI 把 AI 驅動的程式設計協助直接帶到你的命令列
 - **終端機原生開發：** 直接在命令列與 Copilot coding agent 協作——不必切換情境。
 - **開箱即用的 GitHub 整合：** 以自然語言存取你的儲存庫、議題與 Pull Request，並使用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** coding agent 預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充能力。
+- **MCP 驅動的可擴充性：** 利用 coding agent 預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充能力。
 - **完全掌控：** 在執行前預覽每個動作——未經你明確核准不會執行任何操作。
 
 我們仍處於旅程的早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最佳的夥伴。
