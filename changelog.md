@@ -1,3 +1,33 @@
+## 1.0.14 - 2026-03-31
+
+- 使用 BYOM 時，影像會正確傳送到 Anthropic 模型
+- 模型選擇器的選擇現在會正確覆寫目前會話的 `--model` 旗標
+- 錯誤退出時，終端機輸出不再清空或跳動
+- 在支援 Kitty keyboard protocol 的終端機中，Shift+Enter 會插入換行
+- 當 Git marketplace URL clone 失敗時，顯示底層錯誤細節
+- 在 macOS 上，暫存檔操作不再觸發不必要的權限提示
+- 允許 SDK 會話參與者透過 `handlePendingElicitation` API 回應 elicitation 請求
+- 會話結束時會正確清理 Shell 程序
+- 無論是否設定直接回呼，SDK 的 exit_plan_mode.requested 事件現在一律會發送
+- 使用 Microsoft Entra ID 驗證的 MCP 伺服器不再在每次登入時顯示同意畫面
+- Grep 與 glob 搜尋在達到逾時時會即時回傳結果
+- 在 elicitation 對話框中快速輸入時不再掉字
+- 在原生 Windows 上，複製到剪貼簿的文字不再在貼上開頭多出 U+FEFF 字元
+- 修正在恢復會話時忽略 `--config-dir`，導致路徑悄悄回退到 `~/.copilot` 的問題
+- 被 allowlist 政策封鎖的 MCP 伺服器現在會在 `/mcp show` 中隱藏
+- 使用 Bring Your Own Model (BYOM) 供應商時，推理強度設定現在會正確套用
+- 使用傳統 PAT 時會顯示清楚的錯誤訊息
+- `grep` 工具可處理大型檔案與長行而不會耗盡記憶體
+- CLI 於 ACP 模式執行時，MCP 伺服器 OAuth 驗證可正常運作
+- 以空白分割 `$BROWSER`
+- 啟用滑鼠支援時，貼上的文字不再毀損
+- 解除安裝 marketplace 外掛時會移除其磁碟上的快取資料
+- 透過最佳化旋轉指示器渲染與任務輪詢，降低串流期間的 CPU 使用率
+- 透過並行執行終端機偵測、驗證與 git 操作，縮短 CLI 啟動時間
+- MCP registry 查詢加入自動重試與請求逾時後更可靠
+- V8 編譯快取降低重複啟動的解析與編譯時間，CLI 因此啟動更快
+- 移除對 `gemini-3-pro-preview` 模型的支援
+
 ## 1.0.13 - 2026-03-30
 
 - 會話結束時會正確清理 Shell 程序
