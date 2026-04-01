@@ -1,3 +1,25 @@
+
+## 1.0.15 - 2026-04-01
+
+- 移除對 gpt-5.1-codex、gpt-5.1-codex-mini 與 gpt-5.1-codex-max 模型的支援
+- 在互動模式下，Copilot 吉祥物現在會有細微眨眼動畫
+- 使用者切換器與 `/user list` 現按字母順序顯示帳號
+- 新增 mcp.config.list、mcp.config.add、mcp.config.update 與 mcp.config.remove 伺服器 RPC，用於管理持久化的 MCP 伺服器設定
+- 在無介面與 CI 環境中，新增裝置代碼流程（RFC 8628）作為 MCP OAuth 的備援
+- 新增 `/mcp auth` 指令與 MCP OAuth 伺服器的重新驗證 UI，並支援帳號切換
+- 新增 postToolUseFailure hooks 以處理工具錯誤，且 postToolUse 只會在工具成功呼叫後執行
+- 新增 `/share html` 指令，可將會話與研究報告匯出為自包含的互動式 HTML 檔案
+- 按下 Escape 或 Ctrl+C 取消後，Autopilot 不再繼續
+- CLI 載入期間輸入的按鍵不再遺失
+- 大型工具輸出預覽會顯示正確的字元數，並最多顯示 500 個字元
+- diff 檢視器新增 Home/End 與 Page Up/Page Down 導航
+- 會話結束後，CLI 會立即退出，不再等待最多 10 秒
+- 設定項目 askUser、autoUpdate、storeTokenPlaintext、logLevel、skillDirectories 與 disabledSkills 現改用 camelCase 名稱（仍接受 snake_case）
+- 許多設定鍵現在偏好 camelCase 名稱（snake_case 名稱仍可使用）
+- Ctrl+D 不再排入訊息；請改用 Ctrl+Q 或 Ctrl+Enter 進行排隊
+- 連線較慢的 MCP 伺服器不再阻塞代理啟動
+- 在 WSL 環境中，從 Windows 剪貼簿貼上圖片現在可正常運作
+
 ## 1.0.14 - 2026-03-31
 
 - 使用 BYOM 時，影像會正確傳送到 Anthropic 模型
