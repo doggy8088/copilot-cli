@@ -1,3 +1,13 @@
+## 1.0.16 - 2026-04-02
+
+- 當透過 excludedTools 或 availableTools 排除 sql 工具時，SQL 提示標籤不再出現
+- MCP 工具呼叫在時間軸中會顯示工具名稱與參數摘要
+- 工作目錄變更時，MCP 伺服器會以有效驗證正確重新連線
+- 新增 PermissionRequest hook，允許腳本以程式方式核准或拒絕工具權限請求
+- 移除已棄用的 `marketplaces` 儲存庫設定（改用 `extraKnownMarketplaces`）
+- 登入、切換使用者與 /mcp reload 後，MCP 伺服器會正確載入
+- BYOK Anthropic 供應商現在會遵守已設定的 maxOutputTokens 上限
+- 移除已棄用的 `marketplaces` 儲存庫設定（改用 `extraKnownMarketplaces`）
 
 ## 1.0.15 - 2026-04-01
 
