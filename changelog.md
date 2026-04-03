@@ -1,3 +1,9 @@
+## 1.0.17 - 2026-04-03
+
+- CLI 現在內建技能，首先提供的是自訂 Copilot 雲端代理環境的指南
+- MCP OAuth 流程現在可透過自簽憑證備援支援 HTTPS 重新導向 URI，提升與要求 HTTPS 的 OAuth 供應商相容性（例如 Slack）
+- /resume 會話選擇器載入速度顯著提升，尤其在大型會話歷史時
+
 ## 1.0.16 - 2026-04-02
 
 - 當透過 excludedTools 或 availableTools 排除 sql 工具時，SQL 提示標籤不再出現
