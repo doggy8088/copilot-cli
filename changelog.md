@@ -1,3 +1,12 @@
+## 1.0.19 - 2026-04-06
+
+- `/mcp enable` 與 `/mcp disable` 現在會跨會話持續生效
+- OpenTelemetry 監控：子代理 span 現在使用 `INTERNAL` span 類型，而聊天 span 會包含 `github.copilot.time_to_first_chunk` 屬性（僅串流）
+- 在 macOS 上，缺少可執行權限的外掛 hook 腳本現在可正確執行
+- 當代理顯示名稱與檔名不同時，恢復會話會正確還原自訂代理
+- 當會話已被另一個用戶端使用時，會略過 IDE 自動連線
+- 斜線指令時間軸項目現在包含指令名稱（例如 "Review"、"Plan"），以提供更完整的情境
+
 ## 1.0.18 - 2026-04-04
 
 - 新的 Critic 代理會使用互補模型自動審查計畫與複雜實作，以提早捕捉錯誤（Claude 模型的實驗模式可用）
