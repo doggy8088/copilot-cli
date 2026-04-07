@@ -1,3 +1,22 @@
+## 1.0.21 - 2026-04-07
+
+- 新增 `copilot mcp` 指令以管理 MCP 伺服器
+- 當長時間執行的非同步 shell 命令進行中時，旋轉指示器不再看起來卡住
+- 登入流程中的企業 GitHub URL 輸入現在可接受鍵盤輸入並在按下 Enter 時提交
+- 斜線指令選擇器在過濾時不再閃爍或移動輸入框
+- 當內容縮減時（例如取消或工具完成後），時間軸不再空白
+- 計畫模式的時間軸顯示使用者文字時，不再有多餘的「Plan」前綴
+- 透過自動關閉不再需要的 shell 會話來降低記憶體使用量
+- 使用 PascalCase 事件名稱設定的 hooks 現在會收到與 VS Code 相容的 snake_case payload，包含 hook_event_name、session_id 與 ISO 8601 時間戳
+
+## 1.0.20 - 2026-04-07
+
+- 新增 `copilot help monitoring` 主題，包含 OpenTelemetry 設定細節與範例
+- 旋轉指示器會一直保持啟動，直到背景代理與 shell 命令完成，且使用者輸入全程可用
+- Azure OpenAI BYOK 在未設定 API 版本時，預設使用 GA 的無版本 v1 路徑
+- 降低即時回應串流期間的 UI 遲滯
+- `/yolo` 與 `--yolo` 現在行為一致，且 `/yolo` 狀態會在 `/restart` 後持續保留
+
 ## 1.0.19 - 2026-04-06
 
 - `/mcp enable` 與 `/mcp disable` 現在會跨會話持續生效
