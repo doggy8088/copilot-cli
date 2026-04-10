@@ -1,3 +1,16 @@
+## 1.0.23 - 2026-04-10
+
+- 新增 `--mode`、`--autopilot` 與 `--plan` 旗標，可讓 CLI 直接以特定代理模式啟動
+- 當記憶體後端不可用時，代理在第一輪不再卡住
+- Bazel/Buck 建置目標標籤（例如 `//package:target`）不再被誤判為檔案路徑
+- Ctrl+L 現在會清除終端機畫面，但不會清除對話會話
+- 斜線指令選擇器現在顯示完整技能說明，並改進捲動條
+- 代理執行中仍可使用 `/diff`、`/agent`、`/feedback`、`/ide` 與 `/tuikit`
+- 當推理 token 使用量不為零時，會在每個模型的 token 分解中顯示
+- 遠端分頁會正確顯示 Copilot coding agent 任務，並支援透過 Tasks API 進行引導
+- 含有 BEL 字元的 Shell 輸出不再造成終端機反覆嗶聲
+- 針對 .vscode/mcp.json 的遷移提示現在包含 jq 指令，可將你的設定遷移到 .mcp.json
+
 ## 1.0.22 - 2026-04-09
 
 - 針對採用非標準 JSON schema 的 MCP 工具，現在會進行清理以相容所有模型供應商
