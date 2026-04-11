@@ -1,3 +1,11 @@
+## 1.0.24 - 2026-04-10
+
+- preToolUse hooks 現在會遵循 modifiedArgs/updatedInput 與 additionalContext 欄位
+- 自訂代理的 model 欄位現在接受來自 VS Code 的顯示名稱與供應商尾碼（例如 "Claude Sonnet 4.5"、"GPT-5.4 (copilot)"）
+- CLI 因 OOM 或 segfault 等崩潰後，終端機狀態（替代螢幕、游標、raw 模式）可正確還原
+- 在 GitHub 儲存庫首次執行時出現會話同步提示時，會正確遵循 `--remote` 旗標
+- 退出畫面重新設計，加入 Copilot 吉祥物並提供更乾淨的使用摘要版面
+
 ## 1.0.23 - 2026-04-10
 
 - 新增 `--mode`、`--autopilot` 與 `--plan` 旗標，可讓 CLI 直接以特定代理模式啟動
