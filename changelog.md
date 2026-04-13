@@ -1,3 +1,24 @@
+## 1.0.25 - 2026-04-13
+
+- 在 CLI 中從 registry 安裝 MCP 伺服器，並提供引導式設定
+- /resume 會話查找失敗後，Esc 鍵可正常運作
+- 在會話歷史中持久保存解析後的模型，並在進行中的回合期間延後模型變更
+- ACP 用戶端現在可在啟動或載入會話時提供 MCP 伺服器（stdio、HTTP、SSE）
+- 選擇目前模型時，現在會遵循 `--config-dir` 旗標
+- 新增 /env 指令以顯示已載入的環境細節（指令、MCP 伺服器、技能、代理、外掛）
+- /share 在自訂輸出路徑未含副檔名時，會自動補上正確副檔名（.md 或 .html）
+- /add-dir 可接受相對路徑（例如 ./src、../sibling），並會解析為絕對路徑
+- 自訂指令檔現在會保留 & 與 <placeholders> 等特殊字元
+- 技能選擇器清單在超過終端機高度時可正確捲動
+- MCP 用戶端在與伺服器握手時會回報正確的 CLI 版本
+- /logout 在透過 gh CLI、PAT、API key 或環境變數登入時會顯示警告，因為 /logout 只管理 OAuth 會話
+- Alt+D 現在會刪除文字輸入中游標前的單字
+- /share html 會顯示 file:// URL，並支援 Ctrl+X O 直接開啟檔案
+- 技能指示在對話回合之間可正確持久保存
+- 現在可使用 --remote 或 /remote 遠端控制 CLI 會話
+- MCP 遠端伺服器連線在暫時性網路失敗時會自動重試
+- Share Research 的目錄側欄錨點連結現在可在頁面內正確導覽
+
 ## 1.0.24 - 2026-04-10
 
 - preToolUse hooks 現在會遵循 modifiedArgs/updatedInput 與 additionalContext 欄位
