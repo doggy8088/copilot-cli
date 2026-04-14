@@ -1,3 +1,24 @@
+## 1.0.26 - 2026-04-14
+
+- Esc 鍵現在可穩定關閉 ask_user 與 elicitation 提示，不會卡住
+- 在 find -exec 區塊內的引數不再出現多餘的目錄存取提示
+- 當情境壓縮在檢查點邊界將工具呼叫拆分時，代理會話不再因無法復原的錯誤而失敗
+- bash 命令中的單段以斜線開頭權杖（例如 /help、/start）不再被視為檔案路徑
+- Anthropic BYOM 在檢視影像檔案時會正確包含影像資料
+- 權限提示通知 hook 只會在實際向使用者顯示提示時觸發
+- ctrl+o 現在會像 ctrl+e 一樣展開所有時間軸項目
+- 遠端分頁會正確顯示 Copilot coding agent 任務，並支援引導而不需要 Pull Request
+- 在 --remote 旗標與 /remote 指令說明中，將「steering」重新命名為「remote control」
+- 避免傳送重複的自訂指令檔（例如內容相同的 copilot-instructions.md 與 CLAUDE.md），以減少每回合浪費的 token
+- 外掛 hooks 會收到 PLUGIN_ROOT、COPILOT_PLUGIN_ROOT 與 CLAUDE_PLUGIN_ROOT 環境變數，其值為外掛的安裝目錄
+- ACP 伺服器只綁定在 localhost，避免非預期的網路暴露
+- 從 marketplace 安裝名為 'git' 的外掛不再因錯誤的 URL 解析而失敗
+- 企業登入現在接受不含 URL scheme 的主機名稱（例如 'github.example.com'）
+- LSP 語言伺服器在 Windows 上可使用正確的檔案 URI 路徑正確初始化
+- 檔案編輯操作中的相對路徑會以會話工作目錄作為解析基準
+- 同步提示中的會話範圍選擇器現在更醒目，並可用左右方向鍵進行鍵盤導覽
+- 具有特定 applyTo 模式的指令檔會整合為表格，而不是內嵌完整內容，以減少情境視窗使用量
+
 ## 1.0.25 - 2026-04-13
 
 - 在 CLI 中從 registry 安裝 MCP 伺服器，並提供引導式設定
