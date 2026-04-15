@@ -1,3 +1,11 @@
+## 1.0.27 - 2026-04-15
+
+- Copilot Pro 試用被暫停時會顯示清楚訊息，而不是一般的政策錯誤
+- 狀態列在輸入時顯示 @files 與 #issues 提示，當斜線指令選擇器開啟時顯示 /help 提示
+- WSL 上複製到剪貼簿不再在貼上文字中夾帶不可見的 BOM 字元
+- 新增 /ask 指令，可快速提問且不影響對話歷史
+- 新增 `copilot plugin marketplace update` 指令以重新整理外掛目錄
+
 ## 1.0.26 - 2026-04-14
 
 - Esc 鍵現在可穩定關閉 ask_user 與 elicitation 提示，不會卡住
