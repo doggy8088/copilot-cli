@@ -1,3 +1,18 @@
+
+## 1.0.31 - 2026-04-16
+
+- 提示框不再在 Windows 與 Ubuntu 終端機造成渲染問題
+
+## 1.0.30 - 2026-04-16
+
+- 回饋表單連結到正確的 GitHub 儲存庫
+- /undo 在無法使用 rewind 時會顯示說明訊息（例如不在 git 儲存庫中或尚無提交）
+- 使用 skills.discover 時，外掛技能與指令可正確被發現
+- 新增 /statusline 指令（含 /footer 別名）以自訂狀態列中顯示的項目（directory、branch、effort、context window、quota）
+- 移除 --list-env 旗標，該旗標會在提示模式記錄已載入的外掛、代理、技能與 MCP 伺服器
+- 修復括號貼上處理回歸後，從剪貼簿貼上影像恢復正常
+- 所有平台上 Ctrl+V 與 Meta+V 都會觸發影像貼上
+
 ## 1.0.29 - 2026-04-16
 
 - 遠端 MCP 伺服器設定現在允許省略 type 欄位，預設為 http
