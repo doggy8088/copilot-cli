@@ -1,3 +1,17 @@
+## 1.0.36 - 2026-04-24
+
+- 子指令選擇器現在會在高亮項目旁顯示選取指示符號 (❯)
+- 當偵測到多個 Copilot 授權時，現在會顯示更清楚的錯誤訊息與直接連結
+- 修正 preToolUse.matcher 被忽略的問題。升級後，帶有 matcher 的 hooks 只會在工具名稱完整符合 regex 時執行。
+- `/keep-alive` 現在無需 experimental mode 即可使用，以防止 Copilot CLI 啟用期間系統進入睡眠
+- `/remote` 指令現在會顯示目前狀態，並支援 `/remote on` 與 `/remote off` 來切換遠端控制
+- 已停用的 skills 不再顯示於斜線指令清單中
+- 新增 `'changes'` statusline 切換項，用來顯示此會話的新增/刪除行數
+- 位於 `.gitignored` 目錄中的自訂 instruction 檔案（例如 `.github/instructions/`）現在可正確載入
+- 現在必須連按兩次 Esc 才會取消進行中的工作，以避免意外中斷
+- 儲存除錯日誌或回饋封裝時，不再覆寫既有的封存檔案
+- 來自 `~/.claude/` 的自訂 agents、skills 與 commands 不再由 Copilot CLI 載入
+- Claude Opus 4.6 現在預設使用 medium reasoning effort
 
 ## 1.0.35 - 2026-04-23
 
