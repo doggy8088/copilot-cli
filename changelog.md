@@ -1,4 +1,52 @@
 
+## 1.0.35 - 2026-04-23
+
+- 斜線指令現在支援參數與子指令的 Tab 補全
+- Shell escape 指令 (!) 現在在設定了 $SHELL 時會使用你的 shell，而不再一律呼叫 /bin/sh
+- 在遠端會話中，CLI TUI 的權限提示現在可正確顯示
+- 會話選擇器現在會顯示分支名稱、閒置/使用中狀態，並改進了搜尋功能以支援游標
+- 模型變更通知現在會同時顯示先前與新的模型名稱
+- /update 與 /version 指令現在會遵循你設定的更新頻道
+- 會話同步提示現在使用更清楚的標籤，並說明 GitHub.com 的跨裝置同步
+- 新增支援用於 GitHub 主機名稱的環境變數 COPILOT_GH_HOST，其優先順序高於 GH_HOST
+- 在補全彈出視窗（@ 提及、路徑補全、斜線指令）中，除了 Tab 之外，也可按 Ctrl+Y 接受高亮選項
+- 新增 /session delete、delete <id> 與 delete-all 子指令，並可在會話選擇器中按 x 刪除
+- MCP 伺服器名稱現在支援空白與特殊字元
+- 透過 -i 作為初始提示傳入的技能斜線指令（例如 /skill-name），現在會在啟動時正確辨識
+- 當 read_bash 已經返回結果時，shell 補全通知不再重複顯示
+- --continue 現在會優先恢復目前工作目錄中的會話，而不是最近互動過的會話
+- 狀態列腳本現在包含與模型徽章及 /context 輸出一致的 context window 欄位
+- 使用者設定現在儲存在 ~/.copilot/settings.json，並與 config.json 中的內部狀態分離
+- 可用 --name 為會話命名，並用 --resume=<name> 依名稱恢復
+- Configure Copilot agent 現在在 Windows 上具有 shell 存取權
+- 在 Linux 上缺少剪貼簿工具（wl-clipboard 或 xclip）時，現在會顯示包含安裝說明的實用錯誤訊息
+- lsp.json 中的 LSP 伺服器項目現在支援可設定的啟動、初始化與預熱逾時
+- statusline 中的 context window 指示器現在預設隱藏
+- 將 MCP OAuth 移入共用執行階段流程，並在移除 MCP 伺服器時清除相關的 OAuth 狀態。
+- 在 /usage 中新增 GitHub 風格的貢獻圖，會依終端機色彩模式調整，並在無色彩終端機中退回為不同字元圖示
+- 代理式迴圈中的自訂工具呼叫現在可自我修正
+- 文字輸入中的游標移動、刪除與渲染現在可正確處理 emoji 與多碼點字元
+- 工具可用性偵測現在在 Windows 上可正確運作
+- 會話 token 若在某次互動期間過期，現在會自動處理，無需你重新送出訊息
+- 在 /cwd 與 /add-dir 路徑選擇器中，初次使用 Tab 與方向鍵導覽時現在會選到正確項目
+- IDE 或擴充功能中斷連線時，暫時性的 I/O 錯誤不再以紅色錯誤項目顯示於時間線中
+- ~/.claude/ 中的自訂 agents 與 skills 不再被錯誤載入為 Copilot 專案設定
+- Login 指令在驗證後現在可正確恢復互動式輸入
+- 顯示大量文字於時間線中時的渲染效能已改善
+- 在 MULTI_TURN_AGENTS 下，sync 任務呼叫現在會阻塞直到完成，而不是在 60 秒後自動轉為背景；sync 也不再回傳可重複使用的 agent_id，後續互動請改用 mode: "background"
+- Tab 導覽現在支援 Home/End 鍵，可跳到第一個與最後一個分頁
+- Plugins 安裝後會立即生效，無需重新啟動
+- 新增 continueOnAutoMode 設定選項，可在遇到速率限制時自動切換到 auto model，而不是暫停
+- Auto mode 在切換到不支援已設定 reasoning effort 的模型時，不再以錯誤失敗
+- 樣式特定的指示檔 (.github/instructions/*.instructions.md) 不再於每次會話時把完整內容都放入 system prompt
+- 擴充功能關閉時的錯誤不再在每次會話結束時以 error-level log 噪音出現
+- 在存在 LSP 設定時，LSP 重構工具現在會在第一輪就正確註冊
+- 新增 HTTP hook 支援，讓 hooks 可將 JSON payload 以 POST 傳送到設定的 URL，而不是執行本機命令
+- 在時間線中隱藏子代理的思考內容
+- 自訂 agent 名稱現在會顯示在 statusline 頁腳，並可透過 /statusline 切換
+- 在啟動對話框中按下 Escape 不再導致競態條件
+- grep 與 glob 工具現在接受多個搜尋路徑
+
 ## 1.0.34 - 2026-04-20
 
 - 速率限制錯誤訊息現在顯示「session rate limit」而不是「global rate limit」
