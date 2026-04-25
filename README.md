@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯，並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的 agentic harness 驅動，在與 GitHub 工作流程深度整合的同時提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub Copilot coding agent 相同的代理式框架驅動，在與 GitHub 工作流程深度整合的同時提供智慧協助。
 
 更多資訊請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -118,7 +118,7 @@ copilot
 
 在包含你想處理程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
@@ -139,7 +139,7 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧。這項功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧。這項功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼功能。
 
 ### 安裝 Language Server
 
