@@ -1,3 +1,16 @@
+## 1.0.37 - 2026-04-27
+
+- 位置型權限持久化現在預設為啟用，因此相同目錄中的核准會在不同工作階段之間延續
+- 新增 `copilot completion <bash|zsh|fish>` 子指令，可產生子指令、旗標與已知選項值的靜態 shell 補全腳本
+- 在會話選擇器中按 `s` 可循環切換排序方式：相關性、最近使用、建立時間或名稱
+- ACP 模型設定選項現在包含 description 與 metadata，供使用 configOptions API 的用戶端使用
+- 當重新選取相同的模型或 effort 等級時，不再顯示模型與 effort 變更通知
+- 在 Linux 上，寫入剪貼簿不再洩漏 X11 handles
+- 待處理訊息指示器現在可在提示框旁正確顯示
+- 修正切換為 `git branch --show-current` 後，detached HEAD 偵測總是回傳 false 的問題
+- 當 skills 出現錯誤或警告時，skill 選擇器清單仍會完整顯示
+- `/ask` 回應現在會渲染 markdown，包括表格與格式化連結
+
 ## 1.0.36 - 2026-04-24
 
 - 子指令選擇器現在會在高亮項目旁顯示選取指示符號 (❯)
