@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你可以透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub Copilot coding agent 相同的 agent 型 harness 驅動，在深度整合你的 GitHub 工作流程的同時，提供智慧型協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的 agentic harness，在與你的 GitHub 工作流程深度整合的同時，提供智慧型協助。
 
 更多資訊請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,15 +11,15 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們正將 GitHub Copilot coding agent 的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
+我們正將 GitHub Copilot coding agent 的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機、以同步方式與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 與 pull requests，全都透過你現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 與 pull requests，並透過你現有的 GitHub 帳號完成驗證。
 - **Agent 式能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 充分利用 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
+- **MCP 驅動的可擴充性：** 利用 coding agent 預設隨附 GitHub MCP server 的優勢，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 在執行前先預覽每個動作，沒有你的明確核准就不會發生任何事。
 
-我們仍在這段旅程的早期，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
+我們仍處於這段旅程的早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 開始使用
 
@@ -31,7 +31,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ### 先決條件
 
-- （在 Windows 上）**PowerShell** v6 或更新版本
+- （Windows 上）**PowerShell** v6 或更新版本
 - **有效的 Copilot 訂閱**。請參閱 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
 如果你是透過組織或企業取得 GitHub Copilot 的使用權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用 GitHub Copilot CLI。更多資訊請參閱 [在你的組織中管理 GitHub Copilot 的原則與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
@@ -52,7 +52,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 來以 root 身分執行，並安裝到 `/usr/local/bin`。
 
-將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。當以 root 執行時，預設為 `/usr/local`；當以非 root 使用者執行時，預設為 `$HOME/.local`。
+將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時則預設為 `$HOME/.local`。
 
 將 `VERSION` 設為安裝特定版本。預設為最新版本。
 
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-首次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請在啟動 `copilot` 時加上 `--banner` 旗標。
+首次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請以 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入這個指令，並依照畫面上的說明完成驗證。
 
@@ -127,7 +127,7 @@ copilot
 - 以 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-啟用後，這個設定會持久化到你的 config 中，因此後續啟動時就不再需要 `--experimental` 旗標。
+啟用後，這項設定會持久化到你的 config 中，因此後續啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
@@ -139,7 +139,7 @@ copilot
 
 ## 🔧 設定 LSP Servers
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧功能。這項功能提供例如前往定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧功能。這項功能提供前往定義、懸停資訊與診斷等智慧型程式碼能力。
 
 ### 安裝 Language Servers
 
@@ -190,4 +190,4 @@ LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層
 
 我們正在快速打造它。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的見解非常寶貴！請在此 repo 中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交一份保密的回饋問卷！
+你的見解非常寶貴！請在此 repo 中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷！
