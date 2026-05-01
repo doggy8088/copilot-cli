@@ -1,3 +1,38 @@
+## 1.0.40 - 2026-05-01
+
+- PR 分支裝飾現在可在頁尾正確顯示，不受模型名稱長度影響
+- `/clear` 與 `/new` 會重設目前啟用的自訂 agent 選擇
+- 助手回應串流現在有更平順的文字輸出
+- 執行 `copilot plugin update` 之後，`copilot plugin list` 會顯示正確版本
+- 為 MCP 伺服器新增 `client_credentials` OAuth grant type 支援，可在不使用瀏覽器的情況下進行完全無頭的驗證
+- 子代理現在會正確依照自己的模型判斷工具搜尋支援，而不再沿用父工作階段的設定
+- 透過 `/new` 或 `/resume` 切換工作階段時，不再把待處理訊息帶到新工作階段
+- 傳送大型檔案附件時，CLI 不再卡在 100% CPU
+- Resume 工作階段選擇器不再對同一個由 Mission Control 支援的工作階段顯示重複項目
+- 工作階段恢復選擇器現在會以單行顯示摘要，並依欄寬截斷
+- 在 prompt mode 期間按下 Ctrl+C 時，會立即將 "Exiting…" 輸出到 stderr，讓關閉進度可見
+- `/research` 現在使用 orchestrator/subagent 模型，以提供更完整且更可靠的深度研究結果
+- Autopilot mode 現在預設將 continuation messages 限制為 5 則（可用 `--max-autopilot-continues` 設定）
+- 自動更新時，會自動清理磁碟上舊的 CLI 套件版本
+- 遠端工作階段 statusline 現在顯示遠端工作目錄與分支，而不是本地情境
+- `/update` 在重新啟動後不再重新送出原始的 `-i` 提示
+- 現在會偵測 Azure DevOps 儲存庫並自動停用 GitHub MCP server
+- 工作階段歷史記錄、檔案追蹤與 `/chronicle` 指令現在已對所有使用者開放
+- Skills 現在可在 ACP 用戶端中作為斜線指令使用，與 CLI 體驗一致
+- 恢復工作階段後，不再在先前 CLI 行程意外結束時誤報該工作階段仍在使用中
+- `--config-dir` 現在會正確傳遞到 plugin 子指令；`--config-dir` 已棄用，改以 `COPILOT_HOME` 取代
+- 當 `/ask` 回應對話框開啟時，滑鼠選取可正常運作，因此內容可以被反白與複製
+- 透過非同步載入自訂 CA 憑證來提升 CLI 啟動速度
+- 遠端控制連結現在會在時間線中顯示完整 URL，而不是顯示 'Open in browser'
+- ACP 用戶端（例如 Zed）現在會在 agent 處理多步驟任務時顯示其即時計畫
+- 在 statusline 選擇器中新增 custom `statusLine.command` 可見性的切換項
+- ACP 用戶端現在可透過 agent config option 列出並切換自訂 agent
+- 當多個伺服器共用相同 URL 但使用不同的靜態 OAuth client ID 時，MCP OAuth tokens 現在可正確快取
+- 帶有點號或其他無效字元的 MCP 工具名稱現在會被正確清理
+- Ctrl+C 與雙擊 Esc 現在會一次移除一則待處理佇列訊息，而不是一次全部移除
+- 斜線指令建議現在會將前綴符合排在模糊比對之前
+- Prompt mode (`-p`) 現在會將 repo hooks 與 workspace MCP 置於 opt-in 環境變數之後（`GITHUB_COPILOT_PROMPT_MODE_REPO_HOOKS` 與 `GITHUB_COPILOT_PROMPT_MODE_WORKSPACE_MCP`），以提供預設安全的行為
+
 ## 1.0.39 - 2026-04-28
 
 - 允許 ACP 用戶端透過工作階段設定切換 allow-all 權限模式
