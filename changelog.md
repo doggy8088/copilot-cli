@@ -1,3 +1,27 @@
+## 1.0.41 - 2026-05-05
+
+- CLI 現在會先立即渲染 UI，同時在背景完成驗證，因此啟動更快
+- Shell 補全（bash、zsh、fish）現在會在首次執行時自動安裝，並在 `copilot update` 後更新
+- 對接受參數的斜線指令使用 Tab 補全時，現在會自動補上尾隨空白
+- 在 Windows 上，當防毒軟體或檔案系統鎖定導致暫時性的 EPERM 錯誤時，套件解壓縮不再崩潰
+- 遠端工作階段連線錯誤現在會顯示你目前登入的帳號，以及量身調整的修復步驟
+- ask user 提示中的問題現在會渲染 Markdown 格式
+- 新增實驗性 MCP Tasks 支援：具有 `taskSupport: "required"` 的 MCP 工具會以不阻塞的背景代理執行，並可透過 `list_agents` 與 `read_agent` 追蹤（僅在啟用 experimental mode 時可用，例如透過 `/experimental on` 或 `--experimental` 旗標）
+- Extensions 現在會在 prompt mode (`-p`) 載入。使用者 extensions 預設會載入；專案 extensions 與 management tools 則需要 `GITHUB_COPILOT_PROMPT_MODE_EXTENSIONS=true`
+- 助手回應不再包含多餘的 system notification XML 標籤
+- 大型輸出指引現在會正確引用已設定的 grep 工具名稱
+- 使用 git SSH URL（例如 `git@github.com:owner/repo`）新增 plugin marketplace 現在可正確運作
+- 斜線指令選擇器現在會搜尋指令描述，並為符合的字元加上底線
+- Memory 工具的確認提示現在在請求儲存記憶權限時，會顯示儲存範圍（repository 或 user）
+- 對於 INSERT OR IGNORE/REPLACE 與 blocked 狀態更新，SQL todo 時間線項目現在顯示得更準確
+- 在較慢或負載較高的主機上，串流文字與 shimmer 動畫仍可維持流暢
+- 在非互動模式（`-p/--prompt`）新增 `--attachment` 旗標，可將檔案（影像或原生文件）附加到初始提示
+- `@` 提及補全現在支援 `./` 路徑、不再對目錄補上尾隨空白，並會優先顯示專案檔案而非工作區根目錄
+- 透過避開 Node 24.x 中的 V8 崩潰問題來提升 Windows 上的穩定性
+- 含有 Unicode line separator 字元的工作階段檔案現在可正確載入
+- Reasoning effort 選擇器的提示文字現在會以正確間距顯示 "Esc to cancel"
+- 透過更妥善地從模糊或錯位的編輯區塊中恢復，提升檔案編輯的可靠性
+
 ## 1.0.40 - 2026-05-01
 
 - PR 分支裝飾現在可在頁尾正確顯示，不受模型名稱長度影響
