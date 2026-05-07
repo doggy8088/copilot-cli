@@ -2,22 +2,22 @@
 
 GitHub Copilot 的威力，現在就在你的終端機中。
 
-GitHub Copilot CLI 直接把 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub Copilot coding agent 相同的代理式執行架構，在深度整合你的 GitHub 工作流程的同時，提供智慧化協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行架構提供支援，在深度整合你的 GitHub 工作流程的同時，提供智慧化協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-![Image of the splash screen for the Copilot CLI](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
+![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
 
 ## 🚀 介紹與概覽
 
-我們正把 GitHub Copilot coding agent 的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI agent 同步協作。
+我們正將 GitHub Copilot coding agent 的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI agent 同步協作。
 
-- **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不必切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 和 pull requests，並透過現有的 GitHub 帳號完成驗證。
+- **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換情境。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 和 pull requests，全都透過你現有的 GitHub 帳號完成驗證。
 - **代理能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **由 MCP 驅動的可擴充性：** 充分利用 coding agent 預設隨附 GitHub MCP server 這項特性，並支援自訂 MCP servers 來擴充能力。
-- **完整掌控：** 每個動作都能在執行前預覽，未經你明確同意不會發生任何事。
+- **完整掌控：** 每個動作都能在執行前預覽，沒有任何事情會在未經你明確核准的情況下發生。
 
 我們仍處於早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們的動態橫幅。如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
+第一次啟動時，你會看到我們可愛的動態橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入這個指令並依照畫面上的說明完成驗證。
 
@@ -188,6 +188,6 @@ LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層
 
 很高興你在 Copilot CLI 的早期階段加入我們。
 
-我們開發得很快。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正。
+我們開發得很快。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的意見非常重要。歡迎在這個 repo 開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交保密回饋問卷。
+你的意見非常重要！歡迎在這個 repo 開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交保密回饋問卷！
