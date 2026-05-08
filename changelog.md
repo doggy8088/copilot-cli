@@ -1,3 +1,20 @@
+## 1.0.44 - 2026-05-08
+
+- `/add-dir` 中的路徑補全不再閃爍，也不會被 `@` 與 `#` 選擇器攔截
+- 斜線指令現在可出現在輸入內容的中間，且單一訊息中可同時呼叫多個 skills
+- `userPromptSubmitted` hooks 現在可直接處理請求，繞過 LLM，並在不發出模型呼叫的情況下直接回傳回應
+- 多帳號使用者的 `/user list` 與 `/user switch` 現在更快
+- 為 `copilot update` 與 `/update` 新增可選的 `prerelease` 引數，以取得最新的預發行版本
+- 透過 `!` 前綴執行的 shell 指令現在可正確搭配所有 shell 設定運作
+- shell aliases 與 rc 檔設定現在可在 `!` 指令中生效
+- 配額顯示現在會正確顯示 Free 使用者的剩餘用量，而不再一律顯示為已用 100%
+- 在 Autopilot mode 中授與的工具權限，在執行 `/clear` 後仍會保留
+- 透過 `/model` 選擇器切換模型時，effort level 現在會正確套用
+- 當權限提示正在等待時按下 Ctrl+C，不再導致 CLI 卡住
+- 當沒有任何符合結果時，專案資訊仍會顯示在斜線指令選擇器中
+- `settings.json` 中無效的 URL 項目不再導致 CLI 啟動崩潰，而會略過並顯示警告
+- 時間線現在會顯示 rubber-duck 子代理實際解析後的模型（例如 `Rubber-duck(claude-opus-4.7)`）
+
 ## 1.0.43 - 2026-05-06
 
 - 在 `/statusline` 選擇器中新增使用者名稱切換，可在頁尾顯示目前啟用的帳號
