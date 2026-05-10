@@ -1,23 +1,23 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大能力，現在來到你的終端機。
+GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行架構提供支援，在深度整合你的 GitHub 工作流程的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它採用與 GitHub Copilot coding agent 相同的代理式執行框架，能在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
 
 更多資訊請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-![Copilot CLI 啟動畫面的圖像](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
+![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
 
 ## 🚀 介紹與概覽
 
 我們正將 GitHub Copilot coding agent 的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一位理解你的程式碼和 GitHub 情境的 AI 代理同步協作。
 
-- **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，全部都透過你現有的 GitHub 帳號完成驗證。
-- **代理式能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 善用 coding agent 預設附帶 GitHub 的 MCP server，並支援自訂 MCP servers 來延伸能力。
-- **完整控制：** 每個動作都能在執行前先預覽，未經你明確核准，任何事情都不會發生。
+- **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
+- **開箱即用的 GitHub 整合：** 透過自然語言存取你的儲存庫、issues 與 pull requests，並使用你現有的 GitHub 帳號完成驗證。
+- **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **MCP 驅動的可擴充性：** 善用 coding agent 預設附帶 GitHub MCP server 的能力，並支援自訂 MCP servers 來延伸功能。
+- **完整控制：** 每個動作都能在執行前預覽，未經你明確核准，任何事情都不會發生。
 
 我們仍處於旅程的早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
@@ -52,9 +52,9 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可用 root 身分執行，並安裝到 `/usr/local/bin`。
 
-將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
+將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
 
-將 `VERSION` 設為安裝指定的版本。預設為最新版本。
+將 `VERSION` 設為安裝指定版本。預設為最新版本。
 
 例如，若要將版本 `v0.0.369` 安裝到自訂目錄：
 
@@ -186,8 +186,8 @@ LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 ## 📢 回饋與參與
 
-我們很高興你在 Copilot CLI 發展早期就加入我們。
+我們很高興你在 Copilot CLI 發展的早期就加入我們。
 
-我們開發得很快。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正！
+我們正在快速開發。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正！
 
 你的意見非常重要！歡迎在這個 repo 開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交保密回饋問卷！
