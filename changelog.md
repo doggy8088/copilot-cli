@@ -1,3 +1,44 @@
+## 1.0.23 - 2026-04-10
+
+- 新增 `--mode`、`--autopilot` 與 `--plan` 旗標，可在啟動 CLI 時直接進入指定的 agent mode
+- 當 memory backend 無法使用時，agent 不再於第一輪卡住
+- Bazel/Buck 建置目標標籤（例如 `//package:target`）不再被誤判為檔案路徑
+- Ctrl+L 會清除終端機畫面，但不會清除對話工作階段
+- 斜線指令選擇器現在會顯示完整的技能描述，並具備更精緻的捲軸
+- `/diff`、`/agent`、`/feedback`、`/ide` 與 `/tuikit` 現在可在 agent 執行中使用
+- 當推理 token 使用量非零時，會在各模型的 token 明細中顯示
+- 遠端分頁現在可正確顯示 Copilot coding agent 任務，並透過 Tasks API 支援遠端控制
+- 含有 BEL 字元的 shell 輸出不再導致終端機反覆發出嗶聲
+- 針對 `.vscode/mcp.json` 的遷移提示現在包含一個 `jq` 指令，可將設定遷移到 `.mcp.json`
+
+## 1.0.22 - 2026-04-09
+
+- 具有非標準 JSON schema 的 MCP 工具現在會被清理，以確保與所有模型供應商相容
+- 改善對來自 MCP 與 extension 工具之大型影像的處理
+- 透過新的簡化行內渲染器改善渲染效能
+- 當遠端工作階段因政策而遭封鎖時，會顯示清楚訊息，提示你聯絡組織管理員
+- 子代理活動不再顯示重複的工具名稱（例如 "view view the file..."）
+- 使用 Anthropic 模型搭配 BYOM/BYOK 設定時，權限檢查與其他 hooks 現在可正確運作
+- 斜線指令選擇器現在會顯示在文字輸入框上方，以提供更穩定的版面
+- 自訂 agents 現在可宣告 `skills` 欄位，以便在啟動時預先將技能內容載入 agent 情境
+- Plugins 現在可在安裝後顯示附帶設定說明的安裝後訊息
+- 移除 `.vscode/mcp.json` 與 `.devcontainer/devcontainer.json` 作為 MCP server 設定來源；CLI 現在只會讀取 `.mcp.json`。當偵測到 `.vscode/mcp.json` 但沒有 `.mcp.json` 時，會顯示遷移提示。
+- Plugins 現在可跨工作階段維持啟用狀態，並依使用者設定在啟動時自動安裝
+- 新增子代理深度與併發限制，以防止代理失控地持續產生更多代理
+- 當你恢復一個已被其他 CLI 或應用程式使用中的工作階段時，會顯示警告
+- CLI 不再於受 V8 引擎 grapheme segmentation 錯誤影響的系統上崩潰
+- 在互動模式中，`sessionStart` 與 `sessionEnd` hooks 現在每個工作階段只會觸發一次，而不是每則提示觸發一次
+- Plugin agents 現在會遵循其 frontmatter 中指定的模型
+
+## 1.0.21 - 2026-04-07
+
+- 新增 `copilot mcp` 指令以管理 MCP servers
+- 當長時間執行的非同步 shell 命令正在進行時，spinner 不再看起來卡住
+- 登入流程中的企業 GitHub URL 輸入現在可接受鍵盤輸入，並可按 Enter 送出
+- 斜線指令選擇器在過濾時不再閃爍或推擠輸入框
+- 當內容縮減時（例如取消操作或工具完成後），時間線不再整片空白
+- 計畫模式的時間線顯示現在會直接呈現使用者文字，不再加上多餘的 "Plan" 前綴
+
 ## 1.0.44 - 2026-05-08
 
 - `/add-dir` 中的路徑補全不再閃爍，也不會被 `@` 與 `#` 選擇器攔截
