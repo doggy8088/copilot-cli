@@ -1,3 +1,13 @@
+## 1.0.45 - 2026-05-11
+
+- 新增 `/autopilot` 斜線指令，可在 interactive mode 與 autopilot mode 之間切換
+- 在 Windows 上，若無法使用 PowerShell 7+（`pwsh`），會回退為使用 Windows PowerShell（`powershell.exe`）
+- OpenTelemetry 輸出現在符合 GenAI semantic conventions：MCP 工具呼叫現在使用標準的 `tool_call` spans，並新增 `gen_ai.client.operation.duration` metric 來追蹤工具執行時間
+- 含有 extension 權限提示的工作階段現在可以恢復，不再出現 "Session file is corrupted" 錯誤
+- `agentStop` hook 現在會在 agent 透過 `task_complete` 停止時正確觸發
+- 在 OSC 色彩查詢支援有限的終端機上，CLI 啟動速度更快，最多可將啟動時間縮短約 1.5 秒
+- 新增 `/fork` 指令，可將目前工作階段分支為新的獨立工作階段
+
 ## 1.0.23 - 2026-04-10
 
 - 新增 `--mode`、`--autopilot` 與 `--plan` 旗標，可在啟動 CLI 時直接進入指定的 agent mode
