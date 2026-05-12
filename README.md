@@ -141,19 +141,19 @@ copilot
 
 GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。這項功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
 
-### 安裝 Language Server
+### 安裝 Language Servers
 
-Copilot CLI 不會內附 LSP 伺服器。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內附 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP 伺服器，並依照下方所示的相同模式進行設定。
+對於其他語言，請安裝對應的 LSP server，並依照下方所示的相同模式進行設定。
 
 ### 設定 LSP 伺服器
 
-LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
+LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
 
 **使用者層級設定**（適用於所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -178,9 +178,9 @@ LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者�
 }
 ```
 
-### 檢視 LSP 伺服器狀態
+### 檢視 LSP Server 狀態
 
-你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP 伺服器，或直接查看你的設定檔。
+你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接查看你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
