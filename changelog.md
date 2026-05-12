@@ -1,3 +1,11 @@
+## 1.0.46 - 2026-05-12
+
+- 當 CLI 版本已遭棄用且可能失去 premium model 存取權時，會顯示警告
+- 當 `pwsh` 是以 .NET global tool shim 安裝時，PowerShell 現在可正確啟動
+- diff 檢視中的長行現在會依終端機寬度自動換行，而不是被截斷
+- 唯讀的 gh CLI 指令（`list`、`view`、`status`、`diff` 等）現在會自動核准，不再提示使用者確認
+- 工作階段不再於回合中途因 `ERR_HTTP2_INVALID_SESSION` 錯誤而崩潰
+
 ## 1.0.45 - 2026-05-11
 
 - 新增 `/autopilot` 斜線指令，可在 interactive mode 與 autopilot mode 之間切換
