@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的威力，現在來到你的終端機。
+GitHub Copilot 的威力，現在進入你的終端機。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的 agentic harness 驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
 
 如需更多資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -16,10 +16,10 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
 - **開箱即用的 GitHub 整合：** 透過自然語言存取你的儲存庫、issues 和 pull requests，全程使用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 受益於 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來延伸能力。
-- **完整控制：** 每一個動作都能在執行前預覽，未經你明確核准，任何事情都不會發生。
+- **MCP 驅動的可擴充性：** 受益於 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
+- **完整控制：** 在執行前預覽每一個動作，未經你明確核准，任何事情都不會發生。
 
-我們的旅程仍在早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們的旅程仍在早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中的最佳夥伴。
 
 ## 📦 開始使用
 
@@ -29,7 +29,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列
 - **macOS**
 - **Windows**
 
-### 先決條件
+### 必要條件
 
 - （Windows）**PowerShell** v6 或更高版本
 - **有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
@@ -50,7 +50,7 @@ curl -fsSL https://gh.io/copilot-install | bash
 wget -qO- https://gh.io/copilot-install | bash
 ```
 
-可搭配 `| sudo bash` 以 root 身分執行，並安裝到 `/usr/local/bin`。
+使用 `| sudo bash` 可在 root 身分下執行，並安裝到 `/usr/local/bin`。
 
 將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
 
@@ -110,36 +110,36 @@ copilot
 你也可以使用已啟用 "Copilot Requests" 權限的細粒度 PAT 進行驗證。
 
 1. 前往 https://github.com/settings/personal-access-tokens/new
-2. 在 "Permissions" 下點選 "add permissions"，並選擇 "Copilot Requests"
+2. 在 "Permissions" 下，按一下 "add permissions" 並選擇 "Copilot Requests"
 3. 產生你的 token
 4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依優先順序）將 token 加入你的環境
 
 ### 使用 CLI
 
-在包含你想處理之程式碼的資料夾中啟動 `copilot`。
+在包含你想處理程式碼的資料夾中啟動 `copilot`。
 
 預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令，即可從其他可用模型中選擇，包括 Claude Sonnet 4 和 GPT-5。
 
 ### 實驗模式
 
-實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用：
+實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 啟動時加上 `--experimental` 旗標：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-啟用後，這項設定會保存到你的設定中，因此後續再次啟動時就不需要再加上 `--experimental` 旗標。
+啟用後，這項設定會保存在你的設定中，因此後續再次啟動時就不需要再加上 `--experimental` 旗標。
 
 #### 實驗功能
 
 - **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會扣減 1 次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
 如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。這項功能提供像是跳至定義、懸停資訊和診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。這項功能提供像是跳至定義、懸停資訊和診斷等智慧程式碼功能。
 
 ### 安裝 Language Servers
 
@@ -153,7 +153,7 @@ npm install -g typescript-language-server
 
 ### 設定 LSP 伺服器
 
-LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
+LSP servers 是透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
 
 **使用者層級設定**（適用於所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -182,12 +182,12 @@ LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層
 
 你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接查看你的設定檔。
 
-更多資訊請參閱 [changelog](./changelog.md)。
+如需更多資訊，請參閱 [changelog](./changelog.md)。
 
 ## 📢 回饋與參與
 
 我們很高興你在 Copilot CLI 發展的早期就加入我們。
 
-我們正在快速開發。更新會很頻繁，請讓你的用戶端保持在最新版本，以取得最新功能和修正！
+我們正在快速開發。更新會很頻繁，請讓你的用戶端保持在最新版本，以取得最新功能與修正。
 
-你的意見非常重要！歡迎在這個 repo 建立 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交保密回饋問卷！
+你的意見非常重要！歡迎在這個 repo 建立 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的回饋問卷！
