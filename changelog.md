@@ -1,3 +1,15 @@
+## 1.0.48 - 2026-05-14
+
+- Model picker 現在會為採用 token 計費的使用者顯示實際 token 價格，而不再是圓點指示
+- applyTo frontmatter 中未加引號的 glob pattern instruction 檔（例如 `applyTo: *_/*.ts`）現在可正確套用
+- 含有 CJK 字元或 emoji 的輸入文字現在渲染時不會在行與行之間出現空白間隙
+- `/context` 現在會為所有模型顯示正確的 token 限制，而不再一律顯示 128k
+- 在 prompt/headless mode 執行時，若工作區僅使用 Azure DevOps，會自動停用內建的 github-mcp-server，與 interactive mode 的行為一致
+- 終端機游標現在會正確停在輸入欄位，而不是選取分頁等裝飾元素上
+- 當目前啟用的模型變更時，ACP 用戶端會收到更新後的 config options
+- `/ask` 對話框不再提示它無法接收的後續回覆
+- 注入到模型中的 skill 內容不再包含 YAML frontmatter metadata
+
 ## 1.0.47 - 2026-05-13
 
 - `/fork` 現在接受可選名稱，且分支出的工作階段會在工作階段對話框中顯示其來源
