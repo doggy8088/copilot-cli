@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub Copilot coding agent 相同的 agentic harness 驅動，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
 
 更多資訊請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,7 +11,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列
 
 ## 🚀 介紹與概覽
 
-我們正將 GitHub Copilot coding agent 的能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機與一位理解你的程式碼與 GitHub 脈絡的 AI 代理同步協作。
+我們正將 GitHub Copilot coding agent 的能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機同步與一位理解你的程式碼與 GitHub 脈絡的 AI 代理協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，並以你現有的 GitHub 帳號完成驗證。
@@ -31,7 +31,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列
 
 ### 必要條件
 
-- (Windows) **PowerShell** v6 或更高版本
+- （Windows）**PowerShell** v6 或更高版本
 - 需要 **有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
 如果你是透過組織或企業取得 GitHub Copilot 的使用權限，而你的組織擁有者或企業管理員已在組織或企業設定中將其停用，就無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
@@ -139,9 +139,9 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。此功能提供跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。此功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
 
-### 安裝 Language Servers
+### 安裝語言伺服器
 
 Copilot CLI 不會內建 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
