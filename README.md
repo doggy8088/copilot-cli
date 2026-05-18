@@ -14,12 +14,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 我們正將 GitHub Copilot coding agent 的能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機同步與一位理解你的程式碼與 GitHub 脈絡的 AI 代理協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，全部透過你現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 和 pull requests，並使用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **MCP 驅動的可擴充性：** 善用 coding agent 預設隨附的 GitHub MCP server，並透過自訂 MCP servers 擴充能力。
 - **完整控制：** 在執行前預覽每個動作，未經你明確核准，任何事情都不會發生。
 
-我們仍處於發展初期，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最佳的夥伴。
+我們仍在發展初期，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最佳的夥伴。
 
 ## 📦 開始使用
 
@@ -52,8 +52,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可在 root 身分下執行，並安裝到 `/usr/local/bin`。
 
-將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時，預設為 `/usr/local`；
-以非 root 使用者身分執行時，預設為 `$HOME/.local`。
+將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時，預設為 `/usr/local`，以非 root 使用者身分執行時，預設為 `$HOME/.local`。
 
 將 `VERSION` 設為安裝指定版本。預設為最新版本。
 
@@ -132,7 +131,7 @@ copilot
 
 #### 實驗功能
 
-- **Autopilot mode:** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
+- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
@@ -140,7 +139,7 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。此功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。此功能提供像是跳至定義、懸停資訊和診斷等智慧程式碼能力。
 
 ### 安裝語言伺服器
 
@@ -179,7 +178,7 @@ LSP servers 是透過專用的 LSP 設定檔來設定。你可以在使用者層
 }
 ```
 
-### 檢視 LSP Server 狀態
+### 檢視 LSP 伺服器狀態
 
 你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接查看你的設定檔。
 
