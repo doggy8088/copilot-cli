@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的威力，現在就在你的終端機中。
+GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的 agentic harness 驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的 agentic harness 驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧型協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,19 +11,19 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與概覽
 
-我們將 GitHub Copilot coding agent 的威力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機、同步地與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI agent 即時協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換上下文。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 與 pull request，並透過你現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，全部透過你現有的 GitHub 帳號完成驗證。
 - **Agentic 能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 善用 coding agent 預設隨附 GitHub MCP server，並支援自訂 MCP server 以擴充能力。
+- **MCP 驅動的可擴充性：** 充分利用 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
 - **完整控制：** 執行前可預覽每一個動作，沒有任何操作會在未經你明確核准前發生。
 
 我們仍處於早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
 ## 📦 開始使用
 
-### 支援的平台
+### 支援平台
 
 - **Linux**
 - **macOS**
@@ -32,7 +32,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 ### 先決條件
 
 - （在 Windows 上）**PowerShell** v6 或更高版本
-- 一個**有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
+- 需要一個**有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
 如果你是透過組織或企業取得 GitHub Copilot 的使用權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
@@ -143,7 +143,7 @@ GitHub Copilot CLI 支援 Language Server Protocol（LSP），以增強程式碼
 
 ### 安裝 Language Servers
 
-Copilot CLI 不會內建 LSP server。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
@@ -153,7 +153,7 @@ npm install -g typescript-language-server
 
 ### 設定 LSP Servers
 
-LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP server：
+LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
 
 **使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -180,7 +180,7 @@ LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 ### 檢視 LSP Server 狀態
 
-可在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP server，或直接檢視你的設定檔。
+可在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接檢視你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
