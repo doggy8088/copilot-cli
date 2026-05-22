@@ -1,6 +1,6 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大能力，現在就在你的終端機中。
+GitHub Copilot 的威力，現在就在你的終端機中。
 
 GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的 agentic harness 驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
 
@@ -11,15 +11,15 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與概覽
 
-我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機、同步地與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
+我們將 GitHub Copilot coding agent 的威力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機、同步地與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換上下文。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 與 pull request，並透過你現有的 GitHub 帳號完成驗證。
 - **Agentic 能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 受益於 coding agent 預設內建 GitHub 的 MCP server，並支援自訂 MCP server 以擴充能力。
+- **MCP 驅動的可擴充性：** 善用 coding agent 預設隨附 GitHub MCP server，並支援自訂 MCP server 以擴充能力。
 - **完整控制：** 執行前可預覽每一個動作，沒有任何操作會在未經你明確核准前發生。
 
-我們仍處於發展初期，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們仍處於早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
 ## 📦 開始使用
 
@@ -56,7 +56,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
-例如，將 `v0.0.369` 安裝到自訂目錄：
+例如，將版本 `v0.0.369` 安裝到自訂目錄：
 
 ```bash
 curl -fsSL https://gh.io/copilot-install | VERSION="v0.0.369" PREFIX="$HOME/custom" bash
@@ -135,7 +135,7 @@ copilot
 
 每當你向 GitHub Copilot CLI 提交一則提示，你每月的 premium requests 配額就會減少一個。如需了解 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-若要了解如何使用 GitHub Copilot CLI 的更多資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Servers
 
@@ -188,6 +188,6 @@ LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 我們很高興你能在 Copilot CLI 的早期階段加入我們。
 
-我們正在快速建構中。請預期會有頻繁更新，並讓你的用戶端保持最新，以取得最新功能與修正！
+我們正快速建構中。請預期會有頻繁更新，並讓你的用戶端保持最新，以取得最新功能與修正！
 
 你的洞見非常重要！請在此儲存庫中開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交一份保密的回饋問卷！
