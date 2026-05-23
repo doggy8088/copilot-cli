@@ -1,3 +1,77 @@
+## 1.0.35 - 2026-04-23
+
+- 斜線指令現在支援參數與子指令的 Tab 補全
+- Shell escape 指令（`!`）現在在有設定 `$SHELL` 時會使用它，而不再一律呼叫 `/bin/sh`
+- CLI TUI 的遠端工作階段現在可正確顯示權限提示
+- 工作階段選擇器現在會顯示分支名稱、閒置/使用中狀態，並改進搜尋與游標支援
+- 模型變更通知現在會同時顯示先前與新的模型名稱
+- `/update` 與 `/version` 指令現在會遵循你設定的更新頻道
+- 工作階段同步提示現在使用更清楚的標籤，並說明 GitHub.com 跨裝置同步
+- 新增 `COPILOT_GH_HOST` 環境變數支援，用於設定 GitHub 主機名稱，且優先於 `GH_HOST`
+- 在補全彈出視窗（`@` 提及、路徑補全、斜線指令）中，除了 Tab 之外，現在也可按 Ctrl+Y 接受高亮選項
+- 新增 `/session delete`、`delete <id>` 與 `delete-all` 子指令，並可在工作階段選擇器中按 `x` 刪除
+- 現在支援帶有空白與特殊字元的 MCP server 名稱
+- 透過 `-i` 傳入作為初始提示的 skill 斜線指令（例如 `/skill-name`）現在可在啟動時正確識別
+- 當 `read_bash` 已回傳結果時，shell 補全通知不再重複顯示
+- `--continue` 現在會優先恢復目前工作目錄中的工作階段，而不是最近操作的工作階段
+- 狀態列腳本現在包含與模型徽章及 `/context` 輸出一致的 context window 欄位
+- 使用者設定現在儲存在 `~/.copilot/settings.json`，與 `config.json` 中的內部狀態分開
+- 可用 `--name` 為工作階段命名，並使用 `--resume=<name>` 依名稱恢復
+- Configure Copilot agent 現在在 Windows 上也能存取 shell
+- 當 Linux 缺少剪貼簿工具（`wl-clipboard` 或 `xclip`）時，會顯示含安裝說明的實用錯誤訊息
+- `lsp.json` 中的 LSP server 項目現在支援可設定的 spawn、initialization 與 warmup timeouts
+- 狀態列中的 context window 指示器現在預設隱藏
+- MCP OAuth 現在移入共用 runtime 流程，並會在移除 MCP server 時清除相關的 OAuth 狀態
+- `/usage` 新增 GitHub 風格的 contribution graph，可配合終端機色彩模式調整，並在無色彩終端機中退回為不同 glyph
+- 在 agentic loop 中可自我修正的自訂工具呼叫
+- 文字輸入中的 emoji 與多碼點字元現在可正確移動游標、刪除與渲染
+- Windows 上的工具可用性偵測現在可正確運作
+- 工作階段 token 在回合中途過期時，現在會自動處理，不需要你重新送出訊息
+- `/cwd` 與 `/add-dir` 路徑選擇器在初次使用 Tab 與方向鍵導覽時，現在會選到正確項目
+- 當 IDE 或 extension 中斷連線時，暫時性的 I/O 錯誤不再以紅色錯誤項目顯示在時間線中
+- `~/.claude/` 中的自訂 agents 與 skills 不再被錯誤載入為 Copilot 專案設定
+- 認證完成後，登入指令現在可正確恢復互動式輸入
+- 在時間線中顯示大量文字時，渲染效能有所提升
+- 在 `MULTI_TURN_AGENTS` 下，同步 task 呼叫現在會阻塞直到完成，而不會在 60 秒後自動升級為背景執行；同步模式也不再回傳可重用的 `agent_id`，後續互動請改用 `mode: "background"`
+- 分頁導覽現在支援 Home/End 鍵，可跳到第一個與最後一個分頁
+- Plugins 安裝後立即生效，不需要重新啟動
+- 新增 `continueOnAutoMode` config 選項，可在觸發 rate limit 時自動切換到 auto model，而不是暫停
+- Auto mode 在切換到不支援目前 reasoning effort 的模型時，不再報錯
+- 特定 pattern 的 instruction 檔（`.github/instructions/\*.instructions.md`）不再在每個工作階段都把完整內容納入 system prompt
+- extension 關閉錯誤不再於每次工作階段結束時以 error-level log 形成噪音
+- 當存在 LSP 設定時，LSP refactoring tools 現在會在第一回合正確註冊
+- 新增 HTTP hook 支援，可讓 hooks 將 JSON payload POST 到設定的 URL，而不是執行本機指令
+- 在時間線中隱藏 subagent 的思考內容
+- 頁尾狀態列現在會顯示自訂 agent 名稱，且可透過 `/statusline` 切換
+- 啟動對話框中按下 Escape 不再導致競態條件
+- grep 與 glob 工具現在接受多個搜尋路徑
+
+## 1.0.34 - 2026-04-20
+
+- Rate limit 錯誤訊息現在會顯示 "session rate limit"，而不是 "global rate limit"
+
+## 1.0.33 - 2026-04-20
+
+- 以 `--resume` 或 `--continue` 恢復遠端工作階段時，現在會自動沿用 `--remote` 旗標，不需要重新指定
+- 新增 `/bug`、`/continue`、`/release-notes`、`/export` 與 `/reset` 指令別名
+- 當你輸入未識別或拼錯的斜線指令時，斜線指令選擇器現在會建議相似的指令
+- 新增 `/upgrade` 作為 `/update` 指令的別名
+- 啟用內容排除政策時，`grep` 在大型儲存庫上不再逾時
+- 非互動模式現在會等待所有背景 agents 完成後才結束
+- Skill 選擇器現在可正確截斷 CJK/日文描述與長 skill 名稱，不會換行
+- 按下 Enter 時，斜線指令選擇器現在會選取高亮的指令
+- `ctrl+t` 切換 reasoning 顯示現在會列在 `/help` 與 `?` 覆蓋層中
+- auto mode 中的 sub-agents 現在會繼承工作階段模型
+- 在使用量達 50% 與 95% 時顯示限制警告，更早提示即將觸及 rate limit
+- 在 tasks 對話框中使用 `j/k` 進行 vim 風格導覽，並可按 `x` 終止任務
+
+## 1.0.32 - 2026-04-17
+
+- `--resume` 與 `/resume` 現在允許使用較短的工作階段 ID 前綴（7+ 個十六進位字元），不必輸入完整 ID
+- 當工作目錄不可寫入時，`/feedback` 會將 bundle 儲存到 `TEMP`
+- 可選擇 `auto` 作為模型，讓 Copilot 自動為每個工作階段挑選最佳可用模型
+- 新增 `--print-debug-info` 旗標，可顯示版本、終端機能力與環境變數
+
 ## 1.0.31 - 2026-04-16
 
 - Prompt frame 不再導致 Windows 與 Ubuntu 終端機出現渲染問題
