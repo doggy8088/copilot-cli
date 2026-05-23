@@ -1,3 +1,27 @@
+## 1.0.31 - 2026-04-16
+
+- Prompt frame 不再導致 Windows 與 Ubuntu 終端機出現渲染問題
+
+## 1.0.30 - 2026-04-16
+
+- 回饋表單連結現在會指向正確的 GitHub 儲存庫
+- 當無法使用 rewind（例如不在 git 儲存庫中，或尚未有任何 commits）時，`/undo` 會顯示說明訊息
+- 使用 `skills.discover` 時，plugin skills 與 commands 現在可正確被發現
+- 新增 `/statusline` 指令（以及 `/footer` 別名），可自訂狀態列中顯示的項目（directory、branch、effort、context window、quota）
+- 移除 `--list-env` 旗標；該旗標原本會在 prompt mode 中記錄已載入的 plugins、agents、skills 與 MCP servers
+- 修正 bracketed paste 處理回歸後，從剪貼簿貼上圖片再次可正常運作
+- 在所有平台上，`Ctrl+V` 與 `Meta+V` 現在都可觸發圖片貼上
+
+## 1.0.29 - 2026-04-16
+
+- Remote MCP server config 現在可省略 `type` 欄位，預設為 `http`
+- 閃爍游標現在會維持穩定寬度，不會在閃爍時導致文字位移
+- 新增 `--list-env` 旗標，可在 prompt mode 執行時記錄已載入的 plugins、agents、skills 與 MCP servers，協助在 CI pipeline 中驗證環境設定
+- 新增對 Claude Opus 4.7 的支援
+- Shell commands 與 MCP servers 現在會收到 `COPILOT_AGENT_SESSION_ID` 環境變數
+- Agent 現在會從 git remote URL 正確辨識儲存庫擁有者，而不是使用本機使用者名稱
+- Windows 上在崩潰退出後，終端機狀態現在可正確還原
+
 ## 1.0.51 - 2026-05-20
 
 - `--session-id=<id>` 可恢復已知的工作階段或任務，並可用特定 UUID 啟動新的工作階段
