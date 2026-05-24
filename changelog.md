@@ -1,3 +1,36 @@
+## 1.0.52 - 2026-05-23
+
+- 非互動式子指令（`plugin list`、`mcp list`、`help`、`version`）現在不再消耗 stdin
+- 主對話檢視現在新增可用滑鼠拖曳的垂直捲軸
+- 切換到 Autopilot mode 時，不再意外觸發工具、路徑或 URL 存取的權限提示
+- 在工作階段儲存的目錄中執行 `copilot --continue` 時，現在會重新整理儲存的分支與 git context，而不是保留過時資訊
+- kill 指令的安全過濾器不再拒絕包含 shell redirection 的合法指令，例如 `kill -0 <PID> 2>/dev/null`
+- 工作階段現在會在其儲存的工作目錄中恢復；可傳入 `-C <dir>` 來覆寫。值為相對路徑的旗標（例如 `--attachment`、`--log-dir`）會以儲存的 cwd 為基準解析。
+- Context window tier 選擇（預設約 200K 與 1M tokens）現在會端到端強制生效，因此所選 tier 會實際限制 compaction、truncation 與 token 顯示
+- 使用 Responses API 的工作階段之後，AI Credits 使用量現在會正確顯示
+- 在 Cygwin 或 mintty 上搭配 tmux 使用時，渲染不再卡頓
+- Slash command picker 在選取列時，會維持 `(experimental)` 與 `(staff)` 標籤為橘色
+- Token 使用摘要中的 reasoning tokens 現在會以括號形式顯示在 output token 數旁
+- 含有 URL/URI 欄位中非 URL 字串事件的工作階段，現在可正常恢復，不再出現 "Session file is corrupted" 錯誤
+- 因 HTTP/2 上傳停滯而逾時的請求，現在會自動以 HTTP/1.1 重試
+- 在 Windows 上，當程序以高位元 exit code 結束時（例如 .NET 未處理例外），工作階段不再無法載入
+- 展開後的時間線項目連接線顏色現在會與周圍元素一致
+- 在不支援 truecolor 的終端機中，使用者訊息後方不再出現灰色背景條
+- 狀態列指令除了可執行腳本路徑外，現在也支援一般 shell 指令
+- 啟動時現在會自動清理 `~/.copilot/logs/` 中的舊程序記錄檔，避免磁碟用量無限制成長
+- `/statusline` picker 已調整為更乾淨的項目描述與更佳間距
+- 各種 picker 的核取方塊現在改用單一字元寬度的 ▣/▢ glyph，讓列項更緊湊且一致
+- 自訂 agents 現在支援透過 agent frontmatter 中的 `deferred-tool-loading` 啟用選擇性的延遲工具載入，讓大型工具清單的 agent 可透過 tool-search 被發現
+- Exit summary 現在會以正確的間距顯示 `AI Credits` 標籤與其數值
+- `/restart` 與 `/update` 在重新啟動後會保留目前的工作階段 ID
+- MCP server 設定中舊版巢狀 `oauth.clientId` 與 `oauth.callbackPort` keys，現在會遷移為受支援的 `oauthClientId` 與 `auth.redirectPort` keys，而不是被靜默捨棄
+- MCP OAuth 重新驗證現在會遵循已設定的 `redirectPort`
+- 在 Windows 上，PowerShell 的除法運算子不再誤觸 "Allow directory access" 權限提示
+- `/compact` 現在接受可選的 focus instructions，用來塑造 compaction summary
+- 通用用途的 subagents 在可用時現在會使用 GPT-5.4 或 GPT-5.5
+- `/usage` 現在會顯示工作階段與每週限制的配額進度列
+- AI credits 錯誤訊息已更新為更清楚的措辭，並附上 Manage budget 連結
+
 ## 1.0.35 - 2026-04-23
 
 - 斜線指令現在支援參數與子指令的 Tab 補全
