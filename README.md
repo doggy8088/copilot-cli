@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列
 
 ## 🚀 介紹與概覽
 
-我們將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機、以同步方式，與能理解你的程式碼與 GitHub 情境的 AI agent 一起工作。
+我們正將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機、以同步方式，與能理解你的程式碼和 GitHub 情境的 AI agent 一起工作。
 
 - **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，不需要切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 與 pull request，並沿用你現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 和 pull request，並沿用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的擴充性：** 預設隨附 GitHub 的 MCP server，也支援自訂 MCP server 來擴充能力。
+- **MCP 驅動的擴充性：** 善用 coding agent 預設隨附 GitHub MCP server，並支援自訂 MCP server 來擴充能力。
 - **完整掌控：** 執行前可預覽每個動作，沒有任何操作會在未經你明確同意前發生。
 
 我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-首次啟動時，你會看到我們可愛的動態橫幅。如果你之後還想再次看到這個橫幅，可以使用 `--banner` 旗標啟動 `copilot`。
+首次啟動時，你會看到我們可愛的動態橫幅！如果你之後還想再次看到這個橫幅，可以使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的說明完成驗證。
 
@@ -118,7 +118,7 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中進行選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中進行選擇，包括 Claude Sonnet 4 和 GPT-5。
 
 ### 實驗模式
 
@@ -143,7 +143,7 @@ GitHub Copilot CLI 支援 Language Server Protocol (LSP)，可提升程式碼智
 
 ### 安裝 Language Servers
 
-Copilot CLI 不會內建 LSP server，你需要另外安裝。以 TypeScript 支援為例，可執行：
+Copilot CLI 不會內建 LSP servers，你需要另外安裝。以 TypeScript 支援為例，可執行：
 
 ```bash
 npm install -g typescript-language-server
@@ -153,7 +153,7 @@ npm install -g typescript-language-server
 
 ### 設定 LSP Servers
 
-LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP server：
+LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
 
 **使用者層級設定**（套用到所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -180,7 +180,7 @@ LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 ### 檢視 LSP Server 狀態
 
-在互動式工作階段中使用 `/lsp` 指令可檢查已設定的 LSP server，或直接查看你的設定檔。
+在互動式工作階段中使用 `/lsp` 指令可檢查已設定的 LSP servers，或直接查看你的設定檔。
 
 如需更多資訊，請參閱 [changelog](./changelog.md)。
 
@@ -188,6 +188,6 @@ LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 很高興你在 Copilot CLI 的早期旅程中加入我們。
 
-我們建置得很快。請預期會有頻繁更新，並請將你的用戶端保持在最新狀態，以取得最新功能與修正。
+我們建置得很快。請預期會有頻繁更新，並請將你的用戶端保持在最新狀態，以取得最新功能與修正！
 
-你的洞見非常寶貴。歡迎在這個儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷。
+你的洞見非常寶貴！歡迎在這個儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷！
