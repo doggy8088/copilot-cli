@@ -63,11 +63,12 @@ jobs:
           approval_policy = "never"
           sandbox_mode   = "danger-full-access"
 
-          profile = "aoai"
-
-          [features]
-          multi_agent = true
-          steer = true
+          model_provider          = "azure"
+          model                   = "gpt-5.4"
+          preferred_auth_method   = "apikey"
+          wire_api                = "responses"
+          model_reasoning_effort  = "high"
+          model_reasoning_summary = "detailed"
 
           #####################
           ### Azure Foundry ###
@@ -79,14 +80,6 @@ jobs:
           env_key      = "AZURE_OPENAI_API_KEY_CODEX"
           wire_api     = "responses"
           query_params = { api-version = "2025-04-01-preview" }
-
-          [profiles.aoai]
-          model_provider          = "azure"
-          model                   = "gpt-5.4"
-          preferred_auth_method   = "apikey"
-          wire_api                = "responses"
-          model_reasoning_effort  = "high"
-          model_reasoning_summary = "detailed"
           EOT
 
       - name: Run Codex to update CHANGELOG
