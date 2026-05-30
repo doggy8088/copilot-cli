@@ -1,3 +1,76 @@
+## 1.0.56 - 2026-05-29
+
+- Free 與 Student 使用者現在可在 model picker 中選擇 Auto 以外的模型
+- ThemePicker 的並排版面現在可在 120 欄寬的終端機中容納，不會換行
+- Model picker 現在會依不同計費 tier 顯示正確的總 context window 大小
+- 新增 `builtInAgents.rubberDuck` 設定，可透過 `copilot config` 啟用或停用 rubber duck agent
+- 當 Kitty keyboard protocol 無法使用時，extended key reporting 現在可在 tmux 中正確運作
+- Config 與 settings 檔案現在會以原子方式寫入，避免多個 CLI 程序同時執行時造成資料遺失
+- BYOK provider 設定現在可正確套用到 ACP 工作階段
+- 同時回傳人類可讀的 `content` 文字與 `structuredContent` payload 的 MCP 工具，現在會將兩者都提供給 agent，不再捨棄任一方。當文字是 JSON 的字面序列化結果（依 MCP spec §5.2.6）時，系統會去重；否則會將兩者串接
+- 修正 `/context` 中 small-token 圖例格式與可用空間格線的四捨五入
+- Reasoning effort picker 現在會遵循模型能力，不再顯示模型不支援的選項
+- `/env` 輸出中的檔案路徑現在會以正確格式顯示
+- 在對話時間線中，reasoning 文字現在一律顯示在 assistant 回覆上方
+- assistant 回覆在終端機時間線中的渲染，現在不會出現只剩單字的孤行
+- Diff view 現在採用連續捲動版面，具備固定的檔案與 hunk 標頭、完整終端機寬度，以及符合主題的色彩
+- `web_fetch` tool 在可用時現在會優先使用 markdown 內容，並透過 HTTP content negotiation 從文件網站取得更乾淨的結果
+- 貼上含有 tab 字元的文字後，游標現在會維持在正確位置
+- Code review agent 現在會使用與目前工作階段相同的模型，而不是固定的預設模型
+- 當 `gh` CLI 位於 PATH 中時，GitHub MCP server 現在預設會省略可由 `gh` 取代的重複工具，以降低 token 使用量
+- Context window tier 選擇現在會穩定地持久化到 session events 中，且在僅透過 SDK 的 resume 流程下也能保留，因此由 tier 衍生的限制會重新套用到 request、compaction 與 truncation 邏輯，不需要 app 層級修補
+- Remote session URL 現在會正確使用儲存庫的 owner/name，而不是字面值 'copilot'
+- Trusted folder 確認訊息現在會說明權限可能會在該工作階段中被記住
+
+## 1.0.55 - 2026-05-28
+
+- 採用 token-based billing 的 Free 與 Student 方案使用者，現在僅能選擇 Auto 模型，model picker 也會顯示說明
+- 在工作階段使用量摘要中回報 Claude thinking（reasoning）tokens
+- 新增對 Claude Opus 4.8 的支援
+- 在不受信任的資料夾中啟動時，loading spinner 不再無限卡住
+- 在 MCP server 設定表單中按下 Ctrl+S 時，會儲存最新輸入的值
+- 在 `/mcp` 中顯示各 MCP server 的 token 使用量，並在 `/context` 中拆分顯示 MCP tool tokens
+- 自訂 agents 與 skills 現在會遞迴搜尋子目錄
+- 新增 `permissions.disableBypassPermissionsMode` 設定，可防止啟用 allow-all/yolo mode
+- 更新部分訂閱方案的模型選擇行為
+- `exit_plan_mode` tool 現在只會在工作階段處於 plan mode 時提供給模型
+- Native binary 當機（例如 `SIGSEGV`）時，現在會改由 JavaScript fallback 接手，而不是靜默退出
+- 新增 `/autopilot <objective>`，讓 autopilot 維持聚焦，並以 `/goal` 作為別名
+- 當 `pwsh.exe` 透過 Microsoft Store App Execution Alias 安裝時，現在可正確偵測 PowerShell 7
+- 含有零大小 CAPI billing batches 的工作階段現在可正確恢復
+- Cell-based terminal renderer 現在預設對所有使用者啟用
+- 當 remote controlled sessions 被組織政策停用時，現在會顯示警告
+- Extension log files 現在會依 extension 分別擷取，並在 `extensions_manage` tool 中提供，以協助診斷失敗原因
+- `.github/extensions` 中的專案 extensions 現在可在非 git（folder-backed）工作區中被發現
+- 當 agent 正在執行時，現在也可執行 `/statusline` 與 `/theme` 指令
+- MCP 設定現在會在獨立畫面中開啟，當內容超出可視區域時，可捲動檢視 server 與 tool 清單
+- Hook 進度串流現在會在時間線中顯示長時間執行 hooks 的即時狀態訊息
+- 在 `session.create` 與 `session.resume` RPC 中新增 `pluginDirectories`：SDK client 現在可為每個工作階段掛載 Open Plugins 格式目錄
+- 現在可直接從工作階段選擇器刪除 remote sessions
+- 當新增項目時，schedule manager hint bar 文字不再換行超出對話框邊界
+- `copilot update` 與 `copilot version` 現在會對 release API 請求進行驗證，以避免共享 NAT 環境中的 rate limit 錯誤
+- 在 unstaged 與 branch diff 模式間切換時，Diff view 的鍵盤快捷提示現在會正確顯示
+- 在不支援 `wlr-data-control` 的 Wayland compositor（例如 GNOME/Mutter）上，剪貼簿貼上現在可正確運作
+- Interactive shell tool 現在會保留父終端機的色彩設定，讓 diff 工具與其他程式可完整顯示色彩
+- 具有可選 object input schemas 的 canvas tools，現在可正確開啟，不再出現驗證錯誤
+- 當 extension 子程序是由較舊的 CLI 版本 fork 出來時，不再因 "Invalid command format" 而失敗
+- 當較舊的 CLI 版本留下 legacy snake_case keys 時，settings migration 現在會保留使用者資料
+- 從 marketplace 新增 plugins 時，現在支援 `owner/repo#ref` 語法
+- Feedback 對話框與 `/skills` 說明文字，現在使用與 Copilot 一致的 log 路徑與術語
+- 進度指示器現在可原生整合 tmux 3.6b pane progress state
+- `--plugin-dir` 載入的 skills，現在會優先於個人家目錄（`~/.copilot`、`~/.agents`）中同名的 skills。順序現為 project > plugin-dir > personal > custom。
+- 當 remote controlled sessions 被組織政策停用時，現在會顯示實用的提示訊息
+- 現在所有使用者的工作階段 token 摘要都會顯示 reasoning token 數量
+- 除非在 config 中明確啟用，否則工作回合完成時終端機鈴聲不再響起
+- `/resume` picker 不再為尚未送出訊息就關閉的工作階段顯示空白列
+- 當 Task tool agents 正在執行時，中止工作階段不再讓 UI 卡在 Cancelling 狀態
+- `vote_memory` tool 呼叫現在會依每次回覆與每次互動進行節流，避免失控的投票暴增
+- 當滑鼠選取拖曳超過時間線頂部時，現在會自動向上捲動
+- 在 Windows 上，剪貼簿現在可正確複製 CJK 與增補平面 Unicode 字元
+- 提升所有色彩主題中選取背景的對比，以增加可見度
+- `/env` 現在會顯示已載入的 extensions，以及其狀態與來源
+- 當 CLI 以 single-executable application（SEA）執行時，extensions 現在可正確啟動
+
 ## 1.0.54 - 2026-05-24
 
 修正與變更
