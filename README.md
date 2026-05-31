@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列
 
 ## 🚀 介紹與概覽
 
-我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與理解你程式碼與 GitHub 情境的 AI 代理協作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與理解你程式碼及 GitHub 情境的 AI 代理協作。
 
-- **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，不需要在不同工具間切換情境。
+- **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，不需要切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並直接沿用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的擴充性：** coding agent 預設內建 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充能力。
+- **由 MCP 驅動的擴充性：** 善用 coding agent 預設搭載 GitHub MCP server，並支援自訂 MCP server 來擴充能力。
 - **完整控制：** 在執行前預覽每一個動作，沒有你的明確批准就不會執行任何操作。
 
 我們仍處於發展初期，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
+第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入此指令並依照畫面上的說明完成驗證。
 
@@ -118,7 +118,7 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
@@ -188,6 +188,6 @@ LSP 伺服器是透過專用的 LSP 設定檔進行設定。你可以在使用�
 
 很高興你能在 Copilot CLI 的早期階段加入我們。
 
-我們正快速開發中。請預期會有頻繁更新，並請讓你的用戶端保持最新，以取得最新功能與修正。
+我們正在快速開發中。請預期會有頻繁更新，並請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的見解非常重要。請在此儲存庫中開啟 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷。
+你的見解非常重要。請在此儲存庫中開啟 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷！
