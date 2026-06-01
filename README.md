@@ -11,13 +11,13 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與概覽
 
-我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與理解你程式碼及 GitHub 情境的 AI 代理協作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
 - **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，不需要切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並直接沿用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的擴充性：** 善用 coding agent 預設搭載 GitHub MCP server，並支援自訂 MCP server 來擴充能力。
-- **完整控制：** 在執行前預覽每一個動作，沒有你的明確批准就不會執行任何操作。
+- **由 MCP 驅動的擴充性：** 善用 coding agent 預設搭載 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
+- **完整控制：** 在執行前預覽每一個動作，沒有你的明確批准就不會發生任何事。
 
 我們仍處於發展初期，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
@@ -101,16 +101,16 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
+第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
-如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入此指令並依照畫面上的說明完成驗證。
+如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入此指令並依照畫面上的說明完成驗證。
 
-#### 使用 Personal Access Token（PAT）驗證
+#### 使用 Personal Access Token (PAT) 進行驗證
 
-你也可以使用已啟用「Copilot Requests」權限的細粒度 PAT 進行驗證。
+你也可以使用已啟用 "Copilot Requests" 權限的細粒度 PAT 來進行驗證。
 
 1. 前往 https://github.com/settings/personal-access-tokens/new
-2. 在「Permissions」下，點選「add permissions」並選擇「Copilot Requests」
+2. 在 "Permissions" 下，點選 "add permissions" 並選擇 "Copilot Requests"
 3. 產生你的權杖
 4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依此優先順序）將權杖加入你的環境
 
@@ -118,14 +118,14 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
 實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
-- 在 CLI 中使用 `/experimental` slash command
+- 在 CLI 中使用 `/experimental` 斜線指令
 
 啟用後，這項設定會持久化儲存在你的設定中，因此後續啟動時不再需要 `--experimental` 旗標。
 
@@ -139,7 +139,7 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更強的程式碼智慧功能。這項功能可提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。這項功能可提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
 
 ### 安裝語言伺服器
 
@@ -188,6 +188,6 @@ LSP 伺服器是透過專用的 LSP 設定檔進行設定。你可以在使用�
 
 很高興你能在 Copilot CLI 的早期階段加入我們。
 
-我們正在快速開發中。請預期會有頻繁更新，並請讓你的用戶端保持最新，以取得最新功能與修正！
+我們正在快速開發中。請預期會有頻繁更新，並請讓你的用戶端保持最新，以取得最新功能與修正。
 
 你的見解非常重要。請在此儲存庫中開啟 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷！
