@@ -1,3 +1,37 @@
+## 1.0.57 - 2026-06-01
+
+- 當 `copilot update` 期間觸發 GitHub API rate limit 時，現在會顯示可採取行動的錯誤訊息
+- 外掛斜線指令（`/plugin install`、`uninstall`、`update`、`marketplace add/remove/browse`）現在會在操作進行中立即顯示回饋
+- 取消執行中的 shell 指令（對 `!command` 按 `Ctrl+C`，或中止 agent 指令，包括 sandboxed 與升級為背景執行的 shells）現在會終止整個程序樹，不再留下孤兒程序
+- Canvas providers 現在可在 open 結果中回傳 `file://` URLs，用於本機檔案預覽
+- `/cwd` 補全建議現在會顯示符號連結目錄
+- 在僅使用 Azure DevOps 的儲存庫中，內建 GitHub MCP server 現在只會暴露 `web_search` tool，而不會被完全停用
+- 配額頁尾現在會以四捨五入的百分比顯示剩餘 requests
+- 當從子目錄啟動 CLI 時，`/lsp show`、`/lsp test` 與 `/lsp reload` 現在可正確發現專案的 LSP 設定
+- MCP server timeout 設定在 tools 清單變更後仍會保留
+- `/skills add` 與 `/skills remove` 現在可正確處理被引號包住的路徑（例如 Windows Explorer 的 "Copy as path"）
+- 以未加引號的多字提示執行 `copilot` 時，現在會顯示實用的 "quote your prompt" 提示，而不是原始的 commander 錯誤
+- 預設網路傳輸現在改為 HTTP/1.1，在某些網路路徑上可靠性更好。若要啟用 HTTP/2，請設定 `COPILOT_ENABLE_HTTP2=1`。
+- 從儲存庫設定自動安裝的外掛不再洩漏到使用者全域 config
+- Grep tool 現在可正確將 `tsx` 與 `jsx` 作為檔案類型篩選條件處理
+- `COPILOT_HOME` 現在會正確套用於 server discovery registry 目錄
+- 在 diff mode 中可用滑鼠點擊 diff 行來選取
+- `Ctrl+C` 與其他修飾鍵現在可在 tmux 中正確運作
+- `@` 提及的檔案搜尋現在不區分查詢字母大小寫
+- `copilot plugin marketplace list` 現在會遵循 `.github/copilot/settings.json` 中儲存庫層級的 `extraKnownMarketplaces` 設定
+- 頁尾中的排隊提示現在限制為單行，避免把工作階段訊息擠出畫面
+- 設定為 `npx --registry` 的 MCP servers 不再被政策誤判封鎖
+- 內部事件處理出錯後，工作階段不再無限卡住
+- 已安裝外掛不再包含外掛來源儲存庫中的 `.git` 目錄
+- 工具呼叫之後的新 reasoning 現在會顯示在時間線底部，而不是插在較早輸出的上方
+- 貼上從瀏覽器、編輯器或終端機複製的文字時，不再留下多餘空白行、破損的 box-drawing 線條，或讓提示區游標跑到錯誤位置
+- `preToolUse` hook 錯誤現在會拒絕工具呼叫，而不是靜默允許執行
+- 當工作階段記錄因崩潰留下部分資料時，現在仍可正確恢復工作階段
+- 高對比 diff 背景現在採用更深的顏色，以提升文字可讀性
+- 新增 `showTipsOnStartup` 設定，用來控制是否顯示啟動提示
+- 當 SDK auth-token 驗證失敗時，現在會顯示底層原因（例如 GitHub API rate limit），而不是誤導性的 "Session was not created with authentication info or custom provider" 訊息。
+- 當沒有 unstaged changes 時，`/diff` 現在預設為 branch diff
+
 ## 1.0.56 - 2026-05-29
 
 - Free 與 Student 使用者現在可在 model picker 中選擇 Auto 以外的模型
