@@ -1,3 +1,31 @@
+## 1.0.59 - 2026-06-02
+
+- 當 `copilot update` 期間觸發 GitHub API rate limit 時，現在會顯示可採取行動的錯誤訊息
+- 新增 `/rubber-duck` 指令，可對程式碼與設計提供挑戰性的回饋
+- 外掛斜線指令（`/plugin install`、`uninstall`、`update`、`marketplace add/remove/browse`）現在會在操作進行中立即顯示回饋
+- 取消執行中的 shell 指令（對 `!command` 按 `Ctrl+C`，或中止 agent 指令，包括 sandboxed 與升級為背景執行的 shells）現在會終止整個程序樹，不再留下孤兒程序
+- Canvas providers 現在可在 open 結果中回傳 `file://` URLs，用於本機檔案預覽
+- `/cwd` 補全建議現在會顯示符號連結目錄
+- 在僅使用 Azure DevOps 的儲存庫中，內建 GitHub MCP server 現在只會暴露 `web_search` tool，而不會被完全停用
+- 配額頁尾現在會以四捨五入的百分比顯示剩餘 requests
+- 當從子目錄啟動 CLI 時，`/lsp show`、`/lsp test` 與 `/lsp reload` 現在可正確發現專案的 LSP 設定
+- MCP server timeout 設定在 tools 清單變更後仍會保留
+- `/skills add` 與 `/skills remove` 現在可正確處理被引號包住的路徑（例如 Windows Explorer 的 "Copy as path"）
+- 以未加引號的多字提示執行 `copilot` 時，現在會顯示實用的 "quote your prompt" 提示，而不是原始的 commander 錯誤
+- 預設網路傳輸現在改為 HTTP/1.1，在某些網路路徑上可靠性更好。若要啟用 HTTP/2，請設定 `COPILOT_ENABLE_HTTP2=1`。
+- 從儲存庫設定自動安裝的外掛不再洩漏到使用者全域 config
+- Grep tool 現在可正確將 `tsx` 與 `jsx` 作為檔案類型篩選條件處理
+- 新增 `/voice` 指令，可使用本機 speech-to-text models 來口述提示
+- `COPILOT_HOME` 現在會正確套用於 server discovery registry 目錄
+
+## 1.0.58 - 2026-06-02
+
+- Rubber Duck 現在預設啟用
+- Remote JSON RPC 現在預設啟用
+- 實驗性的 `/every` 與 `/after` 排程提示
+- 實驗性的全新 GitHub TUI 主題
+- 實驗性的全新 UI，可更輕鬆存取 issues、pull requests 與 gists
+
 ## 1.0.57 - 2026-06-01
 
 - 當 `copilot update` 期間觸發 GitHub API rate limit 時，現在會顯示可採取行動的錯誤訊息
