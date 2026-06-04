@@ -1,3 +1,138 @@
+## 1.0.48 - 2026-05-14
+
+- 對採用 token-based billing 的使用者，model picker 現在會顯示實際 token 價格，而不是點狀指示器
+- `applyTo` frontmatter 中未加引號的 glob patterns 指令檔案（例如 applyTo: \*_/_.ts）現在可正確套用
+- 含有 CJK 字元或 emoji 的輸入文字，現在渲染時不會在行與行之間出現空白間隙
+- `/context` 現在會針對所有模型顯示正確的 token 上限，而不再一律顯示 128k
+- 在僅使用 Azure DevOps 的工作區中於 prompt/headless mode 執行時，現在會自動停用內建 `github-mcp-server`，與互動模式行為一致
+- 終端機游標現在會正確定位在輸入欄位，而不是選取分頁等裝飾元素上
+- 當變更目前模型時，ACP clients 現在會收到更新後的 config options
+- `/ask` 對話框不再要求它無法接收的後續回覆
+- 注入模型的 skill 內容不再包含 YAML frontmatter metadata
+
+## 1.0.47 - 2026-05-13
+
+- `/fork` 現在接受可選名稱，且 fork 出來的工作階段會在 sessions 對話框中顯示其來源
+- Copilot Max 訂閱者現在會看到其訂閱 tier 可用的正確模型
+- 支援在 `/diff` 檢視中使用 `j/k` 鍵上下導覽
+- `--resume` 現在支援 Copilot cloud agent 工作階段，即使 agent 尚未將任何變更推送到其 branch
+
+## 1.0.46 - 2026-05-12
+
+- 當 CLI 版本已被淘汰且 premium model 存取可能喪失時，現在會顯示警告
+- 當 `pwsh` 以 .NET global tool shim 安裝時，PowerShell 現在可正確啟動
+- `diff` 檢視中的長行現在會依終端機寬度換行，而不是被截斷
+- 唯讀的 `gh` CLI 指令（list、view、status、diff 等）現在會自動核准，不再提示使用者確認
+- 工作階段不再因 `ERR_HTTP2_INVALID_SESSION` 錯誤而在回合中途崩潰
+
+## 1.0.45 - 2026-05-11
+
+- 新增 `/autopilot` 斜線指令，用來在 interactive 與 autopilot modes 之間切換
+- 當 Windows 上無法使用 PowerShell 7+ (`pwsh`) 時，會回退使用 Windows PowerShell (`powershell.exe`)
+- OpenTelemetry 輸出現在符合 GenAI semantic conventions：MCP 工具呼叫改用標準 `tool_call` spans，並新增 `gen_ai.client.operation.duration` metric 以追蹤工具執行時間
+- 具有 extension 權限提示的工作階段現在可恢復，不再出現 "Session file is corrupted" 錯誤
+- 當 agent 透過 `task_complete` 停止時，`agentStop` hook 現在會正確觸發
+- 在 OSC 色彩查詢支援有限的終端機上，CLI 啟動更快，最多可縮短約 1.5 秒的啟動時間。
+- 新增 `/fork` 指令，可將目前工作階段分岔成新的獨立工作階段
+
+## 1.0.44 - 2026-05-08
+
+- `/add-dir` 中的路徑補全不再閃爍，也不再被 `@` 與 `#` 選擇器攔截
+- 斜線指令現在可出現在輸入內容中段，且可在單一訊息中呼叫多個 skills
+- `userPromptSubmitted` hooks 現在可直接處理請求，繞過 LLM 並在不發出 model call 的情況下回傳回應
+- 多帳號使用者的 `/user list` 與 `/user switch` 更快
+- 新增可選 `prerelease` 參數給 `copilot update` 與 `/update`，可取得最新 prerelease build
+- 透過 `!` 前綴執行的 shell commands 現在可在各種 shell 設定下正確運作
+- Shell aliases 與 rc file 設定現在也會在 `!` 指令中生效
+- 配額顯示現在會正確呈現 Free 使用者的剩餘用量，而不是一律顯示已用 100%
+- 在 autopilot mode 中授予的工具權限會在 `/clear` 後保留
+- 當透過 `/model` picker 切換模型時，effort level 現在會正確套用
+- 當權限提示尚在等待時按下 `Ctrl+C`，CLI 不再卡住
+- 當沒有結果相符時，project info 仍會顯示在 slash command picker 中
+- `settings.json` 中無效的 URL 項目不再導致 CLI 啟動崩潰，且會以警告略過
+- 時間線現在會顯示 rubber-duck sub-agents 解析後的模型名稱（例如 `Rubber-duck(claude-opus-4.7)`）
+
+## 1.0.43 - 2026-05-06
+
+- 新增 username 切換項到 `/statusline` picker，可在頁尾顯示目前帳號
+- Auto mode 現在使用 server-side model routing，以改善即時模型選擇
+- 當多個工作階段同時存在時，resume prompt 現在會顯示正確的工作階段名稱
+- 防範專案內巢狀惡意 bare repositories 所造成的 RCE
+- MCP server child processes（例如由 `npx` 或 `uvx` 啟動）現在會在工作階段結束時完整終止
+- 執行 update 指令時，現在會顯示下載進度
+
+## 1.0.42 - 2026-05-06
+
+- 當 server 名稱包含空白時，MCP server failure warning 現在會建議可直接執行的 `/mcp show` 指令
+- MCP server failure warnings 現在包含 stderr 輸出，協助診斷連線錯誤
+- 新增 `-C <directory>` 旗標，可在啟動前切換工作目錄，類似 `git -C`
+- 結束訊息中的 resume 指令，當工作階段尚未重新命名時，現在會顯示 session ID 而非自動產生的名稱
+- Remote session export 現在支援非 GitHub repositories 與沒有 repository 的目錄
+- 選擇 "Go back" 後，恢復工作階段不再錯誤顯示 "session in use" 警告
+- 取消請求後，Enter 鍵不再永久卡住
+- 當工作階段沒有使用者訊息且沒有可恢復的已儲存工作階段時，現在會隱藏 exit summary
+- 當套件解壓過程中出現暫時性 `EPERM` 時，Windows 上的 CLI 更新不再因 `ENOENT` 失敗
+- 新增給 GPT 工作階段使用、由 Claude 驅動的 rubber-duck agent（可於 `/experimental` 使用）
+
+## 1.0.41 - 2026-05-05
+
+- CLI 現在會先立即渲染 UI，再於背景處理驗證，因此啟動更快
+- Shell completions（bash、zsh、fish）現在會在首次執行時自動安裝，並在 `copilot update` 後更新
+- 對接受參數的斜線指令執行 Tab 補全時，現在會自動加入尾隨空白
+- 當防毒軟體或檔案系統鎖導致暫時性 `EPERM` 錯誤時，Windows 上的套件解壓不再崩潰
+- Remote session 連線錯誤現在會顯示你已登入的帳號與對應的修復步驟
+- `ask user` prompt 問題現在可渲染 Markdown 格式
+- 新增實驗性 MCP Tasks 支援：帶有 `taskSupport: "required"` 的 MCP 工具會以非阻塞背景 agent 執行，並可透過 `list_agents` 與 `read_agent` 追蹤（需啟用 experimental mode，例如 `/experimental on` 或 `--experimental` 旗標）
+- Extensions 現在會在 prompt mode (`-p`) 載入。User extensions 預設會載入；project extensions 與 management tools 則需要 `GITHUB_COPILOT_PROMPT_MODE_EXTENSIONS=true`。
+- assistant 回覆不再包含多餘的系統通知 XML tags
+- 大型輸出提示現在會正確引用已設定的 grep tool 名稱
+- 使用 git SSH URL（例如 `git@github.com:owner/repo`）新增 plugin marketplace 現在可正確運作
+- Slash command picker 現在會搜尋指令描述，並為匹配字元加上底線
+- Memory 工具的確認提示現在會在請求儲存記憶時顯示 scope（repository 或 user）
+- SQL todo 時間線項目現在會更準確顯示 `INSERT OR IGNORE/REPLACE` 與 blocked 狀態更新
+- Streaming text 與 shimmer animations 在緩慢或高負載主機上仍能保持平順
+- 新增 `--attachment` 旗標於 non-interactive (`-p/--prompt`) mode，可將檔案（圖片或原生文件）附加到初始提示
+- `@` 提及補全現在支援 `./` 路徑、不再在目錄後加入尾隨空白，且會先顯示 project files 再顯示 workspace roots
+- 透過繞過 Node 24.x 中的 V8 crash，改善 Windows 穩定性
+- 含有 Unicode line separator characters 的 session files 現在可正確載入
+- Reasoning effort picker 的提示文字現在會以正確間距顯示 "Esc to cancel"
+- 透過更妥善地從模糊或錯位的 edit blocks 中恢復，提升檔案編輯可靠性
+
+## 1.0.40 - 2026-05-01
+
+- 不受模型名稱長度影響，頁尾中的 PR branch 裝飾現在會正確顯示
+- `/clear` 與 `/new` 現在會重設目前啟用的自訂 agent 選擇
+- assistant 回覆現在會以更平順的文字串流輸出
+- 執行 `copilot plugin update` 後，`copilot plugin list` 現在會顯示正確版本
+- 新增對 MCP servers 的 `client_credentials` OAuth grant type 支援，可在無瀏覽器情況下完成完全 headless 的驗證
+- Subagents 現在會依其自身模型正確判斷 tool search 支援，而不再繼承父工作階段的設定
+- 切換到 `/new` 或 `/resume` 的新工作階段時，不再把待處理訊息帶過去
+- 傳送大型檔案附件時，CLI 不再以 100% CPU 卡住
+- Resume session picker 不再為同一個 Mission Control-backed 工作階段顯示重複項目
+- Session resume selector 現在會以單行顯示摘要，並截斷以符合欄寬
+- 在 prompt mode 中按下 `Ctrl+C` 時，會立即將 "Exiting…" 輸出到 stderr，讓關閉進度可見
+- `/research` 現在使用 orchestrator/subagent 模型，以產生更完整且更可靠的 deep research 結果
+- Autopilot mode 現在預設最多只會送出 5 則 continuation messages（可用 `--max-autopilot-continues` 設定）
+- Auto-update 期間現在會自動清理磁碟上的舊 CLI 套件版本
+- Remote session statusline 現在會顯示遠端工作目錄與 branch，而不是本機 context
+- `/update` 重啟後不再重新提交原本的 `-i` prompt
+- 會偵測 Azure DevOps repositories 並自動停用 GitHub MCP server
+- Session history、file tracking 與 `/chronicle` 指令現已開放給所有使用者
+- Skills 現可在 ACP clients 中作為斜線指令使用，與 CLI 體驗一致
+- 在先前 CLI 程序意外退出後，恢復工作階段不再誤報為使用中
+- `--config-dir` 現在會正確傳遞到 plugin 子指令；`--config-dir` 已棄用，改以 `COPILOT_HOME` 取代
+- 當 `/ask` 回應對話框開啟時，滑鼠選取仍可使用，因此其內容可被高亮與複製
+- 透過非同步載入自訂 CA 憑證，提升 CLI 啟動速度
+- Remote control 連結現在會在時間線中顯示完整 URL，而不是 'Open in browser'
+- ACP clients（例如 Zed）現在可在 agent 執行多步驟任務時顯示其即時計畫
+- 在 statusline picker 中新增自訂 `statusLine.command` 可見性的切換選項
+- ACP clients 現在可透過 agent config option 列出並切換自訂 agents
+- 當多個 servers 共用相同 URL 但使用不同靜態 OAuth client IDs 時，MCP OAuth tokens 現在可正確快取
+- 含有點號或其他無效字元的 MCP 工具名稱現在會被正確清理
+- `Ctrl+C` 與連按兩次 Esc 現在會一次移除一則待處理訊息，而不是全部清空
+- Slash command suggestions 現在會將前綴匹配排在模糊匹配之前
+- Prompt mode (`-p`) 現在預設以安全為先，會將 repo hooks 與 workspace MCP 置於需顯式啟用的環境變數之後（`GITHUB_COPILOT_PROMPT_MODE_REPO_HOOKS` 與 `GITHUB_COPILOT_PROMPT_MODE_WORKSPACE_MCP`）
+
 ## 1.0.59 - 2026-06-02
 
 - 當 `copilot update` 期間觸發 GitHub API rate limit 時，現在會顯示可採取行動的錯誤訊息
