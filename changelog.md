@@ -1,3 +1,120 @@
+## 1.0.54 - 2026-05-24
+
+修正與變更
+
+## 1.0.53 - 2026-05-24
+
+- 多行提示現在會完整顯示，不再出現內容被裁切或選取偏移
+- `/skills` 選擇器在儲存 skill 偏好設定時，現在會正確遵循 `--config-dir`
+- 當環境中設定了 `PS0` 或 `PROMPT_COMMAND` 時，Bash shell 工作階段不再卡住
+
+## 1.0.52 - 2026-05-23
+
+- 非互動式子命令（`plugin list`、`mcp list`、`help`、`version`）不再消耗 stdin
+- 主對話檢視新增可用滑鼠拖曳的垂直捲軸
+- 切換到 Autopilot mode 時，不再意外觸發工具、路徑或 URL 存取的權限提示
+- 在工作階段的已儲存目錄中執行 `copilot --continue` 時，現在會更新已儲存的 branch 與 git context，而不會保留過期資訊
+- kill 指令的安全性篩選不再拒絕含有 shell 重新導向的合法指令，例如 `kill -0 <PID> 2>/dev/null`
+- 工作階段現在會在原本儲存的工作目錄中恢復；傳入 `-C <dir>` 可覆寫。值為相對路徑的旗標（例如 `--attachment`、`--log-dir`）會以儲存的 cwd 為基準解析。
+- Context window tier 選擇（預設約 200K 與 1M tokens）現在會端到端強制套用，因此選擇 tier 之後，會實際限制 compaction、truncation 與 token 顯示
+- 使用 Responses API 的工作階段後，AI Credits 用量現在會正確顯示
+- 在 Cygwin 或 mintty 上搭配 tmux 使用時，渲染不再卡頓
+- 當 slash command 選擇器中的列被選取時，`(experimental)` 與 `(staff)` 標籤會維持橘色
+- 在 token usage 摘要中，reasoning tokens 現在會以輸出 token 數量後方的括號形式顯示
+- 若工作階段包含在 URL/URI 欄位中帶有非 URL 字串的事件，現在仍可恢復，不再出現 "Session file is corrupted" 錯誤
+- 因 HTTP/2 上傳停滯而逾時的請求，現在會自動改用 HTTP/1.1 重試
+- 當程序以高位元 exit code 結束時（例如 .NET 未處理例外），工作階段在 Windows 上不再載入失敗
+- 展開時間線項目時，其連接線顏色現在會與周圍元素一致
+- 在不支援 truecolor 的終端機上，使用者訊息後方不再出現灰色背景條
+- 狀態列指令除了可執行腳本路徑外，現在也支援一般 shell 指令
+- 啟動時會自動清除 `~/.copilot/logs/` 中舊的程序記錄檔，避免磁碟無限制成長
+- `/statusline` 選擇器經過潤飾，項目描述更精簡、間距更佳
+- 選擇器核取方塊現在改用單一字元的 ▣/▢ 字形，讓各選擇器中的列更緊湊且一致
+- 自訂 agents 現在支援透過 agent frontmatter 中的 `deferred-tool-loading` 啟用選擇性延後載入工具，讓擁有大量工具清單的 agents 可使用 tool-search discovery
+- Exit summary 現在會以正確間距顯示 `AI Credits` 標籤與數值
+- `/restart` 與 `/update` 在重新啟動後，現在會保留目前工作階段 ID
+- MCP server 設定中的舊版巢狀 `oauth.clientId` 與 `oauth.callbackPort` keys，現在會遷移到受支援的 `oauthClientId` 與 `auth.redirectPort` keys，而不再被靜默捨棄
+- MCP OAuth 重新驗證現在會遵循已設定的 `redirectPort`
+- PowerShell 除法運算子在 Windows 上不再誤觸 "Allow directory access" 權限提示
+- `/compact` 現在接受可選的 focus instructions，用來塑造 compact summary 的重點
+- 通用型 subagents 在可用時，現在會使用 GPT-5.4 或 GPT-5.5
+- `/usage` 現在會顯示 session 與每週限制的 quota progress bars
+- AI credits 錯誤訊息已更新為更清楚的文字，並附上 Manage budget 連結
+
+## 1.0.51 - 2026-05-20
+
+- `--session-id=<id>` 現在可恢復已知工作階段或 tasks，也可用指定 UUID 啟動新工作階段
+- `/remote` 指令現在會遵循組織的 remote control 與從雲端檢視政策，停用時會顯示明確錯誤
+- agent 執行工作時，現在也可使用 `/remote` 指令
+- 終端機頁尾中的可自訂狀態列現在會顯示 model、context window、git branch 等工作階段資訊
+- 對於設定了大量 HTTP 型 MCP servers 的使用者，啟動時載入 MCP tools 的速度更快
+- 更新設定時，settings 檔案不再累積不相關的 config keys
+- 新增 `/security-review` 斜線指令，可檢查程式碼變更中的安全性漏洞
+- 新增 `preMcpToolCall` hook，讓 hook providers 可控制送出的 MCP request metadata
+- 新增 `/chronicle cost-tips` 子命令，可提供個人化的 token 使用與成本降低建議
+- 使用 OAuth 的 MCP servers，若驗證是在另一個工作階段中完成，現在仍可維持連線
+- 清單項目內的 GFM tables 與 blockquotes 現在會正確渲染，不再出現浮動的上邊框
+- 實驗模式指示器現在會持續顯示在應用程式標頭中，而不再只是一次性的通知
+- 載入指示器顏色現在會與目前模式（plan、autopilot、shell）一致
+- 使用量計費使用者的工作階段命名現在可正確運作
+- 在反白的子命令補全項上按 Enter，現在會插入選取內容，而不是提交部分指令
+- 發布 release 時若沒有 changelog 項目，現在會使用預設 release notes
+- 透過 `Ctrl+G` 啟動的編輯器不再搶走按鍵輸入，也不再需要按兩次鍵
+- `/memory show` 現在會顯示文件連結，方便了解與管理 Copilot Memory
+- 新增 `terminalProgress` 設定，可啟用或停用 OSC 9;4 終端機進度指示器
+- `postToolUse` hooks 現在可將額外的 `additionalContext` 注入成功的工具結果
+- 只有在透過 `--remote` 明確要求 remote mode，或使用者設定已啟用時，才會顯示 remote session 啟動失敗
+- 即使模型省略 `description` 參數，shell tool calls 現在仍可成功執行
+- 確保 input token 用量包含 cached tokens，並更新 token 格式以讓顯示更清楚
+- 當 token 儲存退回到不安全的純文字 config 檔案時，登入提示現在會更明確地提出警告
+- GitHub MCP web search tool 現在可立即使用，不再需要先執行 tool search
+- Secret scanning 現在也涵蓋 commit messages 與 PR descriptions，並會在發佈前遮蔽 secrets
+- 輸入區會隨終端機高度自適應增長，不再限制最多 3 行
+
+## 1.0.49 - 2026-05-18
+
+- `postToolUse` hook 的 additionalContext 現在會以 system message 注入給模型，而不再被靜默捨棄
+- 當輸入內容包含寬字元（CJK、emoji）時，滑鼠點擊提示區現在可正確定位游標
+- 新增 `/chronicle search` 子命令，可依關鍵字或主題搜尋所有工作階段內容
+- `/user switch` 現在會重用已抓取的使用者清單，首次開啟時會顯示 loading spinner
+- 使用靜態 OAuth clients 的 MCP servers，現在可正確持久保存註冊資訊以供 token refresh
+- 新增對 Alpine Linux（musl libc）的 CLI 執行支援
+- 新增 `/exit print` 選項，可在退出前將工作階段內容輸出到終端機
+- 新增 `/rubber-duck` 指令，可對 agent 目前的工作提出獨立評論
+- 新增 `/session id` 子命令，可顯示目前工作階段 ID 並複製到剪貼簿
+- 新增 MCP server 的 `auth.redirectPort` config option，可將 OAuth callback 固定在特定埠號
+- 新增 `/memory on|off|show` 斜線指令，可啟用、停用或查看 memory 狀態（持久化）
+- 新增 `copilot plugin update --all`，可一次更新所有已安裝的 plugins
+- 新增 `/rubber-duck` 指令，可呼叫 rubber duck agent 進行獨立評論（實驗性）
+- 輸入提示在空白時現在會收合為單行，並在輸入時自然增長
+- 所有編輯型工具類型的檔案 diff，現在都可正確回報給 ACP clients
+- 當資料夾已受信任時，`.github/hooks/` 中的 repo hooks 現在會在 prompt mode（`-p`）載入
+- 修正時間線項目中的多餘空行
+- 在未使用 UTF-8 code page 的 Windows 終端機上，box drawing 與 block 字元現在可正確顯示
+- 未設定 `args` 欄位的 MCP server 設定現在可被接受，並視為空的 args 清單
+- 文件附件路徑現在會納入 context，讓 agent 可參照貼上的檔案路徑，包括 Windows 的 Copy as path 輸入
+- MCP stdio servers 現在會將型別顯示為 `stdio`，而不是 `local`，以保持一致
+- 進度條指示器現在可在 tmux 工作階段中正確顯示
+- 實驗性斜線指令現在會在 help 對話框與指令選擇器中標註為 "(experimental)"
+- 若有提供較小的平台專屬套件，auto-update 現在會下載它，而不是通用套件
+- assistant 回覆中的 GitHub issue 與 PR 參照（`owner/repo#number`）現在會自動連結
+- Prompt mode（`-p`）在目前資料夾已受信任時，現在會自動載入 workspace MCP sources
+- 實驗性：新增 `/mcp search` 指令，可從 registry 搜尋並安裝 MCP servers
+- 實驗性：MCP 與外部工具支援透過延後載入進行 tool search
+- 新增 "None" reasoning effort 選項，可在 reasoning effort picker 中停用模型推理
+- 新增 `COPILOT_PLUGIN_DIR_ONLY` 環境變數，可停用自動 plugin discovery，讓使用 `--plugin-dir` 時的 plugin 集合具可重現性
+- 從捲動檢視複製文字時，現在會將軟換行合併，不再插入額外換行或縮排
+- 輸入欄位中的游標定位，現在可正確處理寬字元（CJK、emoji）
+- Hooks（`preToolUse`、`postToolUse`、`subagentStart`、`subagentStop`）現在會對 sub-agent 的工具呼叫正確觸發
+- 透過 `--plugin-dir` 載入的 plugins，現在可在 prompt mode 中正確將其 agents 註冊為可用的 `task(agent_type=...)` subagents
+- 當沒有 repository context 時，memory storage 現在會正確限制可用的 scopes
+- `--plugin-dir` 與 `--additional-mcp-config` 現在可在 `--server` / `--headless` mode 中運作
+- 經內容過濾的模型回覆，現在會顯示說明，而不再出現空白的 assistant 回合
+- 當外層終端機是 ghostty、WezTerm 或 kitty 時，PromptFrame UI 現在可在 tmux 中渲染（透過 `tmux list-clients` 偵測）
+- MCP OAuth token 查找現在會正確限制在目前工作階段範圍內
+- Memory 權限提示現在會說明誰可以看到儲存的 memory：user scope 或特定 `owner/repo` 的 repository scope。時間線項目也會顯示 scope（`(for user)` / `(shared with repository collaborators)`）。
+- 在 Windows 上使用舊版 PowerShell 5.x 時，透過避免使用 `&&` 串接指令，降低 PowerShell 語法錯誤
+
 ## 1.0.60 - 2026-06-05
 
 - 在斜線指令的路徑參數中，按 Tab 補全 `..` 上層目錄時，現在會進行路徑補全，而不是切換分頁
