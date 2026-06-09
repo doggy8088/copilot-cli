@@ -1,3 +1,45 @@
+## 1.0.61 - 2026-06-09
+
+- `/agents` 選擇器與 Create New Agent 精靈已完成潤飾，邊框、標頭與輸入樣式更加一致
+- 修正恢復工作階段時可能讓畫面維持空白的問題
+- 新增 `/settings` 互動式對話框，可在單一介面中瀏覽並編輯所有使用者設定
+- 在 memory 停用時恢復本機工作階段，不再讓 UI 當掉成空白畫面
+- `/after` 與 `/every` 指令現在會出現在 `/experimental` 斜線指令清單中
+- 現在會自動從 `.github/mcp.json` workspace 設定檔載入 MCP servers
+- `/env` 輸出現在會隱藏內部 hooks，並顯示 hook 來源的完整檔案路徑
+- 防止因格式錯誤的 UTF-8、過大的字串緩衝區與終端機中斷連線錯誤而造成 crash
+- 新增對 Claude Fable 5 模型的支援
+- Gemini 模型現在可正確搭配使用 nullable schema types 的 MCP tools
+- 選擇器中的數字鍵選取（例如 `/agent`）現在可正確處理第 10 項之後的項目
+- 既有連結中的 GitHub issue 與 PR 參照，不再產生損壞的巢狀自動連結
+- Bash tool 現在可正確處理命令輸入中的多位元組 UTF-8 字元（例如 em dash、彎引號等）
+- 符號連結目錄現在會出現在 `@` 檔案選擇器建議中
+- 遠端伺服器的 MCP OAuth 重新驗證，現在會正確使用已儲存的 OAuth client ID
+- 貼上的圖片在權限對話框關閉後，不再外洩到主要提示輸入區
+- 在 `/agent` 選擇器中按下 `/`，現在可依名稱篩選 agents
+- 現在可透過 `settings.json` 中的 `tabs` 設定，配置首頁分頁列的顯示、順序與隱藏項目
+- grep 與 glob tools 現在可正確處理單一路徑參數，避免漏掉搜尋結果
+- 標記為暫時性的 hook 進度狀態列，現在會原地收合，而不會在對話時間線中持續累積
+- `/fork` 在建立 fork 期間，現在會顯示「Creating fork...」進度通知
+- `/mcp search` 現在可正確搭配外部 registries 使用
+- 現在可在 `/every` 與 `/after` 中使用自然語言，以 cron expressions、日曆時間或相對時間長度來排程任務
+- 淺色主題的次要背景色現在可正確渲染
+- 搜尋列的比對計數現在會維持在提示框內
+- GitHub 主題現在可適應淺色終端機，並採用更貼近 GitHub Primer 的淺色調色盤
+- 新增透過 HTTPS 匯出 OTLP telemetry 時的 mTLS 與 private-CA 支援
+- 修正 shell 指令驗證中的誤判，避免因字串常值或嵌入文件（heredoc）內含像 `kill` 這類字詞，而錯誤封鎖無害指令
+- 新增全螢幕捲軸
+- 在大型 monorepo 中，grep 搜尋現在會使用索引化搜尋引擎，顯著提升速度
+- `/sessions` 現在會導向 Sessions 分頁，而不是開啟覆蓋層
+- 新增透過標準 OTel protocol 環境變數使用的 http/protobuf OTLP HTTP 匯出
+- Prompt mode 現在會將 model 載入錯誤輸出到 stderr，而不再靜默結束
+- 新增 `/worktree` 指令（別名 `/move`），可建立新的 git worktree、切換進去，並一併帶上未提交的變更
+- 即使因網路錯誤無法取得 settings，plugin install 仍會強制遵循受管理 marketplace policy
+- `/help` 現在會將 `$HOME/.copilot/instructions/**/*.instructions.md` 列為其他使用者層級 instructions 位置之一
+- 色彩現在可在 WSL 與 tmux 工作階段中正確渲染，不再退回成較差的調色盤
+- 除了 Backspace 之外，現在也可在空白提示下按 `Esc` 或 `Ctrl+C` 離開 shell mode
+- 新增 `beepOnSchedule` 設定，可停用排程 `/every` 與 `/after` 執行完成時的提示音
+
 ## 1.0.58 - 2026-06-02
 
 - Rubber Duck 現在預設為啟用
