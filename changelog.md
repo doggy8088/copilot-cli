@@ -1,3 +1,118 @@
+## 1.0.58 - 2026-06-02
+
+- Rubber Duck 現在預設為啟用
+- Remote JSON RPC 現在預設為啟用
+- 實驗性：可使用 `/every` 與 `/after` 安排排程提示
+- 實驗性：新的 GitHub TUI 主題
+- 實驗性：新的 UI，可更輕鬆存取 issues、pull requests 與 gists
+
+## 1.0.57 - 2026-06-01
+
+- 在 `copilot update` 遇到 GitHub API rate limit 時，現在會顯示可採取行動的錯誤訊息
+- Plugin 斜線指令（/plugin install、uninstall、update、marketplace add/remove/browse）現在會在操作進行中立即顯示回饋
+- 取消執行中的 shell 指令（在 `!command` 上按 `Ctrl+C`，或中止 agent 指令，包括 sandboxed shell 與提升為背景執行的 shell）時，現在會終止整個 process tree，而不再留下孤兒程序
+- Canvas providers 現在可在 open results 中回傳 `file://` URLs，用於本機檔案預覽
+- `/cwd` 補全建議中現在會顯示符號連結目錄
+- 在僅使用 Azure DevOps 的 repositories 中，內建 GitHub MCP server 現在只會公開 web_search tool，而不會被完全停用
+- 配額頁尾現在會以四捨五入後的百分比顯示剩餘 requests
+- 從子目錄啟動 CLI 時，/lsp show、/lsp test 與 /lsp reload 現在可正確找到專案的 LSP config
+- MCP server timeout 設定在 tools 清單變更後仍會保留
+- `/skills add` 與 `/skills remove` 現在可正確處理被引號包住的路徑（例如來自 Windows Explorer 的 "Copy as path"）
+- 以未加引號的多字 prompt 執行 `copilot` 時，現在會顯示有幫助的 "quote your prompt" 提示，而不是原始 commander 錯誤
+- 預設網路傳輸現在為 HTTP/1.1，可提升某些網路路徑下的可靠性。如需使用 HTTP/2，可設定 `COPILOT_ENABLE_HTTP2=1`
+- 從 repository settings 自動安裝的 plugins 不再洩漏到使用者的全域設定
+- Grep tool 現在可正確將 tsx 與 jsx 當作檔案類型篩選條件處理
+- 伺服器探索 registry 目錄現在會正確遵循 `COPILOT_HOME`
+- 現在可用滑鼠點擊 diff 的某一行，以在 diff mode 中選取它
+- `Ctrl+C` 與其他修飾按鍵在 tmux 內現在可正確運作
+- `@` 提及的檔案搜尋現在會忽略查詢字母大小寫來比對檔案
+- `copilot plugin marketplace list` 現在會遵循 `.github/copilot/settings.json` 中 repo 層級的 `extraKnownMarketplaces` 設定
+- 頁尾中的排隊 prompts 現在會限制為單行，避免將工作階段訊息擠出畫面
+- 使用 `npx --registry` 設定的 MCP servers 不再被 policy 錯誤封鎖
+- 內部事件處理發生錯誤後，工作階段不再無限卡住
+- 已安裝的 plugins 不再包含 plugin 來源 repository 中的 `.git` 目錄
+- 工具呼叫後的新 reasoning 現在會顯示在時間線底部，而不是跑到較早輸出的上方
+- 貼上從瀏覽器、編輯器或終端機複製的文字時，提示區不再殘留多餘空白行、破損的 box-drawing 線條或錯位的游標
+- preToolUse hook 錯誤現在會拒絕工具呼叫，而不是靜默允許執行
+- 若 crash 在 session log 中留下部分資料，工作階段恢復現在仍可正確運作
+- 高對比 diff 背景現在會使用更深的顏色，以提升文字可讀性
+- 新增 `showTipsOnStartup` 設定，可控制是否顯示啟動提示
+- 當 SDK auth-token 驗證失敗時，現在會顯示底層原因（例如 GitHub API rate limit），而不是誤導性的 "Session was not created with authentication info or custom provider" 訊息
+- 沒有 unstaged changes 時，`/diff` 現在預設顯示 branch diff
+
+## 1.0.56 - 2026-05-29
+
+- Free 與 Student 使用者現在可在 model picker 中選擇 Auto 以外的模型
+- ThemePicker 的並排版面可在 120 欄寬的終端機中正常顯示，不會換行
+- Model picker 現在會依 pricing tier 顯示正確的總 context window 大小
+- 新增 `builtInAgents.rubberDuck` 設定，可透過 `copilot config` 啟用或停用 rubber duck agent
+- 當 Kitty keyboard protocol 無法使用時，extended key reporting 現在可在 tmux 中正確運作
+- Config 與 settings 檔案現在會以原子方式寫入，避免多個 CLI 程序並行執行時造成資料遺失
+- BYOK provider 設定現在可正確套用到 ACP sessions
+- 同時回傳可讀文字 `content` 與 `structuredContent` payload 的 MCP tools，現在會將兩者都提供給 agent，而不再丟棄任一邊。若文字內容是字面上的 JSON 序列化結果（依 MCP spec §5.2.6），則會去重；否則兩者會串接。
+- 修正 `/context` 中 small-token 圖例格式與可用空間網格的四捨五入
+- Reasoning effort picker 現在會遵循模型能力，不支援的選項不再顯示
+- `/env` 輸出中的檔案路徑現在會以正確格式顯示
+- Reasoning 文字現在一律顯示在對話時間線中的 assistant 回覆上方
+- Assistant 回覆在終端機時間線中的渲染，不再出現單字孤行
+- Diff view 現在使用連續捲動版面，搭配固定的檔案與 hunk 標頭、完整終端機寬度，以及依主題調整的顏色
+- web_fetch tool 現在在可用時會優先取得 markdown 內容，並透過 HTTP content negotiation，讓文件站點的結果更乾淨
+- 貼上包含 tab 字元的文字後，游標現在仍會停留在正確位置
+- Code review agent 現在會使用與目前工作階段相同的模型，而不是固定的預設模型
+- 當 `gh` CLI 在 `PATH` 中時，GitHub MCP server 現在預設會省略可由 `gh` 取代的重複工具，以降低 token 使用量
+- Context window tier 選擇現在會穩定持久地保存到 session events，並在僅 SDK 的 resume 路徑中持續生效，因此由 tier 衍生的限制會重新套用到 request、compaction 與 truncation 邏輯，而不需應用層修補
+- Remote session URL 現在會正確使用 repository owner/name，而不是字面上的 `copilot`
+- Trusted folder 確認訊息現在會更清楚說明，權限可能會為該工作階段記住
+
+## 1.0.55 - 2026-05-28
+
+- 採用 token-based billing 的 Free 與 Student 方案使用者，現在只能選擇 Auto 模型；model picker 中會顯示原因說明
+- 在工作階段使用量摘要中回報 Claude thinking（reasoning）tokens
+- 新增對 Claude Opus 4.8 的支援
+- 在不受信任的資料夾中啟動時，loading spinner 不再無限卡住
+- 在 MCP server configuration form 中按下 `Ctrl+S` 時，現在會儲存最新輸入的值
+- 在 `/mcp` 中顯示各 MCP server 的 token 使用量，並在 `/context` 中拆分顯示 MCP tool tokens
+- 現在會遞迴探索子目錄中的 custom agents 與 skills
+- 新增 `permissions.disableBypassPermissionsMode` 設定，可防止啟用 allow-all/yolo mode
+- 針對特定訂閱方案更新 model selection 行為
+- 只有在工作階段處於 plan mode 時，才會向模型提供 exit_plan_mode tool
+- 原生二進位檔崩潰（例如 SIGSEGV）時，現在會回退到 JavaScript fallback，而不是靜默結束
+- 新增 `/autopilot <objective>` 以讓 autopilot 聚焦於特定目標，並提供 `/goal` 作為別名
+- 當 pwsh.exe 以 Microsoft Store App Execution Alias 安裝時，現在可正確偵測 PowerShell 7
+- 若工作階段包含大小為零的 CAPI billing batches，現在也可正確恢復
+- 以 cell 為基礎的 terminal renderer 現在預設對所有使用者啟用
+- 當組織政策停用 remote controlled sessions 時，現在會顯示警告
+- Extension log files 現在會依 extension 分別擷取，並在 extensions_manage tool 中顯示，以協助診斷失敗原因
+- `.github/extensions` 中的專案 extensions，現在可在非 git（folder-backed）workspace 中被探索到
+- `/statusline` 與 `/theme` 指令現在可在 agent 執行期間使用
+- MCP configuration 現在會在獨立畫面中開啟；當內容超出可視區域時，可捲動瀏覽 server 與 tool 清單
+- Hook progress streaming 現在會在時間線中顯示長時間執行 hooks 的即時狀態訊息
+- session.create 與 session.resume RPC 上的 pluginDirectories：SDK clients 現在可在每個工作階段掛載 Open Plugins 格式目錄
+- 可直接從 session picker 刪除 remote sessions
+- 排程管理器提示列文字在新增項目後，不再換行壓到對話框邊框
+- `copilot update` 與 `copilot version` 現在會驗證 release API requests，以避免在共用 NAT 環境中觸發 rate limit 錯誤
+- 在 unstaged 與 branch diff modes 之間切換時，Diff view 的鍵盤快捷鍵提示現在可正確顯示
+- 在不支援 wlr-data-control 的 Wayland compositor（例如 GNOME/Mutter）上，剪貼簿貼上現在可正確運作
+- 互動式 shell tool 現在會保留父終端機的色彩設定，讓 diff tools 與其他程式可完整顯示色彩
+- 具有可選 object input schemas 的 Canvas tools，現在可正確開啟，不再出現驗證錯誤
+- 當從較舊版本 CLI fork 出 extension subprocesses 時，不再因 "Invalid command format" 而失敗
+- 若舊版 CLI 留下 legacy snake_case keys，settings migration 現在會保留使用者資料
+- 從 marketplace 新增 plugins 時，現在支援 owner/repo#ref 語法
+- Feedback dialog 與 `/skills` help 文字現在使用與 Copilot 一致的 log 路徑與術語
+- Progress indicators 現在可原生整合 tmux 3.6b pane progress state
+- `--plugin-dir` skills 現在會優先於 personal-home（`~/.copilot`、`~/.agents`）中同名的 skills。順序現在是 project > plugin-dir > personal > custom。
+- 當組織政策停用 remote controlled sessions 時，現在會顯示有幫助的訊息
+- 所有使用者的 session token summary 中，現在都會顯示 reasoning token 計數
+- 除非透過設定明確啟用，否則 turn 完成時終端機鈴聲不再響起
+- `/resume` picker 不再對於在發送訊息前就關閉的工作階段顯示空白列
+- 中止工作階段時，若 Task tool agents 正在執行，UI 不再卡在 Cancelling 狀態
+- vote_memory tool calls 現在會依每次回應與每次互動節流，避免失控的連續投票
+- 在時間線頂端以上拖曳滑鼠選取時，現在會自動向上捲動
+- 在 Windows 上，剪貼簿現在可正確複製 CJK 與補充平面 Unicode 字元
+- 為了提高可見性，所有色彩主題中的選取背景對比都已提升
+- `/env` 現在會顯示已載入的 extensions 及其狀態與來源
+- 當 CLI 以單一可執行檔應用程式（SEA）執行時，extensions 現在可正確啟動
+
 ## 1.0.54 - 2026-05-24
 
 修正與變更
