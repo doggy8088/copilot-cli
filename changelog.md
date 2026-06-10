@@ -1,3 +1,28 @@
+## 1.0.48 - 2026-05-14
+
+- 採用 token-based billing 的使用者，model picker 現在會顯示實際 token 價格，而不是圓點指示器
+- 指令檔 frontmatter 中 `applyTo` 若含有未加引號的 glob pattern（例如 `applyTo: *_/*.ts`），現在也能正確套用
+- 含有 CJK 字元或 emoji 的輸入文字，現在渲染時不會在行與行之間出現空白斷裂
+- `/context` 現在會顯示所有模型的正確 token 上限，而不再一律顯示 128k
+- 在僅使用 Azure DevOps 的 workspace 中，以 prompt/headless mode 執行時，現在會自動停用內建的 github-mcp-server，與互動模式行為一致
+- 終端機游標現在會正確落在輸入欄位，而不是選取中的分頁等裝飾元素上
+- 當作用中的模型變更時，ACP clients 現在會收到更新後的 config options
+- `/ask` 對話框不再提示它無法接收的後續回覆
+- 注入給模型的 skill 內容，現在不再包含 YAML frontmatter metadata
+
+## 1.0.47 - 2026-05-13
+
+- `/fork` 現在接受可選名稱，且 fork 出來的工作階段會在 sessions 對話框中顯示其來源
+- Copilot Max 訂閱者現在會看到符合其訂閱層級的正確可用模型
+- `/diff` 檢視現在支援使用 `j`/`k` 鍵進行上下導覽
+- `--resume` 現在支援 Copilot cloud agent sessions，即使 agent 尚未將任何變更推送到其 branch
+
+## 1.0.46 - 2026-05-12
+
+- 當 CLI 版本已遭淘汰、可能失去 premium model 存取權時，現在會顯示警告
+- 當 `pwsh` 以 .NET global tool shim 安裝時，PowerShell 現在可正確啟動
+- Diff view 中的長行現在會依終端機寬度換行，而不再被截斷
+
 ## 1.0.61 - 2026-06-09
 
 - `/agents` 選擇器與 Create New Agent 精靈已完成潤飾，邊框、標頭與輸入樣式更加一致
