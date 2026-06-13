@@ -1,3 +1,56 @@
+## 1.0.62 - 2026-06-13
+
+- Ask 與 elicitation 對話框現在會與時間線一起捲動，而不是接管整個畫面，因此較高的對話框不會再遮住 agent 的輸出；向上捲動可閱讀較早的輸出，再向下回到對話框
+- 保留 reasoning summary 各區段之間的空白行
+- 在搜尋 chip 中顯示使用者輸入的冒號詞彙
+- Plugins 現在可內含 extensions，因此可透過 plugin marketplace 安裝
+- 在 diff view 中新增內容搜尋、比對高亮與 `n`/`N` 導覽
+- 新增 `/app` 斜線指令，可開啟 GitHub app，若不可用則回退為瀏覽器
+- 可透過使用者設定或 `/subagents`（也支援 `/agents`）選擇器來設定 subagent 的 model、reasoning effort 與 context tier
+- PowerShell 重新導向路徑不再觸發 content-exclusion 拒絕
+- WebSocket transport 現在可在 Tokio runtime 外乾淨地關閉
+- Shell tool 錯誤現在會說明 shell ID 是已停止、已完成，還是已被回收
+- 語音執行階段下載對話框在安裝失敗後，不會再陷入重複開啟的迴圈
+- 改善 MCP server 設定表單，採用以選擇器為主的流程，使用上更容易
+- 在頁尾顯示「YOLO」（allow all）指示器，並將 allow-all 狀態加入自訂 `statusLine.command`
+- 在 Issues 或 Pull Requests 分頁按下 `/`，現在可使用伺服器端篩選來搜尋 GitHub
+- 新增 session-scoped extensions 與 canvases
+- 允許 SDK clients 透過 `session.create` 與 `session.resume` 設定 session memory
+- 現在可透過 Kerberos/Negotiate（SPNEGO）自動經由企業 forward proxies 完成驗證
+- 在 `/diff` view 中新增檔案樹側欄與行內註解編輯器
+- 對 BYOK Responses providers 現在會遵循 `max_output_tokens`
+- 名稱包含點號與斜線的 MCP server，現在可對應為有效的 Responses API namespaces
+- 像 `code-insiders --wait` 這類編輯器指令，現在可在 Windows 上正確啟動
+- 現在可從設定根目錄之外的符號連結目錄載入 skills
+- 遇到過大的行內圖片時，現在會優雅地恢復，而不是讓整個 turn 失敗
+- 若圖片附件因政策停用 vision 或目前模型不支援而被拒絕，現在不會再污染後續整個 session。發生 400 後，該圖片會從對話歷史中移除，因此之後的 prompts 可正常成功。
+- 從 `/tasks` 提升為背景執行的 shells，現在會在 turn 結束後持續執行
+- 對背景 helper agents 隱藏內部的已停用工具訊息
+- 當主機環境提供 `mxc-sdk` 時，sandbox tool 現在可正確載入
+- 當工作階段從 repository 根目錄的子目錄啟動時，現在也會探索巢狀 `.github/agents` 與 `.claude/agents` 目錄中的 custom agents
+- 核准某個工具權限提示後，不會再因同一次工具呼叫而出現第二次提示
+- View tool 提示現在會正確說明 20KB 截斷限制，而不是 50KB
+- 防止 workspace MCP servers 陷入反覆重啟的迴圈
+- 使用 BYOK providers 時，custom agents 現在會維持其設定的 model
+- 遇到暫時性的內容政策錯誤時，現在可自動恢復，而不需要重新啟動工作階段
+- Autopilot 在 relay sessions 中現在可乾淨地持續執行，且 `/plan` 會顯示簡短 prompt
+- Git 指令在 Windows 上不再閃現主控台視窗
+- Claude 格式 plugin 的 `preToolUse` 與 `permissionRequest` hooks，現在可對 `Bash`、`Read` 與 `*` 這類 tool matchers 正確觸發，而 Claude 格式的 hook payloads 也會攜帶 Claude 的工具名稱（例如 `Bash`，而不是 `bash`）
+- 當工作階段中途切換啟用主題時，終端機色彩現在會即時更新
+- 串流中的 assistant 文字不再偶爾在時間線中重複顯示
+- grep 現在會跳過不存在的搜尋路徑，並繼續返回有效結果，而不是直接失敗
+- 遠端 MCP OAuth servers 對於每個相符設定現在只會啟動一次，而不是對每個 subagent 都重新啟動
+- 巢狀 subagents 現在會遵守並行限制，且不會阻塞終端機輸入
+- 當 marketplace ref 是完整限定 tag（例如 `refs/tags/v2.1.0`）時，plugin install 現在可正常運作
+- 在展開的 issue 或 pull request 詳細檢視中按 `W`，即可建立 worktree
+- `/every` 與 `/after` 現在可排程斜線指令（例如 `/every 1d /chronicle standup`）
+- Model picker 現在會開啟到包含目前已選模型的分頁
+- 透過輕量級 process spawning 執行的 shell commands，現在不再使用 pseudo-terminal；也因此不再支援透過 `write_bash` 進行互動式輸入
+- 改善 GitHub 主題的色彩對比，以符合 WCAG AA 無障礙標準
+- 顯示 ACP session config options 的說明文字
+- 加快 warm sessions 中 branch 與 HEAD 的偵測速度
+- 淺色主題的次要背景色現在可正確渲染
+
 ## 1.0.48 - 2026-05-14
 
 - 採用 token-based billing 的使用者，model picker 現在會顯示實際 token 價格，而不是圓點指示器
