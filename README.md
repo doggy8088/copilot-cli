@@ -131,7 +131,7 @@ copilot
 
 #### 實驗功能
 
-- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可在各模式間切換），會鼓勵 agent 持續工作直到任務完成。
+- **Autopilot mode:** Autopilot 是一種新模式（按 `Shift+Tab` 可在各模式間切換），會鼓勵 agent 持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交 prompt，都會讓你每月的 premium requests 配額減少一次。關於 premium requests 的資訊，請參閱[About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
