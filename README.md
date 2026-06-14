@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們把 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與了解你的程式碼及 GitHub 情境的 AI agent 一起工作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。有了 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你程式碼和 GitHub 情境的 AI agent 協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 與 pull requests，並直接使用你既有的 GitHub 帳號完成驗證。
 - **Agentic 能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 利用 coding agent 預設內建 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
+- **由 MCP 驅動的可擴充性：** 善用預設隨 coding agent 提供的 GitHub MCP server，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 每個動作在執行前都可先預覽，沒有你的明確批准就不會發生任何事。
 
 我們仍處於發展早期，但在你的回饋協助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
@@ -50,7 +50,7 @@ curl -fsSL https://gh.io/copilot-install | bash
 wget -qO- https://gh.io/copilot-install | bash
 ```
 
-使用 `| sudo bash` 可改以 root 身分執行，並安裝到 `/usr/local/bin`。
+使用 `| sudo bash` 以 root 身分執行，並安裝到 `/usr/local/bin`。
 
 設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
 
@@ -133,7 +133,7 @@ copilot
 
 - **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可在各模式間切換），會鼓勵 agent 持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交 prompt，都會讓你每月的 premium requests 配額減少一次。關於 premium requests 的資訊，請參閱[關於 premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交 prompt，都會讓你每月的 premium requests 配額減少一次。關於 premium requests 的資訊，請參閱[About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
 若要進一步了解如何使用 GitHub Copilot CLI，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -188,6 +188,6 @@ LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者
 
 很高興你在 Copilot CLI 的早期階段加入我們。
 
-我們開發速度很快。預期會有頻繁更新，請保持你的用戶端為最新版本，以取得最新功能與修正。
+我們開發速度很快。預期會有頻繁更新，請保持你的用戶端為最新版本，以取得最新功能與修正！
 
-你的意見非常重要！歡迎在這個 repo 中開 issue、參與 Discussions，並在 CLI 中執行 `/feedback` 以提交保密的回饋問卷。
+你的意見非常重要！歡迎在這個 repo 中開 issue、參與 Discussions，並在 CLI 中執行 `/feedback` 以提交保密的回饋問卷！
