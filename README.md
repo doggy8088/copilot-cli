@@ -4,7 +4,7 @@ GitHub Copilot 的強大能力，現在就在你的終端機中。
 
 GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的 agentic harness，在提供智慧協助的同時，也與你的 GitHub 工作流程深度整合。
 
-更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
@@ -136,7 +136,7 @@ copilot
 
 每次你向 GitHub Copilot CLI 提交 prompt，都會讓你每月的 premium requests 配額減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-若要進一步了解如何使用 GitHub Copilot CLI，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+若要進一步了解如何使用 GitHub Copilot CLI，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Servers
 
