@@ -1,3 +1,26 @@
+## 1.0.63 - 2026-06-15
+
+- 被封鎖的圖片附件現在會說明可採取的作法，例如透過 "Editor preview features" 政策啟用 vision、切換到支援 vision 的模型，或改用其他圖片，而不再顯示令人困惑的錯誤
+- `--help` 輸出中的選項現在會依字母順序排序，包括具有兩個長旗標的選項
+- Auth 驗證錯誤（例如 VPN 或 IP allowlist 失敗）現在會顯示在登入橫幅中，並提示檢查網路存取
+- 在 `/pr` 與分支 PR 標記中顯示以 fork 為基礎的 pull requests
+- 當本機與遠端 repository 名稱僅大小寫不同時，現在可恢復遠端工作階段
+- 當 read_bash 輸出過大時，會顯示 spill file 路徑
+- 在 `/chronicle standup` 中納入最近的本機工作階段
+- 恢復 `/responses` WebSocket 連線
+- 在 HMAC 與 OAuth 模式下重試暫時性的 401 auth 失敗
+- 在 `/diff` 中按 `w` 可隱藏僅有空白差異的變更
+- 在 MCP server config 中新增 `deferTools` 選項，讓某個 server 的 tools 即使在啟用 tool search 時也能始終可用
+- Agent mode 現在會依工作階段追蹤，因此在建立、清除或切換工作階段時不再沿用
+- 按下 Enter 會開啟目前反白的 issue 詳細內容
+- Plan review 選單現在可在嚴格的 OpenAI-compatible backends 上運作
+- 當原生 runtime addon 載入到損毀的 host process heap 時，可避免 Windows 當機
+- 遇到無法讀取的原生文件附件時，現在會回退為 file-path uploads 以繼續處理
+- 在搜尋指令歷史時，會讓 reverse search 持續與輸入頁尾對齊
+- PostToolUse hook matchers（例如 `Edit|Write`）現在會正確生效，而不再被靜默忽略，因此 formatters 與 linters 只會在其指定的 tools 之後執行
+- 提升 OpenAI、Anthropic 與 Azure OpenAI requests 的可靠性
+- 實驗性：`/rewind` 不再需要 git，且只會還原 Copilot 變更過的檔案（保留你自己的編輯），並提供僅還原對話或同時還原對話加檔案兩種選擇
+
 ## 1.0.62 - 2026-06-13
 
 - Ask 與 elicitation 對話框現在會與時間線一起捲動，而不是接管整個畫面，因此較高的對話框不會再遮住 agent 的輸出；向上捲動可閱讀較早的輸出，再向下回到對話框
