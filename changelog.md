@@ -1,3 +1,65 @@
+## 1.0.60 - 2026-06-05
+
+- 在斜線指令路徑參數中，按 Tab 補全 `..` 上層路徑時，現在不會切換分頁
+- 為 Anthropic 模型加入最高等級的 reasoning effort，並讓所有方案都可使用所有 effort levels
+- 在終端機多工器中從睡眠喚醒後，畫面不會再維持空白
+- 輸入欄位在反白框內現在可正確渲染背景色
+- Plan approval 與 review feedback prompts 中的游標現在會顯示在正確位置
+- 當 PR branch 名稱包含斜線時，worktree 目錄現在會使用平坦名稱（例如 `cli/foo` 會變成 `.worktrees/cli-foo`）
+- 啟用 kitty keyboard protocol 時，排隊提示現在會正確顯示 `ctrl+enter`，而不是 `ctrl+q`
+- 狹窄終端機寬度下，status line 現在會逐行堆疊顯示，而不是把元素截斷到難以辨識
+- 在 X11 上進行剪貼簿操作時，不再破壞終端機顯示
+- 新增 `builtInAgents.rubberDuckAutoInvoke` 設定，可控制是否自動呼叫 rubber duck agent（預設停用）
+- 在 Windows 上，以裸名稱呼叫可執行檔（例如 `git`）時，不會再從工作目錄中探索執行檔。若要啟用此行為，請將工作目錄加入 `PATH`。
+- 互動式 shell 指令在產生大量輸出時，不再卡住
+- `/context` 圖例中的 MCP tools glyph 現在會以正確大小顯示
+- Skill 與斜線指令 picker 的列，現在會將多行描述正確顯示為單行
+- IDE picker 現在會隱藏編輯器連線已中斷的項目，因此選取時不再因連線錯誤失敗；若多個項目共用相同的編輯器與資料夾，還會附加 process id，以便區分同一 repo 的 git worktrees
+- Model picker 現在可容納於較小的終端機視窗中，且支援在 picker 內使用滑鼠滾輪
+- `/usage` 顯示現在會在 cache read tokens 旁邊一併顯示 cache write tokens
+- `ctrl+s` 現在會暫存並還原目前的 prompt（與 Claude Code 一致）；斜線指令 picker 仍可透過輸入 `/` 開啟
+- `/context` 現在會將 Custom Instructions 與 system prompt 分開顯示，並與 `/mcp` 交叉參照各伺服器的 MCP tool token 成本
+- 新增 `billing` help topic，概述 AI credit 使用功能
+- 在 `/diff` view 中新增類 Vim 導覽鍵（`g`、`G`、`Ctrl+D`、`Ctrl+U`）
+- 在 `/session info` 檢視中顯示已同步 sessions 的 Mission Control 分享狀態
+- 新增 `-r` 作為 `--resume` 的簡寫
+- LSP server config 現在接受 `bash`、`powershell` 與 `cwd` keys；若未設定 `cwd`，指令啟動的預設工作目錄仍為專案根目錄；`cwd` 展開現在也支援像 `PLUGIN_ROOT` 這類 plugin 變數，而 shell 啟動則維持既有的 hook-matching cwd/env 行為
+- Rewind picker 現在會在每個 checkpoint 顯示 working-tree diff 統計（+新增 −移除）
+- 現在可直接從 pull requests 畫面為 pull request 建立 git worktree
+- 對於超過限制的使用者，剩餘 requests 百分比不再顯示負值
+- 啟動時，extension 權限提示現在會遵循 `--yolo` 與預先核准的位置
+- 自訂 agent instructions 不再於每個 turn 重複注入，從而降低 context window 使用量
+- 當設定了 `allowedHosts` 或 `blockedHosts` 時，Linux sandbox 不再失敗
+- 工作階段完成訊號（終端機提示音、autopilot 持續執行）現在會等背景 shell 指令完成後才觸發
+- 在 macOS 的 prompt 輸入中，`Cmd+Backspace` 現在可刪除游標前的整行
+- `web_fetch` 會封鎖 loopback、private 與 cloud metadata 位址，且不再靜默跟隨 redirects
+- 當實驗指派被並行快取時，Trusted folders 與其他 config keys 不再遺失
+- 回捲到先前快照時，Rewind 不再刪除被忽略的檔案
+- ACP `allow_all` config option 現在可正確套用工具、路徑與 URL 的不受限制權限
+- `--available-tools`、`--excluded-tools` 與 `--reasoning-effort` 旗標現在可在 ACP mode 中正確生效
+- LSP `workspace/configuration` 回應現在會回傳正確數量的項目，避免像 `ty` 這類嚴格的 servers 發生 panic
+- 透過目錄符號連結連入的 extensions，現在可正確被探索與載入
+- 在 prompt 輸入 `help` 時，現在會開啟 quick-help 覆蓋層，而不是將它當成聊天訊息送出
+- 寬字元（例如 CJK）現在可在終端機 diff view 中正確渲染，不再造成視覺破損
+- Folder trust 現在會在 git worktrees 間持久保存，不需重新提示
+- 強制移除 marketplace 後，不會再讓其 plugins 在下次啟動時重新安裝
+- 若登入已在進行中，MCP OAuth 重新驗證不再因位址已被使用而失敗
+- Repository plugin overrides 不再改動全域啟用的 plugin 設定
+- MCP allowlist 現在可正確比對 npm scope servers，即使 registry 項目省略了 package identifier 前面的 `@`
+- 透過 Azure API Center 註冊的 MCP servers，不再被 allowlist 錯誤封鎖
+- 共用序列化 token broker 的本機 MCP servers（例如 M365）現在可穩定啟動，而不再間歇性失敗
+- 執行會設定 dynamic-loader 或 git-config 環境變數的命令前，現在會先要求核准（例如 `LD_PRELOAD`、`GIT_EXTERNAL_DIFF`）
+- 某個 server 在同一個 turn 中新增或移除 MCP tools 後，現在可立即在該 turn 使用
+- 大於 5 MiB 的 BYOK 檔案附件，現在可透過 OpenAI Responses provider 成功送出
+- 當在 git repository 之外執行時，不再顯示 `/init` 建議
+- 當進行 remote exporting 或 steering 時，會在 `/session info` 表格中顯示 session 連結
+- `/env` 指令現在會顯示有效 hooks 的數量與來源資訊
+- 在 `/help` 內容中補上缺漏的鍵盤快捷鍵（`?`、`ctrl+q`、`ctrl+r`、`ctrl+z`、`ctrl+y`、`shift+enter`）
+- 會將裸露的 `#number` issue 與 PR 參照自動連結到目前的 git repository
+- `--cloud` 若未啟用 experimental mode，其錯誤訊息現在會說明如何啟用 `/experimental`
+- 在傳送後續訊息給背景 agent 後，`/tasks` 詳細檢視現在會顯示最新的 prompt
+- 對 `--allow-all-tools`、`--allow-all-paths` 與 `--allow-all-urls` 旗標，現在會強制套用 bypass permissions policy
+
 ## 1.0.63 - 2026-06-15
 
 - 被封鎖的圖片附件現在會說明可採取的作法，例如透過 "Editor preview features" 政策啟用 vision、切換到支援 vision 的模型，或改用其他圖片，而不再顯示令人困惑的錯誤
