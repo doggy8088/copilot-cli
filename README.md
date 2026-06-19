@@ -16,7 +16,7 @@ GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列
 - **原生終端機開發體驗：** 直接在命令列中使用 Copilot 編碼代理，無需切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並直接沿用你現有的 GitHub 帳號完成驗證。
 - **Agentic 能力：** 與可規劃並執行複雜任務的 AI 協作夥伴一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 編碼代理預設內建 GitHub 的 MCP server，並支援自訂 MCP server 以擴充能力。
+- **由 MCP 驅動的可擴充性：** 受益於編碼代理預設內建 GitHub 的 MCP server，並支援自訂 MCP server 以擴充能力。
 - **完整控制權：** 每個動作都能先預覽再執行，未經你明確批准，不會發生任何事。
 
 我們仍處於早期階段，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的協作夥伴。
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，可使用 `--banner` 旗標啟動 `copilot`。
+第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，可使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入此指令並依照畫面上的說明完成驗證。
 
@@ -120,16 +120,16 @@ copilot
 
 預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
-### Experimental Mode
+### 實驗模式
 
-Experimental mode 可讓你使用仍在開發中的新功能。你可以透過以下方式啟用 experimental mode：
+實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` slash command
 
 啟用後，該設定會持久化寫入你的 config，因此之後再次啟動時不再需要 `--experimental` 旗標。
 
-#### Experimental Features
+#### 實驗功能
 
 - **Autopilot mode：** Autopilot 是一種新模式 (按 `Shift+Tab` 可在模式間切換)，會鼓勵代理持續工作直到任務完成。
 
@@ -188,6 +188,6 @@ LSP server 透過專用的 LSP 設定檔來設定。你可以在使用者層級�
 
 很高興你在 Copilot CLI 的早期階段就加入我們。
 
-我們正在快速開發。預期會有頻繁更新，請保持你的客戶端為最新版本，以取得最新功能與修正。
+我們正在快速開發。預期會有頻繁更新，請保持你的客戶端為最新版本，以取得最新功能與修正！
 
-你的洞見非常重要。歡迎在這個儲存庫開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 提交一份保密的回饋問卷。
+你的洞見非常重要！歡迎在這個儲存庫開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 提交一份保密的回饋問卷！
