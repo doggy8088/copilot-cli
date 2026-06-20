@@ -1,3 +1,29 @@
+## 1.0.54 - 2026-05-24
+
+修正與變更
+
+## 1.0.53 - 2026-05-24
+
+- 多行提示現在會完整顯示，不再發生內容被裁切或選取偏移
+- `/skills` 選擇器在儲存 skill 偏好設定時，現在會正確遵循 `--config-dir`
+- 當環境中設定了 `PS0` 或 `PROMPT_COMMAND` 時，Bash shell sessions 不再卡住
+
+## 1.0.52 - 2026-05-23
+
+- 非互動式子命令 (`plugin list`、`mcp list`、`help`、`version`) 不再消耗 stdin
+- 在主對話檢視中新增可用滑鼠拖曳的垂直捲軸
+- 切換到 Autopilot mode 時，不再意外觸發工具、路徑或 URL 存取的權限提示
+- `copilot --continue` 從工作階段儲存的目錄啟動時，現在會重新整理儲存的 branch 與 git 情境，而不再沿用過期資訊
+- Kill command 安全過濾器不再拒絕像 `kill -0 <PID> 2>/dev/null` 這類包含 shell 重新導向的有效指令
+- 工作階段現在會在其儲存的工作目錄中恢復；可傳入 `-C <dir>` 覆蓋。值為相對路徑的旗標 (例如 `--attachment`、`--log-dir`) 會以儲存的 cwd 為基準解析。
+- Context window tier 選擇 (預設約 200K 與 1M tokens) 現在會端到端強制生效，因此選定 tier 後會實際限制 compaction、truncation 與 token 顯示
+- 使用 Responses API 的工作階段結束後，AI Credits 使用量現在會正確顯示
+- 在 Cygwin 或 mintty 中搭配 tmux 使用時，渲染不再卡頓
+- 斜線指令選擇器在列被選取時，仍會將 `(experimental)` 與 `(staff)` 標籤維持為橘色
+- 在 token 使用量摘要中，reasoning tokens 現在會以輸出 token 數的括號附註顯示
+- 若工作階段事件中的 URL/URI 欄位含有非 URL 字串，工作階段恢復時不再出現「Session file is corrupted」錯誤
+- 因 HTTP/2 上傳停滯而逾時的 requests，現在會自動以 HTTP/1.1 重試
+
 ## 1.0.60 - 2026-06-05
 
 - 在斜線指令路徑參數中，按 Tab 補全 `..` 上層路徑時，現在不會切換分頁

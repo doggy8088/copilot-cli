@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機。
 
-GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot 編碼代理相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub Copilot 編碼代理相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -52,8 +52,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可用 root 身分執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。預設值在以 root 身分執行時為 `/usr/local`，
-以非 root 使用者執行時為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。預設值在以 root 身分執行時為 `/usr/local`，以非 root 使用者執行時為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -104,7 +103,7 @@ copilot
 
 第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
-如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的說明完成驗證。
+如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入這個指令並依照畫面上的說明完成驗證。
 
 #### 使用 Personal Access Token (PAT) 驗證
 
@@ -119,14 +118,14 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
 實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
-- 在 CLI 內使用 `/experimental` slash command
+- 在 CLI 內使用 `/experimental` 斜線指令
 
 啟用後，這個設定會持久化寫入你的 config，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
