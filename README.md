@@ -13,7 +13,7 @@ GitHub Copilot CLI 直接將 AI 驅動的程式開發協助帶到你的命令列
 
 我們正把 GitHub Copilot 編碼代理的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
 
-- **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理協作，不需要切換情境。
+- **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理協作，無需切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並直接使用你現有的 GitHub 帳號完成驗證。
 - **代理能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **MCP 驅動的可擴充性：** 善用編碼代理預設隨附的 GitHub MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
@@ -56,7 +56,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
-例如，將 `v0.0.369` 安裝到自訂目錄：
+例如，將版本 `v0.0.369` 安裝到自訂目錄：
 
 ```bash
 curl -fsSL https://gh.io/copilot-install | VERSION="v0.0.369" PREFIX="$HOME/custom" bash
@@ -127,7 +127,7 @@ copilot
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-啟用後，這個設定會持久化寫入你的 config，因此之後再次啟動時就不再需要 `--experimental` 旗標。
+啟用後，這個設定會持久化寫入你的設定檔，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
