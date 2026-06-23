@@ -1,3 +1,130 @@
+## 1.0.64 - 2026-06-23
+
+- 路徑存取提示現在會顯示解析後的符號連結目標，讓你能清楚看到實際授予的是哪些存取權限
+- 啟動時會顯示按用量計費的額外使用預算，在因超出額外支出上限而遭拒的 request 之後會重新整理，並在達到額外使用上限時顯示友善訊息
+- 為 BYOK OpenAI-compatible providers 加入 websocket responses 支援
+- 恢復工作階段時，會重現原本附加檔案的參照，即使這些檔案之後在磁碟上發生變更，也能避免 prompt cache 重設
+- 含有冒號的自由文字搜尋詞（例如 `CLI:`）現在會在 Issues 與 Pull requests 搜尋中回傳正確結果，而不再被 GitHub 誤判為無效限定詞
+- 支援為 MCP server 驗證設定靜態 OAuth client 覆寫值，包括 client secrets
+- 在 CLI 尚未完成載入時輸入的按鍵現在會被保留
+- 新增可讓 shell commands 繞過 sandbox 的選項
+- 在分頁式清單中加入滑鼠單擊與雙擊選取
+- 在 Markdown 表格中為 PR 與 issue 參照建立連結
+- 預設使用 GitHub 主題，並為所有使用者啟用首頁分頁與 prompt frame
+- 終端機調整大小後，終端機輸出現在會維持對齊
+- 當 rules service 無法連線（離線或暫時性的網路錯誤）時，content exclusion 不再封鎖所有檔案。系統會先允許存取，直到規則可重新擷取並在背景重試，行為與編輯器一致。
+- 可在 `/subagents` 中設定 rubber-duck subagent，包括會挑選相反家族模型的互補模型策略
+- `/diff` 現在會在非 git 資料夾中顯示 Copilot 變更的工作階段 diff
+- 可透過使用者設定配置 HTTP(S) proxy
+- 即使工作階段名稱包含空白，也可依名稱恢復工作階段
+- 在遠端託管工作階段中隱藏不支援的斜線指令
+- 新增可隱藏對話捲軸的設定
+- 在 CLI 中加入行內圖片渲染
+- 為 skills 加入 argument-hint frontmatter 支援
+- OpenTelemetry：成功 compaction 後的 chat spans 現在會攜帶 `gen_ai.conversation.compacted=true`，而摘要會作為 CompactionPart 輸出在 `gen_ai.input.messages` 中
+- PowerShell cmdlets（Select-String、Where-Object、ForEach-Object）不再誤觸多餘的目錄存取提示
+- 非互動式 prompt 輸出現在會維持在第 1 欄開始
+- 當 vision 停用時，會清除佇列中的工具圖片
+- 變更模型時，現在會等到新模型實際套用後才完成切換
+- 在 shell 安全性提示中，`2>/dev/null` 重新導向現在會被視為唯讀
+- 在外部編輯器中開啟 prompts 時，編輯後文字現在會正規化為 LF
+- 在完整 allow-all 工作階段中，會略過 computer-use 同意提示
+- 遠端匯出在 `/clear` 之後仍會持續執行，而 `/session info` 會保留 task URL
+- 在工作階段選擇器中刪除某個工作階段後，游標會停留在相鄰的工作階段上
+- 在 musl 主機上解析與自動更新 SEA 套件時，會使用正確的 Linux libc 目標
+- 當 `minItems` 未設定時，必要的多選提示現在允許提交空白選擇
+- 附加並還原後，首頁的工作階段時間線會保持可見
+- `/settings` 搜尋欄位現在支援 readline 編輯鍵與游標移動
+- OpenTelemetry GenAI spans 現在會依 GenAI semantic conventions 規格輸出 `gen_ai.usage.cache_read.input_tokens`、`gen_ai.usage.cache_creation.input_tokens` 與 `gen_ai.usage.reasoning.output_tokens`（先前使用了錯誤的底線分隔命名）
+- CLI 結束後終端機滑鼠滾輪失效的問題已修正，做法是以相反順序拆除終端機模式（現在會先停用滑鼠追蹤，再離開 alt screen）
+- 修正 `/rewind` 檔案還原確認對話框在捲動過的時間線上方開啟時，底部會被裁切的問題；現在會在檔案清單載入後以完整高度顯示
+- 在 `--help` 輸出中顯示 `--remote-export` 與 `--no-remote-export`
+- 會將 compact timeline 中展開的 shell 項目自動換行，讓長指令與描述維持可見
+- 讓 Markdown 表格中的連結可點擊
+- 在 `/usage` 中顯示各模型的 token 總數，並加速大型歷史記錄掃描
+- OpenTelemetry GenAI chat spans 現在會為已設定的 reasoning effort 輸出 `gen_ai.request.reasoning.level`
+- Autopilot mode 現在會在代理呼叫 task_complete 後回到互動模式，因此下一個 prompt 不會留在 autopilot
+- 新增 `/branch` 作為 `/fork` 的別名，與 Claude Code 的指令命名一致
+- 實驗性：加入 `--worktree [name]`（`-w`）旗標（透過 `/experimental` 啟用），會在 `<repo>.worktrees/` 下建立或重用 git worktree，並在其中啟動工作階段
+- 為 `/agent` 名稱加入 Tab 補全
+- 在模型設定中加入像 opus、sonnet、haiku、gpt 與 gemini 這類 model family aliases
+- 在 `/terminal-setup` 中為 Windows Terminal 加入 Ctrl+Backspace 綁定
+- 為遠端 MCP servers 加入 SDK 對 host-provided OAuth tokens 的支援
+- 實驗性：在 compact timeline 中，可點擊單一 tool-call 或 reasoning 列來展開或收合該項目（類似單列的 ctrl+o / ctrl+t），並在滑鼠所在列上顯示細微高亮
+- 工作階段建立或重新載入 MCP servers 時，會套用 MCP 組織政策
+- 修正稍後要求時無法取得已完成背景指令輸出的問題
+- 讓使用 task 或 agent alias 的 custom agents 仍可使用 task companion tools
+- 使用 tools wildcard `\*` 的 custom agents 現在會遵守 deferredToolLoading opt-in 開關
+- 在 WSL 工作階段中遵守 tmux 色彩偵測
+- 遵守 custom agent frontmatter 中 MCP servers 設定的 `deferTools`
+- 當 completion picker 開啟時，Ctrl+Q 會將 prompt 加入佇列
+- 工作階段重新命名後，Sessions 分頁的列標籤會立即更新
+- `--continue` 與 `--resume` 現在會選取目前儲存庫中最新的工作階段
+- 當由 nix 提供的 bash 位於 PATH 最前面時，shell 工作階段現在可正確啟動
+- 在 marketplace.json 中宣告 MCP servers 的 marketplace plugins，現在可正確使用 OAuth 驗證
+- Content exclusion 不再因命令名稱或幽靈路徑而封鎖 shell commands
+- 單獨的代理替代字元（lone surrogates）不再導致工作階段恢復失敗或 prompts 被截斷
+- 在斜線指令補全中展開 Windows 家目錄路徑
+- 保持截斷後的工具輸出預覽仍為有效 UTF-8
+- CLI 自動更新器現在會在 Alpine 系統上下載正確的 musl Linux 套件
+- 複製上一則 assistant 回覆時，現在會包含完整內容，包括多個區塊的回覆
+- 在受信任的 server-mode 工作階段中載入 workspace MCP servers
+- 堆疊 diff 現在會使用與檔案樹相同的檔案順序
+- 讓 `/pr status` 與 web confirmations 連到 PR 所屬的儲存庫
+- 回捲到沒有快照的某個 turn 時，會還原之後的檔案變更
+- 佇列中的 `!` shell commands 現在會在本機執行，而不是送給代理
+- 排程 prompts 管理對話框現在會縮小以貼合其條目內容
+- 當檔案搜尋遇到符號連結迴圈時，保持 `@` 檔案選擇器仍有內容可選
+- 對未提供 cache-write 價格的模型，也會顯示 cache-write 定價
+- 允許 `/update` 重新啟動以 `copilot -r` 啟動的工作階段
+- 防止選擇器與對話框在內容載入時位移或被裁切
+- Markdown 中現在只會將雙波浪號渲染為刪除線
+- 允許 `/allow-all` 在 relay 工作階段中運作
+- 在 compact timeline markdown 中恢復可點擊的 PR 與 issue 連結
+- repo 範圍的 plugins 不再跨專案洩漏到全域設定
+- 重新登入後，`/model` 在恢復的工作階段中仍可正常運作
+- PowerShell script blocks 與插值 `$()` 子運算式不再觸發 content-exclusion 拒絕
+- 結束訊息現在一律在恢復指令中顯示 session ID，而不是友善名稱
+- 會等待遠端 sandbox 啟動完成後，才開啟 cloud 工作階段
+- Autopilot mode 現在會自動處理 elicitation、ask_user、sampling 與權限提示（包括使用 `--autopilot` 啟動與 continuation turns 期間），而不再將對話框直接顯示給使用者
+- 新建立的工作階段現在會出現在 agents 分頁中其群組的底部
+- 即使來源檔之後被變更或刪除，附加的圖片與 PDF 仍會在工作階段恢復後持續保留
+- 允許停用 task 與 explore 內建 subagents
+- 工作階段恢復在載入大型歷史記錄時仍能保持回應
+- Code search 與 worktree listing 速度更快
+- CLI 輸出改用純文字標籤，而不是裝飾性 emoji
+- 在時間線中為 shell commands 加入語法高亮
+- 在重新連線與重新啟動後保留已開啟的 canvas instances
+- 將 preToolUse 提示中輸入的拒絕回饋轉送給模型
+- 在 statusline picker 中，已啟用項目的核取方塊顯示為綠色，停用項目則顯示為灰色
+- 將 shell timeline 列顯示為黃色 `$` 提示與 Shell 標籤
+- 在 resume picker 中新增 Folder 欄位，用來顯示各工作階段的工作目錄
+- 自動跟隨系統的淺色與深色模式變更
+- 在 CLI 橫幅中使用語意化吉祥物主題色
+- 讓頁尾對話框能在 unified view 中隨時間線一起捲動
+- 點擊 `/diff` 樹狀檢視中的檔名，可跳到該檔第一個變更處
+- 在 Markdown 中以符合主題的 chip 樣式渲染行內程式碼
+- 在 `mcp` 指令中顯示已安裝 plugin 提供的 MCP servers
+- 移除終端機回報的色彩方案支援
+- 新增 `/diagnose` 指令，用來分析工作階段記錄
+- 新增 `/mcp registry` 安裝功能，可瀏覽與安裝 MCP servers
+- 讓 `/security-review` 對所有使用者可用，不再需要 `--experimental`
+- 探索已安裝 plugins 所提供的 MCP servers
+- 為 MCP tools 加入 CSV 輸出支援
+- 新增 `/loop` 作為 `/every` 指令的別名
+- 移除舊版 `/terminal-setup` 建立的錯誤 Ctrl+Enter VS Code 快捷鍵綁定
+- tools 回傳的圖片在後續 turns 與恢復工作階段後，仍會對模型保持可見
+- 在 `/share` 匯出中保留 Markdown 引言區塊
+- 啟用 content exclusion 時，會正確過濾過長的串流結果
+- 在達到額外使用上限時顯示友善訊息
+- 搜尋 tools 現在可正確處理 Windows 風格的 glob patterns
+- 防止 kill 自我保護機制誤判帶引號的 pipe 與以 kill 結尾的路徑
+- Azure CLI、PowerShell 與 Developer CLI 憑證現在可再次正常用於 Azure 驗證
+- 斜線指令選擇器的名稱欄寬由 25 擴大到 35 字元，因此較長的 skill 名稱較不容易被截斷
+- `/diff` view 現在會換行長內容，不再截斷
+- 改善 `/diff` 中 branch、whitespace 與 tree 導覽的快捷鍵標籤
+- 從 CLI 中移除舊版 intent-reporting tool
+
 ## 1.0.54 - 2026-05-24
 
 修正與變更
