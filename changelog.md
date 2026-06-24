@@ -1,3 +1,28 @@
+## 1.0.65 - 2026-06-24
+
+- `/cd` 現在會保存工作目錄，因此恢復工作階段時會回到該目錄，並探索新目錄中的 custom agents
+- 帶有斜線開頭字串參數的命令（例如 `--body "/azp run"`）不再觸發多餘的檔案系統權限提示
+- 全螢幕時間線在較舊內容被裁切時，現在會保持錨定位置
+- 重新啟動 CLI 後，會自動恢復已開啟的 canvases
+- 新增可選擇啟用的狀態列項目，用來顯示目前 branch 的 CI 檢查狀態（成功／執行中／失敗）
+- 新增 `copilot skill` 子命令（以及 `/skills` 的別名 `/skill`），可從檔案、URL 或目錄列出、新增與移除 skills
+- 使用非 GitHub 主題啟動時，不再閃現 GitHub 背景
+- 在 Windows 上，代理執行 hook commands 或解析命令路徑時，不再短暫閃現主控台視窗
+- 將 userPromptSubmitted hook 的 additionalContext 納入提供給模型的 prompt
+- 新增 stdio MCP servers 時，會保留 Windows 路徑原貌
+- MCP 關閉時，不再等待進行中的 server 連線完成
+- 重新啟動 CLI 時，不再受到關閉逾時影響
+- 移除時間線中 shell commands 的語法高亮
+- 使用 BYOK providers 時，會保留 custom-agent subagent 的模型選擇
+- 會使用工作階段的主要模型來解析 `/every` 排程
+- 在 tmux 中更可靠地渲染行內圖片
+- `ask_user` 的自由輸入選項現在會自動換行，並保持游標對齊
+- 在 `/settings` 中儲存自訂 status line commands
+- 將串流位元組數與取消提示分開顯示
+- 當沒有啟用 self-paced schedule 時，若發生喚醒誤觸，會顯示友善訊息
+- 靜默 MCP OAuth 重新整理會重用已授權的 scope，因此重新連線後仍會保持登入狀態
+- 在一般模式下，上下鍵歷史記錄與 Ctrl+R 反向搜尋現在也會包含先前的 shell commands，因此你不必先輸入 `!` 進入 shell mode，就能回想並重新執行 shell command
+
 ## 1.0.64 - 2026-06-23
 
 - 路徑存取提示現在會顯示解析後的符號連結目標，讓你能清楚看到實際授予的是哪些存取權限
