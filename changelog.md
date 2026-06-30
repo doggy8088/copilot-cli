@@ -1,3 +1,120 @@
+## 1.0.67 - 2026-06-30
+
+- 在本次工作階段剩餘時間停用 sandbox，現在會立即生效，因此 shell 與 search commands 不會在同一個 turn 中再次提示你繞過 sandbox
+- Subagent 工作階段現在會保留父層工具限制
+- 當 host custom agents 載入失敗時，現在會顯示警告與錯誤
+- 要求 session limits 至少為 30 AI credits
+- 新增對 Claude Sonnet 5 的支援
+- 當 hooks 逾時時，仍允許 tool calls 繼續執行
+- `Ctrl+Q` 現在會將目前反白的 slash-command argument completion 加入佇列
+- 針對位於 tenant vanity domain 後方的 Microsoft Entra servers（例如 Copilot Studio）進行 MCP OAuth 時，不再發生無法 refresh 或重新驗證的問題（AADSTS9010010 / AADSTS90023）
+- Prompt mode 的結束摘要現在會顯示 resume 提示，方便你繼續該工作階段
+
+## 1.0.66 - 2026-06-30
+
+- 在互動式工作階段中，現在會使用不閃爍的區塊游標，並在結束時還原終端機的預設游標
+- 新增對 Claude Opus 4.8 Fast 的支援，並淘汰 Claude Opus 4.6 Fast
+- MCP 新增／編輯表單現在接受 HTTP 風格的 `Key: value` headers
+- 避免 LSP servers 在啟動期間重複啟動兩次
+- 避免封鎖包含 Windows 風格路徑片段的命令
+- 讓 Copilot 可以讀取已分離背景 shell commands 的輸出並停止它們
+- 大量輸出處理現在會遵守自訂輸出目錄與停用設定
+- 防止在 assistant 回覆為空時，產生 PR 描述導致當機
+- 現在會將時間線渲染為緊湊的「精華片段」樣式，為所有使用者顯示單行的工具與 reasoning 列
+- 在 relay 工作階段中新增 `@` 檔案與 `#` GitHub 參照補全
+- 當檔案系統缺少 birthtime 時，會顯示正確的工作階段存活時間
+- 防止 GPT 模型產生重複的最終 assistant 訊息
+- 終端機標題更新現在可在更多終端機中運作
+- 在緊湊 Search 時間線項目上顯示 `(sandboxed)` 標記
+- Git commands 現在可在經 sandbox 保護的 linked worktrees 中運作
+- 將目前 pull request 連結顯示為狀態列項目
+- 顯示 WebSocket Responses requests 的 quota snapshots
+- 顯示準確的 Anthropic reasoning token 數量
+- 在 sandbox 核准後，允許 `grep` 與 `glob` 重試原本被封鎖的搜尋
+- 以工作階段標題與 GitHub Copilot 後綴來格式化終端機標題
+- 在 tmux 下略過 synchronized output，以避免滑鼠指標閃爍
+- Session limits 現在會套用到目前整段對話，在 `/clear` 後重設，並使用 `sessionLimits` 選項鍵
+- 在 agent 選擇中隱藏被排除的內建 agents
+- 使用 Anthropic 模型的 BYOK 工作階段，不再因 adaptive-thinking 不匹配而觸發 HTTP 400 錯誤；無論是對不支援 adaptive thinking 的模型注入 adaptive thinking，或對需要 adaptive thinking 的模型送出標準 thinking，都不會再出錯。雙模式模型的 thinking mode 選擇維持不變。
+- 允許來自不同 plugins、但名稱相同的 skills 共存
+- 讓 integrations 可以讀寫 CLI 使用者設定
+- 可在 `/lsp logs` 與 `read_agent` 中查看 LSP server logs
+- 在 GitHub repositories 中，若缺少 `gh` CLI，會提示安裝
+- 為 prompt rendering 新增 GitHub 附件變體
+- Extension 開關現在會保留所選模式
+- 取消附加的 shell commands 後，會返回 prompt
+- 保持背景 `git status` 檢查不會干擾並行的 git commands
+- 載入時可恢復已損毀的工作階段歷史記錄
+- 在 `/after` 與 `/every` 排程 prompts 中保留換行
+- 啟動多行 `/worktree` 任務時，會保持內容完整
+- 讓 `/cd` 路徑補全維持與 Enter、Escape、Tab 一致的行為
+- 保持 session-store 搜尋與 context 查詢的回應速度
+- 在 macOS 上從 CLI 顯示桌面通知
+- 當 Windows 環境變數不可用時，仍可貼上 WSL 圖片
+- 移除任務後，保持選取停留在相鄰任務上
+- `read_agent since_turn: 0` 現在會正確回傳所有 turns，包括 turn 0
+- 在啟動期間過濾 MCP servers 輸出的非 JSON stdout 行
+- 在背景執行緒中平行進行 tokenizer 預熱，以改善啟動效能
+- 在時間線中於使用者 prompts 旁顯示送出時間
+- 改善 `/share`，以管理已同步工作階段的可見性
+- 在 `AGENTS.md`、`CLAUDE.md` 與 Copilot instruction 檔中展開 `@` 風格 imports
+- 讓 `/pr auto` 能持續在 CI、review 與 merge queue 流程中運作
+- 點擊展開緊湊時間線項目時，該項目會固定位置並向下展開內容
+- 可在 `/settings` 中設定 subagent 的並行度與深度限制（適用於按用量計費使用者）
+- 新增 `/chronicle skills review`，可檢閱建議的草稿 skill 變更，並可逐項接受、拒絕或延後
+- 為 attention prompts 與閒置工作階段新增桌面通知
+- 讓 `/share` 使用 Mission Control 連結來分享工作階段
+- 建立快照時，會重試暫時性的 HEAD 查詢失敗，而不是直接當機
+- 讓 `/chronicle reindex` 保持回應，並在時間線中顯示進度
+- 切換分頁時，會返回最後一次開啟的 GitHub issue、pull request 或 gist 檢視
+- 安裝 MCP registry 項目時，會解析 package argument placeholders
+- 避免佇列訊息卡在背景工作之後
+- 發生暫時性的 connection-pool 錯誤後，會重試擷取 managed settings
+- 當受 sandbox 保護的 MCP server 在請求中途結束時，不再顯示 broken-pipe 錯誤
+- 當 OAuth token 過期或需要更大 scope 時，能正確恢復由 MCP host 委派的連線
+- CLI git 檢查現在會略過可選鎖定，讓狀態與 branch 查詢在繁忙的 repositories 中仍可運作
+- 在緊湊時間線列中，將多行子項目折疊為單一行內列
+- Inline hook settings 現在可正確處理巢狀的 Claude 風格 hook 群組
+- 在 secret filtering 期間保持 CLI 可回應
+- Search 輸入現在可比對前後帶有空白的查詢
+- 取消某個 turn 後，保持閒置 agents 仍可使用
+- 顯示 sandbox 繞過警告，並為已繞過的命令加上標示
+- `/pr auto` 現在會啟動自我節奏迴圈，每次執行修正一個項目，並配合 CI 節奏推進 PR 至綠燈；`/pr automerge` 會持續執行直到 PR 合併。可從 `/loop` 或 `/every` 管理或停止。
+- 在遠端託管工作階段（cloud 與 relay）中啟用 `/rename`
+- 在 CLI 的 MCP 清單檢視中新增切換開關，可啟用或停用 MCP servers
+- 在 CLI 設定中新增實驗性的 response limits 控制
+- 讓 managed settings 可以設定 OpenTelemetry 匯出
+- 使用 OAuth 驗證的遠端 servers 上的 MCP tools，現在可在工作階段中途 token 過期後自動恢復，行為與既有的 OIDC 重試一致。若 tool call 遇到 401，會觸發非互動式重新連線；若 server 需要互動式重新驗證，則會在下一個 turn 開始時重試。
+- 新增持久化的 `dynamicRetrieval` 設定（以及 `--dynamic-retrieval skills=<on|off>` 旗標），可啟用或停用基於 embeddings 的 skill 擷取
+- 讓 custom agents 可以在其定義中設定 reasoning effort
+- 可將任務傳給 `/worktree`（例如 `'fix the login redirect'`），用該任務為 branch 命名，並將這句話作為新 worktree 中的第一個 prompt 執行
+- 新增 MCP host token-injection OAuth 流程的執行時遙測，會記錄何時向 host 廣播 OAuth，以及 host 如何回應（token 或取消）與回應延遲
+- 在 Pull requests 分頁中顯示各 pull request 的 merge 狀態，並可按 `r` 依需求重新整理快取狀態
+- 修正一個輕微卡住問題：若啟動提示（folder trust、screen reader 或 Copilot free signup）在首頁非 Main 分頁聚焦時開啟，CLI 會停止回應輸入
+- 引導代理將跨儲存庫的 issue/PR 參照格式化為 `owner/repo#number`（保留裸露的 `#number` 僅用於目前儲存庫），避免誤連到目前儲存庫
+- 保持 `/restart` 在關閉清理過久時仍可運作
+- 當 `cmd.exe` 不在 `PATH` 中時，仍可在 WSL 中將文字複製到剪貼簿
+- `COPILOT_HOME` 與 `--config-dir` 不再從 `~/.agents/skills` 載入 skills
+- 在 `/extensions` 中切換 extension 模式時，保留各 extension 被停用的選擇
+- 從捲動檢視複製換行文字時，會保持正確間距
+- 當語音引擎在啟動時無法啟動，voice mode 會自動關閉
+- 在驗證完成前的啟動期間，按 `Ctrl+D` 現在可乾淨結束
+- 防止帶框的使用者訊息在右側邊界裁掉尾端字元
+- 行內圖片在結束後不再寫入 shell
+- 顯示 slash command 子命令的描述
+- 在驗證變更後自動重新整理 MCP server headers
+- LSP commands 與 tools 現在能更可靠地解析專案設定與 server 路徑
+- 新增 `--allow-all-mcp-server-instructions`，可選擇將所有 MCP servers 的 instructions 納入 system prompts
+- 在 `--yolo` 工作階段中，自動接受選擇加入的 MCP 同意提示，同時仍顯示系統權限提示
+- 在全螢幕檢視中使用完整終端機高度
+- 為 shell 與 search 時間線項目使用更清楚的圖示
+- 讓終端機文字顏色與 GitHub 主題畫布一致
+- 在工作中的頁尾文字中顯示目前啟用的 agent mode
+- `/worktree` 現在會保留原樣且有效的 branch 名稱，例如 `feature/JIRA-123`，而不會再將其壓平成像 `feature-jira-123` 這樣的 slug
+- 在沒有參數時，`/worktree` 會根據你尚未提交的變更與最近對話，使用目前啟用的模型來命名 branch，而不是固定使用較小模型
+- 將調色盤設定整併到 `/settings theme`
+- 更可靠地儲存 CLI 設定與工作階段狀態
+
 ## 1.0.65 - 2026-06-24
 
 - `/cd` 現在會保存工作目錄，因此恢復工作階段時會回到該目錄，並探索新目錄中的 custom agents
