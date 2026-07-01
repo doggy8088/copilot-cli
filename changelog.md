@@ -1,3 +1,36 @@
+## 1.0.68 - 2026-07-01
+
+- 新增對 `kimi-k2.7-code` 模型的支援
+- `/mcp` 設定表單中目前聚焦的欄位，現在會以 `"❯ "` 箭頭標示，而不再只靠顏色區分
+- 在 IDE 短暫中斷連線期間，會保留 IDE tools 可用性；斷線時回傳清楚的錯誤，IDE 重新連線後會自動恢復
+- Tab 補全現在會內嵌顯示 slash command aliases（例如 `/pr automerge|agentmerge`）
+- 當工作階段的工作目錄或 git worktree 已被刪除時，hooks 不再報錯並拒絕所有工具
+- 當 reasoning effort 或 context tier 變更時，保持頁尾的模型狀態同步更新
+- 避免來自符號連結掃描根目錄的重複 skill 與命令解析錯誤
+- 在執行 `/cd` 與 `/worktree` 後更新 Sessions 側邊欄中的 branch
+- 在 Windows 上，可在 Win32 extended-length paths 下找到 agents 與 instructions
+- 顯示 slash-command 輸入選項的說明
+- 避免在 macOS 上複製已選取的時間線文字時造成終端機顯示損壞
+- 將符號連結的 sandbox 路徑折疊為單一列
+- 可從 agents 畫面瀏覽、恢復與切換工作階段
+- Code review 在收集變更時，會重試暫時性的 git 失敗
+- 略過格式錯誤的 plugin manifests，並繼續載入有效的 plugins
+- 針對支援的方案，在狀態列與 `/usage` 中顯示 plan budget 詳細資訊
+- 在裁切輸出中正確渲染泰文與天城文文字
+- 保持檔案編輯與 patch 都遵守 sandbox 檔案系統政策
+- 在終端機輸出中保留被換行包裹的 OSC 8 超連結 ID
+- 允許 device-managed settings 覆寫 server-managed settings
+- 在 skill prompt context 中保留內嵌的 `/skill` tokens
+- 讓 git commands 可從 sandbox 中的 repo 子目錄運作
+- PowerShell 變數參照不再觸發 content-policy 拒絕
+- 當工作目錄在不同 turn 之間變更時通知代理，讓它在執行命令與解析相對路徑時使用新目錄
+- 互動式工作階段預設改用穩定的垂直線游標
+- 啟動時停用游標閃爍，但不改變游標形狀
+- 拒絕與其他清單中的符號連結衝突的 sandbox 路徑編輯
+- 當 slash-command picker 開啟時，保持狀態列可見
+- Custom agents 在巢狀 subagents 中保留其工具篩選條件
+- 在 `/diagnose` 工作階段日誌摘錄中保留多位元組字元（emoji、重音字母、非拉丁文字）
+
 ## 1.0.67 - 2026-06-30
 
 - 在本次工作階段剩餘時間停用 sandbox，現在會立即生效，因此 shell 與 search commands 不會在同一個 turn 中再次提示你繞過 sandbox
