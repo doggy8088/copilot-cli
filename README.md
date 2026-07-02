@@ -11,7 +11,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 簡介與總覽
 
-我們正將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
+我們正將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼及 GitHub 情境的 AI 代理同步協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 與 pull requests，並直接使用你現有的 GitHub 帳號完成驗證。
@@ -118,7 +118,7 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
