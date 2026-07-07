@@ -1,3 +1,83 @@
+## 1.0.69 - 2026-07-07
+
+- 內建檔案編輯現在會標示為 `(sandbox policy)` 徽章，而不是 `(sandboxed)`，因為它們是盡力遵守 sandbox policy，而非在作業系統層級的 sandbox 中執行
+- 無需重新啟動工作階段即可重新載入已安裝的 plugin extensions
+- 新增 `/plugins` 儀表板來管理已安裝的 plugins
+- 可從空白 prompt 開啟快速說明，而不會留下多餘的 `?`
+- 為 `gemini-3.5-flash` 新增 minimal reasoning effort
+- 在 `/model` 選擇器清單中顯示捲軸
+- 在 `/lsp test` 中將已停用的 servers 顯示為 disabled
+- 當你核准時，允許內建檔案編輯繞過 sandbox
+- `web_fetch` 現在會遵守目前啟用的 sandbox 網路政策（拒絕政策封鎖的對外或本機目標）；當 host 透過 `sandbox.allowBypass` 選擇啟用時，也可讓你從 fetch prompt 核准一次性繞過
+- 在 Chronicle 與 session SQL 中顯示精確的本機 assistant 使用量
+- 從不同 repository 恢復遠端工作階段前，會先要求確認
+- 延後建立唯讀遠端工作階段，直到你送出第一則訊息
+- 在 CLI 頁尾顯示 reasoning-effort 標籤
+- 在 `/settings` 中顯示 sandbox `userPolicy` 設定的說明
+- 啟動工作階段時，拒絕明確為空的 `--name=` 值
+- 預設會針對目前 branch 建立 delegate PR；可用 `/delegate --base` 選擇其他 PR 目標 branch
+- 讓 `/copy` 在 Wayland 上回退使用 `wl-copy`
+- 改善 `/sandbox add-path` 建議，讓它們只在你要求時才開啟
+- 改善 `/chronicle cost-tips`，提供更精確且有依據的建議
+- 捲動時按住 Alt（macOS 上為 Option）可一次移動一行
+- 更快地恢復與切換大型工作階段
+- 加速大型 diff 的 `/diff` 渲染與捲動
+- 當時間線已滿時，保持完整的 `/model` 選擇器仍在畫面內，並在詳細資訊橫幅增長時重新貼齊，避免搜尋框與提示列被裁切到終端機下方
+- 在 Windows 上，當 CLI 啟動輔助程序時隱藏暫時出現的主控台視窗
+- 自動核准的時間線項目現在會包含請求主體，例如命令、路徑、URL 或 tool 名稱
+- `/allow-all auto` 現在需要實驗模式（`/experimental on` 或 `--experimental`），不再依賴 `AUTO_APPROVAL` 環境變數或功能旗標
+- 在驗證前的說明與自我文件中顯示 `/rubber-duck`
+- 在 `/diff` 的本機編輯中，納入新建且尚未追蹤目錄內的檔案
+- 當 prompt 高度超過畫面且頂端已捲出時，現在仍可繼續捲動，而不會收合成固定的頁首
+- 要求先登入 Copilot，`ACP authenticate` 才會回傳成功
+- 當 `--stream` 關閉時，在 prompt mode 中顯示完整的 assistant 回覆
+- 當 repo 範圍的 plugin 被停用，或工作階段離開宣告該 plugin 的 repository 時，中斷其 MCP server 連線
+- 防止 `copilot init` 在非互動模式下卡住
+- 拒絕空白的 `--session-id=` 值，而不是忽略它
+- 拒絕空白的 `--resume=` 值，而不是啟動新的工作階段
+- 在被截斷的時間線工具參數中保留 emoji
+- 在 `/terminal-setup` 輸出中顯示純文字的 Shift+Enter
+- 當 token timing 含有小數毫秒時，保持工作階段恢復可正常運作
+- 對檔名以 `[DIR]` 開頭的檔案完成 `@` 提及補全
+- 透過 CLI OAuth callback flow 登入 MCP servers
+- 當時間線已滿時，顯示完整的 `/user` 切換選擇器，避免其提示列被裁切到終端機下方
+- 新增 `/mcp list` 以顯示已附加的 MCP servers 及其狀態，並允許在代理工作期間執行 `/mcp list` 與 `/plugin list`
+- 允許在代理工作期間開啟 `/mcp` 管理器，以在同一 turn 中啟用或停用 servers；新增、編輯、刪除與重新驗證仍會暫停，直到該 turn 結束
+- 新增 auto allow-all mode，會自動核准經 LLM judge 判定為可接受的請求
+- 新增 `stayInAutopilot` 設定（預設為 false），讓 CLI 在 autopilot 任務完成後仍維持在 autopilot mode
+- 已釘選的 prompts 在捲動時會保持完整框線對齊
+- 在讀寫剪貼簿時，抑制 macOS pasteboard 的 stderr 輸出
+- 保留渲染後 Markdown 輸出中的冒號
+- 當多個 plugins 定義相同的 MCP server 時提出警告
+- 收集 debug logs 時，不會截斷大型檔案或遺漏多行 secrets
+- 當本地 branch 名稱與 PR head ref 不同時，仍可從 worktree branches 找到 PR
+- 當政策停用 bypass mode 時，略過 autopilot 權限提示
+- 允許在 CLI 中使用 WSL UNC 路徑作為本機檔案
+- 在 CLI 啟動時可靠地套用 `--reasoning-effort`
+- 在會展開 tab 的終端機中，保持 slash-command 選擇器列完整
+- 當 tool call ID 含有標點符號時，保持模型切換可正常運作
+- 連按兩次 Esc 現在會中斷執行中的主要 turn（並清空排隊訊息），或在主要代理閒置時停止背景 agents
+- 防止 CLI 結束時在 Windows 上產生無害的當機報告
+- 在 tmux passthrough 中包裝剪貼簿寫入，讓複製內容可傳到外層終端機
+- 受 OAuth 保護的 MCP servers 在重新連線後，現在會重新註冊其 tools
+- 保持 CLI 驗證在 one-shot 工作階段中可正常運作
+- `Ctrl+C` 現在會像 Escape 一樣關閉 `ask_user` 與 elicitation prompts
+- 對已取消的 MCP OAuth 請求顯示 Authenticate
+- 避免 `/help` 重複列出 rewind/undo
+- 在 OAuth 取消後，保持 MCP servers 處於 needs-auth 狀態
+- 在驗證前的說明與自我文件中隱藏僅供 staff 使用的命令
+- 在 `skill list` 中顯示 skill 載入錯誤與警告
+- 讓你在 CLI 模型選擇器中更容易瀏覽與篩選模型
+- 透過移除重建時間線時的二次方複雜度處理，加快工作階段恢復速度
+- 當靜態 context 使用了大部分 prompt budget 時提出警告，並在幾乎沒有剩餘對話空間時阻擋 requests
+- 在讀寫工作階段資料庫時改善 CLI 回應速度
+- 改善 slash-command 與 theme picker 選項的說明文字
+- 移除無作用的 sandbox host 清單與離開時清除政策的切換選項
+- 為 `/sandbox` 路徑項目新增檔案與資料夾補全
+- 當背景工作階段的工作目錄變更時，在 Sessions 分割檢視中更新其 branch 標籤
+- 返回已載入的工作階段時，略過不必要的 MCP 重新載入
+- 防止 tgrep indexer 在大型 monorepo 上耗盡記憶體；若 indexer 被終止，則回退使用 ripgrep，而不是反覆重新啟動它
+
 ## 1.0.68 - 2026-07-01
 
 - 新增對 `kimi-k2.7-code` 模型的支援
