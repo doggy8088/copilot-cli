@@ -300,6 +300,82 @@
 - 改善 `/diff` 中 branch、whitespace 與 tree 導覽的快捷鍵標籤
 - 從 CLI 中移除舊版 intent-reporting tool
 
+## 1.0.63 - 2026-06-15
+
+- 遭封鎖的圖片附件現在會說明該怎麼做：透過 "Editor preview features" 政策啟用 vision、切換到支援 vision 的模型，或改用其他圖片，而不再只顯示令人困惑的錯誤
+- `--help` 輸出中的選項現在會依字母順序排序，包括具有兩個 long flags 的選項
+- Auth 驗證錯誤（例如 VPN 或 IP allowlist 驗證失敗）現在會顯示在登入橫幅中，並附上檢查網路存取的指引
+- `/pr` 與 branch PR badge 現在會顯示以 fork 為基礎的 pull requests
+- 當本地與遠端 repository 名稱僅大小寫不同時，現在也可恢復 remote sessions
+- 當 `read_bash` 輸出過大時，會顯示 spill file 路徑
+- 在 `/chronicle standup` 中納入最近的本機工作階段
+- 恢復 `/responses` WebSocket 連線
+- 在 HMAC 與 OAuth 模式下，會重試暫時性的 401 驗證失敗
+- 在 `/diff` 中按 `w` 可隱藏只有空白差異的變更
+- 在 MCP server config 中新增 `deferTools` 選項，即使啟用 tool search，也能讓某個 server 的 tools 持續可用
+- Agent mode 現在會以每個工作階段為單位追蹤，因此在建立、清除或切換工作階段時，不會再沿用先前設定
+- 按下 Enter 現在會開啟目前反白 issue 的詳細資訊
+- Plan review menus 現在可在嚴格的 OpenAI-compatible backends 上運作
+- 防止在 native runtime addon 載入到已損毀的 host process heap 時，Windows 發生當機
+- 當原生文件附件無法讀取時，會回退為 file-path uploads 以恢復運作
+- 在搜尋命令歷史記錄時，保持 reverse search 在輸入頁尾中對齊
+- PostToolUse hook matchers（例如 `Edit|Write`）現在會正確生效，而不再被靜默忽略，因此 formatters 與 linters 只會在其目標工具之後執行
+- 改善 OpenAI、Anthropic 與 Azure OpenAI requests 的可靠性
+- 實驗性：`/rewind` 不再需要 git，且只會還原 Copilot 變更過的檔案（保留你的編輯不變），並提供僅還原對話或還原對話加檔案的選項
+
+## 1.0.62 - 2026-06-13
+
+- Ask 與 elicitation 對話框現在會與時間線一起捲動，而不再占滿整個畫面，因此高對話框不會再遮住代理輸出；你可以先往上捲動查看先前輸出，再往下回到對話框
+- 在 reasoning 摘要區段之間保留空白行
+- 在 search chip 中顯示使用者輸入的冒號詞彙
+- Plugins 現在可隨附 extensions，因此可透過 plugin marketplace 安裝
+- 在 diff view 中新增內容搜尋、比對高亮，以及 `n`/`N` 導覽
+- 新增 `/app` slash command，可開啟 GitHub app，或改用瀏覽器作為 fallback
+- 可透過使用者設定或 `/subagents`（也就是 `/agents`）選擇器設定 subagent 的 model、reasoning effort 與 context tier
+- PowerShell 重新導向路徑不再觸發 content-exclusion 拒絕
+- WebSocket transport 現在可在 Tokio runtime 外乾淨關閉
+- Shell tool errors 現在會說明某個 shell ID 是已停止、已完成，還是已被回收
+- Voice runtime 下載對話框在安裝失敗後不會再循環重新開啟
+- 將 MCP server config 表單改為更易用的 picker-based 流程
+- 在頁尾顯示 'YOLO'（allow all）指示器，並在自訂 `statusLine.command` 中加入 allow-all 狀態
+- 在 Issues 或 Pull Requests 分頁按 `/`，即可使用 server-side filtering 搜尋 GitHub
+- 新增 session-scoped 的 extensions 與 canvases
+- 允許 SDK clients 透過 `session.create` 與 `session.resume` 設定 session memory
+- 可透過 Kerberos/Negotiate（SPNEGO）自動經由企業 forward proxies 完成驗證
+- 在 `/diff` view 中新增檔案樹側邊欄與行內留言編輯器
+- 對 BYOK Responses providers 會正確遵守 `max_output_tokens`
+- 帶有點與斜線的 MCP server 名稱，現在會對應到有效的 Responses API namespaces
+- 像 `code-insiders --wait` 這類 editor commands 現在可在 Windows 上正確啟動
+- 可從設定根目錄外的符號連結目錄載入 skills
+- 遇到過大的行內圖片時，現在會平順恢復，而不會讓該 turn 失敗
+- 若圖片附件因政策停用 vision 或目前模型不支援而被拒絕，現在不會再污染後續整個工作階段。系統會在發生 400 之後將該圖片從對話歷史中移除，讓後續 prompts 能成功執行。
+- 從 `/tasks` 提升到背景執行的 shells，現在會在該 turn 結束後繼續運行
+- 隱藏背景 helper agents 的內部停用工具訊息
+- 當 host environment 提供 `mxc-sdk` 時，sandbox tool 現在可正確載入
+- 當工作階段從 repository root 的子目錄啟動時，現在也能發現巢狀 `.github/agents` 與 `.claude/agents` 目錄中的 custom agents
+- 核准某個 tool permission prompt 後，不會再對相同的 tool call 跳出第二次提示
+- View tool prompts 現在會正確標示 20KB 的截斷上限，而不是 50KB
+- 防止 workspace MCP servers 陷入重啟迴圈
+- 使用 BYOK providers 時，讓 custom agents 持續使用其設定的模型
+- 發生暫時性的 content policy 錯誤時，可在不重新啟動工作階段的情況下恢復
+- Autopilot 在 relay 工作階段中現在可順暢持續執行，且 `/plan` 會顯示簡短 prompt
+- Git commands 在 Windows 上不再短暫閃現主控台視窗
+- Claude-format plugin 的 `preToolUse` 與 `permissionRequest` hooks，現在會針對 `Bash`、`Read` 與 `*` 等 tool matchers 正確觸發，且 Claude-format hook payloads 會攜帶 Claude 工具名稱（`Bash` 而不是 `bash`）
+- 當工作階段進行中切換使用中的主題時，終端機顏色現在會即時更新
+- 串流的 assistant 文字不會再在時間線中間歇性重複
+- `grep` 現在會略過不存在的搜尋路徑，並繼續回傳有效結果，而不是直接失敗
+- Remote MCP OAuth servers 現在只會針對每個相符的設定啟動一次，而不會為每個 subagent 重新啟動
+- 巢狀 subagents 現在會遵守並行限制，同時不會阻塞終端機輸入
+- 當 marketplace ref 是完整限定的 tag（例如 `refs/tags/v2.1.0`）時，plugin install 現在可正常運作
+- 在展開的 issue 或 pull request 詳細資訊檢視中按 `W`，即可建立 worktree
+- `/every` 與 `/after` 現在可排程 slash commands（例如 `/every 1d /chronicle standup`）
+- Model picker 現在會開啟到包含目前所選模型的分頁
+- Shell commands 現在會透過輕量級程序啟動執行，而不是 pseudo-terminal；因此不再支援透過 `write_bash` 進行互動式輸入
+- 改善 GitHub 主題的色彩對比，以符合 WCAG AA 無障礙標準
+- 顯示 ACP session config options 的說明
+- 加快 warm sessions 中的 branch 與 HEAD 偵測速度
+- Light theme 的次要背景色現在會正確渲染
+
 ## 1.0.54 - 2026-05-24
 
 修正與變更
