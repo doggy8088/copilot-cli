@@ -1,3 +1,53 @@
+## 1.0.70 - 2026-07-09
+
+- 新增對 GPT-5.6 模型的支援
+- 對於 mcp 與 skill 指令失敗，只顯示單一 `Error` 前綴
+- 當 `--agent` 選到格式錯誤的 custom agent 時，顯示實際的解析錯誤
+- `web_fetch` 可透過強制性的 HTTPS proxy 運作
+- 在 Gists 分頁中隱藏 `/search`
+- 將被後續取代的 subagent 執行視為已取消，而不是失敗
+- 為 MCP server resources 新增分頁式的 `session.mcp.resources` `read`／`list`／`listTemplates` RPC
+- 以結束碼 2 離開的 `preToolUse` hooks 會拒絕 tool calls
+- 當 Forge 找到明確的工作流程模式時，會建立草稿 skills
+- 在遠端終端機中隱藏安裝 GitHub App 的提示
+- 允許在 plugin 來源設定中使用 `sha` 欄位，將 plugins 釘選到精確的 commit SHA
+- 新增 `--sandbox` 與 `--no-sandbox` 旗標，可只針對目前工作階段開啟或關閉作業系統層級的 shell sandbox，而不變更已儲存的 sandbox 設定（搭配 `-p` 特別實用）
+- 新增 `/refine`，可將粗略、意識流式的 prompt 改寫成清楚的版本
+- 為 `/settings` 與 `/model` 新增 `--repo` 與 `--local` 旗標
+- 新增顯示或隱藏時間線時間戳記的設定
+- 允許受信任的 repository 透過 `.github/copilot/settings.json` 釘選模型、effort level 與 context tier，並擴充 URL／MCP／skill 的 deny lists
+- 對外提供 SDK API，用來管理執行中工作階段內的即時 MCP servers
+- 在 `/user switch` 之後顯示目前使用者可用的模型
+- 拒絕某個 extension 的權限提示後，不再導致該工作階段剩餘期間的 tool approvals 被停用
+- 在會阻塞的 `read_agent` 回傳結果後，避免重複顯示背景 agent 通知
+- 啟動時的驗證錯誤現在會建議實際的 `copilot login` 指令
+- 保持 `/settings` 中的 merge-semantics 設定可編輯
+- 當 managed plugins 的快取遺失或為空時，重新同步它們
+- 即使在命令 echo 之後，仍可複製最後一則 assistant 回覆
+- 每次登入時都會持久化最後登入的使用者，讓重新啟動後的 runtime client 保持已驗證狀態
+- 當 `/agent` picker 沒有任何可選項時，隱藏導覽提示
+- 在任何模式下都可用 `Ctrl+Y` 開啟 plan file 或 research report
+- 讓終端機配色變更可在 SSH 與遠端 shell 中保持同步
+- 預先填入 `/chronicle search`，使其可直接接受查詢
+- 在無色彩路徑（`--no-color`、非彩色終端機）中，於 `/model` picker 顯示不同的捲軸滑塊字元，讓捲動位置保持可見
+- 在遠端終端機中略過啟動瀏覽器
+- `/search` 與反向搜尋中的方向鍵會維持在搜尋模式內，而不會切換分頁
+- 還原工具事件順序，讓權限提示出現在 tool 啟動之後
+- 當串流被中止時，只顯示一則取消訊息
+- 保持 `/pr` 表格在緊湊時間線檢視中的對齊
+- 對空白或非 ASCII 的 skill 與 command 名稱顯示清楚的驗證錯誤
+- 當工作階段列開啟時，保持頁尾選取反白對齊
+- 當 marketplace plugin 的 git 驗證需要終端機提示時，會快速失敗
+- 在你停用 sandbox 後，關閉其他仍待處理的讀取與 fetch sandbox-bypass 提示
+- 修正在 Windows 上由桌面 toast 通知觸發的當機
+- 改善 GPT-5.6 在工具驅動進度更新上的 commentary 指引
+- 在輸入頁尾中強調側邊欄切換提示
+- 讓時間線與工具輸出中的 Markdown 連結與裸露 URL 可點擊
+- 收回首頁分頁列下方的空白行：當有釘選 prompt 時，時間線（以及 Sessions+Current 分割檢視）會緊貼分頁下方；只有在沒有釘選任何內容時才保留一行留白
+- 按 `Tab` 可在 `/model` 中切換 context window
+- 長時間執行的工作階段會每小時重新整理 enterprise managed settings
+- 在 `/mcp list` 中標記於 sandbox 內執行的本機啟動 MCP servers（例如 `connected (sandboxed)`）
+
 ## 1.0.69 - 2026-07-07
 
 - 內建檔案編輯現在會標示為 `(sandbox policy)` 徽章，而不是 `(sandboxed)`，因為它們是盡力遵守 sandbox policy，而非在作業系統層級的 sandbox 中執行

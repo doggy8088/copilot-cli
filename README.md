@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你可以透過自然語言對話建置、除錯並理解程式碼。它採用與 GitHub Copilot coding agent 相同的代理式執行框架，在深度整合你的 GitHub 工作流程的同時，提供智慧協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你可以透過自然語言對話建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式執行框架，在深度整合你的 GitHub 工作流程的同時，提供智慧協助。
 
 更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-首次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請在啟動 `copilot` 時加上 `--banner` 旗標。
+首次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請在啟動 `copilot` 時加上 `--banner` 旗標。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的說明完成驗證。
 
@@ -188,6 +188,6 @@ LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者
 
 很高興你在 Copilot CLI 發展的早期階段就加入我們。
 
-我們正在快速建置。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正。
+我們正在快速建置。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的洞見非常重要。歡迎在這個 repo 中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的回饋問卷。
+你的洞見非常重要！歡迎在這個 repo 中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的回饋問卷！
