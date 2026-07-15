@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請在啟動 `copilot` 時加上 `--banner` 旗標。
+第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請在啟動 `copilot` 時加上 `--banner` 旗標。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令，並依照畫面上的說明完成驗證。
 
@@ -190,4 +190,4 @@ LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者
 
 我們正在快速建置。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能和修正！
 
-你的洞見非常重要！歡迎在這個 repo 中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的回饋問卷！
+你的洞見非常重要。歡迎在這個 repo 中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的回饋問卷！
