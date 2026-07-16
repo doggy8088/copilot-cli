@@ -1,3 +1,96 @@
+## 1.0.71 - 2026-07-16
+
+- `copilot -p --autopilot` 在背景 shell 或 agent 存活時間長於目前 turn 時，不再卡住；現在會像一般 `-p` 一樣遵守 `COPILOT_TASK_WAIT_TIMEOUT_SECONDS` 逾時設定
+- 重新開啟 `/subagents` 的模型選擇器時，會保留各 agent 的 reasoning effort 與 context tier
+- 在長時間存活的工作階段中，30 分鐘後會重新整理 memory context
+- 當 servers 變動時，保持 MCP tool 清單為最新狀態
+- 避免在結束後留下長時間執行的背景 git processes
+- 為 `Ctrl+R` 命令歷史記錄新增可設定的上限
+- 啟動時若 `settings.json` 無效，現在會顯示警告並指出有問題的值，而不是靜默忽略你的設定
+- `/terminal-setup` 不再於缺少真正 kitty keyboard 支援的終端機上略過設定
+- 新增 `/voice devices`，可選擇並持久化 voice mode 使用的麥克風
+- 限制哪些內建 agents 可提供給 tasks 與 subagents 使用
+- 在 CLI 中新增對 extension-driven interactions 的 canvas 支援
+- 對 LSP 檔案讀取與重新命名編輯強制套用 sandbox 檔案系統政策
+- 允許 marketplace metadata 中的 owner 與 author email 為空
+- 在較矮的終端機中，保持所有 MCP Server Type 選項可見
+- 在 `copilot skill list` 及其 JSON 輸出中標示已停用的 skills
+- Plan mode 現在會硬性阻擋會修改工作區的內建 tool calls，因此代理在規劃期間不能再編輯檔案或執行會變更狀態的 shell commands（像是建立 pull request 這類內建變更操作也會被阻擋；MCP 與外部工具仍可使用）
+- 以更完整的成本設定檔改善 `/chronicle cost-tips` 建議
+- 在 Markdown 中針對獨立的十六進位色碼提供行內醒目顯示
+- 透過 `settings.json` 持久化 GitHub MCP toolset/tool 設定（`githubMcpToolsets`、`githubMcpTools` 等）
+- 新增 `plugins marketplace` 子命令，可列出、新增與移除 plugin marketplaces
+- 跨重啟保留側邊欄中的工作階段
+- 新增 plugins marketplace 的瀏覽與更新指令
+- 將 `/worktree` 與 `/move` 拆分：`/worktree` 現在會建立新的 worktree 並保留你尚未提交的變更在原處，而新的 `/move` 會把這些變更帶到新的 worktree
+- 為 `/chronicle cost-tips` 新增本機與雲端成本設定檔
+- 在同一個 turn 中途切換到 autopilot 時，現在會自動回答該 turn 內提出的問題
+- 透過別名請求 shell tool 的 custom agents，現在也會取得對應的 read、list 與 stop shell tools
+- Slash commands 及其自動補全現在不分大小寫比對（例如 `/SESSION` 的作用和 `/session` 相同）
+- 在 `/plugin list` 與 skill 選擇器中顯示已於 repo 啟用的 plugins
+- 連按兩次 `?` 可關閉快速說明，並以字面上的 `?` 開始輸入 prompt
+- Shell 補全現在會建議位置參數的可選值
+- 在 Linux 上立即顯示 `/app` 啟動訊息與下載連結
+- 驗證 `--max-autopilot-continues` 時，會拒絕 NaN、負數與小數值
+- 即使 chalk 已快取色彩等級，CLI 仍會遵守 `NO_COLOR`
+- 在 `/settings` 變更後，會立即套用更新過的工作階段選項（shell flags、streaming、自訂 agent 預設值）
+- 為螢幕閱讀器播報 `/model` 中目前聚焦的列
+- 為螢幕閱讀器播報選擇器中目前聚焦的列
+- 在 `/agent` 中只顯示一次已選取的 custom agents，且當檔名與顯示名稱不同時，保留其來源標籤
+- 當沒有模型符合時，清除 `/model` 的價格橫幅
+- 避免 `/share file session` 與 `/share html session` 將整個工作階段選擇器誤當成輸出路徑
+- 在新的互動式工作階段中遵守 `--context`
+- 修正模型選擇器在搜尋沒有結果時仍會改變隱藏模型的 reasoning effort 或 context window 的問題，並隱藏該空狀態下無作用的按鍵提示
+- 將 plugin 根層級 skills 顯示為 `/plugin`，而不是 `/plugin:plugin`
+- 當設定檔中有一個 hook 項目格式錯誤時，保留其他有效的 hooks
+- 拒絕 `write(path)` 現在只會封鎖指定的路徑
+- 使用 `--add-github-mcp-tool "*"` 現在會啟用所有 GitHub MCP tools
+- 渲染空的未追蹤檔案時，不再出現虛假的新增行
+- 當 `copilot skill add` 失敗時，顯示乾淨明確的失敗訊息
+- 在 `/settings` 的空白陣列項目上按 Enter，現在會顯示錯誤，而不是儲存空值
+- 在 `/settings` 中，對具有已註冊預設值的布林設定按一次 Enter 即可切換
+- 在 `/cwd` 中拒絕信任資料夾時，會保持目前工作階段開啟並返回先前的資料夾
+- 當工作區的 MCP 設定格式錯誤或無法載入時，顯示警告
+- 讓單獨執行 `copilot mcp` 與 `copilot skill` 時會輸出說明並以 0 結束，與 `copilot plugin` 一致。和 `plugin` 一樣，這些群組不支援隱含的 `help <subcommand>` 形式；請改用 `copilot mcp <subcommand> --help`（或 `copilot skill <subcommand> --help`）
+- 在 `-p` 模式中，對格式錯誤的 `allowed_models.txt` policy errors 顯示清楚訊息
+- 以名稱恢復已同步的工作階段時，不再誤報有多個相符項
+- 當 `--session-id` 用於既有工作階段時，若同時使用 `--name` 會顯示錯誤
+- 在 `copilot plugin list` 中顯示 `--plugin-dir` plugins
+- 切換離開背景化的工作階段時，保持它們繼續存活
+- 在 `-p --stream off` 輸出中，將裸露的 `#number` GitHub 參照加上連結
+- 當設定為 once 時，僅在第一次啟動顯示啟動橫幅
+- 允許 `copilot update` 與 `/update` 接受 `stable` 作為 channel
+- 在終端機中顯示 `--plugin-dir` 警告
+- 顯示格式錯誤 custom agents 的實際載入錯誤
+- 當 `--continue` 與 `--resume` 一起使用時予以拒絕
+- 現在若 `--share` 或 `--share-gist` 匯出失敗，prompt mode 會以非零狀態碼結束
+- Server mode 會使用快取 token 重新連線 OAuth MCP servers
+- 在安裝 marketplace plugins 時，保留已儲存的 Git credential helpers 可用
+- `/model` 選擇器現在會以 Markdown 顯示 Auto 模型說明，並附可點擊的 Learn More 連結
+- 在 prompts、重啟與工作區工具之間，保持工作階段持續綁定其工作目錄
+- 在 `ask_user` 的選項提示中，永遠提供自訂答案
+- 將預設的 sub-agent 最大巢狀深度從 6 降到 4，以抑制失控的遞迴 sub-agent 委派。按用量計費使用者仍可調整 `subagents.maxDepth`（最高到 128）。
+- 在 `/settings` 中新增 pinned prompts 設定，用來控制 prompt pinning
+- 在 `/settings` 儀表板新增 Repo 與 Repo (local) 範圍分頁
+- 互動式 shell commands 在 shell manager 被釋放後，現在會以可重試的「reconfiguring」訊息失敗，而不再顯示「unknown shellManager handle」錯誤；另外，當 shell context 在讀取進行中被重新設定時，也不會再遺失已分離命令的完成通知
+- 拒絕會建立隱藏檔案的 custom-agent 名稱
+- 對格式錯誤的 `--allow-tool` 與 `--deny-tool` 模式顯示錯誤訊息
+- 在 `/tasks` 的 Shell Details 中顯示已完成 tasks 保留的 shell 輸出
+- 移除 plugin command failures 上重複的 `Error:` 前綴
+- Shell 補全不再把子命令建議成旗標值
+- 在 `/usage` activity graph 中顯示單數形式的訊息計數
+- 防止 `/cd` 切換到檔案或無法存取的目錄
+- 用 `?` 關閉快速說明覆蓋層時，不再在 prompt 中留下多餘的 `?`
+- 當 sandbox 功能不可用時，`--sandbox` 與 `--no-sandbox` 現在會在互動式啟動期間顯示其「ignored」警告（先前只會在非互動模式中看見）
+- 在 `/mcp` server 詳細檢視中顯示完整命令及其參數，而不只是外層包裝命令
+- 在空白的 `/lsp logs`（LSP Services）面板中，隱藏無作用的 navigate 與 view-log 提示
+- 當 prompt 在回應前就被阻擋時，非互動式 prompt 執行會以失敗碼結束
+- 在重新設計的行內模型選擇器中顯示 Auto 折扣
+- 新工作階段會從預設目錄開始，而不是目前作用中工作階段的 cwd
+- Fish 補全只會為封閉選項旗標提供列舉值
+- 預設改用目標明確的驗證命令與較精簡的安裝指引
+- 使用 `ctrl+x` 再按 `x` 關閉工作階段，使用 `ctrl+x` 再按 `h` 隱藏分割側邊欄
+
 ## 1.0.70 - 2026-07-09
 
 - 新增對 GPT-5.6 模型的支援
