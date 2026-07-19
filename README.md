@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的能力，現在來到你的終端機。
+GitHub Copilot 的威力，現在來到你的終端機。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub Copilot coding agent 相同的 agentic harness 驅動，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub Copilot coding agent 相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧化協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,15 +11,15 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 簡介與總覽
 
-我們正把 GitHub Copilot coding agent 的能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與能理解你的程式碼和 GitHub 情境的 AI agent 協作。
+我們正把 GitHub Copilot coding agent 的能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境資訊的 AI agent 協作。
 
-- **終端機原生開發：** 直接在命令列中使用 Copilot coding agent，無需切換情境。
+- **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 與 pull requests，全部透過你現有的 GitHub 帳號完成驗證。
-- **Agent 能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的擴充性：** 充分利用 coding agent 預設隨附 GitHub MCP server 這項特性，並支援自訂 MCP servers 以擴充能力。
-- **完整掌控：** 執行前可預覽每個動作，未經你明確批准，不會發生任何事。
+- **Agent 式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **由 MCP 驅動的擴充性：** coding agent 預設隨附 GitHub 的 MCP server，也支援自訂 MCP servers 來延伸能力。
+- **完整掌控：** 每個動作在執行前都可先預覽，未經你明確同意，不會進行任何操作。
 
-我們仍在旅程的早期，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們的旅程還在早期，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
 ## 📦 開始使用
 
@@ -31,10 +31,10 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ### 先決條件
 
-- （Windows 上）**PowerShell** v6 或以上版本
+- （在 Windows 上）**PowerShell** v6 或更新版本
 - **有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-如果你是透過組織或企業取得 GitHub Copilot 存取權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
+如果你是透過組織或企業取得 GitHub Copilot 的存取權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
 ### 安裝
 
@@ -108,18 +108,18 @@ copilot
 
 #### 使用 Personal Access Token (PAT) 驗證
 
-你也可以使用啟用「Copilot Requests」權限的細粒度 PAT 進行驗證。
+你也可以使用啟用了「Copilot Requests」權限的細粒度 PAT 來完成驗證。
 
 1. 造訪 https://github.com/settings/personal-access-tokens/new
 2. 在「Permissions」下按一下「add permissions」，並選擇「Copilot Requests」
 3. 產生你的 token
-4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依此優先）將 token 加入你的環境
+4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依此優先順序）將 token 加入你的環境
 
 ### 使用 CLI
 
 在包含你想處理程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可改用其他可用模型，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 來從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
@@ -140,11 +140,11 @@ copilot
 
 ## 🔧 設定 LSP Servers
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更完整的程式碼智慧。這項功能可提供像是跳到定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更完整的程式碼智慧功能。這項能力可提供像是跳到定義、懸停資訊與診斷等智慧型程式碼功能。
 
 ### 安裝語言伺服器
 
-Copilot CLI 不會隨附 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
@@ -189,6 +189,6 @@ LSP servers 透過專用的 LSP 設定檔來設定。你可以在使用者層級
 
 很高興你在 Copilot CLI 旅程的早期就加入我們。
 
-我們開發速度很快。更新會相當頻繁，請保持你的用戶端為最新版本，以取得最新功能與修正！
+我們開發速度很快。更新會相當頻繁，請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的意見非常重要！請在這個 repo 開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 送出保密的意見調查！
+你的意見非常重要！請在這個 repo 開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 送出保密的意見回饋問卷！
