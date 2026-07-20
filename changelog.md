@@ -1,3 +1,50 @@
+## 1.0.72 - 2026-07-20
+
+- 一個永遠會阻擋的 `agentStop` hook 不再無限迴圈：CLI 現在會在連續阻擋 8 次後結束該 turn，且 `agentStop` hooks 會收到 `stop_hook_active` 旗標，讓它們能偵測強制繼續並自行限制
+- 新增可選擇啟用的 OS sandbox 內 `git` 與 `gh` 驗證
+- 為了更嚴格的隔離，sandbox 在 macOS 上預設關閉 keychain 存取；若命令需要，可在 `/sandbox` 重新啟用
+- lifecycle 與 subagent hook commands 在執行 `/cd` 後，會於目前工作階段目錄中執行
+- 用 `/mcp delete` 刪除 MCP server 時，會停止其執行中的背景程序
+- 切換 `/sandbox` 時，現在只會重新啟動本機 MCP servers，遠端 servers 會保持連線
+- 使用 `/cd` 切換之後，命令核准不再延續到另一個 repository
+- GitHub 分頁中的 Open in web 動作，現在會在 Windows 上可靠地開啟瀏覽器
+- 透過 `Ctrl+X` `/model` 變更模型時，保留貼上的 prompt 內容
+- 修正建立檔案時顯示的新增行數：以尾端換行結尾的檔案不會再多報一行
+- `/worktree` 和 `/move` 在自動產生 branch 名稱且存在許多相似名稱 branches 或殘留的 worktree 目錄時，不再無法建立 worktree：數字尾碼搜尋不再限制為 5，且現在會略過過時、未註冊的 worktree 目錄（若是明確提供的 branch 名稱發生衝突，仍會報錯）
+- `/worktree <task>` 不再偶發地把啟動 task 跑在主 repository，而不是新的 worktree
+- `/worktree` 和 `/move` 現在會在來源已受信任時，於切換前把資料夾信任狀態傳遞到新的 worktree（避免出現多餘的資料夾信任提示）；`/move` 會精準指定其 `git stash`，因此不會因並行 stash 而放錯變更；建立 worktree 時若遇到殘留目錄，也會略過而不是失敗
+- 當重新命名過且沒有訊息的工作階段，其工作區僅能以快取快照取得時，顯示退出後可恢復的提示
+- 緩慢的 MCP server 最終連線成功後，顯示 connected 訊息
+- 為 `/plugins` 新增 `update`/`uninstall` 動詞，讓 `enable`/`disable`/`remove` 可透過 `--plugin`/`--mcp`/`--skill` 旗標或位置參數類型來指定目標為 plugin、MCP server 或 skill，並支援用 `/plugins install --skill` 安裝 skills
+- 新增 `/plugins help` 指令，以及 skill、MCP 與 marketplace 管理功能，達到與完整 `/plugin` 同等的能力
+- 工作階段匯出現在會保留行內程式碼與頂層 fenced code blocks 中的尖括號
+- 現在可正確顯示名稱如 constructor 與 **proto** 的 MCP server 狀態
+- 在關閉工作階段時，無論是 Sessions 分割檢視或獨立的 Sessions 分頁，都會把工作階段高亮維持在最近的有效列
+- 在 Markdown 清單內，行內十六進位色票現在會加上適當留白
+- 在 prompt 輸入 `$` 可於目前工作階段目錄中開啟互動式 shell（用 `/settings shellShortcut on` 啟用；預設關閉）
+- 巢狀 Markdown 清單現在可在緩衝輸出中正確渲染（`-p --stream off` 與詳細畫面）：子項目不再黏在父項目的同一行，也不會被攤平成同一層，且會縮排到父項目之下
+- `copilot skill list` 現在會從 skill 名稱與描述中移除終端機控制字元，因此惡意 skill 不能再把 ANSI escape sequences 注入列出結果
+- 可從 CLI 使用 `copilot plugins install --skill <file, URL, or directory>` 安裝 skills（對檔案或 URL 安裝時，加上 `--scope project` 可安裝到 repository 中）
+- 在 `/settings` 中顯示預設值，並讓布林值可循環切回預設值
+- 當 managed settings 要求時，遠端控制現在需要 SSO
+- 在 `/settings show` 輸出中遮罩 secret 值
+- 將以行內程式碼撰寫的十六進位色碼（例如 `#FF0000`）顯示為色票，並新增 `renderHexColors` 設定（預設開啟）來切換十六進位色票顯示
+- 新增 `/model --session`（`-s`），可只變更目前工作階段的模型、reasoning effort 或 context window，而不影響全域設定
+- `/terminal-setup` 現在會透過父程序偵測 VS Code、Cursor 與 Windsurf
+- Sessions 側邊欄現在可用鍵盤與滑鼠操作（方向鍵可開啟並聚焦、移動選取列，Enter 或點擊可切換工作階段；按 `n` 可建立工作階段，連按兩次 `x` 可用鍵盤關閉）；可在 `/settings` 中停用它，或停用恢復記住的工作階段
+- 新增 `--plugin`、`--mcp` 與 `--skill` 旗標，用於 plugin 相關變更操作
+- 為 `copilot plugins remove --skill` 新增移除 skill 的支援
+- 在分割窗格聊天檢視中，`ask_user` 與 elicitation 輸入現在會自動換行
+- 經過修改的 vim 按鍵（`Ctrl+K`、大寫 `J`/`K`）不再於工具權限提示與其他文字輸入選單中移動選取；只有未修改的 `j`/`k`、方向鍵與 `Ctrl+P`/`Ctrl+N` 會用來導覽
+- `/terminal-setup` 現在會拒絕修改含有 JSON 語法錯誤的 VS Code `keybindings.json`（而不是改寫後還回報成功），與其文件描述的無效 JSON 處理方式一致
+- 展開精簡的編輯列時，顯示完整檔案路徑
+- 讓 plan-approval 選單在不同模型之間具有決定性
+- 讓 `/add-dir` 加入的目錄能在跨 turn 的 agent context 中持續可見
+- multi-turn subagents 現在永遠啟用，因此你可以對執行中的 agents 傳送後續訊息
+- 為 Claude Haiku 4.5+ 啟用 tool search
+- `:tada:` 這類 emoji shortcodes 不再於列印輸出以及 PR/issue/gist 輸出中帶有多餘的尾端空白
+- 當 agent 忙碌時，排程 prompts 會以 steering messages 的形式送達
+
 ## 1.0.71 - 2026-07-16
 
 - `copilot -p --autopilot` 在背景 shell 或 agent 存活時間長於目前 turn 時，不再卡住；現在會像一般 `-p` 一樣遵守 `COPILOT_TASK_WAIT_TIMEOUT_SECONDS` 逾時設定
