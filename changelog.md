@@ -1,3 +1,8 @@
+## 1.0.73 - 2026-07-20
+
+- 當設定了額外目錄時，Anthropic subagents 會持續運作
+- 自訂 agent 指令中的相對連結，現在會以 agent 檔案所在位置為基準解析
+
 ## 1.0.72 - 2026-07-20
 
 - 一個永遠會阻擋的 `agentStop` hook 不再無限迴圈：CLI 現在會在連續阻擋 8 次後結束該 turn，且 `agentStop` hooks 會收到 `stop_hook_active` 旗標，讓它們能偵測強制繼續並自行限制

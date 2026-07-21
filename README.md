@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在來到你的終端機。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub Copilot coding agent 相同的代理式執行框架驅動，在與 GitHub 工作流程深度整合的同時提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub Copilot 的 coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,11 +11,11 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶進你的命令列
 
 ## 🚀 簡介與總覽
 
-我們將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境資訊的 AI agent 協作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換上下文。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 和 pull requests，全部透過你現有的 GitHub 帳號完成驗證。
-- **Agent 式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **代理式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **由 MCP 驅動的擴充性：** 善用 coding agent 預設隨附 GitHub MCP server 的能力，並可透過支援自訂 MCP servers 來延伸功能。
 - **完整掌控：** 每個動作在執行前都可先預覽，未經你明確同意，不會進行任何操作。
 
@@ -108,10 +108,10 @@ copilot
 
 #### 使用 Personal Access Token (PAT) 驗證
 
-你也可以使用啟用了「Copilot Requests」權限的細粒度 PAT 來完成驗證。
+你也可以使用啟用了 "Copilot Requests" 權限的細粒度 PAT 來完成驗證。
 
 1. 造訪 https://github.com/settings/personal-access-tokens/new
-2. 在「Permissions」下按一下「add permissions」，並選擇「Copilot Requests」
+2. 在 "Permissions" 下按一下 "add permissions"，並選擇 "Copilot Requests"
 3. 產生你的 token
 4. 透過環境變數 `GH_TOKEN` 或 `GITHUB_TOKEN`（依此優先順序）將 token 加入你的環境
 
