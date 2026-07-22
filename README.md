@@ -2,24 +2,24 @@
 
 GitHub Copilot 的強大能力，現在來到你的終端機。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶進你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶進你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
 
-更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
 
 ## 🚀 簡介與總覽
 
-我們將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼和 GitHub 情境的 AI agent 協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換上下文。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 和 pull requests，全部透過你現有的 GitHub 帳號完成驗證。
-- **代理式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 和 pull requests，全部透過你現有的 GitHub 帳號完成驗證。
+- **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **由 MCP 驅動的擴充性：** 善用 coding agent 預設隨附 GitHub MCP server 的能力，並可透過支援自訂 MCP servers 來延伸功能。
-- **完整掌控：** 每個動作在執行前都可先預覽，未經你明確同意，不會進行任何操作。
+- **完整掌控：** 每個動作在執行前都能先預覽，未經你明確同意，不會進行任何操作。
 
-我們仍處於旅程的早期，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們的旅程才剛開始，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
 ## 📦 開始使用
 
@@ -104,7 +104,7 @@ copilot
 
 第一次啟動時，你會看到我們可愛的動態橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
-如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個命令，並依照畫面上的指示完成驗證。
+如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線命令。輸入這個命令，並依照畫面上的指示完成驗證。
 
 #### 使用 Personal Access Token (PAT) 驗證
 
@@ -119,14 +119,14 @@ copilot
 
 在包含你想處理程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command，從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線命令，從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
 實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
-- 在 CLI 內使用 `/experimental` slash command
+- 在 CLI 內使用 `/experimental` 斜線命令
 
 啟用後，這項設定會持久化寫入你的設定，因此後續啟動時就不再需要 `--experimental` 旗標。
 
@@ -136,31 +136,31 @@ copilot
 
 每次你向 GitHub Copilot CLI 提交 prompt 時，你每月的 premium requests 額度都會減少一次。關於 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-若要了解更多如何使用 GitHub Copilot CLI，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+若要了解更多如何使用 GitHub Copilot CLI，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-## 🔧 設定 LSP Servers
+## 🔧 設定 LSP 伺服器
 
 GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更完整的程式碼智慧功能。這項功能可提供像是跳到定義、懸停資訊與診斷等智慧型程式碼能力。
 
 ### 安裝語言伺服器
 
-Copilot CLI 不會內建 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP server，並依照下方示範的相同模式進行設定。
+對於其他語言，請安裝對應的 LSP 伺服器，並依照下方示範的相同模式進行設定。
 
-### 設定 LSP Servers
+### 設定 LSP 伺服器
 
-LSP servers 透過專用的 LSP 設定檔來設定。你可以在使用者層級或 repository 層級設定 LSP servers：
+LSP 伺服器透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
 **使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
 
-**Repository 層級設定**（套用至特定專案）：
-在 repository 根目錄建立 `.github/lsp.json`
+**儲存庫層級設定**（套用至特定專案）：
+在儲存庫根目錄建立 `.github/lsp.json`
 
 範例設定：
 
@@ -179,9 +179,9 @@ LSP servers 透過專用的 LSP 設定檔來設定。你可以在使用者層級
 }
 ```
 
-### 檢視 LSP Server 狀態
+### 檢視 LSP 伺服器狀態
 
-你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接查看你的設定檔。
+你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP 伺服器，或直接查看你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
