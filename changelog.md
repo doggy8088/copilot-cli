@@ -1,3 +1,26 @@
+## 1.0.74 - 2026-07-23
+
+- 在 `/search` 列開啟時輸入 `?`，現在會作為文字輸入，而不是開啟快速說明
+- 新增對 Open Plugin Spec v1 plugin manifests 與 `mcp.json` 設定的支援
+- 當 CLI 重新載入 MCP servers 或切換目錄時，IDE 整合現在能可靠地重新連線
+- 在重新開啟 `/tasks` 後，多 turn subagent 的時間線會以正確順序顯示每個 prompt 與回應
+- Subagent 時間線現在會標示 prompt 是來自主 agent 還是另一個 subagent
+- 顯示首次執行的 splash，讓你選擇加入預設 sandbox
+- 新增對 `gemini-3.6-flash` 的支援
+- `/mcp add` 與 `/mcp edit` 精靈現在會保留環境變數值中的 `=` 字元（例如 base64 padding），因此 secrets 與 tokens 能正確儲存
+- 遠端工作階段上傳不再重試永久性的 Mission Control 400/404 回應
+- 在 `/settings` 頁尾顯示 Tab 可切換 scope 分頁
+- 將過大的 tool-result 圖片縮小，讓 CAPI Responses requests 能持續進行
+- 在多工工作階段時，某個工作階段的開啟對話框不會再洩漏到另一個工作階段；當你切換回來時，符合條件的選擇器會重新開啟
+- 即使 agent 正在工作，`$` 互動式 shell 快捷鍵現在也能開啟 shell
+- 完整遵守 skill 的 `disable-model-invocation` 旗標
+- 當參與的 language server 回報與要求不同的 symbol 時提出警告
+- Steering 中斷現在可打斷 shell 輸出等待，但不會停止正在執行的命令
+- 提高 Responses request 的大小上限
+- Plan mode 現在允許位於 session 資料夾中的規劃產物，同時仍會阻擋 session 資料夾外明確的檔案變更
+- 新增 `/model plan`（或 `/model --plan`），可選擇 plan mode 使用的模型；可傳入 model id、用 `off` 清除，或不帶 id 以開啟選擇器。離開 plan mode 後會恢復為工作階段模型
+- 恢復搜尋現在即使工作階段標題中的空白不同，仍能比對成功
+
 ## 1.0.73 - 2026-07-20
 
 - 當設定了額外目錄時，Anthropic subagents 會持續運作
