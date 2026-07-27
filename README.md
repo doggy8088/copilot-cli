@@ -14,12 +14,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機、以同步方式與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，不需要切換上下文。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 與 pull request，全程以你現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的 repositories、issues 與 pull requests，全程以你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 充分利用 coding agent 預設隨附 GitHub MCP server，且支援自訂 MCP server 來擴充能力。
+- **由 MCP 驅動的可擴充性：** 充分利用 coding agent 預設隨附 GitHub MCP server 的優勢，並支援透過自訂 MCP servers 擴充能力。
 - **完整控制：** 每個動作都能在執行前先預覽，沒有你的明確核准就不會發生任何事。
 
-我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
+我們的旅程仍處於早期階段，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 快速開始
 
@@ -135,7 +135,7 @@ copilot
 
 每次你向 GitHub Copilot CLI 提交 prompt 時，你每月的 premium requests 配額都會減少一次。關於 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-若要進一步了解 GitHub Copilot CLI 的使用方式，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+若要進一步了解如何使用 GitHub Copilot CLI，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Servers
 
