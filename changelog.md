@@ -1,3 +1,39 @@
+## 1.0.76 - 2026-07-29
+
+- 在 `/plugins` 中新增 plugins、instructions、agents、LSP servers 與 hooks 的啟用／停用控制
+- 新增對 `grok-4.5` 模型的支援
+- 在 macOS 與 Linux 上，sandbox 對於相對路徑與符號連結項目的拒絕路徑都會強制生效（Windows 無法逐路徑拒絕）
+- 尚未送出的 prompt 文字現在會留在你原本輸入它的工作階段中（於該次 CLI 工作階段期間），不會在你切換工作階段後跟著移動
+- 恢復工作階段時，現在會還原其 autopilot 或 plan mode，而不是退回 interactive，因此僅 autopilot 可用的 `task_complete` tool 會維持可用，模式也會與你離開時一致
+- 當主機整合重建 URL 權限提示時，提示現在會保留其 sandbox-bypass 警告與模型給出的原因，因此提權的 fetch 不會再被顯示成一般 fetch
+- 當更新已自動下載完成時，通知現在會建議使用 `/restart`，並移除警告色彩
+- `/diff` 現在能更快地捲動與進行大型多檔案 diff 的語法高亮
+- 分割檢視側邊欄：現在預設關閉 hover-to-focus（可用 `sidebar.hoverFocus` 啟用），預設會強調目前作用中的工作階段卡片（可用 `sidebar.accentActiveSession` 關閉），且收合狀態下的 `open sidebar` 提示一律以中性的提示色顯示
+- `web_fetch` 現在會跟隨 HTTP 重新導向，而不是直接失敗；若重新導向目標位於不同來源，會針對該目標請求權限，並顯示重新導向的來源
+- 新增可定向的佇列管理器（staff），可重新排序、編輯、移除、重複，並立即送出佇列中的訊息
+- 新增 Sessions 側邊欄，用來管理多個並行工作階段：可在它們之間切換、建立新工作階段，並一眼查看狀態。可用實驗模式啟用（`/experimental on`）
+- 企業管理員現在可以強制設定較嚴格的 sandbox 下限：managed settings 只會收緊、不會放寬使用者的 sandbox policy，而 `/sandbox` 對話框會顯示由組織設定的 managed values、鎖定欄位與 managed filesystem paths，讓管理員可確認哪些限制已生效
+- 在 subagent 完成後，工作階段不會再於每個 turn 都因為 "Holder terminated during creation" 而失敗
+- 啟動提示現在只會在尚未有 Copilot instructions 的儲存庫中建議使用 `/init`
+- 若 `userPromptSubmitted` hook 為 `modifiedPrompt`、`modifiedTransformedPrompt` 或已處理的 `responseContent` 回傳非字串值，現在不會再破壞工作階段；該值會被忽略、記錄只含型別且點名欄位的警告，空字串取代值會被拒絕而不是清空模型看到的內容，將 `handled` 設為 true 但未提供可用 `responseContent` 的 hook 現在會被診斷，而不是默默回退給模型，且 `null` 的 `additionalContext` 會視為未提供，而不是被注入字面文字 `null`；此外，每次 hook 呼叫的輸出上限現在限制為 10 MiB，因此回傳無界回應的 HTTP 或 command hook 不會再耗盡記憶體或留下過大的工作階段
+- 對於將輸出寫入檔案的大型命令，現在會顯示最近的 shell 輸出
+- `/instructions` 選擇器現在會遵守 `--no-custom-instructions`
+- 在支援 Kitty graphics 的 Rio 終端機中渲染行內圖片
+- Sandboxed 搜尋現在會立即提供 bypass 提示，並避免重複顯示 bypass 提示
+- 在支援的平台上（macOS 與 Windows），voice mode 會在錄音前暫停媒體播放，並在錄音後恢復
+- 在頁尾顯示目前啟用中的排程 prompt 數量
+- 新增 `/limits predict`，可根據相似工作階段建議 session AI-credit 上限
+- 為自訂狀態列命令新增可設定的定時重新整理
+- 佇列訊息清單不再顯示空白列或膨脹的計數，且 `Ctrl+C` 會移除你自己最新的一則佇列訊息
+- 在工作階段進行中變更 `mouse` 設定，現在會立刻生效，無論是透過 `/settings mouse on|off` 或 `/settings` 對話框設定，都不會再只是儲存卻要等 CLI 重啟後才生效
+- 當允許對外連線時，`web_fetch` 會透過已設定的 sandbox proxy 路由；當 `network.allowOutbound` 為 false 時則會拒絕對外連線（proxy 不會再覆蓋使用者的對外政策）；當經由 proxy 的 fetch 失敗時，會警告 `curl`/`wget` 共用相同 proxy，且只會在 sandbox proxy 本身無法連線時才建議 `requestSandboxBypass`
+- 改善 subagent 對小型任務與平行工作的委派
+- 將 turn 進行中的 `/model` 變更排入佇列，並在目前回應完成後套用
+- 在自動壓縮被阻擋之前，恢復當無法回收的系統與工具 context 接近上限時的提早警告
+- 工作階段工作目錄在 `/worktree` 切換到新 worktree 後，不會再過不久就退回原始 checkout
+- MCP tools 現在可從 definition-scoped snapshots 更快載入，並提供整個程序與單一 server 層級的快取停用選項
+- 在 `task_complete` 之後，Autopilot 預設會維持選取狀態；若要在每次任務後返回 interactive mode，可將 `stayInAutopilot` 設為 false
+
 ## 1.0.75 - 2026-07-24
 
 - 新增對 Claude Opus 5 的支援
