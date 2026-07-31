@@ -1,3 +1,11 @@
+## 1.0.77 - 2026-07-30
+
+- 當允許 bypass 時，無條件 autopilot 核准現在會停用目前工作階段的 sandbox
+- `Ctrl+G` 會開啟你的編輯器來編輯 `ask_user` 的自由輸入答案，且不會關閉 prompt
+- 新增以瀏覽器為基礎的（web）OAuth 登入流程，現在是本機互動式終端機上 `copilot login` 的預設方式（遠端／無頭終端機仍預設使用 device code）。可用 `--web-flow`／`--device-code` 強制指定模式，或在互動式 `/login` 指令中選擇
+- 支援透過 macOS 與 Windows 原生 MDM 設定強制套用 managed sandbox policy
+- 允許省略 reasoning effort，讓伺服器自行選擇預設值
+
 ## 1.0.76 - 2026-07-29
 
 - 在 `/plugins` 中新增 plugins、instructions、agents、LSP servers 與 hooks 的啟用／停用控制
