@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的威力，現在就在你的終端機中。
+GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub Copilot 編碼代理程式相同的 agentic harness，提供智慧協助，同時與你的 GitHub 工作流程深度整合。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub Copilot 編碼代理程式相同的代理式執行框架，提供智慧協助，同時與你的 GitHub 工作流程深度整合。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 簡介與概覽
 
-我們將 GitHub Copilot 編碼代理程式的能力直接帶到你的終端機。使用 GitHub Copilot CLI，你可以在本機與 AI 代理同步協作，而它也能理解你的程式碼與 GitHub 情境。
+我們將 GitHub Copilot 編碼代理程式的能力直接帶到你的終端機。使用 GitHub Copilot CLI，你可以在本機與一個能理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
 
-- **以終端機為核心的開發：** 直接在命令列中與 Copilot 編碼代理程式協作，無需切換上下文。
+- **以終端機為原生環境的開發：** 直接在命令列中與 Copilot 編碼代理程式協作，無需切換上下文。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull requests，並直接沿用你現有的 GitHub 帳號完成驗證。
-- **Agentic 能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的擴充性：** 編碼代理程式預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
+- **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **由 MCP 驅動的擴充性：** 利用編碼代理程式預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充能力。
 - **完整掌控：** 執行前可預覽每一個動作，未經你明確核准，不會發生任何變更。
 
 我們仍處於發展早期，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
@@ -103,7 +103,7 @@ copilot
 
 第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，可在啟動 `copilot` 時加上 `--banner` 旗標。
 
-如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入此指令並依畫面上的說明完成驗證。
+如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入此指令並依畫面上的說明完成驗證。
 
 #### 使用 Personal Access Token (PAT) 驗證
 
@@ -118,14 +118,14 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command，可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令，可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
 實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
-- 在 CLI 內使用 `/experimental` slash command
+- 在 CLI 內使用 `/experimental` 斜線指令
 
 啟用後，此設定會持久化儲存在你的 config 中，因此之後再次啟動時就不需要再加上 `--experimental` 旗標。
 
