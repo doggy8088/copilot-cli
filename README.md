@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub Copilot 編碼代理相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot 編碼代理相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,15 +11,15 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 簡介與概覽
 
-我們正把 GitHub Copilot 編碼代理的能力直接帶到你的終端機。使用 GitHub Copilot CLI，你可以在本機同步與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
+我們正把 GitHub Copilot 編碼代理的能力直接帶到你的終端機。使用 GitHub Copilot CLI，你可以在本機同步地與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
-- **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理合作，無需切換上下文。
-- **開箱即用的 GitHub 整合：** 透過自然語言存取你的儲存庫、議題與 pull requests，並直接沿用你現有的 GitHub 帳號完成驗證。
+- **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理合作，不需要切換上下文。
+- **開箱即用的 GitHub 整合：** 透過自然語言存取你的儲存庫、議題與 pull requests，並直接使用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的擴充性：** 充分利用編碼代理預設隨附的 GitHub MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
+- **由 MCP 驅動的擴充性：** 充分利用編碼代理預設隨附 GitHub MCP 伺服器這項優勢，並支援自訂 MCP 伺服器來擴充能力。
 - **完整掌控：** 執行前可預覽每一個動作，未經你明確核准，不會發生任何變更。
 
-我們仍處於早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們仍在旅程的早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
 ## 📦 快速開始
 
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，可在啟動 `copilot` 時加上 `--banner` 旗標。
+第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，可在啟動 `copilot` 時加上 `--banner` 旗標。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入這個指令並依畫面上的說明完成驗證。
 
@@ -139,7 +139,7 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧能力。這項功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以增強程式碼智慧能力。這項功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼功能。
 
 ### 安裝語言伺服器
 
@@ -186,8 +186,8 @@ LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 ## 📢 回饋與參與
 
-很高興你在 Copilot CLI 的早期階段就加入我們。
+我們很高興你在 Copilot CLI 的早期階段就加入我們。
 
-我們正在快速建置中。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正。
+我們正在快速建置中。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的意見非常重要。歡迎在此儲存庫開 issue、參與 Discussions，並在 CLI 中執行 `/feedback` 送出保密的回饋問卷。
+你的意見非常重要！歡迎在此儲存庫開 issue、參與 Discussions，並在 CLI 中執行 `/feedback` 送出保密的回饋問卷！
