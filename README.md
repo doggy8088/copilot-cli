@@ -4,19 +4,19 @@ GitHub Copilot 的強大能力，現在就在你的終端機中。
 
 GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot 編碼代理相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
 
-更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
 
-## 🚀 簡介與概覽
+## 🚀 簡介與總覽
 
-我們正把 GitHub Copilot 編碼代理的能力直接帶到你的終端機。使用 GitHub Copilot CLI，你可以在本機同步地與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
+我們正將 GitHub Copilot 編碼代理的能力直接帶到你的終端機。使用 GitHub Copilot CLI，你可以在本機同步地與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理合作，不需要切換上下文。
 - **開箱即用的 GitHub 整合：** 透過自然語言存取你的儲存庫、議題與 pull requests，並直接使用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的擴充性：** 充分利用編碼代理預設隨附 GitHub MCP 伺服器這項優勢，並支援自訂 MCP 伺服器來擴充能力。
+- **MCP 驅動的擴充性：** 充分利用編碼代理預設隨附 GitHub 的 MCP 伺服器這項優勢，並支援自訂 MCP 伺服器來擴充能力。
 - **完整掌控：** 執行前可預覽每一個動作，未經你明確核准，不會發生任何變更。
 
 我們仍在旅程的早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
@@ -34,7 +34,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 - （在 Windows 上）**PowerShell** v6 或以上版本
 - 需要**有效的 Copilot 訂閱**。請參閱 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-如果你是透過組織或企業存取 GitHub Copilot，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你將無法使用它。更多資訊請參閱[在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
+如果你是透過組織或企業存取 GitHub Copilot，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你將無法使用它。更多資訊請參閱 [在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
 ### 安裝
 
@@ -135,7 +135,7 @@ copilot
 
 每次你向 GitHub Copilot CLI 提交 prompt，你每月的 premium requests 額度都會減少 1。關於 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-想了解更多如何使用 GitHub Copilot CLI，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP 伺服器
 
