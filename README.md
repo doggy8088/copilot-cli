@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot 編碼代理相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub Copilot 編碼代理相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧協助。
 
 更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -19,7 +19,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 - **MCP 驅動的擴充性：** 充分利用編碼代理預設隨附 GitHub 的 MCP 伺服器這項優勢，並支援自訂 MCP 伺服器來擴充能力。
 - **完整掌控：** 執行前可預覽每一個動作，未經你明確核准，不會發生任何變更。
 
-我們仍在旅程的早期階段，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們仍處於發展初期，但在你的回饋幫助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 快速開始
 
@@ -131,7 +131,7 @@ copilot
 
 #### 實驗功能
 
-- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
+- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作，直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交 prompt，你每月的 premium requests 額度都會減少 1。關於 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
