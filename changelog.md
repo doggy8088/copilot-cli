@@ -1,3 +1,33 @@
+## 1.0.78 - 2026-08-03
+
+- Timeline 標頭現在會顯示每次 tool call 花費的時間，靠右對齊，並在執行期間即時跳動更新（適用於至少 5 秒的呼叫）。預設啟用，可用 `/settings showToolDurations` 停用。
+- 第一方 plugins 會在工作階段開始時自動更新到最新版本
+- 新增實驗性 `/new-worktree` 指令，可建立新的 worktree 並在其中開始新對話
+- 對於沒有 TTY 的本機桌面子程序（包含 IDE 整合），`copilot login` 現在預設使用瀏覽器流程；遠端與無頭環境則持續使用 device code
+- 互動式 shell 快捷鍵現在會在按下 Enter 時啟動，且在 "$" 已啟用時顯示行內提示
+- 載入多個 extensions 時，extension slash commands 現在每次呼叫都只會執行其 handler 一次
+- 時間線捲動後，行內圖片不會再出現第一列重複鋪滿整張圖片的渲染問題
+- 當 prompt 是透過 stdin 管線輸入時，該執行現在會像 `-p` 一樣處理其 `sessionEnd` hook：每個已完成的 agent turn 會觸發一次，`reason` 為 `complete`（若該 turn 失敗則為 `error`），而不再是在關閉時以 `user_exit` 只觸發一次。和 `-p` 一樣，若管線執行在完成任何 turn 前就結束，則不會觸發 `sessionEnd` hook
+- 分割檢視側邊欄：紅色關閉確認現在會顯示 `x again to close`（最後一個工作階段則為 `x again to exit CLI`），而不是 `x close`，明確表示需再按一次才會關閉
+- 在 ACP prompt 結果與即時 `usage_update` 通知中公開 token 使用量
+- 新增 `forceRemoteSettingsRefresh` managed setting，要求啟動時重新抓取 managed settings
+- 從 bypass 提示停用 sandbox 現在只會套用到該工作階段；新的工作階段會再次以 sandbox 模式啟動
+- 現在只要伺服器端 managed settings 抓取因任何原因失敗（網路錯誤、非成功 HTTP 狀態，或回應格式錯誤或無法解析），managed settings 就會回退到持久化快取；若沒有可用的快取 policy，則會改為 fail open，也就是在未確認伺服器限制的情況下啟動，而不再是先前的 fail closed 行為
+- 當 sandbox 封鎖 shell command 且允許 bypass 時，CLI 現在會直接提供在 sandbox 外重新執行的選項，而不需先詢問模型
+- `/rewind` 現在不再需要 git，且只會還原 Copilot 變更過的檔案；若檔案內容已不再符合 Copilot 上次寫入的內容則會略過，並提供「只還原對話」或「對話 + 檔案」兩種選擇
+- 新增 `/permissions`，可切換不同的核准模式
+- ACP mode 現在支援透過 `closeSession` request 關閉工作階段
+- `Ctrl+Q` 現在會將反白的 mid-text skill completion 加入佇列，而不是只加入部分 token
+- 切換工作階段時不會再重新啟動 MCP servers 或重建 hook 狀態，因此另一個工作階段中執行中的 turn 不會再因 stale-hook 錯誤而被中止
+- 在 OAuth 驗證後重新整理 deferred MCP tools
+- 新增 sandbox 設定 `allowDevToolCaches`（預設開啟）：允許 sandboxed builds 存取 toolchain caches、registries 與安裝內容，讓建置在不需額外設定的情況下也能運作。設為 false 可停用
+- 現在會遵守明確指定的 GitHub MCP toolset/tool 設定：當你選擇啟用時，會保留與 gh 重疊的 tools，且不再引導改用 gh CLI
+- 啟動時會針對 user `settings.json` 中未知的頂層鍵值提出警告（例如拼錯的設定），而不是靜默忽略
+- `--model` 的 shell completion 現在會建議 `auto` 與支援的模型名稱
+- 長篇工作階段逐字稿現在會漸進式渲染，以維持捲動流暢
+- 恢復長時間工作階段現在快得多，且更省記憶體，因為其歷史紀錄改為在啟動時只讀取一次（跨 CPU cores 平行進行），而不是在 CLI 開始繪製前的每次檢查都重新完整讀取。在我們的基準測試中，一份 230MB、7.4 萬事件的逐字稿，恢復時間從約 10 秒降到遠低於 1 秒，尖峰記憶體約降為原本的四分之一；實際增益仍取決於你的機器核心數與磁碟效能
+- `/allow-all` 的自動 safety-judge model 不再可由使用者設定；judge model 現在會自動選擇
+
 ## 1.0.77 - 2026-07-30
 
 - 當允許 bypass 時，無條件 autopilot 核准現在會停用目前工作階段的 sandbox
