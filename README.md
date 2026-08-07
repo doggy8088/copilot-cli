@@ -16,7 +16,7 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 - **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理協作，不需要切換脈絡。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並直接透過你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 善用編碼代理預設隨附 GitHub MCP server，並支援自訂 MCP servers 來擴充能力。
+- **MCP 驅動的可擴充性：** 善用編碼代理預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 在執行前預覽每一個動作，未經你明確核准，不會發生任何變更。
 
 我們仍處於旅程的早期階段，但有了你的回饋，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機裡最好的夥伴。
@@ -31,8 +31,8 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 
 ### 先決條件
 
-- （Windows 上）**PowerShell** v6 或更高版本
-- **有效的 Copilot 訂閱**。請參閱 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
+- (在 Windows 上) **PowerShell** v6 或更高版本
+- 你需要有**有效的 Copilot 訂閱**。請參閱 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
 如果你是透過組織或企業存取 GitHub Copilot，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，你將無法使用 GitHub Copilot CLI。更多資訊請參閱 [在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
@@ -56,7 +56,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
-例如，要將 `v0.0.369` 安裝到自訂目錄：
+例如，要將版本 `v0.0.369` 安裝到自訂目錄：
 
 ```bash
 curl -fsSL https://gh.io/copilot-install | VERSION="v0.0.369" PREFIX="$HOME/custom" bash
@@ -127,7 +127,7 @@ copilot
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-啟用後，此設定會持久化儲存在你的 config 中，因此之後再次啟動時就不需要再加上 `--experimental` 旗標。
+啟用後，此設定會持久化儲存在你的設定中，因此之後再次啟動時就不需要再加上 `--experimental` 旗標。
 
 #### 實驗功能
 
