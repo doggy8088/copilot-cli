@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在來到你的終端機。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub 的 Copilot 編碼代理相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub Copilot 編碼代理相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
 
 更多資訊請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -34,7 +34,7 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 - (在 Windows 上) **PowerShell** v6 或更高版本
 - 你需要有**有效的 Copilot 訂閱**。請參閱 [Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-如果你是透過組織或企業存取 GitHub Copilot，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，你將無法使用 GitHub Copilot CLI。更多資訊請參閱 [在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
+如果你是透過組織或企業存取 GitHub Copilot，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，你將無法使用 GitHub Copilot CLI。更多資訊請參閱 [在你的組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
 ### 安裝
 
@@ -131,7 +131,7 @@ copilot
 
 #### 實驗功能
 
-- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作，直到任務完成。
+- **Autopilot mode:** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作，直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交 prompt，你每月的 premium requests 額度都會減少 1。關於 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
@@ -139,7 +139,7 @@ copilot
 
 ## 🔧 設定 LSP Servers
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，可增強程式碼智慧能力。此功能提供跳至定義、懸停資訊與診斷等智慧程式碼功能。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，可增強程式碼智慧能力。此功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼功能。
 
 ### 安裝語言伺服器
 
@@ -159,7 +159,7 @@ LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者
 編輯 `~/.copilot/lsp-config.json`
 
 **儲存庫層級設定**（套用到特定專案）：
-在儲存庫根目錄建立 `.github/lsp.json`
+在你的儲存庫根目錄建立 `.github/lsp.json`
 
 設定範例：
 
