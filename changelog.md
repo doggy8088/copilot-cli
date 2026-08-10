@@ -1,3 +1,50 @@
+## 1.0.79 - 2026-08-10
+
+- `/sandbox` 設定對話框現在會顯示 sandbox 設定在 `settings.json` 中的儲存位置
+- 新增對企業 `allow-auto-only` policy 的支援，讓 `/allow-all auto` 可用，而完整的 allow-all 仍會被封鎖
+- 允許企業管理的 sandbox policy 強制指定 proxy URL，同時憑證仍由使用者自行控制
+- 若工作區內位於 `PATH` 上的工具目錄（例如 `.venv/bin`、`node_modules/.bin`、repo 內的 `GOPATH`），sandbox 不再因此把該工作區部分標記為唯讀
+- `/sandbox` 設定對話框現在會將 git、gh 與（macOS 上的）keychain 設定歸類到新的 Auth 分頁，且設定鍵已從 `sandbox.gitAuth`/`sandbox.ghAuth` 移到 `sandbox.auth.git`/`sandbox.auth.gh`。不提供遷移：舊鍵在設定檔中會被忽略，而 SDK requests 若仍送出它們，現在會被視為無效並遭拒，而不是被忽略
+- 新增 `worktreeBaseRef` 設定，用來控制 `/worktree`、`/worktree new` 與 `--worktree` 要從 `HEAD` 還是遠端預設分支開始。這三者現在預設都從 `HEAD` 開始；先前 `--worktree` 會從遠端預設分支開始
+- 模型選擇器現在會將模型分成 Recent、Recommended、New 與其他區段，並可用 `Shift+Tab` 切換分組檢視
+- 大型 monorepo 現在改用 tgrep（[適合大型程式碼庫快速正則搜尋的 trigram-indexed grep](https://github.com/microsoft/tgrep)），不再使用 ripgrep
+- Agent Plugins spec plugins 現在可在 `com.github.copilot/extensions/` 目錄下提供 extensions
+- 新增對 `kimi-k3` 模型的支援
+- 可將 `--plan` 與 `--mode autopilot` 搭配使用，先規劃再實作，且無需等待核准
+- `/app` 指令現在會在 GitHub Copilot 桌面 app 中開啟目前工作階段，而不再落到 Home 並帶錯資料夾（需要 GitHub Copilot app 1.1.3 或更新版本）
+- 在 macOS 上，位於可寫入路徑內部的 sandbox 唯讀路徑現在會維持唯讀，而不再繼承較大範圍路徑的寫入權限
+- 在 macOS 上，sandboxed commands 現在又能使用 UNIX-domain sockets，因此透過本機 IPC pipe 通訊的工具（如 `tsx`、`vite`、`esbuild`、jest workers）不會再因 `listen EPERM` 失敗
+- 當工作目錄位於 Windows Dev Drive 時，sandboxed commands 現在可正常運作
+- `/theme` 現在只會在有效的 color mode 下顯示其棄用提示，因此打錯 mode 不會再建議無效指令，也不會讓你下一次有效的 `/theme` 看不到提示
+- Sandboxed git 現在可對 Azure DevOps、GitHub Enterprise Server、GitLab，以及其他你已儲存 HTTPS 憑證的非 GitHub 遠端完成驗證
+- ask user 多選提示現在包含可輸入自由文字答案的 Other 選項
+- 改善 teleported subagent 的 `/tasks` 導覽，加入巢狀樹狀瀏覽、目前／全部與已完成任務篩選，以及可即時引導的時間線
+- 少數罕見的內部延遲不會再把診斷警告印在互動式 UI 上方
+- 工作階段歷史載入失敗不會再讓時間線永久空白：先前該失敗會被默默丟棄，導致整個工作階段期間逐字稿維持空白且沒有任何記錄。現在會重試；若仍失敗，則會在逐字稿與日誌中回報
+- 恢復長時間工作階段時，背景渲染歷史紀錄不會再讓時間線的可捲動範圍塌縮：先前尚未渲染完成的項目會被當成不存在而發布，導致捲軸與捲動位置在背景渲染追上前持續跳動
+- 現在可從 Sessions 分頁與側邊欄管理多個並行工作階段
+- Sandboxed 包裝式建置（`make` 等）現在會根據工作目錄中的建置 manifest，自動取得其 recipes 所需的 dev tool caches
+- Prompt pinning 預設為關閉；將 `pinnedPrompts` 設為 true 即可啟用
+- 在較新的 Windows 版本上，sandboxed commands 現在又能連上網路；先前即使已啟用對外連線且未設定 proxy，所有對外連線仍會被封鎖
+- Plugin custom agents 現在會遵守 deferred-tool-loading frontmatter
+- 使用 `/worktree new` 可在新的 worktree 中開始新的工作階段
+- 若 sandbox 無法啟動 MCP server，現在會在數秒內失敗，而不再讓工作階段卡住；而 MCP 與 language servers 的 sandbox 啟動失敗，現在也會明確指出是 sandbox 導致，並說明如何修正或退出
+- 在 web 與 device-code 登入流程中，登入連結現在可點擊
+- 目前 prompt 會固定在更上方一列，也就是 tab bar 原本就保留的那一列，因此仍能保留它所複製 prompt 的外觀，同時讓時間線少占一列
+- 在少於 30 列高的終端機中，固定 prompt 預設保持關閉，以避免擠壓輸出；若要在任何尺寸下覆寫此行為，請明確設定 `pinnedPrompts`
+- `/context` 現在會針對 Auto 解析後的模型計算 attribution，讓 Free/Student 使用者的 token 總數更準確
+- 停用某個 extension 不會再破壞其他 extensions 的 elicitation、canvases 或工具權限提示
+- 用 `ctrl+s` 暫存的 prompt 現在會留在原本輸入它的工作階段，因此切換出去再切回來後按 `ctrl+s`，會將它還原，而不是發現它消失了
+- 在 Linux 上，被 sandbox 封鎖的搜尋與大多數 shell commands 現在會提供在 sandbox 外重新執行的選項
+- **BREAKING:** sandbox 設定 `allowDevToolCaches` 已更名為 `allowDevToolAccess`，因為它授予的不只是 caches，還包括 dev-tool 設定與 registries。舊鍵不再讀取，且會被靜默忽略，因此既有設為 `false` 的 opt-out 會回到預設值（開啟）。請在 `settings.json` 與任何 managed/MDM policy 中重新命名
+- 新增 `/sandbox policy`，可顯示生效中的 sandbox 路徑、拒絕規則與網路存取
+- 本機工作階段現在可將 prompts、shell commands 與支援的 slash commands 排入佇列，於目前任務完成後依序執行
+- 在使用者設定中的 `extraKnownMarketplaces` 項目上設 `"autoUpdate": true`，即可在工作階段開始時自動更新其 plugins
+- `/sandbox` 現在會將未啟用的設定標示為 `(disabled)` 並解釋為何被鎖定，且 `copilot help sandbox` 也會補充說明 dev tool caches
+- 進行中的 steering prompts 現在會顯示 "pending · ctrl+c to cancel"
+- `/model` 現在預設為 session 範圍，若要設定未來工作階段的預設值，請使用 `/config model`
+- 目前 prompt 現在會固定為單行，而不再是三列的框線區塊，因此更像介面 chrome，並把列數還給時間線；搭配 tab bar 時，它會直接位於分頁下方，且不會額外占用時間線列數
+
 ## 1.0.78 - 2026-08-03
 
 - Timeline 標頭現在會顯示每次 tool call 花費的時間，靠右對齊，並在執行期間即時跳動更新（適用於至少 5 秒的呼叫）。預設啟用，可用 `/settings showToolDurations` 停用。
