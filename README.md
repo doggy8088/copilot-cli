@@ -11,13 +11,13 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 
 ## 🚀 簡介與總覽
 
-我們正將 GitHub Copilot 編碼代理的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
+我們正將 GitHub Copilot 編碼代理的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機同步與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot 編碼代理協作，不需要切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，全部都使用你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 受益於編碼代理預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
-- **完整控制：** 執行前可預覽每個動作，沒有你的明確核准，任何事都不會發生。
+- **MCP 驅動的可擴充性：** 利用編碼代理預設隨附 GitHub MCP 伺服器的能力，並支援透過自訂 MCP 伺服器擴充功能。
+- **完整控制：** 執行前可預覽每一個動作，沒有你的明確核准，任何事都不會發生。
 
 我們仍處於旅程初期，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
 
@@ -52,8 +52,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可用 root 身分執行並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。若以 root 身分執行，預設為 `/usr/local`；
-若以非 root 使用者執行，預設則為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。若以 root 身分執行，預設為 `/usr/local`；若以非 root 使用者執行，預設則為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -132,7 +131,7 @@ copilot
 
 #### 實驗性功能
 
-- **Autopilot mode:** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
+- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交提示時，每月的 premium requests 配額都會減少一。關於 premium requests 的資訊，請參閱[About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
