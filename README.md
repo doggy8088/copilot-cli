@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大能力，現在就在你的終端機中。
+GitHub Copilot 的威力，現在就在你的終端機中。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub Copilot 編碼代理程式相同的代理式執行框架驅動，在與 GitHub 工作流程深度整合的同時，提供智慧化協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot 編碼代理相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,13 +11,13 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們正將 GitHub Copilot 編碼代理程式的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與理解你程式碼與 GitHub 情境的 AI 代理程式協作。
+我們正把 GitHub Copilot 編碼代理的威力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與理解你程式碼和 GitHub 情境的 AI 代理協作。
 
-- **原生命令列開發：** 直接在命令列中使用 Copilot 編碼代理程式，不需要切換上下文。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並沿用你現有的 GitHub 帳號完成驗證。
-- **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 受惠於編碼代理程式預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器以擴充能力。
-- **完整掌控：** 執行前可預覽每一個動作，未經你明確同意不會執行任何操作。
+- **原生命令列開發：** 直接在命令列中使用 Copilot 編碼代理，不需要切換上下文。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，全部透過你現有的 GitHub 帳號完成驗證。
+- **代理式能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **MCP 驅動的可擴充性：** 善用編碼代理預設隨附的 GitHub MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
+- **完整掌控：** 執行前可預覽每一個動作，未經你明確核准不會執行任何操作。
 
 我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
@@ -31,10 +31,10 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 
 ### 先決條件
 
-- （在 Windows 上）**PowerShell** v6 或以上版本
-- 需有**有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
+- （在 Windows 上）**PowerShell** v6 或更新版本
+- 需要**有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-如果你是透過組織或企業存取 GitHub Copilot，當組織擁有者或企業管理員在組織或企業設定中停用 GitHub Copilot CLI 時，你將無法使用它。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
+如果你是透過組織或企業存取 GitHub Copilot，而組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用它。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
 ### 安裝
 
@@ -50,9 +50,9 @@ curl -fsSL https://gh.io/copilot-install | bash
 wget -qO- https://gh.io/copilot-install | bash
 ```
 
-使用 `| sudo bash` 可在 root 權限下執行，並安裝到 `/usr/local/bin`。
+使用 `| sudo bash` 可在 root 身分下執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。預設值是在 root 身分執行時為 `/usr/local`，在非 root 使用者身分執行時為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。預設值是在以 root 身分執行時為 `/usr/local`，在非 root 使用者身分執行時為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -101,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅！如果想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
+第一次啟動時，你會看到我們可愛的動畫橫幅。如果想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的步驟完成驗證。
 
@@ -131,7 +131,7 @@ copilot
 
 #### 實驗功能
 
-- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理程式持續工作直到任務完成。
+- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交提示時，每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
@@ -139,11 +139,11 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更強的程式碼智慧功能。此功能可提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更強的程式碼智慧功能。此功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
 
 ### 安裝語言伺服器
 
-Copilot CLI 不會內建 LSP 伺服器，你需要另外安裝。例如，要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。例如，要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
@@ -186,8 +186,8 @@ LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 ## 📢 回饋與參與
 
-很高興你能在 Copilot CLI 的旅程早期就加入我們。
+很高興你能在 Copilot CLI 旅程的早期階段加入我們。
 
-我們正在快速建置中。預期會有頻繁更新，請將你的客戶端保持在最新狀態，以取得最新功能與修正！
+我們正在快速建置中。預期會有頻繁更新，請將你的客戶端保持在最新狀態，以取得最新功能與修正。
 
-你的洞察非常重要！歡迎在這個 repo 開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交保密的回饋問卷！
+你的洞察非常重要。歡迎在這個 repo 開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交保密的回饋問卷。
