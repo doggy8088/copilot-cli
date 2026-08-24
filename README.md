@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大功能，現在就在你的終端機中。
+GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計輔助帶到你的命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它採用與 GitHub Copilot 編碼代理相同的代理式執行框架，能在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計輔助帶到你的命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot 編碼代理相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,7 +11,7 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計輔助帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們正將 GitHub Copilot 編碼代理的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你程式碼與 GitHub 情境的 AI 代理同步協作。
+我們正將 GitHub Copilot 編碼代理的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你程式碼及 GitHub 情境的 AI 代理同步協作。
 
 - **原生命令列開發：** 直接在命令列中與 Copilot 編碼代理協作，無需切換上下文。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並透過你現有的 GitHub 帳號完成驗證。
@@ -188,6 +188,6 @@ LSP 伺服器透過專用的 LSP 設定檔進行設定。你可以在使用者�
 
 很高興你能在 Copilot CLI 旅程的早期階段加入我們。
 
-我們正在快速建置中。預期會有頻繁更新，請將你的客戶端保持在最新狀態，以取得最新功能與修正。
+我們正在快速建置中。預期會有頻繁更新，請將你的客戶端保持在最新狀態，以取得最新功能與修正！
 
-你的洞察非常重要。歡迎在這個 repo 開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交保密的回饋問卷。
+你的洞察非常重要！歡迎在這個 repo 開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交保密的回饋問卷！
