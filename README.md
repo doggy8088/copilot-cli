@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub Copilot coding agent 相同的代理式執行框架驅動，在深度整合你的 GitHub 工作流程的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -14,9 +14,9 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與能理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
 - **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，無需切換上下文。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，並透過現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，並透過你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的擴充性：** 善用 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
+- **由 MCP 驅動的擴充性：** 善用 coding agent 預設隨附 GitHub MCP server 的特性，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 執行前可預覽每一個動作，未經你明確同意，不會進行任何操作。
 
 我們仍處於發展早期，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最出色的夥伴。
@@ -52,7 +52,8 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可在 root 身分下執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，
+以非 root 使用者執行時預設為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -135,7 +136,7 @@ copilot
 
 每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一個。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-有關如何使用 GitHub Copilot CLI 的更多資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Servers
 
