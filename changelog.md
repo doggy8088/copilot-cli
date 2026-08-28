@@ -1,3 +1,62 @@
+## 1.0.81 - 2026-08-27
+
+- plugins 儀表板現已向所有人開放：執行 `/plugin`、`/mcp` 或 `/skills`。設定 `PLUGINS_DASHBOARD=false` 可退出此儀表板與 `copilot plugins` 指令。
+- 在 CLI、SDK、IDE 與記憶體內用戶端中提供 MCP 2026-07-28 支援
+- Hooks 現在可接收目前的 OpenTelemetry trace context，並發出可關聯的 spans：輸入現在會帶有 `traceparent`（若 span 有廠商狀態，還會帶 `tracestate`）；command hooks 也會取得環境變數。
+- Windows：受 Microsoft Entra ID 保護的遠端 MCP servers 現在可透過作業系統驗證代理程式（WAM）登入，通常完全不需要提示。其他平台、`--device-code`，以及缺少該代理程式庫的機器，則會維持既有的瀏覽器流程。
+- 新增對 Grok 4.6 的 `xhigh` reasoning effort 支援
+- 啟動時現在會提供還原在 CLI 消失時仍處於開啟狀態的工作階段，因此當機或重新啟動機器後，不再需要手動逐一重開每個終端機
+- `models.list` 現在包含服務端為每個模型發布的 `infoMessages` 與 `warningMessages`
+- 新增 `copilot app`，可在目前目錄開啟 GitHub Copilot app
+- 新增 `defaultMode` 與 `defaultPermissionMode` 設定，用來選擇新互動式工作階段的啟動模式與核准行為
+- 在 `copilot login` 新增 `--with-token`，可從 stdin 讀取驗證權杖
+- 新增對 Gemini 3.7 Flash 的支援
+- 在 `/sandbox` 中新增 `Ctrl+E`，可於編輯器中開啟 `settings.json`
+- 在 `--usage-output-file` 的 JSON 輸出中新增每個 agent 的用量指標
+- 重複呼叫 `read_agent` 時，若未提供 `since_turn`，現在會一致地回傳完整的 turn 歷史
+- 來自 subagent 內 hooks 的 hook 生命週期事件（`hook.start`/`hook.end`）現在會記錄在該 subagent 的工作階段上，並重新發送到其父層，而不再被丟棄在內部工作階段中
+- 反覆恢復同一個工作階段時，不會再在替換 telemetry 的過程中發生當機
+- 被企業 policy 封鎖的 MCP server，現在會在 `/mcp` 中顯示為 blocked，而不是永遠顯示為 pending
+- 修正一個啟動時可能無限停在 `Loading…`/`Resuming…` 的問題：當儲存庫 plugin 啟用其貢獻的 extension（或其他 extension reload 與初始載入競態）時，先前環境會卡在「still waiting on extensions」
+- Vim mode 徽章現在會在 turn 進行期間持續顯示於活動指示器旁邊
+- 啟動狀態現在會在 plugin 協調期間完成 extension 設定後結束
+- 登出帳號時，現在會一併清除其快取的企業 managed settings，因此重新登入後通常會重新抓取 policy，而不是重新套用登出前快取的 policy
+- 當 `permissions.disableBypassPermissionsMode` 帶有無法辨識的值時，企業 managed-settings policy 不再被拒絕；現在會記錄並以 `disable` 強制執行
+- Windows 上的 sandboxed builds 現在會在第一次執行時建立暫存 caches，因此 cargo、go、Gradle 與 ccache 不需要預熱快取也能運作
+- 在 macOS 與 Linux 上，shell commands 現在會解析出與 bash login shell 相同的工具，包括從 profile 啟用的專案環境
+- Canvas 視窗現在會在背景開啟與重新整理，而不再搶走終端機焦點
+- 在 agent 工作期間送出的 prompt，不會再在回答完成後於逐字稿底部殘留第二份卡住的 `(pending)` 副本
+- 從 ACP client 關閉 allow-all 時，只要有 runtime override 或 auto-approval 需要撤銷，現在就會確實傳達到 permission engine，因此設定不會再回報成功但權限仍維持啟用（由 `--allow-all-*` 啟動旗標授予的基準權限仍會刻意保留）
+- 失敗的 tool call 不會再把它的 `(MCP: server)` 標籤沿著時間線一個字元一列往下堆疊；現在標籤與錯誤會共用同一列，較長的一側會截斷
+- 已安裝 plugins 提供的 agents、skills 與 MCP servers，不會再在非互動式（`-p`）執行中遺失，因此 `--agent <plugin>:<agent>` 現在可在無頭模式下使用，而不需 `--plugin-dir`
+- 輸入 `$` 後按 Enter，現在會再次開啟互動式 shell，而不是清空 prompt 後什麼都不做
+- prompt frame 現在會在先前略過的終端機中渲染，例如 foot 與 alacritty，而不再依賴固定清單
+- 當 agent 正在工作時排入佇列的 prompt，現在會持續可見，而不會在你再送出另一則後消失
+- Sessions 側邊欄的鍵盤游標現在會再次顯示，而 Select 系列、diff 檢視器與自訂 picker 列中被選取的列，現在會將選取填色與為其推導出的文字顏色搭配使用
+- 傳送到未聚焦終端 pane 的按鍵不會再被丟棄：即使在終端回報失去焦點後，Enter 與其他按鍵仍可處理，因此 tmux 與 agent 多工工具可驅動背景 pane
+- 在較矮的終端機中，Autopilot 目標面板現在會收合成僅顯示識別列（已暫停的目標仍會保留恢復提示），並可用 `ctrl+x` → `g` 手動展開或收合
+- 將 Autopilot 目標面板渲染為固定的 prompt frame，移除進度條並改為顯示精確的待辦數量，將 subagent 提示收合進可切換的那一列，並在窄窗格中保留其指標
+- 透過先顯示近期歷史，再載入較舊訊息，讓大型工作階段的恢復速度更快
+- `x` 現在在所有地方都是刪除鍵：`/sandbox config`、`/settings`、`/mcp`、sessions 對話框與 diff comments 摘要都不再使用 `d`
+- Auto mode 現在會隨著對話中任務的演進，自動調整模型選擇
+- `/plugin` 現在會標示已安裝 plugins 與 marketplaces 是否有上游較新版本，並提供 Update 動作來拉取更新
+- 在 Autopilot 狀態面板中，將你最後一次的 prompt 顯示為推斷出的目標
+- 當 `--no-sandbox` 因無法判定企業 policy 而被忽略時，提示現在會明確說明這一點，且不再指向管理員，也不會錯誤聲稱是 policy 強制要求 sandbox。unsupported-host 警告現在也會如此說明，而不再互相矛盾。
+- 在 `/model` 選擇器中顯示附帶連結的模型資料保留警告
+- 本機（directory-source）marketplace 中以路徑來源提供的 plugins，現在會直接從其實際目錄即時載入，因此編輯後只需 `/restart` 或開新工作階段即可生效，不需要 `/plugin update`
+- 會從以 `--add-dir` 新增的目錄探索 skills 與 custom agents
+- 使用 `Ctrl+Space` 可切換語音聽寫。
+- 受企業 managed policy 套用 sandbox 的工作階段，現在會在時間線上明確顯示，包括 policy 在工作階段中途才到達時也是如此，而不再只靠頁尾的 sandbox 標記暗示命令正受到限制
+- `forceRemoteSettingsRefresh` 現在改為 fail closed：啟用時，快取的 managed-settings policy 不會再被提供或作為抓取失敗時的後備（會跳過 1 小時快速路徑與 24 小時 stale fallback），因此啟動時若抓取失敗，會因未確認的 policy 而遭封鎖，而不是回退到可能過期的快取 policy。具體來說，在抓到新的 policy 之前，工作階段會套用較嚴格的未定 policy 姿態：非預設 MCP servers 會被封鎖、bypass-permissions mode 無法啟用，且受 policy 管控的 plugin 安裝／更新變更也會被封鎖
+- ACP clients 現在會接收到 subagent IDs、原始事件訂閱，以及即時的標題、模式、命令與計畫更新
+- 在 `/instructions` 中分別顯示每個使用者 instruction 檔案
+- 對於 `enabledPlugins` 與 `extraKnownMarketplaces`，managed settings 現在會逐項目優先生效，因此組織釘選的 plugin 或 marketplace 不能再被本地覆寫
+- 在 Schedule Manager 中，使用 `x` 可移除排程中的 `/every` 與 `/after` prompts
+- 更新模型設定
+- 移除 `PLUGINS_DASHBOARD` 的退出選項，以及它讓舊版 skills picker 得以存在的相容行為。`/skills`、單獨輸入的 `/mcp`，以及不帶 server 名稱的 `/mcp show`，現在都一定會開啟儀表板；`/mcp config` 仍會開啟專用的 MCP 精靈。
+- 移除 `/plugins`；其資源已移至 `/plugin`、`/mcp` 與 `/skills`，而 agents 與 instructions 則分別移至 `/subagents` 與 `/instructions`
+- 暫時無法啟用或停用 hooks 與 LSP servers：這些切換功能原本只存在於本次版本移除的 `/plugins` 儀表板中
+
 ## 1.0.80 - 2026-08-14
 
 - 更新模型設定
