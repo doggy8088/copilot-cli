@@ -11,7 +11,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 簡介與總覽
 
-我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與能理解你的程式碼與 GitHub 情境的 AI 代理協作。
+我們將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與能理解你的程式碼及 GitHub 情境的 AI 代理協作。
 
 - **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，無需切換上下文。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，並透過你現有的 GitHub 帳號完成驗證。
@@ -52,11 +52,12 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可在 root 身分下執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，
+以非 root 使用者執行時預設為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
-例如，將版本 `v0.0.369` 安裝到自訂目錄：
+例如，若要將版本 `v0.0.369` 安裝到自訂目錄：
 
 ```bash
 curl -fsSL https://gh.io/copilot-install | VERSION="v0.0.369" PREFIX="$HOME/custom" bash
@@ -103,7 +104,7 @@ copilot
 
 第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
-如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的說明完成驗證。
+如果你目前尚未登入 GitHub，系統會提示你使用 `/login` 斜線指令。輸入這個指令並依照畫面上的說明完成驗證。
 
 #### 使用 Personal Access Token (PAT) 驗證
 
@@ -118,42 +119,42 @@ copilot
 
 在包含你想要處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線指令可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
 實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
-- 在 CLI 內使用 `/experimental` slash command
+- 在 CLI 內使用 `/experimental` 斜線指令
 
 啟用後，這項設定會持久化儲存在你的設定中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
-- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
+- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一個。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
 如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-## 🔧 設定 LSP Servers
+## 🔧 設定 LSP 伺服器
 
 GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強的程式碼智慧功能。此功能可提供像是前往定義、懸停資訊與診斷等智慧程式碼能力。
 
-### 安裝 Language Servers
+### 安裝 LSP 伺服器
 
-Copilot CLI 不會內建 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP server，並依照下方顯示的相同模式進行設定。
+對於其他語言，請安裝對應的 LSP 伺服器，並依照下方顯示的相同模式進行設定。
 
-### 設定 LSP Servers
+### 設定 LSP 伺服器
 
-LSP servers 是透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
+LSP 伺服器是透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
 **使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -178,9 +179,9 @@ LSP servers 是透過專用的 LSP 設定檔來設定。你可以在使用者層
 }
 ```
 
-### 檢視 LSP Server 狀態
+### 檢視 LSP 伺服器狀態
 
-在互動式工作階段中使用 `/lsp` 指令來檢查已設定的 LSP servers，或直接查看你的設定檔。
+在互動式工作階段中使用 `/lsp` 指令來檢查已設定的 LSP 伺服器，或直接查看你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
