@@ -19,7 +19,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 - **由 MCP 驅動的擴充性：** 善用 coding agent 預設隨附 GitHub MCP server 的特性，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 執行前可預覽每一個動作，未經你明確同意，不會進行任何操作。
 
-我們仍處於發展早期，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最出色的夥伴。
+我們仍處於發展早期，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 快速開始
 
@@ -34,7 +34,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 - （在 Windows 上）**PowerShell** v6 或更高版本
 - 擁有**有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-如果你是透過所屬組織或企業取得 GitHub Copilot 的使用權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你將無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
+如果你是透過所屬組織或企業取得 GitHub Copilot 的使用權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
 ### 安裝
 
@@ -52,8 +52,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 使用 `| sudo bash` 可在 root 身分下執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，
-以非 root 使用者執行時預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -102,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-第一次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
+第一次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的說明完成驗證。
 
@@ -119,7 +118,7 @@ copilot
 
 在包含你想要處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
@@ -189,6 +188,6 @@ LSP servers 是透過專用的 LSP 設定檔來設定。你可以在使用者層
 
 很高興你在 Copilot CLI 的旅程早期就加入我們。
 
-我們正在快速建置中。請預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正。
+我們建置得很快。請預期會有頻繁更新，並讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的洞見非常寶貴。歡迎在此儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷。
+你的洞見非常寶貴！歡迎在此儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷！
