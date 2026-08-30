@@ -1,3 +1,9 @@
+## 1.0.82 - 2026-08-29
+
+- 在 `/worktree` 或 `/move` 準備 worktree 期間輸入的訊息，不會再破壞切換流程
+- `Ctrl+E` 現在會展開 plan approval 卡片，再次顯示完整計畫
+- 現在會顯示具體的驗證失敗原因（例如 401 Bad credentials），而不再只顯示 `/login` 提示
+
 ## 1.0.81 - 2026-08-27
 
 - plugins 儀表板現已向所有人開放：執行 `/plugin`、`/mcp` 或 `/skills`。設定 `PLUGINS_DASHBOARD=false` 可退出此儀表板與 `copilot plugins` 指令。
