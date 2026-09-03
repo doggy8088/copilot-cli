@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時提供智慧協助。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -14,12 +14,12 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機、以同步方式與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無需切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 和 pull requests，全部都以你現有的 GitHub 帳號完成驗證。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 和 pull requests，全都以你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯及重構程式碼。
 - **由 MCP 驅動的可擴充性：** 受益於 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 執行前可預覽每一項動作，沒有任何事情會在未經你明確核准的情況下發生。
 
-我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最好的夥伴。
+我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，致力於讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 快速開始
 
@@ -133,7 +133,7 @@ copilot
 
 - **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交 prompt 時，你每月的 premium requests 配額都會減少一個。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一個。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
 如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -190,4 +190,4 @@ LSP servers 是透過專用的 LSP 設定檔來設定。你可以在使用者層
 
 我們開發得很快。請預期會有頻繁更新，並讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的洞見非常寶貴！歡迎在此儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交保密的回饋問卷！
+你的洞見非常寶貴！歡迎在此儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交一份保密的回饋問卷！
