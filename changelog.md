@@ -1,3 +1,43 @@
+## 1.0.83 - 2026-09-04
+
+- 在 Windows 11 工作列中顯示執行中的 Copilot 工作階段，並提供即時懸停狀態卡片
+- 新增 Client ID Metadata Document (CIMD) 對 MCP OAuth 登入的支援
+- Custom agents 現在可在 `model` 中列出多個模型，會依序嘗試直到找到你可用的模型，而 `model-policy: required` 會將模型變更限制在該清單內
+- 新增對 `claude-fable-5.1` 的支援
+- 在分割式 Sessions 側邊欄新增 Recent、Created、Name 與傳統 None 排序，且所選順序會在重新啟動後保留
+- 企業管理員可透過 `forceLoginOrgs` managed setting，將登入限制為已核准的 GitHub organizations
+- 為模型與 web requests 新增自動 HTTPS proxy mTLS client certificate 支援
+- 現在會辨識 herdr terminal multiplexer，而不再誤判為 tmux，因此 Kitty keyboard protocol、色彩配置跟隨、terminal progress、`/copy` 與通知都能在 herdr panes 中正常運作
+- 在同一執行緒上重入的 session lock，現在會回報錯誤並失敗，而不是讓 CLI 凍結
+- 當初始 challenge 回應 `Connection: close` 時，Kerberos proxy authentication 現在會重新連線
+- Sandboxed `gh` commands 現在會以該 repository 設定的帳號進行驗證，而不是使用 Copilot CLI 的登入帳號
+- MCP tools 在 MCP server 重新啟動後仍可繼續呼叫
+- Sandboxed file tools 現在會讀取與 sandboxed shell commands 相同的 developer-tool 路徑，包括帶有 token 的 registry 設定（例如 `~/.npmrc`）；將 `sandbox.allowDevToolAccess` 設為 false 可關閉這些授權
+- 停止逾時的 shell command 後，現在會讓佇列中的訊息繼續執行，並讓工作階段回到閒置狀態
+- 在 autopilot 執行期間輸入的後續 prompt，不會再從時間線上消失
+- 當無法完成自動重新啟動時，Restart 現在會提供更清楚的更新指引
+- 由你的 agent 設定的 MCP servers，在內建 sub-agent turns 之後仍會保持可用
+- Anthropic 工作階段在暫時 fallback 後會繼續進行，而不再因無效的 thinking signatures 失敗
+- Linux 上長時間執行的工作階段，現在會把已釋放的記憶體還給系統，而不是持續占住數 GB
+- 被企業拒絕的 MCP servers，現在不會在 managed allow/deny policy 尚未解析前就先啟動；server 啟動現在會等待 managed-settings 抓取完成，而不再與其競速
+- 由 host 提供的 plugin customizations，現在可在不出現多餘路徑權限提示的情況下讀取
+- 相對路徑的 `--add-dir` 或 `--plugin-dir`，在 `--resume=<id>` 與 `--worktree` 下現在會以工作階段的工作目錄為基準解析，而不是以啟動 CLI 的目錄為基準。相對值也會在套用 `-C` 之後再解析，因此命令列上 `-C` 不必再放在這兩個選項之前
+- 由 plugin 提供的 MCP servers，不再在 MCP dashboard 中被標示為 "User"；而來自內建 plugin 的 server，現在會顯示為 built-in，並標明其來源 plugin
+- 最新一行輸出現在會保持顯示在輸入框上方，而不再被它遮住；但當 prompt 被固定在逐字稿頂端時仍為例外
+- 以 `--share` 或 `--share-gist` 匯出已恢復的工作階段時，現在會寫出完整逐字稿，而不再只包含最新一次執行
+- 在 macOS 與 Linux 上，sandboxed commands 現在無法再連到你機器上執行中的服務。在 macOS 上，這也會阻擋命令本身啟動於 `127.0.0.1` 的 server，因此會綁定本機埠的測試套件將會失敗；若要重新連到 localhost，請在 `/sandbox` 中開啟 Allow local network。
+- Linux sandboxing 現在需要 PATH 上有 `slirp4netns`、`nsenter`、`iptables`、`ip6tables`、`iptables-restore` 與 `ip6tables-restore`。若 sandboxed commands 開始無法啟動，請先安裝它們。
+- CLI 現在預設不會顯示 interrupted-session restore prompt 就直接啟動
+- 恢復大型工作階段時，輸入 prompt 現在能更早保持可回應
+- Linux sandboxes 現在會將網路輸出限制到已設定的 proxy；proxy 模式需要 `slirp4netns`、`util-linux 2.35+`、`iptables`，以及 `/dev/net/tun` 存取
+- `/mcp config` 與 MCP 的 add/edit/authenticate 表單，現在會在 plugins dashboard 中開啟，而不是獨立的 MCP manager，因此關閉表單後會回到 server 清單
+- 在大型 repositories 中，檔案路徑自動完成仍能保持快速
+- Plugin list commands 與 `/plugin` 現在會顯示隨附的 built-in plugins
+- 透過授予必要的 cache 與輸出路徑，改善 sandboxed Bazel 與 Bazelisk 執行；macOS 則需要未來版本的 Bazel 或額外的 sandbox capabilities
+- 收合後的 autopilot 目標面板，現在會顯示成單行固定 prompt，保留與固定 prompt 共用的框線，而不再壓縮成夾在上方介面 chrome 旁的裸露窄帶
+- 透過依來源分組路徑授權並顯示偵測到的 developer tools，改善 `/sandbox policy`
+- 從 `/model` 選擇器結果中移除已退役的 Claude 與 Gemini 模型
+
 ## 1.0.82 - 2026-08-29
 
 - 在 `/worktree` 或 `/move` 準備 worktree 期間輸入的訊息，不會再破壞切換流程

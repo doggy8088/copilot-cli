@@ -4,7 +4,7 @@ GitHub Copilot 的強大能力，現在進入你的終端機。
 
 GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub Copilot coding agent 相同的 agentic harness，能在深度整合 GitHub 工作流程的同時，提供智慧協助。
 
-更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
@@ -120,22 +120,22 @@ copilot
 
 預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中進行選擇，包括 Claude Sonnet 4 與 GPT-5。
 
-### Experimental Mode
+### 實驗模式
 
-Experimental mode 可讓你使用仍在開發中的新功能。你可以透過以下方式啟用 experimental mode：
+實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 啟動時加上 `--experimental` 旗標：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` slash command
 
 啟用後，這個設定會持久保存於你的設定檔中，因此之後啟動時不再需要 `--experimental` 旗標。
 
-#### Experimental Features
+#### 實驗功能
 
 - **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可在各模式間切換），會鼓勵 agent 持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交 prompt，你每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Servers
 
@@ -188,6 +188,6 @@ LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者
 
 很高興你在 Copilot CLI 的旅程初期就加入我們。
 
-我們正在快速開發中。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正。
+我們正在快速開發中。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正！
 
 你的洞察非常重要。請在這個 repo 開 issue、參與 Discussions，並從 CLI 執行 `/feedback` 提交機密回饋問卷。
