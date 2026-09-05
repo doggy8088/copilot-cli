@@ -13,7 +13,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 我們將 GitHub Copilot coding agent 的能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機、同步地與理解你的程式碼與 GitHub 情境的 AI agent 一起工作。
 
-- **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，不必切換工作情境。
+- **原生終端機開發：** 直接在命令列中與 Copilot coding agent 協作，不必切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issues 與 pull requests，並直接沿用你現有的 GitHub 帳號完成驗證。
 - **Agentic 能力：** 透過可規劃並執行複雜任務的 AI 協作者來建置、編輯、除錯與重構程式碼。
 - **以 MCP 驅動的可擴充性：** coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
@@ -190,4 +190,4 @@ LSP servers 會透過專用的 LSP 設定檔進行設定。你可以在使用者
 
 我們正在快速開發中。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的洞察非常重要。請在這個 repo 開 issue、參與 Discussions，並從 CLI 執行 `/feedback` 提交機密回饋問卷。
+你的洞察非常重要。請在這個 repo 開 issue、參與 Discussions，並從 CLI 執行 `/feedback` 提交機密回饋問卷！
