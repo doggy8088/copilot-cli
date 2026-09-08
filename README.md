@@ -11,9 +11,9 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們將 GitHub Copilot 編碼代理的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼和 GitHub 情境的 AI 代理協作。
+我們將 GitHub Copilot 編碼代理的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
-- **原生終端機開發：** 直接在命令列中與 Copilot 編碼代理協作，無需切換工作情境。
+- **原生終端機開發：** 直接在命令列中與 Copilot 編碼代理協作，不需要切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull request，並以你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **由 MCP 驅動的可擴充性：** 編碼代理預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
@@ -52,8 +52,7 @@ wget -qO- https://gh.io/copilot-install | bash
 
 若要以 root 身分執行並安裝到 `/usr/local/bin`，請使用 `| sudo bash`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。預設值為 `/usr/local`，
-當以 root 執行時使用該值；以非 root 使用者執行時則預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 執行時預設為 `/usr/local`，以非 root 使用者執行時則預設為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -102,7 +101,7 @@ npm install -g @github/copilot@prerelease
 copilot
 ```
 
-首次啟動時，你會看到我們可愛的動畫橫幅！如果你想再次看到這個橫幅，請以 `--banner` 旗標啟動 `copilot`。
+首次啟動時，你會看到我們可愛的動畫橫幅。如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
 如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入此命令後，依照畫面上的指示完成驗證。
 
