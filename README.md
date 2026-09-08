@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub Copilot 編碼代理程式相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧輔助功能。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它採用與 GitHub Copilot 編碼代理相同的代理式執行框架，在與你的 GitHub 工作流程深度整合的同時，提供智慧輔助功能。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們將 GitHub Copilot 編碼代理程式的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與能理解你的程式碼及 GitHub 情境的 AI 代理程式協作。
+我們將 GitHub Copilot 編碼代理的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼和 GitHub 情境的 AI 代理協作。
 
-- **原生終端機開發：** 直接在命令列中使用 Copilot 編碼代理程式，無需切換工作情境。
+- **原生終端機開發：** 直接在命令列中與 Copilot 編碼代理協作，無需切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull request，並以你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 編碼代理程式預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
+- **由 MCP 驅動的可擴充性：** 編碼代理預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
 - **完整掌控：** 執行前可預覽每個動作，未經你明確批准，不會執行任何操作。
 
 我們仍處於發展早期，但在你的回饋協助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的協作夥伴。
@@ -132,7 +132,7 @@ copilot
 
 #### 實驗功能
 
-- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），鼓勵代理程式持續工作直到任務完成。
+- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），鼓勵代理持續工作直到任務完成。
 
 每次你向 GitHub Copilot CLI 提交提示時，每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
@@ -140,7 +140,7 @@ copilot
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強的程式碼智慧功能，例如跳至定義、懸停資訊與診斷。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強的程式碼智慧功能。這項功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
 
 ### 安裝語言伺服器
 
@@ -187,7 +187,7 @@ LSP 伺服器是透過專用的 LSP 設定檔進行設定。你可以在使用�
 
 ## 📢 回饋與參與
 
-很高興你在 Copilot CLI 的發展早期就加入我們。
+我們很高興你在 Copilot CLI 旅程的早期就加入我們。
 
 我們正在快速建置中。預期會有頻繁更新，請讓你的客戶端維持最新，以取得最新功能與修正！
 
