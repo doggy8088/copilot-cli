@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們將 GitHub Copilot 編碼代理的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
+我們正將 GitHub Copilot 編碼代理的強大能力直接帶進你的終端機。透過 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI 代理協作。
 
-- **原生終端機開發：** 直接在命令列中與 Copilot 編碼代理協作，不需要切換工作情境。
+- **原生終端機開發：** 直接在命令列中與 Copilot 編碼代理協作，無需切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull request，並以你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 編碼代理預設隨附 GitHub 的 MCP 伺服器，並支援自訂 MCP 伺服器來擴充能力。
+- **MCP 驅動的可擴充性：** 充分利用編碼代理預設隨附 GitHub MCP 伺服器這項特性，並支援自訂 MCP 伺服器來擴充能力。
 - **完整掌控：** 執行前可預覽每個動作，未經你明確批准，不會執行任何操作。
 
 我們仍處於發展早期，但在你的回饋協助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的協作夥伴。
@@ -118,7 +118,7 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` slash command 可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
