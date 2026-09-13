@@ -2,9 +2,9 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧協助。
 
-更多資訊請參閱[我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+更多資訊請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ![Copilot CLI 啟動畫面的圖片](https://github.com/user-attachments/assets/f40aa23d-09dd-499e-9457-1d57d3368887)
 
@@ -19,7 +19,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 - **由 MCP 驅動的可擴充性：** 善用 coding agent 預設隨附 GitHub MCP server 的優勢，並支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 執行前先預覽每一個動作，沒有你的明確核准，任何事都不會發生。
 
-我們的旅程仍在早期階段，但在你的回饋協助下，我們正快速迭代，目標是讓 GitHub Copilot CLI 成為你終端機中最理想的協作夥伴。
+我們的旅程仍處於早期階段，但在你的回饋協助下，我們正快速迭代，目標是讓 GitHub Copilot CLI 成為你終端機中最理想的協作夥伴。
 
 ## 📦 開始使用
 
@@ -32,7 +32,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 ### 先決條件
 
 - （在 Windows 上）**PowerShell** v6 或更新版本
-- 具備**有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
+- 具備 **有效的 Copilot 訂閱**。請參閱 [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
 如果你是透過組織或企業取得 GitHub Copilot 的使用權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，你將無法使用 GitHub Copilot CLI。更多資訊請參閱 [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)。
 
@@ -52,10 +52,9 @@ wget -qO- https://gh.io/copilot-install | bash
 
 若要以 root 身分執行並安裝到 `/usr/local/bin`，請使用 `| sudo bash`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時預設為 `/usr/local`
-，以非 root 使用者執行時則預設為 `$HOME/.local`。
+將 `PREFIX` 設為安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時預設為 `/usr/local`，以非 root 使用者執行時則預設為 `$HOME/.local`。
 
-設定 `VERSION` 可安裝指定版本。預設為最新版本。
+將 `VERSION` 設為安裝指定版本。預設為最新版本。
 
 例如，若要將版本 `v0.0.369` 安裝到自訂目錄：
 
@@ -136,7 +135,7 @@ copilot
 
 每次你向 GitHub Copilot CLI 提交一個 prompt，你每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-如需進一步了解如何使用 GitHub Copilot CLI，請參閱[我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需進一步了解 GitHub Copilot CLI 的使用方式，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP 伺服器
 
