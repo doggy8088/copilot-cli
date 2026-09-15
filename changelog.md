@@ -1,3 +1,35 @@
+## 1.0.75 - 2026-07-24
+
+- 新增對 Claude Opus 5 的支援
+
+## 1.0.74 - 2026-07-23
+
+- 當 `/search` 列開啟時輸入 `?`，現在會把它當成文字輸入，而不是開啟快速說明
+- 新增對 Open Plugin Spec v1 plugin manifests 與 `mcp.json` 設定的支援
+- 當 CLI 重新載入 MCP servers 或變更目錄時，IDE 整合現在能可靠地重新連線
+- 重新開啟 `/tasks` 後，多回合 subagent 時間線現在會依正確順序顯示每個 prompt 與回應
+- Subagent 時間線現在會標示 prompt 來自主 agent 還是其他 subagent
+- 顯示首次執行 splash 畫面，讓你選擇是否啟用預設 sandbox
+- 新增對 `gemini-3.6-flash` 的支援
+- `/mcp add` 與 `/mcp edit` 精靈現在會保留環境變數值中的 `=` 字元（例如 base64 padding），因此 secrets 與 tokens 能正確儲存
+- 遠端工作階段上傳現在會停止重試永久性的 Mission Control 400/404 回應
+- 在 `/settings` 頁尾顯示 Tab，可用來切換 scope 分頁
+- 縮小過大的 tool-result 圖片，讓 CAPI Responses requests 能持續進行
+- 在多工處理多個工作階段時，某個工作階段的開啟對話框不會再洩漏到另一個工作階段；當你切換回去時，符合條件的 picker 會重新開啟
+- 即使 agent 正在工作，`$` 互動式 shell 快捷鍵現在也會開啟 shell
+- 現在會完整遵守 skill 的 `disable-model-invocation` 旗標
+- 當參與中的 language server 回報的 symbol 與請求的不一致時，現在會提出警告
+- Steering 中斷現在會打斷 shell 輸出等待，而不會停止正在執行的命令
+- 提高 Responses request size limit
+- Plan mode 現在允許在工作階段資料夾內建立規劃用產物，同時仍會阻擋工作階段資料夾外明確的檔案變更
+- 新增 `/model plan`（或 `/model --plan`），可選擇 plan mode 使用的模型；可傳入模型 id、`off` 以清除設定，或不帶 id 直接開啟選擇器。離開 plan mode 後，會恢復使用工作階段模型
+- 即使空白字元不同，恢復搜尋現在仍可比對工作階段標題
+
+## 1.0.73 - 2026-07-20
+
+- 當設定了額外目錄時，Anthropic subagents 仍可持續運作
+- 會根據 agent 檔案位置解析自訂 agent instructions 中的相對連結
+
 ## 1.0.72 - 2026-07-20
 
 - 若 `agentStop` hook 持續阻擋，現在不會再無限迴圈：CLI 會在連續阻擋 8 次後結束該 turn，而 `agentStop` hooks 也會收到 `stop_hook_active` 旗標，以便偵測強制繼續並自行限制
