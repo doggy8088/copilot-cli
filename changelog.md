@@ -1,3 +1,118 @@
+## 1.0.85 - 2026-09-16
+
+- Vim mode 現已開放給所有人使用。可透過 `/vim` 啟用，或將 `editorMode` 設為 `vim`，以在 composer 中使用 modal editing，且輸入時會顯示目前模式。
+- 在 `/settings` 新增選項，可選擇為 agents 與 subagents 啟用 context management tools
+- 將 `transcriptView` 設為 `"concise"`，即可將 tool activity 分組為可展開的工作摘要。
+- 新增 `/config`，可在 CLI 中開啟側邊欄設定畫面
+- 在不取代既有上游 proxy 設定的情況下，新增 `/sandbox` Network host allow/deny 規則
+- 新增 session 與 memory 匯入指令，支援 semantic JSONL interchange format
+- 新增 `copilot instruction list` 與 `copilot lsp list`，取代 `copilot plugins list --kind instruction` 與 `--kind lsp`
+- 在 `copilot plugin list`、`copilot plugin marketplace list` 與 `copilot plugin marketplace browse` 新增 `--json`
+- 在 `copilot plugin`、`copilot mcp` 與 `copilot skill` 新增 `enable` 與 `disable`，取代 `copilot plugins enable/disable --plugin|--mcp|--skill`
+- 新增對 GPT-6 Astra 的支援
+- Managed sandbox sessions 現在可在核准的 bypass prompt 中，於該工作階段的剩餘期間停用。
+- `--add-dir` 現在會一致地拒絕非目錄或無法存取的路徑，並在 session 初始化前中止啟動
+- Streamer mode 現在會在 `/model`、頁尾與啟動診斷中隱藏內部模型名稱，且切換時不會重新啟動模型初始化
+- 修正 Windows 上單次命令 sandbox bypass 的問題：當 sandbox container 因缺少權限而拒絕被 policy 封鎖的寫入時，核准 bypass 現在會直接執行該命令，而不會在較寬鬆的重試後就停止，因此不再需要為整個工作階段停用 sandbox
+- 即使色盤不完整，仍會尊重終端機色彩主題
+- 新工作階段交接失敗時，未使用的 clients 會停止輪詢，並保留目前工作階段、排程與尚未送出的 prompt。
+- 在 hooks 頻繁執行的情況下，切回背景工作階段時，較早的訊息仍會維持可見。
+- `End` 與 `Ctrl+E` 現在會將游標移到換行後那一行的真正結尾，因此在長單字或 URL 內輸入或按 `Ctrl+K` 時，不會再提早一個字元編輯。在這種行上，第一次停留點會是換行邊界，所以再按一次 `End` 或 `Ctrl+E` 才會前進到下一個視覺列的結尾
+- `--share=~/notes.md` 現在會將匯出的工作階段寫入你的家目錄，而不是在目前目錄建立一個名為 `~` 的資料夾
+- 像 Ctrl+X、Alt+X 或大寫 X 這類帶修飾鍵的組合，不會再觸發 `/tasks` 的字母快捷鍵；現在只有未加修飾的 a、f、x、r、b、j 與 k 會有反應。Enter、Escape、方向鍵與 Ctrl+G / Ctrl+P / Ctrl+N 不受影響
+- 排程 prompts 在執行期失敗時，現在會顯示錯誤
+- 當 providers 因圖片數量限制而拒絕請求時，CLI 會在不帶圖片的情況下重試 image prompts
+- 啟動後完成驗證 hydration 後，已驗證的 model lists 會重新整理
+- 當 CLI 已連線到執行中的 IDE 時，MCP servers 不會再載入失敗。先前 in-process IDE bridge 會被 config validation 拒絕，導致 plugin reload 失敗並限制工作階段
+- `copilot init` 現在會在執行結束且未寫入 instructions 檔案時，移除它建立的 `.github` 目錄。
+- 即使在 tool 變更後刷新 tool list 失敗，MCP turns 仍會繼續
+- 在信任資料夾之後，MCP servers 仍會保有正確的 workspace source labels
+- 編輯器或 shell 若將滑鼠追蹤保留為開啟，現在不會再讓你的終端機在工作階段期間或 CLI 結束後持續回報點擊
+- 當 `--allow-all-tools`、`--allow-all-paths` 與 `--allow-all-urls` 都已設定時，`/permissions` picker 現在會標示為 Allow all
+- 恢復的工作階段現在會將已完成的 reasoning 顯示為 Thought，而不是 Thinking…
+- `copilot --help` 現在再次說明 `--no-*` 選項，而 `--no-auto-update` 會說明它會執行 binary 內隨附的版本。`--no-auto-login` 與 `--no-sandbox` 仍受支援，但與先前 clap port 之前一樣，仍會隱藏於 help 中
+- 當你從會重設終端機的外部編輯器返回時，現在會在 macOS 與 Linux 上還原鍵盤輸入與畫面輸出
+- 在登入、切換帳號或登出後，model lists 現在會重新整理
+- 修正送往被歸類為 adaptive-only 的 Claude models 的 thinking 形狀：現在它們會維持 adaptive，而不會失敗（關閉 thinking 則會改為降低 reasoning effort），且在停用 thinking 時，reasoning effort 最高會被限制為 high
+- 當 `/clear` 關閉互動式工作階段時，會執行 `sessionEnd` hooks
+- Plugin agents 現在會在 `mcp-servers` frontmatter 中展開 `${PLUGIN_ROOT}` 佔位符
+- 透過 `--add-dir` 加入之目錄中的 skills，不會再因 skills 載入與目錄註冊競態而遺失
+- 在 `--resume=<id>` 與 `--worktree` 下，相對路徑的 `--additional-mcp-config @<file>` 現在會以工作階段工作目錄為基準解析，而不是以啟動目錄為基準，且 `~/` 也會展開。
+- Windows 上，對 loopback 與本機網路存取的 sandbox 拒絕，現在會提示在 sandbox 外重新執行命令
+- 已核准的 sandbox 重試，現在會在網路 policy 仍受強制時標示為 sandbox relaxed；若完全脫離 sandbox，則標示為 sandbox bypassed；若 bypass 失敗，則會說明主機權限仍然適用
+- 取消 MCP tool call 時，現在會通知 MCP server 並乾淨地結束該 turn。
+- 當關閉滑鼠捕捉時，在回報 DEC private mode 1007（alternate scroll）的終端機中滾動滑輪，不會再倒著瀏覽 prompt history，例如 Ghostty
+- 當需要時，MCP OAuth 會要求額外 scopes，並重試 tool call
+- 變更 reasoning effort 現在會在啟用中的 turn 的下一個邏輯請求前生效，而重試則會維持原本的 effort
+- 自動 compact 現在會儲存一個可出現在 `/session checkpoints` 中的 checkpoint
+- Windows CLI artifacts 現在執行時不再需要 Visual C++ Redistributable
+- 在啟動時與外觀即時變更期間，維持終端機主題色彩一致
+- 在 model discovery 仍在載入時，interactive mode 仍會啟動並送出啟動 prompt。
+- 帶有 boolean property 或 array-item schema 的 MCP tools，現在可搭配 Gemini 使用，而不會造成 400 錯誤
+- 透過 MDM 或 managed settings file 傳遞的 enterprise-managed sandbox policy，現在不會再丟棄 `sandbox.allowBypass`，因此 bypass prompts 與 `/sandbox disable` 會依 policy 預期運作
+- 當你的組織 policy 允許工作階段 opt-out 時，managed sandbox 啟動通知不會再聲稱無法關閉 sandbox，而是改為指出 `/sandbox disable`
+- 當檢視或附加模型無法讀取的圖片格式（例如 BMP 或 TIFF）時，不會再讓工作階段無法送出後續訊息；現在會回報為不支援的格式，你可將其轉換為 PNG、JPEG、WebP 或 GIF
+- YOLO 狀態指示器現在會在切換工作階段後反映目前啟用中的工作階段
+- Computer Use 現在會在 `/computer` 與整體 plugin 的 `/plugin` 切換之間保持同步。
+- 在 Sessions 分頁中按 Enter，現在即使背景重新整理剛好重建清單，也會將目前反白的工作階段帶到前景，而不會偶爾開啟錯的工作階段
+- Windows 上的 indexed search 在更新索引時，現在可避免新的磁碟空間洩漏
+- 在產生完成後，長篇 `/ask` 回應仍會保持可見
+- 當工作階段歷史正好在某個 turn 結束時被截斷或 compact，"Working" 指示器現在會正確清除，而不會在整個工作階段剩餘時間都持續顯示
+- `COPILOT_ALLOW_ALL` 現在不會再因 `1`、`0`、`yes` 或空字串等值而拒絕啟動 CLI，而 falsy 值現在會停用自動工具核准，而不是啟用它
+- 啟動 subagent 時，現在會遵守適用的全域與自訂 instructions 中明確指定的 model、reasoning effort 與 context tier 偏好
+- 若失敗的命令因 `EPERM` 或 `EACCES` 診斷點名某個被 sandbox 封鎖的路徑，現在即使該路徑未出現在命令列中，也會提供在 sandbox 外執行的選項
+- 被唯讀 sandbox 路徑阻擋的寫入，以及被 sandbox 阻擋而導致 Node 或 Go 網路失敗，現在會被辨識為 sandbox denials，而不再只是原始錯誤
+- 在 `copilot mcp list` 中，記憶體內的 MCP servers 現在會顯示為 memory，而不是 local
+- `/compact` 在收到有效摘要時，不會再回報空的 model response
+- 串流回應現在會在最終輸出前保留訊息區塊順序。
+- 在串流中途模型失敗後進行重試時，現在會保留正確的串流訊息與 reasoning
+- 啟動時在信任資料夾後，workspace `.mcp.json` servers 現在可正確載入
+- 當圖片很多的請求超出模型限制時，會優先保留使用者提供的圖片而非工具產生的圖片，較新的訊息也會優先保留，且 CLI 會回報任何被移除的項目。
+- CLI 探索到的 plugin-contributed agents，現在可以被選取並執行。
+- 修正收到變更通知後同一 turn 內的 MCP tool-list 刷新問題，包含現代的訂閱式 servers
+- 遠端工作階段的時間線項目，現在會提示可按 `ctrl+o` 顯示或隱藏 QR code，與實際切換它的按鍵一致
+- 在 `/sandbox status` 與設定中，顯示 sandboxing 是否僅對目前工作階段啟用
+- 當沒有 managed policy 證據時，interactive `--yolo` 啟動在驗證前仍可使用
+- Indexed search 現在會顯示是否已啟用、可在 Windows ReFS volumes 上運作、支援明確的 cloud-sync overrides，且在 Linux 原生檔案監看用盡時仍會持續重新整理。
+- `/copy` 現在在有可用內容時會包含 task completion messages
+- 使用 OAuth 驗證的 MCP servers，現在能在工作階段啟動期間可靠連線
+- `ctrl+h` 在 tmux、screen 與攜帶來自其他地方之 Windows Terminal `WT_SESSION` 的遠端工作階段中，不會再刪除整個單字。作為可接受的取捨，這些工作階段中的 `ctrl+backspace` 現在會刪除單一字元，包括真正的本機 Windows tmux 或 screen pane；而 `ctrl+w` 仍會刪除整個單字
+- MCP servers 現在在新增 server 與工作階段連線時，會看到相同的 copilot-cli client identity，帶有實際隨附的 CLI 版本，而不是 0.0.0
+- 使用 `--auth-token-env` 時，interactive mode 現在會啟動並送出初始 prompt
+- 可使用 `/settings taskbarPresence false` 停用 Windows 工作列工作階段狀態。由 loader 管理的工作階段會立即重新啟動；獨立工作階段則需要手動重新啟動。
+- 按一次 Escape，現在只會取消一次 MCP inference approval prompt
+- MCP reload 摘要現在會顯示逾時後仍在啟動中的 servers
+- 對於 Entra 驗證的工作階段，初始 prompts 現在會立即開始，同時 token refresh 會在背景執行。
+- 選擇 approve-for-location 時，現在會持久化工具核准設定，避免重複提示
+- 大型工作階段在恢復時，不會再因計算 context tokens 而凍結介面
+- 已設定的 hooks 在 extension 重新啟動後仍會持續執行，而不會靜默停止並在之後拒絕所有 tool calls；該 extension 自己的 callback hooks 也會在重新註冊後恢復
+- `allowManagedHooksOnly` policy 現在也會封鎖由 extension 註冊的 `preToolUse`、`postToolUse` 與 `postToolUseFailure` callbacks；先前它們會繞過 managed-only lockdown，而其他 hook 事件早已受此限制
+- 當 sandbox 封鎖 PowerShell 寫入時，現在會提供在 sandbox 外執行命令的選項
+- 當你的 credential store 中有多個 GitHub 帳號時，sandboxed `gh` command 現在會以 `gh` 已登入的帳號執行，而不是任意選到其中一個
+- 當模型重新整理移除其相容的 critic 時，`/rubber-duck` 指令現在會隱藏
+- Sandboxed runs 現在會使用透過環境變數與工具設定檔重新定位的 developer-tool caches
+- 在 Windows 上，sandboxed command 若執行 git 卻未在命令列中直接點名它，例如 hook、建置工具，或透過 HTTPS clone 的 npm install，現在不會再死在 credential helper 的 MSYS2 shell 內
+- 對大型本機工作階段歷史降低 metadata 掃描時間，但會增加執行緒與記憶體使用
+- 可從 `/factories` 對話框暫停與恢復 Agent Factory 執行
+- 將 managed Edit 與 Write 規則套用到可辨識的原生 shell redirections，以及受支援的就地 `sed` 操作
+- 預設在 CLI 頁尾顯示啟用中的 scheduled prompts
+- 使用 `/worktree`、`/move` 與 `--worktree` 時，不再需要啟用 experimental mode
+- 開放所有使用者使用 `/collect-debug-logs` 與 `--collect-debug-logs`
+- 當你的組織 policy 允許 bypass 時，`/sandbox disable` 會在目前工作階段中關閉 sandbox
+- Shell completions 現在由 CLI 所使用的同一套 grammar 產生，因此 `copilot <TAB>` 會同時提供根層 flags 與 subcommands，而每個 subcommand 只會提供自己的選項
+- 命令列解析已從 Commander 移轉到 Rust grammar；錯誤與 help 文案有所變更，`copilot login --host` 現在可用，而 `--max-autopilot-continues` 不再接受科學記號
+- `/sandbox` filesystem paths 現在會顯示為絕對路徑；輸入 `~/path` 仍會展開到你的家目錄
+- 將 `/sandbox` Filesystem paths 移到獨立清單中，並從 Paths 列開啟
+- 顯示線上資源目錄結果的 trust status、tier 與 eligibility 詳細資訊
+- `/usage` 現在會在使用量明細中顯示各模型的 AI Credit 消耗
+- 改善 `/sandbox` 指引，並在命令 help 中顯示 `/sandbox policy`
+- 在支援的 Windows sandbox policies 上，互動式 shell commands 現在會記錄被封鎖的存取。經一次核准的升級後，會在仍維持網路 policy 的情況下，以記錄檔案與程序限制的方式重試，而不是直接封鎖；若仍被封鎖，才會退回到已揭露的完整 bypass
+- 使用 `--resume` 以精確 UUID 恢復現有本機工作階段時，加快啟動速度
+- 以 `copilot skill add [--project]` 取代 `copilot plugins install --skill [--scope project]`；`--scope` 這種寫法已移除
+- 從 `copilot plugins` 移除跨種類的 `--kind`、`--scope`、`--mcp` 與 `--skill` 旗標；請改用 `copilot mcp` 與 `copilot skill`
+- `copilot plugins list --json` 現在會輸出扁平的 plugin 陣列，而不是跨種類的 `{ plugins, errors }` 物件；讀取 `.plugins` 的腳本需要更新
+- `copilot plugins list` 現在是 `copilot plugin list` 的別名，且只會回報 plugins，不再包含 MCP servers、skills、instructions 或 LSP servers
+
 ## 1.0.75 - 2026-07-24
 
 - 新增對 Claude Opus 5 的支援
