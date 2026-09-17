@@ -1,8 +1,8 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大能力，現在就在你的終端機中。
+GitHub Copilot 的威力，現在就在你的終端機中。
 
-GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式執行框架，在與 GitHub 工作流程深度整合的同時，提供智慧化協助。
+GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub Copilot coding agent 相同的代理式執行框架，提供智慧協助，同時與你的 GitHub 工作流程深度整合。
 
 更多資訊請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -14,12 +14,12 @@ GitHub Copilot CLI 將 AI 驅動的程式開發協助直接帶到你的命令列
 我們正把 GitHub Copilot coding agent 的能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個了解你的程式碼及 GitHub 情境的 AI 代理同步協作。
 
 - **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，無需切換上下文。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並沿用現有 GitHub 帳號完成驗證。
-- **代理能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
-- **完整掌控：** 執行前可預覽每個動作，未經你明確批准，不會進行任何操作。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與拉取請求，並直接使用你現有的 GitHub 帳號完成驗證。
+- **代理能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **由 MCP 驅動的可擴充性：** 充分利用 coding agent 預設隨附 GitHub MCP server，並支援自訂 MCP servers 以擴充能力。
+- **完整掌控：** 執行前可預覽每個動作，未經你明確批准，不會發生任何操作。
 
-我們仍處於早期階段，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中盡可能出色的夥伴。
+我們仍處於旅程的早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 開始使用
 
@@ -127,7 +127,7 @@ copilot
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-啟用後，此設定會保存在你的設定檔中，因此之後再次啟動時不再需要 `--experimental` 旗標。
+啟用後，此設定會保存在你的設定檔中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
@@ -188,6 +188,6 @@ LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層
 
 很高興你能在 Copilot CLI 的早期階段加入我們。
 
-我們正在快速開發中。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正。
+我們正在快速開發中。更新會很頻繁，請讓你的用戶端保持最新，以取得最新功能與修正！
 
 你的意見非常寶貴！歡迎在此儲存庫提出 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的意見回饋問卷！
