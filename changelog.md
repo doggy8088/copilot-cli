@@ -1,3 +1,13 @@
+## 1.0.86 - 2026-09-17
+
+- 自訂 agents 現在可透過在 frontmatter 設定 `include-custom-instructions: true`，選擇納入儲存庫指令檔（`AGENTS.md`、`copilot-instructions.md`、`CLAUDE.md`）。
+- 在沒有 `plugin-directory`、`discovery` 或 `working-directory` 覆寫的情況下，恢復進行中的工作階段時，重新載入後仍會保留 marketplace plugins 與 skills。設定讀取或驗證失敗時，也不再丟棄啟用中的 plugins；缺少檔案與刻意移除的行為則維持不變。
+- `/sandbox` policy 現在會依照你設定的值回報本機網路存取狀態
+- 當某個 turn 在附加中的背景 shell（例如 dev server）仍在執行時結束，狀態列現在會顯示它正在等待背景 shell，而不是顯示 "Working"。
+- 即使 transcript 檔案含有可修復的損毀，仍可恢復工作階段
+- compact timeline 中展開的 reasoning 文字不再以淡色顯示，因此可讀性與時間線其餘部分一致。
+- Autopilot 在任務完成並被接受後會停止，而不會再意外繼續執行
+
 ## 1.0.85 - 2026-09-16
 
 - Vim mode 現已開放給所有人使用。可透過 `/vim` 啟用，或將 `editorMode` 設為 `vim`，以在 composer 中使用 modal editing，且輸入時會顯示目前模式。
