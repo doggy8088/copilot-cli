@@ -1,6 +1,6 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大功能，現在就在你的終端機中。
+GitHub Copilot 的強大能力，現在就在你的終端機中。
 
 GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub Copilot coding agent 相同的 agentic harness 驅動，在與你的 GitHub 工作流程深度整合的同時，提供智慧化協助。
 
@@ -11,15 +11,15 @@ GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列
 
 ## 🚀 介紹與總覽
 
-我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機中。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI agent 進行同步協作。
+我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機中。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI agent 同步協作。
 
-- **終端機原生的開發體驗：** 直接在你的命令列中使用 Copilot coding agent，不需要切換情境。
-- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull request，並透過你現有的 GitHub 帳號完成驗證。
-- **Agent 式能力：** 與可規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** coding agent 預設搭載 GitHub 的 MCP server，並支援自訂 MCP servers 以擴充能力。
-- **完整掌控：** 在執行前預覽每一個動作，沒有任何操作會在未經你明確核准前發生。
+- **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作，無須切換情境。
+- **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull request，並以現有的 GitHub 帳號完成驗證。
+- **Agent 式能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **MCP 驅動的可擴充性：** coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
+- **完整掌控：** 每個動作都能在執行前先預覽，沒有任何事情會在未經你明確核准前發生。
 
-我們仍處於這段旅程的早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你在終端機中最理想的夥伴。
+我們仍處於早期階段，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你在終端機中最理想的夥伴。
 
 ## 📦 開始使用
 
@@ -34,7 +34,7 @@ GitHub Copilot CLI 將 AI 驅動的程式設計輔助直接帶到你的命令列
 - （在 Windows 上）**PowerShell** v6 或更新版本
 - 一個**有效的 Copilot 訂閱**。請參閱[Copilot 方案](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs)。
 
-如果你是透過組織或企業取得 GitHub Copilot 的使用權，而你的組織擁有者或企業管理員已在組織或企業設定中停用 GitHub Copilot CLI，則你無法使用 GitHub Copilot CLI。請參閱[在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)以取得更多資訊。
+如果你是透過組織或企業取得 GitHub Copilot 的存取權，當組織擁有者或企業管理員在組織或企業設定中停用了 GitHub Copilot CLI 時，你將無法使用 GitHub Copilot CLI。請參閱[在組織中管理 GitHub Copilot 的政策與功能](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization)以取得更多資訊。
 
 ### 安裝
 
@@ -50,10 +50,9 @@ curl -fsSL https://gh.io/copilot-install | bash
 wget -qO- https://gh.io/copilot-install | bash
 ```
 
-使用 `| sudo bash` 以 root 身分執行並安裝到 `/usr/local/bin`。
+使用 `| sudo bash` 以 root 身分執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。預設值為 `/usr/local`，
-當以 root 身分執行時使用該值，非 root 使用者則預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。若以 root 身分執行，預設為 `/usr/local`；若以非 root 使用者執行，預設為 `$HOME/.local`。
 
 設定 `VERSION` 可安裝指定版本。預設為最新版本。
 
@@ -104,11 +103,11 @@ copilot
 
 首次啟動時，你會看到我們可愛的動態橫幅！如果你想再次看到這個橫幅，請使用 `--banner` 旗標啟動 `copilot`。
 
-如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入此指令並依照畫面上的說明完成驗證。
+如果你目前尚未登入 GitHub，系統會提示你使用 `/login` slash command。輸入這個指令並依照畫面上的說明完成驗證。
 
 #### 使用個人存取權杖（PAT）進行驗證
 
-你也可以使用已啟用「Copilot Requests」權限的細粒度 PAT 來進行驗證。
+你也可以使用已啟用「Copilot Requests」權限的細粒度 PAT 進行驗證。
 
 1. 造訪 https://github.com/settings/personal-access-tokens/new
 2. 在「Permissions」下，點擊「add permissions」並選擇「Copilot Requests」
@@ -189,6 +188,6 @@ LSP servers 會透過專用的 LSP 設定檔來配置。你可以在使用者層
 
 很高興你能在 Copilot CLI 的早期旅程中加入我們。
 
-我們正快速建置中。預期會有頻繁更新，請務必讓你的用戶端保持最新，以取得最新功能與修正！
+我們建置得很快。預期會有頻繁更新，請讓你的用戶端保持最新，以取得最新功能與修正！
 
 你的見解非常寶貴！請在此儲存庫中開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交一份機密回饋問卷！
