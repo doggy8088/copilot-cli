@@ -1,3 +1,31 @@
+## 1.0.87 - 2026-09-21
+
+- 新增 Auto routing tier 的使用者與受管理啟動預設值，包含 strict 與可由使用者覆寫的組織 policy
+- 同一模式下連續送出的 steering prompts 現在會合併成一則待處理訊息。在空白的 chat input 中按 Up，可將它取回繼續編輯，包含貼上的文字與附件。待處理訊息中會顯示 recall 提示。`Ctrl+C` 現在會停止執行中的 turn，而不是一次移除一則待處理 prompt。以 `Ctrl+Q` 排入佇列的 prompts 仍會保持分開。可使用 `Ctrl+P` 瀏覽歷史，而不必撤回 prompts。此功能適用於本機工作階段；已在處理中的命令與 prompts 無法取回。
+- `worktreePathTemplate` 設定現在可決定 `/worktree`、`/move`、`/new` 與 `--worktree` 建立 worktrees 的位置。例如可設為 `~/src/worktrees/{repo}/{branch}`；支援 `{repoPath}`、`{repo}`、`{branch}` 與 `{branchSlug}`。未設定時會維持目前版面配置，也就是 `<repo>.worktrees/`，並將 branch 名稱中的斜線攤平成破折號。
+- 問題對話框中的數字鍵選擇，現在可用於 10 以上的選項
+- Sandbox proxies 現在可在 Windows 運作，且帶有使用者名稱與密碼的 proxy 可在所有平台運作
+- `/keep-alive`（以及 `/caffeinate`）現在若 sleep inhibitor 在啟動時立即結束而未取得 lock（例如在 WSL、containers 或 headless 環境中沒有 session bus），不會再回報已阻止睡眠；現在會回報失敗。
+- 當 child task 失敗但 parent 恢復時，prompt mode 現在會成功結束。
+- 現在可可靠地恢復非常大的本機工作階段，並繼續送出新的 prompts。
+- 對於已驗證且未受管理的工作階段，在啟動 policy 檢查後仍會維持 `--yolo` 啟用
+- 空的 `strictKnownMarketplaces` allowlists 現在會隱藏並封鎖內建 plugin marketplaces。
+- 在 `/help` 與 `/mcp show` 畫面中，以滑鼠選取的文字現在會有可見的反白效果
+- 當內部 git command 逾時時，現在會清除其啟動的程序，因此緩慢的儲存庫狀態檢查不會再讓它們持續執行並占用記憶體。
+- 在 reconnects 與 startup refreshes 期間，MCP auth status warnings 現在會維持準確
+- 在 auth 或 branch refreshes 後，pull request badge 與 GitHub status tabs 仍可使用
+- 某個失敗的 MCP server 不會再移除其他 servers 的 tools
+- 當你已登入時，`copilot mcp list` 與 `copilot mcp get` 現在會回報內建的 `github-mcp-server`，而不是只在互動式 `/mcp` 檢視中顯示它
+- 宣告 list-change capabilities 但未實作 subscriptions 的 MCP servers，現在會連線，而不是失敗
+- Extension permission handlers 現在會核准 subagent tool requests，而不會留下重複的 CLI prompts
+- 啟動 shell 中匯出的 secrets，在建立或恢復工作階段時，不會再寫入 debug logs
+- Managed plugin commands 現在會透過環境、GitHub CLI、broker 與持久化驗證來載入組織 marketplace policy
+- 恢復工作階段時，在重新連線 MCP servers 期間不會再卡住
+- 可使用 `slowConnectionThresholdMs` 為各個 server 設定 MCP 慢連線警告門檻
+- 在時間線項目中顯示 execution subagents 的即時經過時間
+- 為所有 model families 以及 low-cost-tier session models 啟用 rubber-duck agent
+- 在重繪空白終端區域時降低配置開銷。
+
 ## 1.0.86 - 2026-09-17
 
 - 自訂 agents 現在可透過在 frontmatter 設定 `include-custom-instructions: true`，選擇納入儲存庫指令檔（`AGENTS.md`、`copilot-instructions.md`、`CLAUDE.md`）。
