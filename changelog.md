@@ -1,3 +1,31 @@
+## 1.0.88 - 2026-09-22
+
+- 為直接在 Ghostty 與 WezTerm 中執行的工作階段新增可選的 OSC 777 終端通知
+- 文字選取現在可在底部錨定的對話框中運作，包含登入裝置代碼
+- 在 managed-settings 重新整理失敗時，現在會保留 `/allow-all`，並會記住缺失路徑的精確 session 核准，而不會一併授權其父目錄；這些精確授權可在 `/list-dirs` 中查看，並可由 `/reset-allowed-tools` 清除
+- 由 proxy tunnel 失敗造成的 sandboxed network 拒絕，現在會顯示 bypass 指引
+- Custom-agent 啟動時，現在會區分 model-list 載入失敗與 catalog 為空，避免誤報 unavailable 警告，以及 required-agent 被靜默取消選取
+- 在自由輸入的 `ask_user` prompts 中按 Enter 現在會新增換行；改以 `Ctrl+Enter` 送出，或以 `Ctrl+S` 作為備援
+- 自訂 agent 的 `reasoning-effort` 現在會在選取該 agent 時生效，而不再只套用於其 model。明確指定的 `--reasoning-effort` 仍然優先，而若所選 model 不支援該等級，現在會回報並保持未套用
+- 註冊名稱需要清理或縮短的 deferred MCP tools，現在會以該名稱列出，因此 tool search 可以找到它們；而沒有可解析 server 名稱的 deferred MCP tools，現在也會與其他 tools 一起列出，而不再從提醒中遺漏
+- Prompt mode 現在會在停止等待背景 tasks 時發出警告，並說明如何變更逾時限制。
+- 當 MCP permission prompts 尚待處理時，恢復工作階段不會再卡住
+- MCP tools 現在能更可靠地從暫時性的 listing、connection 與 OAuth 失敗中恢復
+- 未明確設定 `cwd` 的 hook commands，現在會再次在專案根目錄執行，而不是在工作階段目前目錄中執行，因此 repo 相對路徑的 hook scripts 仍可從子目錄正確解析。
+- Enterprise managed settings 現在會套用到以 ACP 模式（`copilot --acp`）、AHP hosts（`copilot --ahp-host`）以及已發布的 `--server` session 開啟的工作階段；這些先前執行時不會套用 managed MCP、permission 或 plugin policy。
+- GitHub MCP scope escalation 現在會使用 CLI OAuth app 已註冊的 `/callback` redirect URI
+- 以 `--plugin-dir` 掛載的 plugin 所提供的 agents，現在會出現在 server-mode sessions 中
+- Session 與 subagent 的 start hooks，現在會在 hook-output limit 內合併成功的 additional-context 貢獻
+- 快取的 MCP tools 現在會持續限定於經環境解析出的 server 位址與 headers 範圍內
+- 當儲存失敗時，session resume 現在會保留待處理的 conversation events，並說明可安全重試
+- 在 skill discovery 期間，新增支援具命名空間的 custom skills 與可忽略的 skill directories
+- MCP 與 plugin 檢視現在會顯示 server 顯示名稱與 plugin 描述，讓狀態更清楚。
+- 恢復大型本機工作階段時，現在會將 transcript memory 維持在受控範圍內，以讓 CLI 效能更平順。
+- 當 Connectors 需要重新授權時，現在會提示你更新 GitHub 授權
+- Indexed search 現在支援 glob 篩選與 `--files` 列表，並具備正確的 ripgrep fallback 行為。
+- 可在進行中的 turns 期間執行 `/fork`，無需等待即可分支工作。
+- 在 Sessions 分頁中，可關閉的列現在需要先按 `x` 再按一次 `x` 才會確認：本機 session 會被永久刪除，而由 server 支援的 session 則只會被關閉，對話會保留在 server 上。頁尾會說明目前反白列會執行哪一種動作，對於無法關閉的列則不會顯示 `x` 提示。
+
 ## 1.0.87 - 2026-09-21
 
 - 新增 Auto routing tier 的使用者與受管理啟動預設值，包含 strict 與可由使用者覆寫的組織 policy
