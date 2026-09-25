@@ -1,3 +1,83 @@
+## 1.0.83 - 2026-09-04
+
+- 在 Windows 11 工作列顯示執行中的 Copilot 工作階段，並提供即時懸停狀態卡
+- 新增 MCP OAuth 登入的 Client ID Metadata Document (CIMD) 支援
+- 自訂 agents 現在可在 `model` 中列出多個模型，會依序嘗試直到找到你可用的模型，而 `model-policy: required` 會將模型變更限制在該清單內
+- 新增對 `claude-fable-5.1` 的支援
+- 在分割式 Sessions 側邊欄新增 Recent、Created、Name 與經典 None 排序，且所選排序會在重新啟動後保留
+- Enterprise admins 可透過 `forceLoginOrgs` managed setting，將登入限制為核准的 GitHub 組織
+- 新增模型與 web requests 的 HTTPS proxy mTLS client certificate 自動支援
+- 會辨識 herdr 終端多工器，而不再誤判為 tmux，因此 Kitty keyboard protocol、色彩主題跟隨、terminal progress、`/copy` 與通知可在 herdr pane 中正常運作
+- 在同一執行緒上重入的 session lock，現在會回報錯誤而非讓 CLI 凍結
+- 當初始 challenge 回應 `Connection: close` 時，Kerberos proxy 驗證現在會重新連線
+- Sandboxed `gh` commands 現在會以 repository 設定的帳號進行驗證，而不是使用 Copilot CLI 的登入帳號
+- MCP tools 在 MCP server 重新啟動後仍可繼續呼叫
+- Sandboxed file tools 現在會讀取與 sandboxed shell commands 相同的 developer-tool 路徑，包含帶有 token 的 registry 設定，例如 `~/.npmrc`；將 `sandbox.allowDevToolAccess` 設為 `false` 可關閉這些授權
+- 停止逾時的 shell command 後，現在會讓排隊中的訊息繼續執行，並讓工作階段回到 idle
+- 當 autopilot 執行期間輸入後續 prompt 時，現在不會再從時間線中消失
+- 當無法完成自動重新啟動時，restart 現在會提供更清楚的更新指引
+- 由 agent 設定的 MCP servers，在內建 sub-agent turns 之後仍會維持可用
+- Anthropic 工作階段在暫時 fallback 之後現在會繼續執行，而不會因無效的 thinking signatures 而失敗
+- 在 Linux 上執行很久的工作階段，現在會把已釋放的記憶體歸還給系統，而不是持續占用數 GB
+- 被 enterprise policy 拒絕的 MCP servers，現在不會在 managed allow/deny policy 尚未解析前就啟動；server 啟動會等待 managed-settings 抓取完成，而不是與其競速
+- Host 提供的 plugin 自訂內容，現在可在不出現多餘路徑權限提示的情況下讀取
+- 相對路徑的 `--add-dir` 或 `--plugin-dir`，在 `--resume=<id>` 與 `--worktree` 下現在會以工作階段的工作目錄為基準解析，而不是以 CLI 啟動目錄為基準。相對值也會在套用 `-C` 後解析，因此命令列上不再需要讓 `-C` 先出現在這兩個選項之前
+- 由 plugin 提供的 MCP servers，不會再在 MCP dashboard 中標示為 "User"；來自 bundled plugin 的 server 現在也會顯示為內建，並標出其來源 plugin
+- 最新一行輸出現在會維持顯示在輸入框上方，而不會被它蓋住；只有當 prompt 被釘選在 transcript 頂端時例外
+- 使用 `--share` 或 `--share-gist` 匯出已恢復的工作階段時，現在會寫出完整 transcript，而不只是最近一次執行內容
+- 在 macOS 與 Linux 上，sandboxed commands 現在無法再存取你機器上執行中的服務。在 macOS 上，這也會封鎖該命令自己啟動於 `127.0.0.1` 的 server，因此若測試套件會綁定本機埠就會失敗；若要再次連到 localhost，請在 `/sandbox` 中開啟 Allow local network
+- Linux sandboxing 現在需要 `slirp4netns`、`nsenter`、`iptables`、`ip6tables`、`iptables-restore` 與 `ip6tables-restore` 位於 `PATH` 中。若 sandboxed commands 開始無法啟動，請先安裝它們
+- CLI 現在預設啟動時不會顯示中斷工作階段的還原提示
+- 恢復大型工作階段時，現在能更早讓輸入提示保持可回應
+- Linux sandboxes 現在會將網路對外連線限制到設定的 proxy；proxy mode 需要 `slirp4netns`、`util-linux 2.35+`、`iptables` 與 `/dev/net/tun` 存取權限
+- `/mcp config` 與 MCP 的 add/edit/authenticate 表單，現在會在 plugins dashboard 中開啟，而不是在獨立的 MCP manager 中，因此關閉表單後會回到 server 清單
+- 在大型 repositories 中，檔案路徑自動補完仍能保持快速
+- Plugin 清單命令與 `/plugin` 現在會顯示 bundled 的內建 plugins
+- 透過授權必要的 cache 與輸出路徑，改善 sandboxed Bazel 與 Bazelisk 的執行；macOS 仍需要未來版本的 Bazel 或額外的 sandbox 能力
+- 收合後的 autopilot goal 面板，現在會呈現為單行的 pinned prompt，保留與 pinned prompt 共用的框架，而不會被壓縮成夾在上方介面元素下方的一條細帶
+- 透過依來源分組路徑授權並顯示偵測到的 developer tools，改善 `/sandbox policy`
+- 從 `/model` picker 結果中移除已淘汰的 Claude 與 Gemini 模型
+
+## 1.0.82 - 2026-08-29
+
+- 當 `/worktree` 或 `/move` 正在準備 worktree 時輸入訊息，現在不會再破壞切換進該 worktree 的流程
+- `Ctrl+E` 現在會展開 plan approval 卡片，再次顯示完整計畫
+- 現在會顯示具體的驗證失敗原因（例如 `401 Bad credentials`），而不只是一律顯示 `/login` 提示
+
+## 1.0.81 - 2026-08-27
+
+- Plugins dashboard 現已開放給所有人使用：執行 `/plugin`、`/mcp` 或 `/skills` 即可。若要停用它以及 `copilot plugins` 指令，可設定 `PLUGINS_DASHBOARD=false`
+- CLI、SDK、IDE 與 in-memory clients 現在支援 MCP 2026-07-28
+- Hooks 現在可接收目前的 OpenTelemetry trace context，並發出可關聯的 spans：輸入會新增 `traceparent`（若 span 具有 vendor state，也會包含 `tracestate`）；command hooks 也會取得環境變數
+- Windows：受到 Microsoft Entra ID 保護的遠端 MCP servers，現在可透過作業系統驗證 broker（WAM）登入，通常完全不需要提示。其他平台、`--device-code` 與沒有 broker library 的機器，則維持既有的瀏覽器流程
+- 新增對 Grok 4.6 的 `xhigh` reasoning effort 支援
+- 啟動時現在會提供還原先前在 CLI 消失時仍開啟的工作階段，因此 crash 或重新啟動電腦不再代表你得手動重新開啟每個終端機
+- `models.list` 現在包含由服務發布、各模型對應的 `infoMessages` 與 `warningMessages`
+- 新增 `copilot app`，可在目前目錄開啟 GitHub Copilot app
+- 新增 `defaultMode` 與 `defaultPermissionMode` 設定，可選擇新互動式工作階段的啟動模式與核准行為
+- 新增 `copilot login --with-token`，可從 stdin 讀取驗證 token
+- 新增對 Gemini 3.7 Flash 的支援
+- 在 `/sandbox` 中新增 `Ctrl+E`，可在編輯器中開啟 `settings.json`
+- 在 `--usage-output-file` 的 JSON 輸出中新增各 agent 的使用量指標
+- 重複呼叫 `read_agent` 現在會穩定地回傳完整的 turn 歷史，除非提供了 `since_turn`
+- 來自 subagent 內 hooks 的 lifecycle events（`hook.start`/`hook.end`）現在會記錄在該 subagent 的工作階段上，並重新發送到其 parent，而不是被丟到內部工作階段中
+- 一再恢復同一個工作階段時，不會再因 telemetry 被替換而當機
+- 被 enterprise policy 封鎖的 MCP server，現在會在 `/mcp` 中顯示為 blocked，而不會永遠停在 pending
+- 修正啟動時可能出現無限 `Loading…/Resuming…` 的卡住情況：當 repository plugin 啟用其提供的 extension，或其他 extension 重新載入與初始載入競速時，先前環境會卡在 "still waiting on extensions"
+- Vim mode 徽章在 turn 執行期間會持續顯示在活動指示器旁
+- 啟動狀態現在會在 plugin 協調期間完成 extension 設定後結束
+- 登出帳號時，現在會清除該帳號快取的 enterprise managed settings，因此重新登入後通常會重新抓取 policy，而不是重套登出前快取的內容
+- 當 `permissions.disableBypassPermissionsMode` 帶有無法辨識的值時，enterprise managed-settings policy 不再被拒絕；現在會記錄此情況，並以 `disable` 強制執行
+- Windows 上的 sandboxed builds 現在會在首次執行時建立 scratch caches，因此 cargo、go、Gradle 與 ccache 不需要預熱快取也能運作
+- 在 macOS 與 Linux 上，shell commands 現在會解析出與 bash login shell 相同的工具，包含從 profile 啟用的專案環境
+- Canvas 視窗現在會在背景開啟與重新整理，而不會搶走終端機焦點
+- 當 agent 正在工作時送出的 prompt，不會再在被回答後又有第二份副本卡成 transcript 底部的 `(pending)`
+- 從 ACP client 關閉 allow-all 時，只要存在執行期覆寫或要撤銷的自動核准，現在就會確實觸達 permission engine，因此不再發生設定顯示成功但權限仍維持啟用的情況（由 `--allow-all-*` 啟動旗標授與的基線仍會刻意保留）
+- 失敗的 tool call 不會再把 `(MCP: server)` 標籤一個字元一行地往下堆在時間線上；現在標籤與錯誤會共用同一列，較長的一側會被截斷
+- 由已安裝 plugins 提供的 agents、skills 與 MCP servers，在非互動式（`-p`）執行中不會再被忽略，因此 `--agent <plugin>:<agent>` 現在可在無頭模式下搭配已安裝 plugins 使用，而不必額外指定 `--plugin-dir`
+- 輸入 `$` 再按 Enter，現在會再次開啟互動式 shell，而不會清掉 prompt 卻什麼都不做
+- Prompt 框架現在會在先前略過的終端機中正常渲染，例如 foot 與 alacritty，而不再依賴固定清單
+
 ## 1.0.88 - 2026-09-22
 
 - 為直接在 Ghostty 與 WezTerm 中執行的工作階段新增可選的 OSC 777 終端通知
