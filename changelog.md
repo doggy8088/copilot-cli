@@ -1,3 +1,127 @@
+## 1.0.80 - 2026-08-14
+
+- 更新模型設定
+
+## 1.0.79 - 2026-08-10
+
+- 新增 enterprise `allow-auto-only` policy 支援，讓 `/allow-all auto` 可運作，同時完整的 allow-all 仍會維持封鎖。
+- 允許 enterprise-managed sandbox policy 強制設定 proxy URL，同時讓認證資料仍由使用者控制
+- Agent Plugins spec plugins 現在可在 `com.github.copilot/extensions/` 目錄下隨附 extensions
+- 新增對 `kimi-k3` 模型的支援
+- 可將 `--plan` 與 `--mode autopilot` 搭配使用，先規劃再實作，無需等待核准
+- 可從 Sessions 分頁與側邊欄管理多個並行工作階段
+- 新增 `/sandbox policy`，顯示生效中的 sandbox 路徑、拒絕項目與網路存取
+- 在本機工作階段中，可將 prompts、shell commands 與支援的 slash commands 排入佇列，於目前任務完成後依序執行
+- 在使用者設定的 extraKnownMarketplaces 項目上設 `"autoUpdate": true`，即可在工作階段啟動時自動更新其 plugins
+- 位於工作區且在 `PATH` 上的工具目錄（`.venv/bin`、`node_modules/.bin`、repo 內的 GOPATH）不再讓該工作區區段於 sandbox 中變成唯讀
+- `/app` 指令現在會在 GitHub Copilot desktop app 中開啟目前工作階段，而不會落到錯誤資料夾的 Home（需要 GitHub Copilot app 1.1.3 或以上）
+- 在 macOS 上，位於可寫入路徑內的 sandbox 唯讀巢狀路徑現在仍會保持唯讀，而不會繼承較大範圍路徑的寫入權限
+- 在 macOS 上，sandboxed commands 現在可再次使用 UNIX-domain sockets，因此透過本機 IPC pipe 溝通的工具（`tsx`、`vite`、`esbuild`、`jest workers`）不會再因 `listen EPERM` 失敗
+- 當工作目錄位於 Windows Dev Drive 時，sandboxed commands 現在可正常運作
+- `/theme` 現在只會在有效的 color mode 下顯示棄用提示，因此輸入錯誤的 mode 不會再暗示一個無效指令，或讓下一次有效的 `/theme` 看不到提示
+- Sandboxed git 現在可對 Azure DevOps、GitHub Enterprise Server、GitLab 與其他你已儲存 HTTPS 憑證的非 GitHub 遠端來源進行驗證
+- 罕見的內部延遲不再將診斷警告直接印在互動式 UI 上方
+- 工作階段歷史載入失敗時，不會再讓時間線永久保持空白：先前這類失敗會被靜默捨棄，因此 transcript 會在整個工作階段都維持空白且沒有任何記錄。現在會重試，若仍失敗，也會在 transcript 與 log 中回報
+- 恢復長工作階段時，時間線的可捲動範圍不會再在背景渲染歷史紀錄時收縮：先前尚未完成渲染的項目會被當成不存在，因此捲軸與捲動位置會一直跳動，直到背景渲染追上
+- Sandboxed wrapper builds（`make` 等）現在會根據工作目錄中的 build manifests，取得其 recipes 所需的 developer tool caches
+- 在近期的 Windows 版本上，sandboxed commands 現在可再次連上網路；先前即使已啟用 outbound access 且未設定 proxy，所有對外連線仍會被封鎖
+- Plugin custom agents 現在會遵守 `deferred-tool-loading` frontmatter
+- 當 sandbox 無法啟動 MCP server 時，現在會在數秒內失敗，而不是讓工作階段卡住；針對 MCP 與 language servers 的 sandbox 啟動失敗，也會明確指出是 sandbox 造成，並說明如何修正或選擇退出
+- 在 web 與 device-code 登入期間，登入連結現在可直接點擊
+- `/context` 現在會依據 Auto 解析出的模型計算 attribution，讓 Free/Student 使用者的 token 總數更準確
+- 停用某個 extension 不會再連帶破壞其他 extensions 的 elicitation、canvases 或 tool permission prompts
+- 透過 `ctrl+s` 暫存的 prompt，現在會留在原本輸入它的工作階段中，因此切換出去再切回並按 `ctrl+s` 時，會正確還原，而不是發現它消失
+- 在 Linux 上，被 sandbox 封鎖的搜尋與大多數 shell commands，現在會提供在 sandbox 外重新執行
+- `/sandbox` 設定對話框現在會顯示 sandbox 設定在 `settings.json` 中儲存的位置
+- `/sandbox` 設定對話框現在會將 git、gh 與（在 macOS 上的）keychain 設定歸類到新的 Auth 分頁下，設定鍵也從 `sandbox.gitAuth`/`sandbox.ghAuth` 改為 `sandbox.auth.git`/`sandbox.auth.gh`。這沒有 migration：舊鍵在設定檔中會被忽略，而仍送出它們的 SDK requests 會被視為無效而遭拒，而不是被忽略
+- 新增 `worktreeBaseRef` 設定，用來控制 `/worktree`、`/worktree new` 與 `--worktree` 是從 HEAD 還是遠端預設分支開始。這三者現在都預設從 HEAD 開始；先前 `--worktree` 會從遠端預設分支開始。
+- Model picker 現在會將模型分為 Recent、Recommended、New 與其他區段，並可用 `Shift+Tab` 切換分組檢視
+- 大型 monorepos 現在改用 tgrep（[trigram-indexed grep for fast regex search in large codebases](https://github.com/microsoft/tgrep)），而不是 ripgrep
+- Ask user 多選 prompts 現在包含 Other 選項，可輸入自由文字答案
+- 改善 teleported subagent 的 `/tasks` 導覽，支援巢狀樹狀瀏覽、目前／全部與已完成任務篩選，以及可引導操作的即時時間線
+- Prompt pinning 預設為關閉；將 `pinnedPrompts` 設為 `true` 即可啟用
+- 使用 `/worktree new` 可在新的 worktree 中開始新的工作階段
+- 將目前 prompt 釘選到更上方一列，也就是 tab bar 已預留的那一列，使其保有原始 prompt 的外觀，同時讓時間線少占一列
+- BREAKING: sandbox 設定 `allowDevToolCaches` 已更名為 `allowDevToolAccess`，因為它授與的不只是 caches，還包含 developer-tool 設定與 registries。舊鍵已不再讀取，且會被靜默忽略，因此原本設為 `false` 的 opt-out 會回到預設值（開啟）。請在 `settings.json` 與任何 managed/MDM policy 中重新命名它。
+- `/sandbox` 現在會將未啟用的設定標示為 `(disabled)`，說明為何它們被鎖定，並在 `copilot help sandbox` 中記錄 developer tool caches
+- 執行中的 steering prompts 現在會顯示 "pending · ctrl+c to cancel"
+- `/model` 現在預設為 session scoped，請使用 `/config model` 為未來工作階段設定預設值
+- 目前 prompt 現在會以單行而非三列框線區塊釘選，使其更像介面元素，並把列數還給時間線；搭配 tab bar 時，它會直接顯示在 tabs 下方，且不會額外占用時間線列數
+
+## 1.0.78 - 2026-08-03
+
+- Timeline headers 現在會顯示每個 tool call 所花時間，靠右對齊，執行中則會即時更新（適用於至少 5 秒的 calls）。預設啟用；可用 `/settings showToolDurations` 關閉。
+- First-party plugins 會在工作階段啟動時自動更新到最新版本
+- 新增實驗性 `/new-worktree` 指令，用來建立新 worktree 並在其中開始新對話
+- Copilot login 現在在沒有 TTY 的本機桌面子程序中預設採用 browser flow，包含 IDE integrations；遠端與無頭環境則繼續使用 device code
+- 互動式 shell shortcut 現在會在按 Enter 時啟動，且當 "$" 已就緒時會顯示行內提示
+- 載入多個 extensions 時，extension slash commands 現在每次呼叫都只會執行其 handler 一次
+- 行內圖片在時間線捲動後，不會再把第一列重複渲染到整張圖
+- 透過 stdin pipe 傳入 prompt 的執行，現在對其 `sessionEnd` hook 的處理方式與 `-p` 相同：每個完成的 agent turn 會觸發一次 hook，`reason` 為 `complete`（若 turn 失敗則為 `error`），而不是在關閉時以 `user_exit` 只觸發一次。和 `-p` 一樣，若 piped run 在 turn 完成前就結束，則不會觸發 `sessionEnd` hook
+- Split-view sidebar：紅色關閉確認現在顯示 `x again to close`（最後一個工作階段則為 `x again to exit CLI`），而不是 `x close`，因此更明確表示需再按一次才會關閉
+- 在 ACP prompt 結果與即時 `usage_update` 通知中公開 token 使用量
+- 新增 `forceRemoteSettingsRefresh` managed setting，要求在啟動時重新抓取 managed-settings；當此設定生效且無法確認刷新完成時，不論是 plugin mutations 或唯讀的 marketplace 操作（包含 `plugins marketplace` 的 list、browse 與 refresh）都會採 fail-closed，而不會在缺少 server-managed policy 的情況下繼續
+- 從 bypass prompt 停用 sandbox 現在只會套用於該工作階段；新工作階段仍會重新以 sandbox 啟動
+- 當 server-managed settings 抓取因任何原因失敗（網路錯誤、非成功 HTTP 狀態，或 malformed / 無法解析的回應）時，managed settings 現在會回退到持久化快取；若沒有可用的快取 policy，則改為 fail-open，也就是在沒有確認 server 限制的情況下啟動，而非先前的 fail-closed 行為
+- 當 sandbox 封鎖 shell command 且允許 bypass 時，CLI 現在會提供在 sandbox 外重新執行，而不必先詢問模型
+- `/rewind` 現在不再需要 git，且只會還原 Copilot 變更過的檔案，若某檔案內容已不再符合 Copilot 上次寫入的內容則會略過，並提供只還原對話或同時還原對話加檔案的選項
+- 新增 `/permissions`，可在不同核准模式間切換
+- ACP mode 現在支援透過 `closeSession` request 關閉工作階段
+- `Ctrl+Q` 現在會將反白的文中 skill completion 排入佇列，而不是只加入部分 token
+- 切換工作階段不會再重新啟動 MCP servers 或重建 hook 狀態，因此另一個工作階段中執行中的 turn 不會再因 stale-hook error 被中止
+- OAuth 驗證後，現在會刷新 deferred MCP tools
+- 新增 sandbox 設定 `allowDevToolCaches`（預設開啟）：讓 sandboxed builds 可存取 toolchain caches、registries 與安裝內容，無需額外設定即可運作。設為 `false` 可選擇退出。
+- 現在會遵守明確設定的 GitHub MCP toolset/tool config：當你選擇啟用時，會保留與 `gh` 重疊的 tools，且不再把操作導向 `gh` CLI
+- 啟動時現在會警告使用者 `settings.json` 中未知的頂層鍵（例如拼錯的設定），而不是靜默忽略
+- `--model` 的 shell completion 現在會建議 `auto` 與支援的模型名稱
+- 現在會漸進式渲染長工作階段 transcript，以保持捲動流暢
+- 恢復長工作階段現在明顯更快且更省記憶體，因為歷史紀錄改為在啟動時只讀取一次（並行使用多個 CPU 核心），而不是在 CLI 開始繪製前的每一次檢查都完整重讀一次。在我們的 benchmark 中，230MB、74k 事件的 transcript 可在不到一秒內恢復，而不是約十秒，尖峰記憶體約為原本的四分之一；實際提升幅度取決於你的 CPU 核心數與磁碟
+- `/allow-all auto` 的 safety-judge model 現在不再允許使用者設定；judge model 會自動選擇。
+
+## 1.0.77 - 2026-07-30
+
+- 無條件 autopilot approval 現在會在允許 bypass 時，為目前工作階段停用 sandbox
+- `Ctrl+G` 會開啟你的編輯器來編輯 ask_user 的自由輸入答案，而不會關閉該 prompt
+- 新增以瀏覽器為基礎的（web）OAuth 登入流程，現在成為本機互動式終端機上 `copilot login` 的預設方式（遠端／無頭終端機仍預設使用 device code）。可用 `--web-flow`/`--device-code` 強制指定模式，或在互動式 `/login` 指令中選擇
+- 支援透過 macOS 與 Windows 原生 MDM 設定來強制執行 managed sandbox policy
+- 允許省略 reasoning effort，讓 server 自行選擇預設值
+
+## 1.0.76 - 2026-07-29
+
+- 在 `/plugins` 中新增對 plugins、instructions、agents、LSP servers 與 hooks 的 enable/disable 控制
+- 新增對 `grok-4.5` 模型的支援
+- 在 macOS 與 Linux 上，sandbox 拒絕的路徑現在會對相對路徑與符號連結項目確實生效（Windows 無法依路徑個別拒絕）
+- 尚未送出的 prompt 文字現在會留在原本輸入它的工作階段中（在該次 CLI 工作階段期間），而不會跟著你切換到其他工作階段
+- 恢復工作階段時，現在會還原其 autopilot 或 plan mode，而不是退回 interactive，因此僅 autopilot 可用的 `task_complete` tool 會持續可用，模式也會與你離開時一致
+- 當 host integration 重新建立 URL permission prompt 時，現在會保留其 sandbox-bypass 警告與模型給出的原因，因此升級權限的 fetch 不會再看起來像一般請求
+- 當更新被自動下載後，通知現在會建議使用 `/restart`，並移除警告色彩
+- `/diff` 現在能更快地捲動並對大型多檔案 diff 進行語法高亮
+- Split-view sidebar：hover-to-focus 現在預設關閉（可用 `sidebar.hoverFocus` 啟用），活動中工作階段卡片預設會加上強調樣式（可用 `sidebar.accentActiveSession` 關閉），而關閉狀態下的 `open sidebar` 提示一律以中性的提示色彩顯示
+- `web_fetch` 現在會跟隨 HTTP redirects，而不是直接失敗；若 redirect 目標位於不同 origin，會為該目標要求權限，並顯示 redirect 的來源
+- 新增可被引導操作的 queue manager（staff），可重新排序、編輯、移除、重複與立即送出排隊中的訊息
+- 新增 Sessions 側邊欄以管理多個並行工作階段：可在其間切換、建立新工作階段，並一眼查看各自狀態。可透過 experimental mode（`/experimental on`）啟用。
+- Enterprise administrators 現在可強制設定限制性的 sandbox 下限：managed settings 只會收緊（而不會放寬）使用者的 sandbox policy，而 `/sandbox` 對話框會顯示組織設定的 managed 值、鎖定欄位與 managed filesystem paths，讓管理員能確認哪些限制正在生效。
+- Subagent 完成後，工作階段不會再在每一個 turn 都因 "Holder terminated during creation" 而失敗
+- 啟動提示現在只會在尚未已有 Copilot instructions 的 repositories 中建議使用 `/init`
+- 若 `userPromptSubmitted` hook 對 `modifiedPrompt`、`modifiedTransformedPrompt` 或已處理的 `responseContent` 回傳非字串值，現在不會再破壞工作階段；該值會被忽略，並記錄只指出欄位名稱的型別警告，空字串替換會被拒絕而不是把模型看到的內容清空，若 hook 設定了 `handled` 卻沒有可用的 `responseContent`，現在也會被診斷，而不是靜默回退到模型；`null` 的 `additionalContext` 也會視為不存在，而不是被注入為字面文字 `null`。另外，每次 hook invocation 的輸出也限制為 10 MiB，因此回傳無界回應的 HTTP 或 command hook 不再耗盡記憶體，或留下過大的工作階段
+- 對於會寫入檔案的大型 commands，現在會顯示最近的 shell 輸出
+- `/instructions` picker 現在會遵守 `--no-custom-instructions`
+- 在支援 Kitty graphics 的 Rio 終端機中，現在可渲染行內圖片
+- Sandboxed 搜尋現在會立即提供 bypass prompt，並避免重複的 bypass prompts。
+- Voice mode 現在會在錄音前暫停正在播放的媒體，並在之後恢復播放（macOS 與 Windows 上有支援時）
+- 在頁尾顯示啟用中的 scheduled prompts 數量
+- 新增 `/limits predict`，可依相似工作階段推估本次工作階段的 AI-credit 上限。
+- 為自訂 status-line commands 新增可設定的定時重新整理
+- 排隊訊息清單不會再顯示空白列或膨脹的數量，而 `Ctrl+C` 會移除你自己最新加入的排隊訊息
+- 在工作階段中途變更 `mouse` 設定現在會立即生效，不論是透過 `/settings mouse on|off` 或 `/settings` 對話框；不會再只是儲存起來，等到 CLI 重新啟動後才生效
+- 當允許 outbound 時，`web_fetch` 現在會透過設定好的 sandbox proxy 路由；而當 `network.allowOutbound` 為 false 時則會拒絕對外連線（proxy 不再覆蓋使用者的 outbound policy）。當經 proxy 的 fetch 失敗時，會警告 curl/wget 也共用同一個 proxy，且只有在 sandbox proxy 本身無法連線時才會建議 `requestSandboxBypass`
+- 改善 subagent 在小型任務與平行工作的委派表現
+- 將 turn 進行中的 `/model` 變更排入佇列，並在目前回應完成後套用
+- 在自動 compact 受阻之前，恢復當無法回收的 system 與 tool context 接近上限時的早期警告
+- `/worktree` 切換到新 worktree 後，工作階段工作目錄不會再很快跳回原本的 checkout
+- MCP tools 現在可從 definition-scoped snapshots 更快載入，並支援 process-wide 與 per-server 的 cache opt-out。
+- `task_complete` 之後，Autopilot 預設會維持選取狀態；將 `stayInAutopilot` 設為 false，可在每次任務完成後回到 interactive mode
+
 ## 1.0.83 - 2026-09-04
 
 - 在 Windows 11 工作列顯示執行中的 Copilot 工作階段，並提供即時懸停狀態卡
