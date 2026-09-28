@@ -1,3 +1,41 @@
+## 1.0.89 - 2026-09-28
+
+- 對支援的 ask_user 與 elicitation 表單輸入欄位按左鍵時，現在會聚焦該欄位，並將游標放到點擊的位置
+- 新增支援將 `.claude/rules` 中的 Claude Code rule files 作為自訂指示
+- 側邊欄中的 sessions 在完成你尚未開啟查看的 turn 時，會顯示藍點
+- Auto 現在會建議 routing tier，並可透過快捷鍵或點擊切換
+- 從 Auto 切換到手動選擇的模型後，現在會顯示快速回饋提示
+- MCP 預先註冊的 OAuth clients 現在會遵守已設定的 `oauthScopes`
+- 在本機工作階段中，若聊天輸入框為空，按 `Esc Esc` 會取回模型尚未開始回答其 turn 的 prompt，並將其從對話中移除
+- 在可用時，將 GPT-6 Sol 與 GPT-6 Luna 加入 model picker
+- 新增對 `claude-opus-5.5` 的支援
+- Shell 輸出不再顯示尾端的 command completion metadata
+- 當文字選取處於作用中時，Timeline 輸出會停止自動跟隨
+- `server/tool` 與 `server/*` tool filters 現在可比對包含斜線的 MCP tool 名稱
+- 在 agent 回應仍在執行時，也可將 exit commands 排入佇列
+- 在 enterprise managed settings 下，extensions 不會再因 managed MCP policy 尚在套用而載入失敗
+- 修正了在 Git 2.36 或更新版本上，從 CLI shells 啟動的應用程式在空白環境變數被捨棄時發生的 Git 失敗問題
+- Sessions 側邊欄現在會在 opened 與 closed tabs 變更時立即儲存，而不是只在退出時儲存
+- sandbox 中的 agent shell commands 現在可存取 session files 與 logs
+- 修正 Auto tier selection 在 `/model` 中的循環切換邏輯，並移除不受支援的 Fast profile；先前已儲存、匯出或恢復的 Fast 偏好設定，現在會回退為 Balance，而不是依它進行 routing
+- 在 sandboxed sessions 中，現在可正確執行被包裝的 `gh` 與 `git` commands，例如 `timeout 60 gh ...`
+- 當 client 暫停讀取大型回應時，ACP sessions 仍會保持連線
+- 當 MCP server 暴露的 tool schema 在 `anyOf` 旁放置 `type` 或 `properties`（例如 nullable discriminated union）時，Gemini 模型不再讓每次請求都因 `400 invalid request body` 失敗
+- 登入後首次啟動 CLI 時，GitHub MCP tools 現在可正確連線
+- Ask-user forms 現在會在不同問題之間分開保存自訂 Other 答案
+- MCP 設定載入時，若同層其他項目無效，仍會保留有效的 workspace servers
+- 直接在 CLI 中執行刪除舊 sessions 現在可成功完成
+- 超過附件大小限制的 Claude 請求，現在會在送出前自動修復後再送出
+- 列出 shells 時現在會先顯示執行中的 shells，因此仍在背景執行的 shell 不會再被長串已完成項目淹沒
+- 當 provider 傳送攤平的 `view_range` 參數時，View tool 現在會遵守 line ranges
+- 在本機工作階段中，若聊天輸入框為空，按上方向鍵會取回 pending message，並讓已排入佇列的 prompts 繼續留在佇列中
+- 建立 PR 現在會遵循 repository 的 pull request templates，保留必要區段與 checklist 結構
+- 可使用 `TGREP_FILE_COUNT_THRESHOLD` 設定自動啟用 indexed search 的門檻
+- Direct plugin installs 現在可啟用與停用。已被記錄為停用的項目現在會停止載入；可用 `copilot plugin enable` 重新啟用
+- 在支援的 Windows 版本上，當 Local network access 開啟時，sandboxed commands 現在可存取 localhost
+- 在 `/model` 與 `/model plan` 參數選擇器中，現在會自動補全 model IDs
+- 在 connect 與 reconnect 期間，現在會顯示 managed Connector 的同意進度，並提供可複製的 authorization URL。
+
 ## 1.0.80 - 2026-08-14
 
 - 更新模型設定

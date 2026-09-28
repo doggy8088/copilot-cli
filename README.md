@@ -2,7 +2,7 @@
 
 GitHub Copilot 的強大能力，現在就在你的終端機中。
 
-GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架所驅動，在深度整合你的 GitHub 工作流程的同時，提供智慧型協助。
+GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列，讓你能透過自然語言對話來建置、除錯並理解程式碼。它採用與 GitHub 的 Copilot coding agent 相同的代理式執行框架，在深度整合你的 GitHub 工作流程的同時，提供智慧型協助。
 
 更多資訊請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
@@ -11,7 +11,7 @@ GitHub Copilot CLI 直接將 AI 驅動的程式設計協助帶到你的命令列
 
 ## 🚀 簡介與總覽
 
-我們正把 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
+我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機。透過 GitHub Copilot CLI，你可以在本機與一個理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
 
 - **終端機原生開發：** 直接在命令列中使用 Copilot coding agent，無需切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 與 pull request，並透過你現有的 GitHub 帳號完成驗證。
@@ -129,7 +129,7 @@ copilot
 
 啟用後，這項設定會持久化儲存在你的設定中，因此後續啟動時不再需要 `--experimental` 旗標。
 
-#### Experimental Features
+#### 實驗功能
 
 - **Autopilot mode：** Autopilot 是一種新的模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
@@ -137,23 +137,23 @@ copilot
 
 如需進一步了解如何使用 GitHub Copilot CLI，請參閱 [官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-## 🔧 設定 LSP Servers
+## 🔧 設定 LSP 伺服器
 
 GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更強的程式碼智慧功能。這項功能可提供像是前往定義、懸停資訊與診斷等智慧型程式碼能力。
 
-### 安裝 Language Servers
+### 安裝語言伺服器
 
-Copilot CLI 不會內建 LSP server。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP server，並依照下方所示的相同模式進行設定。
+對於其他語言，請安裝對應的 LSP 伺服器，並依照下方所示的相同模式進行設定。
 
-### 設定 LSP Servers
+### 設定 LSP 伺服器
 
-LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP server：
+LSP 伺服器會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
 **使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -178,9 +178,9 @@ LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者�
 }
 ```
 
-### 查看 LSP Server 狀態
+### 查看 LSP 伺服器狀態
 
-你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP server，或直接查看你的設定檔。
+你可以在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP 伺服器，或直接查看你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
