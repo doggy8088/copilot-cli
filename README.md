@@ -1,6 +1,6 @@
 # GitHub Copilot CLI
 
-GitHub Copilot 的強大功能，現在就在你的終端機中。
+GitHub Copilot 的強大能力，現在就在你的終端機中。
 
 GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列，讓你能透過自然語言對話來建置、除錯與理解程式碼。它由與 GitHub 的 Copilot coding agent 相同的代理式執行框架提供支援，在與你的 GitHub 工作流程深度整合的同時，也提供智慧協助。
 
@@ -15,11 +15,11 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 - **原生終端機開發：** 直接在命令列中使用 Copilot coding agent，無需切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull requests，並透過你現有的 GitHub 帳號完成驗證。
-- **代理式能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **由 MCP 驅動的可擴充性：** 善用 coding agent 預設搭載 GitHub 的 MCP server，並支援自訂 MCP servers 來擴充能力。
+- **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
+- **由 MCP 驅動的可擴充性：** 善用 coding agent 預設隨附 GitHub MCP server 的優勢，並可透過支援自訂 MCP servers 來擴充能力。
 - **完整掌控：** 在執行前預覽每一個動作，沒有任何事情會在未經你明確核准前發生。
 
-我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最出色的夥伴。
+我們仍處於發展初期，但在你的回饋協助下，我們正快速迭代，致力讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
 
 ## 📦 快速開始
 
@@ -50,9 +50,9 @@ curl -fsSL https://gh.io/copilot-install | bash
 wget -qO- https://gh.io/copilot-install | bash
 ```
 
-使用 `| sudo bash` 可透過 root 身分執行，並安裝至 `/usr/local/bin`。
+使用 `| sudo bash` 可透過 root 身分執行，並安裝到 `/usr/local/bin`。
 
-設定 `PREFIX` 以安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
+設定 `PREFIX` 可安裝到 `$PREFIX/bin/` 目錄。以 root 身分執行時預設為 `/usr/local`，以非 root 使用者執行時預設為 `$HOME/.local`。
 
 設定 `VERSION` 以安裝指定版本。預設為最新版本。
 
@@ -143,7 +143,7 @@ GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強大
 
 ### 安裝 Language Servers
 
-Copilot CLI 不會內建 LSP servers。你需要自行安裝。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP servers。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
@@ -186,7 +186,7 @@ LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層
 
 ## 📢 回饋與參與
 
-很高興你在 Copilot CLI 的旅程初期就加入我們。
+很高興你在 Copilot CLI 的早期階段就加入我們。
 
 我們正在快速建置中。預期會有頻繁更新——請讓你的客戶端保持最新，以取得最新功能與修正！
 
