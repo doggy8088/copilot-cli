@@ -122,24 +122,24 @@ copilot
 
 ### 實驗模式
 
-實驗模式可讓你使用仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
+實驗模式可讓你存取仍在開發中的新功能。你可以透過以下方式啟用實驗模式：
 
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-啟用後，這項設定會保留在你的設定檔中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
+一旦啟用，這項設定會持久化到你的 config 中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
-- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），可鼓勵代理持續工作直到任務完成。
+- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一次。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交 prompt 時，每月的 premium requests 配額都會減少一次。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多有關如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Servers
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強大的程式碼智慧功能。這項功能提供像是跳到定義、懸停資訊與診斷等智慧化程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更強的程式碼智慧能力。此功能提供像是前往定義、懸停資訊與診斷等智慧程式碼功能。
 
 ### 安裝 Language Servers
 
@@ -153,9 +153,9 @@ npm install -g typescript-language-server
 
 ### 設定 LSP Servers
 
-LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
+LSP servers 會透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP servers：
 
-**使用者層級設定**（套用至所有專案）：
+**使用者層級設定**（套用到所有專案）：
 編輯 `~/.copilot/lsp-config.json`
 
 **儲存庫層級設定**（套用至特定專案）：
@@ -180,14 +180,14 @@ LSP servers 透過專用的 LSP 設定檔進行設定。你可以在使用者層
 
 ### 檢視 LSP Server 狀態
 
-在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接查看你的設定檔。
+在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP servers，或直接檢視你的設定檔。
 
 如需更多資訊，請參閱[更新日誌](./changelog.md)。
 
 ## 📢 回饋與參與
 
-很高興你在 Copilot CLI 的早期階段就加入我們。
+我們很高興你在 Copilot CLI 旅程的早期階段就加入我們。
 
-我們正在快速建置中。預期會有頻繁更新——請讓你的客戶端保持最新，以取得最新功能與修正！
+我們正在快速建置中。預期會有頻繁更新——請讓你的 client 保持最新，以取得最新功能與修正！
 
-你的意見非常寶貴！歡迎在此儲存庫開啟 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交一份保密的回饋問卷！
+你的見解非常寶貴！歡迎在此儲存庫中開 issue、參與 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的回饋問卷！

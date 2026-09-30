@@ -1,3 +1,22 @@
+## 1.0.90 - 2026-09-30
+
+- 在模型選擇中新增對 `GPT-6.1 Sol` 的支援
+- 新增 `--mcp-github-auth`，可將 GitHub 帳號驗證限制在已核准的 MCP server origins
+- 在路徑存取提示中新增以 session 為範圍的唯讀目錄核准
+- 中斷的工作階段恢復後，permission prompts 仍可繼續作答。
+- Auto-approval 現在會把代理工作期間你輸入的訊息也納入考量，就像先前對代理閒置時送出的 prompts 一樣
+- 即使指示要求使用工具，compaction 現在仍會回傳摘要。
+- 在 Wayland 上複製已選取文字時，現在只要 `wl-copy` 接受後就會立即完成，不再因逾時而退回到行程內剪貼簿，並在 UI 上印出 `Somebody else owns the clipboard now`
+- 較窄的 Sessions 側邊欄現在會省略放不下的鍵盤提示，而不是在單字中間截斷
+- MCP tools 在短暫的 discovery failures 後可自動恢復，無需重新啟動工作階段；未變更的 catalogs 在恢復期間仍可使用。
+- 當已設定的 provider 已經提供模型時，啟動時或 model picker 中不再顯示 `No supported model available`
+- 即使 servers 在回應後仍持續傳送 progress updates，MCP tool calls 仍可完成
+- 全新啟動時，登入過程中不再印出 `Failed to read model provider attribution` 錯誤
+- 對 Datadog 等 servers 的 MCP OAuth 登入現在會重用仍然有效的快取權杖
+- 已撤回且正在執行的 prompts 在工作階段恢復後仍會維持移除狀態
+- 在精簡時間軸中，點擊展開的 tool calls 任意位置即可將其收合
+- 長按 Space 與 `Ctrl+X V` 時，現在會說明語音模式為何關閉或仍在準備中
+
 ## 1.0.89 - 2026-09-28
 
 - 對支援的 ask_user 與 elicitation 表單輸入欄位按左鍵時，現在會聚焦該欄位，並將游標放到點擊的位置
