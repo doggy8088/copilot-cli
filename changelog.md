@@ -1,3 +1,12 @@
+## 1.0.91 - 2026-10-01
+
+- 新增 `copilot sandbox ca` 指令，可檢查、建立、信任、輪替與移除 proxy CA trust，包含無人值守的 Windows 設定；`/sandbox ca install` 現在改為 `create` 與 `trust`
+- 當被中斷的 turn 完成後，session timeline 現在會清除 busy 狀態。
+- 在不支援檔案系統列舉的 Windows 版本上，sandboxed commands 現在仍可執行，並會警告 PowerShell 的目前位置可能不正確
+- 當 footer 變高或縮小時，footer 文字選取會維持在相同的可見行上。
+- 在 Windows 上，針對 Node/npm 的 `EACCES` socket 拒絕，提供 sandbox 網路繞過選項
+- CLI 關閉前現在會先清空待送出的 telemetry；若 telemetry 仍在初始化，則只會延遲一段受限的時間。
+- 完整且可靜態分析的唯讀 shell pipelines 現在可進入 execution-evidence review；不完整或未綁定的 pipelines 則仍需要明確核准。
 ## 1.0.90 - 2026-09-30
 
 - 在模型選擇中新增對 `GPT-6.1 Sol` 的支援
