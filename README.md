@@ -118,7 +118,7 @@ copilot
 
 在包含你想處理之程式碼的資料夾中啟動 `copilot`。
 
-預設情況下，`copilot` 使用 Claude Sonnet 4.5。執行 `/model` 斜線命令即可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
+預設情況下，`copilot` 會使用 Claude Sonnet 4.5。執行 `/model` 斜線命令即可從其他可用模型中選擇，包括 Claude Sonnet 4 與 GPT-5。
 
 ### 實驗模式
 
@@ -127,41 +127,41 @@ copilot
 - 啟動時加上 `--experimental` 旗標：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線命令
 
-一旦啟用，這項設定會保存到你的設定檔中，因此後續啟動時就不再需要 `--experimental` 旗標。
+啟用後，這項設定會保存在你的設定檔中，因此後續啟動時不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
-- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可在模式間切換），會鼓勵代理持續工作直到任務完成。
+- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
-每當你向 GitHub Copilot CLI 提交一個提示，你每月的 premium requests 配額就會減少一個。如需了解 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 送出提示時，每月的 premium requests 配額都會減少一次。如需 premium requests 的相關資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
 如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），以增強程式碼智慧功能。這項功能可提供像是前往定義、懸浮資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強大的程式碼智慧功能。此功能會提供像是前往定義、懸停資訊與診斷等智慧程式碼能力。
 
 ### 安裝語言伺服器
 
-Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。舉例來說，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP 伺服器，並依照下方示範的相同模式進行設定。
+對於其他語言，請安裝對應的 LSP 伺服器，並依照下方相同的模式進行設定。
 
 ### 設定 LSP 伺服器
 
-LSP 伺服器是透過專用的 LSP 設定檔來設定的。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
+LSP 伺服器會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
-**使用者層級設定**（套用到所有專案）：
+**使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
 
-**儲存庫層級設定**（套用到特定專案）：
-在你的儲存庫根目錄建立 `.github/lsp.json`
+**儲存庫層級設定**（套用至特定專案）：
+在儲存庫根目錄建立 `.github/lsp.json`
 
-範例設定：
+設定範例：
 
 ```json
 {
@@ -180,14 +180,14 @@ LSP 伺服器是透過專用的 LSP 設定檔來設定的。你可以在使用�
 
 ### 檢視 LSP 伺服器狀態
 
-在互動式工作階段中使用 `/lsp` 命令來檢查已設定的 LSP 伺服器，或直接查看你的設定檔。
+你可以在互動式工作階段中使用 `/lsp` 命令檢查已設定的 LSP 伺服器，或直接檢視你的設定檔。
 
 如需更多資訊，請參閱 [changelog](./changelog.md)。
 
 ## 📢 回饋與參與
 
-很高興你在 Copilot CLI 旅程的早期就加入我們。
+我們很高興你在 Copilot CLI 旅程的早期就加入我們。
 
-我們正在快速打造。請預期會有頻繁更新——請讓你的用戶端保持最新，以取得最新功能與修正！
+我們正快速建置中。預期會有頻繁更新——請讓你的客戶端保持最新，以取得最新功能與修正！
 
-你的見解非常寶貴！請在此儲存庫開 issue、加入 Discussions，並在 CLI 中執行 `/feedback` 來提交一份保密的回饋問卷！
+你的洞見非常寶貴！歡迎在此儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交一份保密的回饋問卷！
