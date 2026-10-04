@@ -11,12 +11,12 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 ## 🚀 簡介與總覽
 
-我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機中。透過 GitHub Copilot CLI，你可以在本機與一位理解你的程式碼與 GitHub 情境的 AI 代理同步協作。
+我們正將 GitHub Copilot coding agent 的強大能力直接帶到你的終端機中。透過 GitHub Copilot CLI，你可以在本機與一位理解你的程式碼及 GitHub 情境的 AI 代理同步協作。
 
 - **終端機原生開發：** 直接在命令列中與 Copilot coding agent 協作——不需要切換情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、issue 與 pull request，全部透過你現有的 GitHub 帳號完成驗證。
 - **代理式能力：** 與能規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
-- **MCP 驅動的可擴充性：** 善用 coding agent 預設隨附 GitHub MCP server，並支援自訂 MCP server 以擴充能力。
+- **MCP 驅動的可擴充性：** 善用 coding agent 預設隨附 GitHub 的 MCP server，並支援自訂 MCP server 來擴充能力。
 - **完整掌控：** 每個動作在執行前都可先預覽——沒有你的明確批准，任何事都不會發生。
 
 我們仍處於這段旅程的早期階段，但有了你的回饋，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機中最理想的夥伴。
@@ -127,19 +127,19 @@ copilot
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 中使用 `/experimental` slash command
 
-啟用後，這項設定會持久化儲存在你的設定中，因此之後再次啟動時不再需要 `--experimental` 旗標。
+啟用後，這項設定會持久化到你的設定檔中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
-#### 實驗性功能
+#### 實驗功能
 
-- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
+- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可在各模式間切換），會鼓勵代理持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交一則提示，你每月的 premium requests 配額就會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-如需更多關於 GitHub Copilot CLI 使用方式的資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多有關如何使用 GitHub Copilot CLI 的資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP Server
 
-GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強的程式碼智慧能力。此功能提供前往定義、懸停資訊與診斷等智慧程式碼功能。
+GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強大的程式碼智慧功能。此功能提供像是前往定義、懸停資訊與診斷等智慧型程式碼能力。
 
 ### 安裝 Language Server
 
@@ -149,11 +149,11 @@ Copilot CLI 不會內建 LSP server。你需要另外安裝它們。例如，若
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP server，並依照下方示範的相同模式進行設定。
+若要支援其他語言，請安裝對應的 LSP server，並依照下方示範的相同模式進行設定。
 
 ### 設定 LSP Server
 
-LSP server 會透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP server：
+LSP server 透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP server：
 
 **使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -161,7 +161,7 @@ LSP server 會透過專用的 LSP 設定檔來設定。你可以在使用者層�
 **儲存庫層級設定**（套用至特定專案）：
 在儲存庫根目錄建立 `.github/lsp.json`
 
-範例設定：
+設定範例：
 
 ```json
 {
@@ -180,14 +180,14 @@ LSP server 會透過專用的 LSP 設定檔來設定。你可以在使用者層�
 
 ### 檢視 LSP Server 狀態
 
-在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP server，或直接檢視你的設定檔。
+在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP server，或直接查看你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
 ## 📢 回饋與參與
 
-我們很高興你能在 Copilot CLI 的旅程早期就加入我們。
+我們很高興你能在 Copilot CLI 的旅程初期加入我們。
 
-我們正在快速建置中。請預期會有頻繁更新--請讓你的用戶端保持最新，以取得最新功能與修正！
+我們正在快速打造它。請預期會有頻繁更新——請讓你的用戶端保持最新，以取得最新功能與修正！
 
-你的洞見非常寶貴！歡迎在這個 repo 開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交一份機密的意見回饋問卷！
+你的洞見非常寶貴！歡迎在這個 repo 開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的意見回饋問卷！
