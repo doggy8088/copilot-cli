@@ -1,3 +1,47 @@
+## 1.0.92 - 2026-10-05
+
+- 新增 `copilot config` 子命令，可列出、讀取、設定與移除設定。
+- 新增會話開始前的 `Ctrl+E` 環境選擇器，可在本機執行與雲端執行之間切換
+- 受 Entra 保護的 MCP servers 現在可以靜默續期僅含 access token 的憑證。
+- 舊版 HTTP+SSE MCP 連線在訊息 POST 永遠未收到確認時，不會再無限期卡住；確認等待時間現在會受 server 設定的 timeout 限制
+- voice runtime 安裝錯誤現在會指出從 `nuget.org` 下載失敗的原因，而不再只顯示備援 feed 的 401
+- 當請求超出 context 限制時，compaction 現在會保留你最新的 prompt
+- 因 provider 大小限制而被拒絕的大型 Anthropic 請求，現在會在縮小圖片或移除附件後自動重試
+- custom agent 的模型項目現在只會在該模型被選取時保留與模型綁定的 reasoning effort
+- Shell tool calls 現在會在時間線中可靠地即時串流 `stdout` 與 `stderr` 輸出
+- usage 報表現在在可用時會保留 provider 回報的 reasoning token 總數
+- agent 一次寫入非常大的檔案後，session 不會再連續數分鐘變得極度緩慢
+- sandboxed shells 現在預設不會帶入 ambient `GITHUB_TOKEN`，除非有明確設定。
+- quota 重設後，plan 使用量現在會反映目前的計費週期
+- 透過 ACP task calls 啟動的 custom agents 現在可正確解析並執行
+- 遠端 session 恢復現在會在 `--resume` 與 `--connect` 時使用你已設定的 GitHub 驗證
+- Entra 登入在沒有 broker 可用時，現在會退回使用 browser auth，且在無法自動開啟時顯示手動 URL
+- `copilot sandbox ca` 命令現在會遵循 `--config-dir`（包含搭配 `-C` 使用時）。
+- 當存取權已授與時，search commands 現在會避免再出現 sandbox bypass 提示
+- 啟用 dev tool access 時，sandboxed `uv` 命令現在預設可寫入 `uv` cache
+- `pnpm` 命令現在可在 sandboxed sessions 中執行，而不會出現 lock-file 權限錯誤
+- 在 Sessions 分頁中重複按 `n`，現在會可靠地建立每一個新 session
+- reverse search 現在會在啟動時命令歷史載入完成後更新結果
+- 當 server 指示變更時，MCP tools 現在可在同一個 turn 內恢復
+- 使用 `/experimental` 或 `/settings` 變更 experimental mode 後，即使啟動時帶有相反的 experimental 旗標，也會在重新啟動後生效
+- 在快速互動期間，鍵盤、貼上與滑鼠輸入現在都能保持順序且維持靈敏回應。
+- 每當 proxy 封鎖目標位址時，sandboxed shell commands 現在都會提供 network bypass 提示
+- 執行 Git 的 sandboxed scripts 現在會使用遮罩處理過的憑證與 SSH remote rewrites 進行驗證
+- 在你更換 GitHub 驗證憑證後，sub-agents 仍可繼續運作
+- Windows 上的 sandboxed commands 現在會將暫存檔寫入已授權的 temp 目錄，因此需要將暫存檔重新命名到目標位置的工具也能正常運作
+- prompt-mode sessions 現在會在 Stop-hook 延續流程完成後，只觸發一次 `sessionEnd` hook
+- 閒置的 Streamable HTTP sessions 到期後，現在會重新連線到遠端 MCP servers
+- 對執行中的背景 agent 傳送訊息，現在會在下一個可處理的時機導引其目前的 turn。
+- context rollover 現在會在 recovery context 中保留你最新的 requests。
+- 對無法自行提權的 Windows 帳號，現在會隱藏自動 sandbox CA 設定提示
+- 當目前 session 無法執行某個 subagent 時，Copilot 不會再將其描述為已設定。先前若某個 session 無法使用 `rubber-duck`，仍會在 `/subagents` 中顯示它已設好，且在要求使用時會失敗，而不是被乾淨地略過。
+- 當 tool definitions 未變更時，MCP tools 在 OAuth 重新驗證後仍可繼續運作
+- 在 Microsoft Entra 登入後，現在可以選擇要使用的帳號，且 `/logout` 可登出這些 OAuth sessions。
+- 透過在 child process 中解壓隨附的 CLI 套件，改善首次執行的啟動體驗
+- 同時連線多個 MCP servers 時，改善啟動回應速度
+- canvas actions 現在可在 `invoke_canvas_action` 中將圖片回傳給模型。
+- 從 model picker 與受支援的 CLI 選項中移除已退役的模型
+
 ## 1.0.91 - 2026-10-01
 
 - 新增 `copilot sandbox ca` 指令，可檢查、建立、信任、輪替與移除 proxy CA trust，包含無人值守的 Windows 設定；`/sandbox ca install` 現在改為 `create` 與 `trust`
