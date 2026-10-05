@@ -127,33 +127,33 @@ copilot
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 中使用 `/experimental` slash command
 
-啟用後，這項設定會持久化到你的設定檔中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
+啟用後，這項設定會持久化寫入你的設定檔，因此後續啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
-- **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可在各模式間切換），會鼓勵代理持續工作直到任務完成。
+- **Autopilot mode：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵代理持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交提示時，你每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交提示時，每月的 premium requests 配額就會減少一次。如需了解 premium requests，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-如需更多有關如何使用 GitHub Copilot CLI 的資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+如需更多 GitHub Copilot CLI 的使用資訊，請參閱 [我們的官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
-## 🔧 設定 LSP Server
+## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以提供更強大的程式碼智慧功能。此功能提供像是前往定義、懸停資訊與診斷等智慧型程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），可提供更強化的程式碼智慧功能。這項功能可提供像是前往定義、懸停資訊與診斷等智慧程式碼能力。
 
 ### 安裝 Language Server
 
-Copilot CLI 不會內建 LSP server。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP server。你需要另外安裝它們。舉例來說，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-若要支援其他語言，請安裝對應的 LSP server，並依照下方示範的相同模式進行設定。
+若是其他語言，請安裝對應的 LSP server，並依照下方示範的相同模式進行設定。
 
-### 設定 LSP Server
+### 設定 LSP 伺服器
 
-LSP server 透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP server：
+LSP server 會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP server：
 
 **使用者層級設定**（套用至所有專案）：
 編輯 `~/.copilot/lsp-config.json`
@@ -178,16 +178,16 @@ LSP server 透過專用的 LSP 設定檔進行設定。你可以在使用者層�
 }
 ```
 
-### 檢視 LSP Server 狀態
+### 查看 LSP 伺服器狀態
 
-在互動式工作階段中使用 `/lsp` 指令檢查已設定的 LSP server，或直接查看你的設定檔。
+你可以在互動式工作階段中使用 `/lsp` 指令來檢查已設定的 LSP server，或直接查看你的設定檔。
 
 更多資訊請參閱 [changelog](./changelog.md)。
 
 ## 📢 回饋與參與
 
-我們很高興你能在 Copilot CLI 的旅程初期加入我們。
+我們很高興你能在 Copilot CLI 發展旅程的早期就加入我們。
 
-我們正在快速打造它。請預期會有頻繁更新——請讓你的用戶端保持最新，以取得最新功能與修正！
+我們正快速建置中。預期會有頻繁更新——請將你的用戶端保持在最新狀態，以取得最新功能與修正！
 
-你的洞見非常寶貴！歡迎在這個 repo 開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 提交一份保密的意見回饋問卷！
+你的見解非常寶貴！請在這個儲存庫中開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交一份保密的回饋問卷！
