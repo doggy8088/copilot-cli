@@ -1,3 +1,19 @@
+## 1.0.93 - 2026-10-07
+
+- 新增 enterprise `permissions.limitTo`，可對網路請求強制套用受管理網域邊界
+- 在進行中的 turn 期間，安全的 `/user` 指令現在會立即執行；不安全的遠端指令會直接遭拒而不開啟對話框；由 relay 主機宣告的指令則會排入佇列
+- 重新載入已啟用的 plugins 後，plugin 技能指令仍會保持可用
+- sandbox 本機網路允許清單現在包含 localhost 與 loopback 主機。
+- GitHub.com Connector 使用者現在可直接擴充 GitHub CLI 權限，並在不切換登入方式的情況下重試連線。
+- 啟動時現在會遵循 `--context long_context`，並在 `/context` 中顯示正確的 context 可用額度
+- 若在缺少所需 GitHub scope 的情況下連接 Connector，現在會提示你更新授權，而不是以驗證錯誤失敗
+- 停用 sandboxing 時，預熱後的語言伺服器現在會在多次 LSP 請求之間持續運行
+- 點擊遭截斷的精簡 shell 指令現在會將其展開
+- 所有使用者現在都可透過 `/sandbox` 與 `--sandbox` 使用指令沙箱。
+- MCP 伺服器設定變更現在可在 turn 之間生效，無需重新啟動工作階段。
+- 模型選擇器現在會更新推薦清單，優先顯示 GPT-6.1 Sol、GPT-6 Astra/Luna 與 Claude 5.5 模型。
+- 使用者設定現在只會從 `~/.copilot/settings.json` 讀取；`~/.copilot/config.json` 中的使用者設定鍵會被忽略。
+
 ## 1.0.92 - 2026-10-05
 
 - 新增 `copilot config` 子命令，可列出、讀取、設定與移除設定。
