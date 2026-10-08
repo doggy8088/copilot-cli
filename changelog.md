@@ -1,3 +1,14 @@
+## 1.0.94 - 2026-10-08
+
+- 在模型選擇器與 `--model` 補全中新增 Claude Haiku 5.5
+- `copilot mcp add` 在 MCP 設定初始化遭中斷後，現在可乾淨地恢復
+- MCP 啟用/停用現在可在伺服器探索前運作，且不會啟動 MCP servers
+- Assisted permissions 現在會將可見的 shell 程式碼傳送給 permission judge，而不再要求不必要的手動核准
+- 當啟動時的 bypass-permission flags 因受管理設定而被抑制時，現在會顯示 policy 警告
+- 點擊 Sessions 側邊欄項目時，現在會在 split-view reconciliation 期間可靠地切換 sessions
+- 當受管理設定要求使用較新的 CLI 版本時，現在會顯示更新指引，而不會阻擋一般 prompts
+- 受管理 policy 現在可停用 Assisted Permissions，並讓 sessions 維持在 Manual Approval 模式。
+
 ## 1.0.93 - 2026-10-07
 
 - 新增 enterprise `permissions.limitTo`，可對網路請求強制套用受管理網域邊界
