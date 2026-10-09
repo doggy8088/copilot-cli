@@ -1,3 +1,10 @@
+## 1.0.95 - 2026-10-09
+
+- 在 macOS 上，如可用，現在會使用原生 Microsoft Entra broker 驗證，並保留瀏覽器作為備援。
+- `copilot config` 現在支援 sandbox credential `injectHosts` 鍵，並在 Bash、Zsh 與 Fish 中提供鍵名補全。
+- `--context` 現在會套用到新的與恢復的 ACP sessions，而不再默默使用預設或先前儲存的 context tier
+- 受管理的 plugin 設定現在會改為每小時或在 policy 變更後重試，而不是在每次訊息失敗時重試
+
 ## 1.0.94 - 2026-10-08
 
 - 在模型選擇器與 `--model` 補全中新增 Claude Haiku 5.5
