@@ -1,3 +1,15 @@
+## 1.0.96 - 2026-10-12
+
+- 互動式 sandbox 設定現在會提示可能的環境機密，並允許你在儲存前加入遮罩主機。
+- `/model` 與 `/config model` 中的 model ID 現在不區分大小寫，並會儲存標準化 ID
+- 在 enterprise policy 仍在解析期間，啟動時仍可使用 `/allow-all`
+- `/add-dir` 現在會為新增的目錄授予目前工作階段的 sandbox 存取權
+- `/user list` 現在會顯示每個已登入帳號的驗證來源
+- 模型暫時性失敗後，現在會在恢復的回應前先顯示重試進度訊息
+- 登出狀態下，若帳號擁有的 catalog 無法使用，模型補全不再顯示驗證警告
+- git 儲存庫中的互動式工作階段現在會更快進入輸入提示
+- Timeline 現在會顯示每個權限決策是由你、Assisted Permissions、policy，或 unattended fallback 所做。
+
 ## 1.0.95 - 2026-10-09
 
 - 在 macOS 上，如可用，現在會使用原生 Microsoft Entra broker 驗證，並保留瀏覽器作為備援。
