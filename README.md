@@ -13,11 +13,11 @@ GitHub Copilot CLI 將 AI 驅動的程式設計協助直接帶到你的命令列
 
 我們正將 GitHub Copilot coding agent 的強大能力直接帶進你的終端機。使用 GitHub Copilot CLI，你可以在本機以同步方式與一個理解你的程式碼與 GitHub 情境的 AI agent 協作。
 
-- **原生終端機開發：** 直接在命令列中與 Copilot coding agent 協作——不需要切換工作情境。
+- **原生終端機開發：** 直接在命令列中與 Copilot coding agent 協作 — 不需要切換工作情境。
 - **開箱即用的 GitHub 整合：** 使用自然語言存取你的儲存庫、議題與 pull request，並直接沿用你現有的 GitHub 帳號完成驗證。
 - **代理能力：** 與能夠規劃並執行複雜任務的 AI 協作者一起建置、編輯、除錯與重構程式碼。
 - **由 MCP 驅動的可擴充性：** 善用 coding agent 預設隨附的 GitHub MCP server，並支援自訂 MCP server 以擴充能力。
-- **完整掌控：** 執行前可預覽每一個動作——沒有你的明確核准，任何事都不會發生。
+- **完整掌控：** 執行前可預覽每一個動作 — 沒有你的明確核准，任何事都不會發生。
 
 我們仍處於發展早期，但在你的回饋幫助下，我們正快速迭代，讓 GitHub Copilot CLI 成為你終端機裡最理想的夥伴。
 
@@ -156,10 +156,10 @@ npm install -g typescript-language-server
 LSP 伺服器會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
 **使用者層級設定**（適用於所有專案）：
-編輯 `~/.copilot/lsp-config.json`
+Edit `~/.copilot/lsp-config.json`
 
 **儲存庫層級設定**（適用於特定專案）：
-在儲存庫根目錄建立 `.github/lsp.json`
+Create `.github/lsp.json` in your repository root
 
 設定範例：
 
@@ -188,6 +188,6 @@ LSP 伺服器會透過專用的 LSP 設定檔進行設定。你可以在使用�
 
 很高興你能在 Copilot CLI 的早期旅程中加入我們。
 
-我們正快速打造這個產品。預期會有頻繁更新——請讓你的用戶端保持在最新狀態，以取得最新功能與修正！
+我們正快速打造這個產品。預期會有頻繁更新 -- 請讓你的用戶端保持在最新狀態，以取得最新功能與修正！
 
 你的洞見非常寶貴！歡迎在此儲存庫開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交機密回饋問卷！
