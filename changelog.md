@@ -1,3 +1,31 @@
+## 1.0.97 - 2026-10-13
+
+- 為自訂 agents 新增 agent 範圍的宣告式 hooks
+- 遠端 plugin marketplace 與 plugin 擷取在 HTTPS 驗證失敗後，現在會使用你已登入的 GitHub token 重試一次。
+- 在經過 TLS 攔截 proxy 的情況下，當省略 `close_notify` 時，串流回應現在仍可正常完成
+- 修正使用絕對路徑的 GitHub SCP remote 解析，讓儲存庫擁有者與名稱能正確解析
+- 即使儲存庫定義超過 100 個自訂 agents，或 agent 檔案巢狀層級很深，現在也能完整探索所有自訂 agents。
+- Autopilot 現在會拒絕 preToolUse hook 的 `"ask"` 決策，而不是停在沒有人注意的權限對話框上
+- 透過使用穩定的圖示路徑，讓 Windows 工作列中的 agent 圖示在 CLI 更新後仍保持群組顯示
+- 當 `config.json` 中有單一項目無效時，現在會保留已儲存的設定，例如已忽略的提示、受信任資料夾與登入狀態，而不是每次啟動都重設它們
+- 在 `/config` 中，受管理的權限規則為唯讀，且除非由你的組織設定，否則會隱藏。
+- `/usage` 現在會為依 token 計費的工作階段顯示已計費的 AI Credits，包括在 resume 後
+- 使用 `view_range` 進行檔案讀取時，若其不是剛好兩個元素，例如只有起始行，現在會在 timeline 中顯示行範圍與行數，而 session 匯出也不再包含字面文字 `undefined`
+- 在 transcript 中拖曳選取文字時，不再偶爾高亮並複製到指標下方那一列。
+- Power BI 與 Bluebird MCP servers 在登入期間現在接受其已發佈的資源 scopes
+- 在 `--output-format json` 輸出中，現在可安全遮罩 secrets，同時保留有效的變數參照
+- 恢復已暫停的工作階段時，現在會回報被中斷的工具呼叫，並避免重播已取消的寫入。
+- 同步 `/task` JSON 輸出現在會在完成前包含失敗子項目的錯誤與生命週期事件。
+- 明確指定的 GitHub MCP tool 與 toolset 選擇現在會使用正確的 endpoint，因此要求的寫入工具會保持可用。
+- 當並行的工具清單重新整理變更 catalog 時，已快取的 MCP 工具呼叫現在會重新檢查其定義。
+- 來自 `--plugin-dir` plugins 的 skills 與自訂 agents 現在會正常進入自動補全與呼叫流程，而不再遺失。
+- 修正已恢復工作階段從錯誤的 plugin 清單重建 plugin hooks 的問題，因此來自儲存庫本機 marketplace plugins 的 hooks 在 `--resume` 後仍會持續執行，而你的設定中已停用的 plugins 的 hooks 也不會再重新出現
+- 在短終端機中，於帳號檢查後仍會保持 `/user switch` 的 new-session 選項可見
+- 無法使用的權限復原嘗試現在會按請求分開追蹤，因此互不相關的呼叫不會再彼此耗用重試預算。
+- 當沒有前景工作執行時，background-shell 的等待狀態不再顯示動畫
+- 長工作階段中的緊急記憶體釋放現在可在 V8 中止前略過冷卻時間，因此原本會因 JavaScript heap out of memory 崩潰而被終止的工作階段，現在可能透過壓縮歷史而存活下來
+- 在支援的終端機上，現在預設會顯示內嵌圖片，無需啟用實驗模式。使用 `/settings inlineImages false` 可將其關閉
+
 ## 1.0.96 - 2026-10-12
 
 - 互動式 sandbox 設定現在會提示可能的環境機密，並允許你在儲存前加入遮罩主機。

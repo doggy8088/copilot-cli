@@ -156,10 +156,10 @@ npm install -g typescript-language-server
 LSP 伺服器會透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
 **使用者層級設定**（適用於所有專案）：
-Edit `~/.copilot/lsp-config.json`
+編輯 `~/.copilot/lsp-config.json`
 
 **儲存庫層級設定**（適用於特定專案）：
-Create `.github/lsp.json` in your repository root
+在你的儲存庫根目錄建立 `.github/lsp.json`
 
 設定範例：
 
@@ -188,6 +188,6 @@ Create `.github/lsp.json` in your repository root
 
 很高興你能在 Copilot CLI 的早期旅程中加入我們。
 
-我們正快速打造這個產品。預期會有頻繁更新 -- 請讓你的用戶端保持在最新狀態，以取得最新功能與修正！
+我們正快速打造這個產品。預期會有頻繁更新--請讓你的用戶端保持在最新狀態，以取得最新功能與修正！
 
 你的洞見非常寶貴！歡迎在此儲存庫開 issue、加入 Discussions，並從 CLI 執行 `/feedback` 來提交機密回饋問卷！
