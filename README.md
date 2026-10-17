@@ -127,39 +127,39 @@ copilot
 - 使用 `--experimental` 旗標啟動：`copilot --experimental`
 - 在 CLI 內使用 `/experimental` 斜線指令
 
-一旦啟用，這項設定會持久保存到你的設定中，因此之後再次啟動時就不再需要 `--experimental` 旗標。
+啟用後，這項設定會持久化寫入你的設定，因此之後再次啟動時就不再需要 `--experimental` 旗標。
 
 #### 實驗功能
 
 - **Autopilot 模式：** Autopilot 是一種新模式（按 `Shift+Tab` 可循環切換模式），會鼓勵 agent 持續工作直到任務完成。
 
-每次你向 GitHub Copilot CLI 提交 prompt，都會使你每月的 premium requests 配額減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
+每次你向 GitHub Copilot CLI 提交提示時，每月的 premium requests 配額都會減少一次。關於 premium requests 的資訊，請參閱 [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)。
 
-如需更多關於如何使用 GitHub Copilot CLI 的資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
+若要了解如何使用 GitHub Copilot CLI 的更多資訊，請參閱[官方文件](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)。
 
 ## 🔧 設定 LSP 伺服器
 
-GitHub Copilot CLI 支援 Language Server Protocol (LSP)，以強化程式碼智慧功能。此功能提供像是跳至定義、懸停資訊與診斷等智慧程式碼能力。
+GitHub Copilot CLI 支援 Language Server Protocol（LSP），以提供更強化的程式碼智慧功能。這項功能可提供前往定義、懸停資訊與診斷等智慧型程式碼功能。
 
-### 安裝語言伺服器
+### 安裝 Language Server
 
-Copilot CLI 不會內建 LSP 伺服器。你需要另行安裝它們。例如，要設定 TypeScript 支援：
+Copilot CLI 不會內建 LSP 伺服器。你需要另外安裝它們。例如，若要設定 TypeScript 支援：
 
 ```bash
 npm install -g typescript-language-server
 ```
 
-對於其他語言，請安裝對應的 LSP 伺服器，並依照下方展示的相同模式進行設定。
+對於其他語言，請安裝對應的 LSP 伺服器，並依照下方顯示的相同模式進行設定。
 
 ### 設定 LSP 伺服器
 
-LSP 伺服器是透過專用的 LSP 設定檔來設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
+LSP 伺服器是透過專用的 LSP 設定檔進行設定。你可以在使用者層級或儲存庫層級設定 LSP 伺服器：
 
 **使用者層級設定**（適用於所有專案）：
 編輯 `~/.copilot/lsp-config.json`
 
 **儲存庫層級設定**（適用於特定專案）：
-在你的儲存庫根目錄建立 `.github/lsp.json`
+在儲存庫根目錄建立 `.github/lsp.json`
 
 設定範例：
 
