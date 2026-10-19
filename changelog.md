@@ -1,3 +1,55 @@
+## 1.0.100 - 2026-10-19
+
+- 新增 `--disable-client-telemetry` 旗標，可關閉從 CLI 上傳的用戶端遙測資料
+- 新增 `--trust-folder`，供以 `-p` 或管線 stdin 啟動的一次性 prompt 模式工作階段使用
+- 可透過 `copilot plugin install "ghapp://air/install?..."` 從 GitHub 安裝連結安裝已驗證的 Skills 與 plugins
+- 不帶參數開啟 `/share` 時，現在會顯示全螢幕動作選單，以分享目前工作階段
+- 當未設定 sandbox proxy 時，sandbox host-rule 流量現在會遵循 `HTTPS_PROXY` 與 `HTTP_PROXY`
+- 語音聽寫不再將像 `<en-US>` 這樣的語言標記插入轉錄文字中
+- 當受管理 policy 變更時，受管理 plugins 現在會在既有工作階段中更新啟用狀態
+- 當 MCP server 在載入工具時卡住，工作階段不再因此停滯數分鐘。
+- 當陣列參數定義 enum 值時，Gemini 工具呼叫不再失敗
+- 在先前的工具結果不含可讀內容後，Gemini 對話也不再失敗。
+- 受沙箱保護的 shell 指令現在會說明 credential-proxy 憑證信任失敗的原因，並可提供經核准後於沙箱外重新執行的選項。
+- 在同一工作階段中重新開啟未變更的 diff 時，會保留已儲存的 `/diff` 審查留言，並提供明確的捨棄動作。
+- plugin 的啟用、停用、更新與解除安裝動作，現在會在 plugin 清單重新整理後仍可靠地導向。
+- 僅有 reasoning 的 max-token 回應不再無限迴圈，且在沒有進展時會以明確錯誤結束
+- 當儲存的 model 在 resume 時被自動替換，現在會顯示清楚警告，並讓目前作用中的 model 顯示保持同步。
+- Linux 上的 sandboxed commands 啟動更可靠，不再間歇性發生 loopback 設定失敗
+- 從 MCP resource 詳細資訊返回時，即使即時中繼資料正在更新，也會停留在清單中
+- 原生對話現在可在可選的受管理 plugin 下載於背景持續進行時開始並完成。
+- 即使 CLI UI 正忙碌，連按兩次 `Ctrl+C` 現在也會立即退出
+- catalog 搜尋現在會回報 CONNECT proxy 挑戰所需的 proxy 驗證需求
+- HydraFusion 現在會在審查執行期間保持某個 pass 為展開狀態；未被保留的 pass 在你切換工作階段或 resume 之前仍可展開；而中止 turn 的 pass 會說明它們是否被保留
+- 在切換帳號後，即使發生 policy 快取未命中，受管理帳號 policy 與 bypass 模式警告仍會保持正確。
+- 當工具定義延後載入時，避免誤判為 context 用盡或拒絕 rollover
+- 宣告文件中的 `search`、`web` 或 `todo` 工具別名，或命名為 `github-mcp-server/web_search` 的自訂 agents，現在都會收到對應的工具
+- CLI 的 help 與 version 旗標在輸出內容後，現在可可靠退出
+- Assisted 模式下由 enterprise 管理的 ask 權限，現在允許安全動作而不會出現不必要的確認提示。
+- 在登入與 token 更新期間，會固定保留你所選的 Microsoft Entra 帳號
+- 從 Sessions 側邊欄標頭動作往上移動時，焦點會循環到最後一個可見工作階段
+- Plan、autopilot 與 shell 模式徽章現在會在啟動元件載入與 agent 工作期間保持可見。徽章會取代原本附在活動文字後方的模式後綴（`Working - plan`），而啟動時的 `Loading:` 列現在會截斷診斷資訊，以讓狀態列維持單行
+- 啟用 developer tool access 時，sandboxed commands 現在可以寫入套件與建置快取。
+- Windows CLI 的 Git 指令現在可從 thread-access-denied 的啟動失敗中恢復。
+- skill 的 `allowed-tools` 規則現在會保留其參數中的逗號，而不再被拆開。當清單結構有歧義時，其未限定範圍的規則現在會提示而不是直接授權。
+- MCP resource 儀表板在 inventory adapters 重新整理期間仍可互動
+- 當 provider 拒絕過大的 request body 時，會以較小的 payload 限制重試帶有圖片的 Responses 請求
+- 當計費資料完整時，完整使用量回報在 resume 後不再顯示部分狀態，或出現虛假的未歸屬支出。
+- Assisted permissions 現在會將巢狀的 PowerShell 與 `bash -c` 指令中，只會展開純資料環境變數、單引號 PowerShell，以及 PowerShell 變數與 alias 陳述式的可見 shell 程式碼送交 permission judge，而不再要求不必要的手動核准
+- 儲存庫根目錄 `.github/instructions` 中依路徑套用的 instruction files，現在會在 agent 讀取或編輯符合條件的檔案時自動生效
+- 當程序快照的執行緒列舉失敗時，Windows 仍可啟動 git、shell commands 與 MCP servers
+- `/sessions`、`/session` 與 `/resume` 現在預設使用統一的 Sessions 瀏覽器。
+- Session 瀏覽現在會將帳號探索上限限制為 500 筆紀錄，並在自動重新整理時間上遵循 `Retry-After` 提示。
+- 當遮罩主機變更時，會提示你更新 sandbox proxy 憑證授權單位
+- 當由管理員管理的設定覆寫你選擇的 model 時，會顯示清楚通知
+- 線上工作階段現在預設啟用語意程式碼搜尋。
+- 改善 Microsoft Entra 的 `/login` 流程，讓你可以選擇已快取的帳號，或明確以其他帳號登入
+- github.com 上的 sandboxed git 現在可以使用你在 `credentials.envVars` 中設定的 `GITHUB_TOKEN`
+- `/sandbox` 現在可以只為目前工作階段保持啟用 sandboxing，而不會全域啟用
+- 受信任儲存庫的 plugins 現在會在對話執行前自動安裝與更新。
+- 將內建 browser plugin 重新命名為 `browser-use`，並在升級後保持既有 browser plugin 偏好設定可用
+- sandbox 預設允許本機網路存取，因此指令可連線到 localhost 與私有網路服務。
+
 ## 1.0.98 - 2026-10-14
 
 - 新增 Gemini 4 Argon 支援
