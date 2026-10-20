@@ -1,3 +1,36 @@
+## 1.0.101 - 2026-10-20
+
+- 在受支援的模型上，為動態工作流程子 agents 新增原生結構化輸出
+- 新增 `assistedApprovalInstructions` 設定，用於引導 Assisted Permissions 的確認決策
+- 先建立再進入目錄的 shell 指令，現在會請求路徑核准，而不是提早被拒絕。
+- 沒有 OAuth handler 的 headless 與 SDK 工作階段，當已儲存 token 需要重新登入時，現在會略過 MCP 連線；可續期的授權仍會繼續連線。
+- 當已啟用本機存取且未套用主機篩選時，macOS 上的 sandboxed commands 現在可直接連線到 localhost TCP 服務。
+- `providers.json` 中的本機模型與 loopback providers，在登入 Copilot 時不再阻擋 Auto、你已儲存的 model 或預設 model
+- 明確執行 Entra MCP 登入時，現在可在快取 token 被拒後，繼續進入互動式登入以完成恢復。
+- 在超出預算的工作階段中，僅切換 reasoning effort 不再強制觸發 compact。
+- 即使在拖曳後立刻按下，複製快捷鍵現在也能可靠地複製滑鼠選取內容
+- 會取消已放棄的 Microsoft 登入流程，讓重試可從乾淨狀態開始
+- 當啟動狀態未變更時，已設定的 MCP inventory 讀取不再失敗
+- 當含大量截圖的工作階段超出圖片限制時，Google models 現在會避免重複改寫 request，以減少額外 token 用量。
+- 可從 Team 定義的 GitHub marketplaces 安裝 Team 指派的 plugins
+- extension capability 請求現在改用明確核准，而非 Assisted judge
+- 共用的 MCP 驗證錯誤現在會指向你用戶端的登入設定；CLI 驗證警告仍會顯示 `/mcp auth`。
+- 當先前回合包含自訂工具呼叫時，從 GPT models 切換到 Gemini 不再失敗
+- Google model requests 現在會遵守 registry 的圖片限制，以避免因圖片數量造成的 request 失敗
+- 啟動時若尚未選取 model，第一個 prompt 不再無聲卡住；CLI 現在會要求你用 `/model` 選擇一個 model，並保留你的 prompt
+- `/usage` 現在對於 BYOK 與其他沒有 provider 標籤的資料列，只顯示 model 名稱，而不再顯示 "Unknown provider"
+- 取消受 admission gate 控制的 prompt 後，即使背景工作仍在進行，現在也會重新啟用 Enter，而不需要額外輸入。
+- 當可用時，model picker 現在會將由管理員管理的 model 標示為預設值
+- 現在會保留含有 ICC 色彩描述檔的 MCP PNG 圖片，而不再略過它們
+- Windows shell commands 在恢復的工作階段中啟動更可靠，並會清理孤兒子行程
+- 切換到 HydraFusion 時，只有在路由後的 model 確實需要時才會執行 compact
+- endpoint 更新後，CLI 的 model 清單現在會重新整理，而不再停留在過時或空白狀態
+- Windows 工作列圖示的 staging 現在會避免並行暫存檔衝突，因此跨次啟動時圖示顯示更穩定。
+- 恢復工作階段時，現在會更早顯示對話內容，而不必等待佔位環境設定完成
+- 使用 sandboxed MCP servers 啟動工作階段時，現在會避免不必要的重新啟動，並有更快回應。
+- 允許使用 `/config` 與 `/settings` 設定及取消設定 `showReasoning`
+- 權限核准提示現在會說明升級原因，並顯示該請求專用的診斷指令
+
 ## 1.0.100 - 2026-10-19
 
 - 新增 `--disable-client-telemetry` 旗標，可關閉從 CLI 上傳的用戶端遙測資料
