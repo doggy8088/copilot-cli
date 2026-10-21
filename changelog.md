@@ -1,3 +1,14 @@
+## 1.0.102 - 2026-10-21
+
+- Prompt 模式現在會在 `-p` 與管線 stdin 執行時，遵循受管理的 Auto model 選擇
+- Subagents 現在會遵循自訂工具與 MCP 工具的核准設定，避免重複的權限提示，並允許繼承的工作流程執行
+- Plugin marketplaces 現在接受 `git-subdir` 來源與較長的 plugin 描述
+- 當 aliases 包含像 `--effort` 這類 option aliases 時，Fish shell completion 現在可正常運作
+- 聊天在傳送訊息時，不再因組織的 plugin 準備流程而被阻擋
+- 長時間執行的 sandboxed commands 現在可可靠地持續執行超過 10 秒
+- 因 provider 過載錯誤而被截斷的回覆，現在會以 backoff 重試，並顯示 provider 的訊息與 request ID
+- 在繼承主機 proxy 設定時，sandboxed network traffic 現在會遵循 `NO_PROXY` 與 `ALL_PROXY`
+
 ## 1.0.101 - 2026-10-20
 
 - 在受支援的模型上，為動態工作流程子 agents 新增原生結構化輸出
