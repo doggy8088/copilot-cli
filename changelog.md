@@ -1,3 +1,18 @@
+## 1.0.103 - 2026-10-22
+
+- 啟用時，點擊已完成回應中的程式碼區塊會複製其原始程式碼。
+- ACP 工作階段現在會遵循已儲存的 sandbox 設定與 `--sandbox`/`--no-sandbox` 旗標，包含在恢復工作階段時。
+- 當 CLI 在連線中斷後重新連線時，雲端回覆現在會保留完整文字
+- 當可用時，工作階段瀏覽器現在會顯示工作階段記錄的標題，而不是通用的 `Session N` 備用名稱
+- 除非工作階段明確設定 verbosity，否則模型專屬的預設 Responses verbosity 現在會正確套用到 GPT-5 models
+- 啟用 developer-tool access 時，允許 `dnx` commands 使用既有的 .NET 與 NuGet sandbox 授權
+- Windows 的 dev-tool shim（如 `npm.cmd`）現在會收到與 `npm` 相同的 sandbox 授權。
+- Gemini 工具呼叫現在會避免在 nullable 與 enum 欄位上出現 400 schema validation errors
+- 在強制套用受管理 model 預設值的情況下恢復工作階段時，不再拒絕已儲存的偏好設定
+- 當 GitHub client 準備就緒時，hash mention 建議現在會自動重新整理
+- 在同一個 repository 的已註冊 Git worktrees 之間，重複使用快取的本機 MCP 工具快照
+- 改善 remote 啟動選項，提供更清楚的 hosting/connection 旗標，並淘汰舊版 `--remote`/`--no-remote` 啟動旗標
+
 ## 1.0.102 - 2026-10-21
 
 - Prompt 模式現在會在 `-p` 與管線 stdin 執行時，遵循受管理的 Auto model 選擇
