@@ -1,3 +1,10 @@
+## 1.0.104 - 2026-10-27
+
+- 受管理 model「fusion」現在會以 Auto 啟動工作階段，並套用 `fusionTier` 設定
+- 互動式與 SDK 的 Autopilot 工作階段，現在會持續等待附加的背景任務，而不會在 `COPILOT_TASK_WAIT_TIMEOUT_SECONDS` 之後停止；`-p --autopilot` 仍會遵循此行為
+- 當已儲存的 Auto 偏好設定不再可用時，Auto 現在會回退到其預設偏好，而不是在每一回合都失敗
+- Assisted Permissions 現在不需要啟用 experimental mode 即可使用。
+
 ## 1.0.103 - 2026-10-22
 
 - 啟用時，點擊已完成回應中的程式碼區塊會複製其原始程式碼。
